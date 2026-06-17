@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="0">
+
+        <record id="act_type_orientation" model="mail.activity.type">
+            <field name="name">MCB Orientation Session</field>
+            <field name="summary">Mandatory orientation: PSEA, Gender, Code of Conduct, AML, JD</field>
+            <field name="icon">fa-graduation-cap</field>
+            <field name="res_model">hr.employee</field>
+        </record>
+        <record id="act_type_setup" model="mail.activity.type">
+            <field name="name">MCB Equipment / Account Setup</field>
+            <field name="summary">Issue ID card, email account, equipment, bank setup</field>
+            <field name="icon">fa-laptop</field>
+            <field name="res_model">hr.employee</field>
+        </record>
+        <record id="act_type_contract_sign" model="mail.activity.type">
+            <field name="name">MCB Contract Signing</field>
+            <field name="summary">Employment contract signed and attached</field>
+            <field name="icon">fa-pencil-square-o</field>
+            <field name="res_model">hr.employee</field>
+        </record>
+        <record id="act_type_pf_membership" model="mail.activity.type">
+            <field name="name">MCB PF Membership Form</field>
+            <field name="summary">After 1 yr + regularization, complete PF membership paperwork</field>
+            <field name="icon">fa-university</field>
+            <field name="res_model">hr.employee</field>
+        </record>
+
+    </data>
+</odoo>

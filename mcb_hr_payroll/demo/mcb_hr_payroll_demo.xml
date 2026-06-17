@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="0">
+
+        <!-- Set the demo employees onto MCB structures -->
+        <function model="hr.employee" name="write" eval="[
+            [ref('mcb_hr_employee.emp_rashed')],
+            {'wage': 42000, 'contract_date_start': '2024-02-01'}
+        ]"/>
+        <function model="hr.employee" name="write" eval="[
+            [ref('mcb_hr_employee.emp_aminul')],
+            {'wage': 18000, 'contract_date_start': '2020-06-15'}
+        ]"/>
+        <function model="hr.employee" name="write" eval="[
+            [ref('mcb_hr_employee.emp_farzana')],
+            {'wage': 55000, 'contract_date_start': '2022-09-01'}
+        ]"/>
+
+    </data>
+</odoo>

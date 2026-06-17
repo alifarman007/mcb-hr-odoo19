@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="menu_mcb_per_diem"
+              name="MCB Per Diem Rates"
+              parent="mcb_hr_employee.menu_mcb_hr_config_root"
+              action="action_mcb_per_diem"
+              sequence="20"/>
+</odoo>

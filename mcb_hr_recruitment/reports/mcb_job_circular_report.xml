@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="action_report_mcb_job_circular" model="ir.actions.report">
+        <field name="name">Job Circular / Invitation Letter</field>
+        <field name="model">mcb.hr.staff.requisition</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">mcb_hr_recruitment.report_mcb_job_circular</field>
+        <field name="report_file">mcb_hr_recruitment.report_mcb_job_circular</field>
+        <field name="binding_model_id" ref="model_mcb_hr_staff_requisition"/>
+        <field name="binding_type">report</field>
+    </record>
+
+    <template id="report_mcb_job_circular">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <div style="text-align:center; margin-bottom:20px;">
+                            <h2 style="margin:0;">Mukti Cox's Bazar</h2>
+                            <p style="margin:2px 0;">Mukti Bhaban, Goldighirpar, Cox's Bazar, Bangladesh</p>
+                            <hr style="border-top:2px solid #000;"/>
+                            <h3 style="margin:8px 0;">JOB CIRCULAR / INVITATION LETTER</h3>
+                            <p>Reference: <strong t-esc="doc.name"/>  ·  Date: <strong><t t-esc="context_timestamp(datetime.datetime.now()).strftime('%d %B %Y')"/></strong></p>
+                        </div>
+
+                        <p>Mukti Cox's Bazar, a registered NGO based in Cox's Bazar
+                           implementing humanitarian and development projects with
+                           support from UNFPA, CARE, UNICEF and DFAT, invites applications
+                           from suitably qualified Bangladeshi nationals for the following
+                           position:</p>
+
+                        <table class="table table-bordered" style="width:100%; margin-top:15px;">
+                            <tr>
+                                <th style="background:#f0f0f0; width:30%;">Position</th>
+                                <td><strong t-esc="doc.position_title"/></td>
+                            </tr>
+                            <tr>
+                                <th style="background:#f0f0f0;">Grade</th>
+                                <td t-esc="doc.grade_id.display_name"/>
+                            </tr>
+                            <tr>
+                                <th style="background:#f0f0f0;">Number of Vacancies</th>
+                                <td t-esc="doc.number_of_vacancies"/>
+                            </tr>
+                            <tr>
+                                <th style="background:#f0f0f0;">Employment Type</th>
+                                <td>
+                                    <t t-esc="dict(doc.fields_get(['employment_type'])['employment_type']['selection']).get(doc.employment_type)"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th style="background:#f0f0f0;">Gender Preference</th>
+                                <td>
+                                    <t t-esc="dict(doc.fields_get(['gender_preference'])['gender_preference']['selection']).get(doc.gender_preference)"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th style="background:#f0f0f0;">Working Area</th>
+                                <td t-esc="doc.working_area"/>
+                            </tr>
+                            <tr>
+                                <th style="background:#f0f0f0;">Project / Programme</th>
+                                <td>
+                                    <span t-esc="doc.project_code"/>
+                                    <span t-if="doc.donor"> — funded by <span t-esc="doc.donor"/></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th style="background:#f0f0f0;">Department</th>
+                                <td t-esc="doc.department_id.name"/>
+                            </tr>
+                            <tr>
+                                <th style="background:#f0f0f0;">Effective From</th>
+                                <td t-esc="doc.effective_date"/>
+                            </tr>
+                            <tr>
+                                <th style="background:#f0f0f0;">Proposed Salary</th>
+                                <td>
+                                    BDT <span t-esc="doc.proposed_salary"/> / month
+                                </td>
+                            </tr>
+                        </table>
+
+                        <h4 style="margin-top:18px;">Minimum Qualifications</h4>
+                        <p t-esc="doc.qualification" style="white-space:pre-wrap;"/>
+
+                        <h4 style="margin-top:18px;">How to Apply</h4>
+                        <ol>
+                            <li>Submit application with CV, cover letter, photocopies of NID and educational certificates to <strong>hr@mukticox.org</strong>.</li>
+                            <li>Mention the position name and reference <strong t-esc="doc.name"/> in the subject line.</li>
+                            <li>Only short-listed candidates will be invited for written / oral examination.</li>
+                            <li>Mukti Cox's Bazar follows zero tolerance on PSEA, fraud, and discrimination.</li>
+                            <li>Female and FDMN candidates are particularly encouraged to apply.</li>
+                        </ol>
+
+                        <p style="margin-top:30px;">
+                            Authorised by the Recruitment Committee,
+                        </p>
+                        <table style="width:100%; margin-top:50px;">
+                            <tr>
+                                <td style="border-top:1px solid #000; text-align:center; width:45%;">
+                                    <strong>HR Manager</strong><br/>
+                                    Mukti Cox's Bazar
+                                </td>
+                                <td style="width:10%;"></td>
+                                <td style="border-top:1px solid #000; text-align:center; width:45%;">
+                                    <strong>Chief Executive</strong><br/>
+                                    Mukti Cox's Bazar
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+
+</odoo>

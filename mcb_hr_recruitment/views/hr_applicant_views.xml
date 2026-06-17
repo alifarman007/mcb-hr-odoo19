@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="hr_applicant_view_form_mcb_inherit" model="ir.ui.view">
+        <field name="name">hr.applicant.form.mcb</field>
+        <field name="model">hr.applicant</field>
+        <field name="inherit_id" ref="hr_recruitment.hr_applicant_view_form"/>
+        <field name="arch" type="xml">
+
+            <xpath expr="//header" position="inside">
+                <button name="action_issue_admit_card" type="object"
+                        string="Issue Admit Card" class="btn-secondary"
+                        invisible="mcb_admit_card_issued"/>
+                <button name="action_compute_merit_rank" type="object"
+                        string="Re-rank Merit List"/>
+                <button name="action_mark_selected" type="object"
+                        string="Mark Selected" class="btn-primary"
+                        invisible="mcb_selected"/>
+            </xpath>
+
+            <xpath expr="//notebook" position="inside">
+                <page name="mcb_recruitment" string="MCB Recruitment">
+                    <group>
+                        <group string="Requisition / Candidate">
+                            <field name="mcb_requisition_id"/>
+                            <field name="mcb_father_name"/>
+                            <field name="mcb_mother_name"/>
+                            <field name="mcb_nid"/>
+                        </group>
+                        <group string="Addresses">
+                            <field name="mcb_present_address"/>
+                            <field name="mcb_permanent_address"/>
+                            <field name="mcb_education_summary"/>
+                            <field name="mcb_experience_summary"/>
+                        </group>
+                    </group>
+                    <group string="Admit Card (REC-007)">
+                        <group>
+                            <field name="mcb_admit_card_id" readonly="1"/>
+                            <field name="mcb_admit_card_issued" readonly="1"/>
+                        </group>
+                        <group>
+                            <field name="mcb_exam_date"/>
+                            <field name="mcb_exam_time"/>
+                            <field name="mcb_exam_venue"/>
+                        </group>
+                    </group>
+                    <group string="Attendance (REC-009)">
+                        <group>
+                            <field name="mcb_attended_written"/>
+                            <field name="mcb_attended_oral"/>
+                        </group>
+                    </group>
+                    <group string="Marks — Written 50 / Computer 20 / Oral 30 (REC-010, REC-011, REC-012)">
+                        <group string="Written &amp; Computer">
+                            <field name="mcb_written_score"/>
+                            <field name="mcb_computer_score"/>
+                        </group>
+                        <group string="Oral Marking Sheet (Skills 15 + Knowledge 15)">
+                            <field name="mcb_oral_score_skills"/>
+                            <field name="mcb_oral_score_knowledge"/>
+                            <field name="mcb_oral_score" readonly="1"/>
+                            <field name="mcb_total_score" readonly="1"/>
+                            <field name="mcb_merit_rank" readonly="1"/>
+                            <field name="mcb_selected"/>
+                        </group>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="hr_applicant_view_tree_mcb_inherit" model="ir.ui.view">
+        <field name="name">hr.applicant.list.mcb</field>
+        <field name="model">hr.applicant</field>
+        <field name="inherit_id" ref="hr_recruitment.hr_applicant_view_tree_activity"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='stage_id']" position="after">
+                <field name="mcb_admit_card_id" optional="show"/>
+                <field name="mcb_total_score" optional="show"/>
+                <field name="mcb_merit_rank" optional="show"/>
+                <field name="mcb_selected" optional="hide"/>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

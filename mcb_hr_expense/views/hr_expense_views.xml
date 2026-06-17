@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="hr_expense_view_form_mcb" model="ir.ui.view">
+        <field name="name">hr.expense.form.mcb</field>
+        <field name="model">hr.expense</field>
+        <field name="inherit_id" ref="hr_expense.hr_expense_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//sheet" position="inside">
+                <group string="MCB TA / DA (SRS §8)">
+                    <group>
+                        <field name="mcb_is_taDa"/>
+                        <field name="mcb_grade_id" readonly="1"/>
+                        <field name="mcb_grade_band" readonly="1"/>
+                        <field name="mcb_distance_km"/>
+                        <field name="mcb_overnight_stay"/>
+                        <field name="mcb_field_visit_hours"/>
+                    </group>
+                    <group>
+                        <field name="mcb_air_travel"/>
+                        <field name="mcb_air_class" invisible="not mcb_air_travel"/>
+                        <field name="mcb_project_code"/>
+                        <field name="mcb_donor"/>
+                        <field name="mcb_analytic_code"/>
+                    </group>
+                </group>
+                <group>
+                    <button name="action_apply_per_diem" type="object"
+                            string="Auto-fill Per-Diem"
+                            class="btn-secondary"
+                            invisible="not mcb_is_taDa"/>
+                    <button name="action_mcb_ce_approve" type="object"
+                            string="CE Approve (EXP-002)"
+                            class="btn-primary"
+                            invisible="not mcb_requires_ce_approval or mcb_ce_approved_by"
+                            groups="mcb_hr_employee.group_mcb_ce"/>
+                </group>
+                <group string="EXP-002 — CE Approval"
+                       invisible="not mcb_requires_ce_approval">
+                    <group>
+                        <field name="mcb_requires_ce_approval" readonly="1"/>
+                        <field name="mcb_ce_approved_by" readonly="1"/>
+                        <field name="mcb_ce_approved_on" readonly="1"/>
+                    </group>
+                </group>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

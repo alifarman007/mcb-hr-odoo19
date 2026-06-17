@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_mcb_resignation_list" model="ir.ui.view">
+        <field name="name">mcb.hr.resignation.list</field>
+        <field name="model">mcb.hr.resignation</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="employee_id"/>
+                <field name="employment_type"/>
+                <field name="submission_date"/>
+                <field name="intended_last_day"/>
+                <field name="required_notice_days"/>
+                <field name="actual_notice_days"/>
+                <field name="notice_short_by_days" decoration-danger="notice_short_by_days &gt; 0"/>
+                <field name="final_settlement_total"/>
+                <field name="state" widget="badge"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_mcb_resignation_form" model="ir.ui.view">
+        <field name="name">mcb.hr.resignation.form</field>
+        <field name="model">mcb.hr.resignation</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_submit" type="object" string="Submit"
+                            class="btn-primary" invisible="state != 'draft'"/>
+                    <button name="action_manager_review" type="object" string="Send to Manager"
+                            invisible="state != 'submitted'"/>
+                    <button name="action_hr_process" type="object" string="HR Process"
+                            invisible="state != 'manager_review'" groups="hr.group_hr_user"/>
+                    <button name="action_ce_approve" type="object" string="CE Approve"
+                            class="btn-primary" invisible="state != 'hr_review'"
+                            groups="mcb_hr_employee.group_mcb_ce"/>
+                    <button name="action_settle" type="object" string="Settle"
+                            class="btn-primary" invisible="state != 'ce_approval'"
+                            groups="hr.group_hr_manager"/>
+                    <button name="action_close" type="object" string="Close (deactivate user)"
+                            invisible="state != 'settled'" groups="hr.group_hr_manager"/>
+                    <button name="action_print_experience_cert" type="object"
+                            string="Experience Certificate"
+                            invisible="state not in ('settled','closed')"/>
+                    <button name="action_cancel" type="object" string="Cancel"
+                            invisible="state in ('cancelled','closed')"/>
+                    <field name="state" widget="statusbar"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <label for="name"/>
+                        <h1><field name="name" readonly="1"/></h1>
+                    </div>
+                    <group>
+                        <group string="Employee &amp; Dates">
+                            <field name="employee_id"/>
+                            <field name="employment_type" readonly="1"/>
+                            <field name="submission_date"/>
+                            <field name="intended_last_day"/>
+                            <field name="reason"/>
+                        </group>
+                        <group string="Notice Period (SEP-002)">
+                            <field name="required_notice_days" readonly="1"/>
+                            <field name="actual_notice_days" readonly="1"/>
+                            <field name="notice_short_by_days" readonly="1"
+                                   decoration-danger="notice_short_by_days &gt; 0"/>
+                            <field name="salary_in_lieu" readonly="1"/>
+                        </group>
+                    </group>
+                    <group>
+                        <group string="Final Settlement (SEP-004)">
+                            <field name="outstanding_salary"/>
+                            <field name="leave_encashment_days"/>
+                            <field name="leave_encashment_amount" readonly="1"/>
+                            <field name="pf_entitlement"/>
+                            <field name="pf_amount"/>
+                            <field name="gratuity_amount"/>
+                            <field name="final_settlement_total" readonly="1"/>
+                            <field name="currency_id" invisible="1"/>
+                        </group>
+                        <group string="Offboarding Checklist (SEP-006/007/008)">
+                            <field name="exit_interview_id" readonly="1"/>
+                            <field name="property_returned"/>
+                            <field name="account_deactivated" readonly="1"/>
+                            <field name="experience_cert_issued" readonly="1"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Notes">
+                            <field name="notes"/>
+                        </page>
+                    </notebook>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_mcb_resignation" model="ir.actions.act_window">
+        <field name="name">Separations / Resignations</field>
+        <field name="res_model">mcb.hr.resignation</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+</odoo>

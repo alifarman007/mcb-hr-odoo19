@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Show MCB fields on the Contract Template form (uses hr.version) -->
+    <record id="hr_contract_template_form_view_mcb_inherit" model="ir.ui.view">
+        <field name="name">hr.contract.template.form.mcb</field>
+        <field name="model">hr.version</field>
+        <field name="inherit_id" ref="hr.hr_contract_template_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//group[@name='top_info']" position="after">
+                <group string="MCB Contract Details">
+                    <group>
+                        <field name="mcb_employment_type"/>
+                        <field name="mcb_grade_id"/>
+                        <field name="mcb_grade_band" readonly="1"/>
+                        <field name="mcb_overtime_eligible" readonly="1"/>
+                    </group>
+                    <group>
+                        <field name="mcb_project_code"/>
+                        <field name="mcb_donor"/>
+                        <field name="mcb_analytic_code"/>
+                    </group>
+                </group>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

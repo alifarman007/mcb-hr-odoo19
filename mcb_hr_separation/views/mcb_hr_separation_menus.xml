@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <menuitem id="menu_mcb_separation_root"
+              name="Separation"
+              parent="mcb_hr_employee.menu_mcb_hr_root"
+              sequence="60"/>
+
+    <menuitem id="menu_mcb_resignation"
+              name="Resignations"
+              parent="menu_mcb_separation_root"
+              action="action_mcb_resignation"
+              sequence="10"/>
+
+    <menuitem id="menu_mcb_exit_interview"
+              name="Exit Interviews"
+              parent="menu_mcb_separation_root"
+              action="action_mcb_exit_interview"
+              sequence="20"/>
+
+</odoo>

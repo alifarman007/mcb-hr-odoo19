@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <menuitem id="menu_mcb_recruitment_root"
+              name="Recruitment"
+              parent="mcb_hr_employee.menu_mcb_hr_root"
+              sequence="20"/>
+
+    <menuitem id="menu_mcb_requisitions"
+              name="Staff Requisitions"
+              parent="menu_mcb_recruitment_root"
+              action="action_mcb_requisition"
+              sequence="10"/>
+
+    <menuitem id="menu_mcb_expenditure"
+              name="Recruitment Expenditure"
+              parent="menu_mcb_recruitment_root"
+              action="action_mcb_recruitment_expenditure"
+              sequence="20"/>
+
+    <menuitem id="menu_mcb_self_declarations"
+              name="RC Self-Declarations"
+              parent="menu_mcb_recruitment_root"
+              action="action_mcb_self_declaration"
+              sequence="30"/>
+
+</odoo>

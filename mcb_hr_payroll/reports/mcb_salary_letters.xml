@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- ============== Salary Revision Letter ============== -->
+    <record id="action_report_mcb_salary_revision_letter" model="ir.actions.report">
+        <field name="name">Salary Revision Letter</field>
+        <field name="model">mcb.hr.salary.revision.wizard</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">mcb_hr_payroll.report_mcb_salary_revision_letter</field>
+        <field name="report_file">mcb_hr_payroll.report_mcb_salary_revision_letter</field>
+    </record>
+
+    <template id="report_mcb_salary_revision_letter">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="web.external_layout">
+                    <div class="page" style="font-family: serif;">
+                        <p style="float:left;">Ref: Mukti Cox/admin/<t t-esc="doc.effective_date and doc.effective_date.year or ''"/>-</p>
+                        <p style="text-align:right;">Date: <t t-esc="doc.effective_date and doc.effective_date.strftime('%d %B %Y') or ''"/></p>
+                        <div style="clear:both;"></div>
+
+                        <p>To<br/>
+                        <strong t-esc="doc.employee_id.name"/>
+                        (ID- <t t-esc="doc.employee_id.mcb_employee_code"/>)<br/>
+                        <span t-esc="doc.employee_id.job_id.name"/><br/>
+                        <span t-esc="doc.employee_id.mcb_project_code"/><br/>
+                        Mukti Cox's Bazar</p>
+
+                        <p><strong>Subject: Salary Revision letter.</strong></p>
+
+                        <p>Dear <span t-esc="doc.employee_id.name"/>,</p>
+
+                        <p>Greetings from Mukti Cox's Bazar!</p>
+
+                        <p>
+                            We are pleased to inform you that based on the approved budget
+                            and your current engagement under the
+                            "<span t-esc="doc.new_project_code or doc.employee_id.mcb_project_code"/>"
+                            project, the management has decided to revise your salary,
+                            effective from <strong t-esc="doc.effective_date and doc.effective_date.strftime('%d %B %Y') or ''"/>.
+                            Your monthly gross salary will be
+                            <strong>BDT <t t-esc="'{:,.0f}'.format(doc.new_wage or 0)"/></strong>
+                            and all other terms and conditions of your current contract
+                            will remain unchanged.
+                        </p>
+
+                        <p>We appreciate your dedication and look forward to your continued support.</p>
+
+                        <p>With thanks,</p>
+                        <br/><br/>
+                        <p>(Bimal Chandra Dey Sarker)<br/>
+                        Chief Executive<br/>
+                        Mukti Cox's Bazar.</p>
+
+                        <p style="margin-top:30px;"><em>Copy to:</em><br/>
+                        Deputy Chief Executive, Mukti Cox's Bazar<br/>
+                        Assistant Director (F&amp;A), HO, Mukti Cox's Bazar<br/>
+                        Manager-Finance, HO, Mukti Cox's Bazar<br/>
+                        Office Copy</p>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+
+    <!-- ============== Transfer Letter ============== -->
+    <record id="action_report_mcb_transfer_letter" model="ir.actions.report">
+        <field name="name">Transfer Letter</field>
+        <field name="model">mcb.hr.salary.revision.wizard</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">mcb_hr_payroll.report_mcb_transfer_letter</field>
+        <field name="report_file">mcb_hr_payroll.report_mcb_transfer_letter</field>
+    </record>
+
+    <template id="report_mcb_transfer_letter">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="web.external_layout">
+                    <div class="page" style="font-family: serif;">
+                        <p style="float:left;">Ref: Mukti Cox/admin/<t t-esc="doc.effective_date and doc.effective_date.year or ''"/>-</p>
+                        <p style="text-align:right;">Date: <t t-esc="doc.effective_date and doc.effective_date.strftime('%d %B %Y') or ''"/></p>
+                        <div style="clear:both;"></div>
+
+                        <p>To<br/>
+                        <strong t-esc="doc.employee_id.name"/>
+                        (ID No: <t t-esc="doc.employee_id.mcb_employee_code"/>)<br/>
+                        <span t-esc="doc.employee_id.job_id.name"/><br/>
+                        Mukti Cox's Bazar</p>
+
+                        <p><strong>Sub: Transfer order.</strong></p>
+
+                        <p>Dear Colleague,</p>
+
+                        <p>
+                            In reference to the mentioned subject, we would like to inform
+                            you that, in order to ensure the smooth operation of project
+                            activities, the management of Mukti Cox's Bazar has decided to
+                            transfer you from
+                            <strong t-esc="doc.current_working_area or '____'"/>
+                            to <strong t-esc="doc.new_working_area or '____'"/>,
+                            effective from
+                            <strong t-esc="doc.effective_date and doc.effective_date.strftime('%d %B %Y') or ''"/>.
+                            Your monthly salary and all terms and conditions of your previous offer will remain unchanged.
+                        </p>
+
+                        <p>
+                            You are requested to hand over your responsibilities (both hard
+                            and soft copies) to the respective supervisor of the respective
+                            project and report to your new workplace accordingly.
+                        </p>
+
+                        <p>
+                            We appreciate your cooperation and commitment, and we trust you
+                            will continue to show the same level of dedication and
+                            professionalism in your new assignment.
+                        </p>
+
+                        <p>Best wishes,</p>
+                        <br/><br/>
+                        <p>(Sujit Kumar Bhowmik)<br/>
+                        Director- HR &amp; Admin<br/>
+                        Mukti Cox's Bazar</p>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+
+    <!-- ============== Re-appointment Letter ============== -->
+    <record id="action_report_mcb_reappointment_letter" model="ir.actions.report">
+        <field name="name">Re-appointment Letter</field>
+        <field name="model">mcb.hr.salary.revision.wizard</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">mcb_hr_payroll.report_mcb_reappointment_letter</field>
+        <field name="report_file">mcb_hr_payroll.report_mcb_reappointment_letter</field>
+    </record>
+
+    <template id="report_mcb_reappointment_letter">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="web.external_layout">
+                    <div class="page" style="font-family: serif;">
+                        <p style="float:left;">Ref: Mukti Cox/admin/<t t-esc="doc.effective_date and doc.effective_date.year or ''"/>-</p>
+                        <p style="text-align:right;">Date: <t t-esc="doc.effective_date and doc.effective_date.strftime('%d %B %Y') or ''"/></p>
+                        <div style="clear:both;"></div>
+
+                        <p>To<br/>
+                        <strong t-esc="doc.employee_id.name"/>
+                        (Id No: <t t-esc="doc.employee_id.mcb_employee_code"/>)<br/>
+                        <span t-esc="doc.employee_id.job_id.name"/><br/>
+                        <span t-esc="doc.new_project_code or doc.employee_id.mcb_project_code"/><br/>
+                        Mukti Cox's Bazar</p>
+
+                        <p><strong>Sub: Re-appointment letter.</strong></p>
+
+                        <p>Dear <span t-esc="doc.employee_id.name"/>,</p>
+
+                        <p>
+                            Greetings from Mukti Cox's Bazar! Considering your application,
+                            previous contributions and performance in
+                            "<span t-esc="doc.new_project_code or doc.employee_id.mcb_project_code"/>" project,
+                            we are pleased to inform you that management of Mukti Cox's Bazar
+                            has decided to re-appoint you, effective from
+                            <strong t-esc="doc.effective_date and doc.effective_date.strftime('%d %B %Y') or ''"/>
+                            <span t-if="doc.new_contract_end_date">
+                                to <strong t-esc="doc.new_contract_end_date.strftime('%d %B %Y')"/>
+                            </span>.
+                            Your monthly gross salary will be
+                            <strong>BDT <t t-esc="'{:,.2f}'.format(doc.new_wage or 0)"/></strong>
+                            and all the terms and conditions of your previous offer will remain unchanged.
+                        </p>
+
+                        <p>We appreciate your efforts and expect that you would continue your good performance in the future.</p>
+
+                        <p>With thanks,</p>
+                        <br/><br/>
+                        <p>(Bimal Chandra Dey Sarker)<br/>
+                        Chief Executive<br/>
+                        Mukti Cox's Bazar</p>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+
+    <!-- ============== Service Extension Letter ============== -->
+    <record id="action_report_mcb_service_extension_letter" model="ir.actions.report">
+        <field name="name">Service Extension Letter</field>
+        <field name="model">mcb.hr.salary.revision.wizard</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">mcb_hr_payroll.report_mcb_service_extension_letter</field>
+        <field name="report_file">mcb_hr_payroll.report_mcb_service_extension_letter</field>
+    </record>
+
+    <template id="report_mcb_service_extension_letter">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="web.external_layout">
+                    <div class="page" style="font-family: serif;">
+                        <p style="float:left;">Ref: Mukti Cox/admin/<t t-esc="doc.effective_date and doc.effective_date.year or ''"/>-</p>
+                        <p style="text-align:right;">Date: <t t-esc="doc.effective_date and doc.effective_date.strftime('%d %B %Y') or ''"/></p>
+                        <div style="clear:both;"></div>
+
+                        <p>To<br/>
+                        <strong t-esc="doc.employee_id.name"/>
+                        (ID No: <t t-esc="doc.employee_id.mcb_employee_code"/>)<br/>
+                        <span t-esc="doc.employee_id.job_id.name"/><br/>
+                        <span t-esc="doc.new_project_code or doc.employee_id.mcb_project_code"/><br/>
+                        Mukti Cox's Bazar</p>
+
+                        <p><strong>Sub: Letter of service extension.</strong></p>
+
+                        <p>Dear Colleague,</p>
+
+                        <p>
+                            Greetings from Mukti Cox's Bazar! Considering your satisfactory
+                            performance and the extension of project duration under the
+                            "<span t-esc="doc.new_project_code or doc.employee_id.mcb_project_code"/>"
+                            project, we are pleased to inform you that management of
+                            Mukti Cox's Bazar has decided to extend your contract.
+                            This extension will be effective from
+                            <strong t-esc="doc.effective_date and doc.effective_date.strftime('%d %B %Y') or ''"/>
+                            <span t-if="doc.new_contract_end_date">
+                                to <strong t-esc="doc.new_contract_end_date.strftime('%d %B %Y')"/>
+                            </span>.
+                            Your monthly gross salary will remain
+                            <strong>BDT <t t-esc="'{:,.2f}'.format(doc.new_wage or doc.employee_id.wage or 0)"/></strong>
+                            and all the terms and conditions of your previous offer will remain unchanged.
+                        </p>
+
+                        <p>
+                            If the project's duration is not extended or if your performance
+                            is dissatisfactory, your employment contract will end without
+                            further notice.
+                        </p>
+
+                        <p>We appreciate your efforts and expect that you would continue to do so in the future.</p>
+
+                        <p>With thanks,</p>
+                        <br/><br/>
+                        <p>(Sujit Kumar Bhowmik)<br/>
+                        Director- HR &amp; Admin<br/>
+                        Mukti Cox's Bazar</p>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+
+</odoo>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <menuitem id="menu_mcb_hr_root"
+              name="MCB HR"
+              sequence="20"
+              web_icon="mcb_hr_employee,static/description/icon.png"/>
+
+    <menuitem id="menu_mcb_hr_config_root"
+              name="Configuration"
+              parent="menu_mcb_hr_root"
+              sequence="90"
+              groups="hr.group_hr_manager"/>
+
+    <menuitem id="menu_mcb_hr_grades"
+              name="Grades"
+              parent="menu_mcb_hr_config_root"
+              action="action_mcb_hr_grade"
+              sequence="10"/>
+
+    <!-- Also expose grades under the standard HR Configuration menu -->
+    <menuitem id="menu_hr_config_mcb_grades"
+              name="MCB Grades"
+              parent="hr.menu_human_resources_configuration"
+              action="action_mcb_hr_grade"
+              sequence="50"/>
+
+</odoo>

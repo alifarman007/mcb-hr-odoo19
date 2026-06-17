@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <!-- Activate BDT currency for MCB -->
+        <record id="base.BDT" model="res.currency">
+            <field name="active">True</field>
+        </record>
+    </data>
+</odoo>

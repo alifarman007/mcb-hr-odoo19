@@ -1,0 +1,33 @@
+Exit Interview Form
+Instruction:
+The interviewer will record the answers to the listed questions. Interviewee reserves the rights to skip any questions if he/she does not want to answer.  The recorded answers will be signed by both interviewer and interviewee.
+Responses to the above questions are recorded correctly.
+----------------------------------------------------------------------
+Date and signature of outgoing employee
+-------------------------------------------------------------------
+Date and signature of Interviewer
+
+[TABLE 0]
+Name of outgoing employee: | Name of interviewer: Rowaha Earuba Roha
+Designation: | Designation: HR & Admin Officer
+Date of Interview:                                         Joining date : | Date of Interview:                                         Joining date :
+
+[TABLE 1]
+Q1 | What is your primary reason for leaving? Did anything cause your decision to leave?
+ | 
+Q2 | What were the most satisfying and least satisfying aspects of your job?
+ | 
+Q3 | Did you receive adequate training and support to do your job effectively?
+ | 
+Q4 | Did you receive sufficient feedback about your performance? What was the quality of the supervision you received?
+ | 
+ | 
+Q5 | Were you happy with your pay, benefits, and other incentives?
+ | 
+Q6 | Did any organization policies or procedures make your job difficult or easy?
+Q7 | Would you consider working again for this organization in the future?
+ | 
+Q8 | What does your new organization offer that this organization doesn't?
+ | 
+Q9 | Did anyone in this organization discriminate against you, harass you, or cause     hostile working conditions?
+Q10 | Do you have any other comment?

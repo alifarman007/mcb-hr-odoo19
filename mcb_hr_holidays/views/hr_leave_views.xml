@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- 3rd-level CE approval button + status on the leave form -->
+    <record id="hr_leave_view_form_mcb_ce" model="ir.ui.view">
+        <field name="name">hr.leave.form.mcb.ce</field>
+        <field name="model">hr.leave</field>
+        <field name="inherit_id" ref="hr_holidays.hr_leave_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//header/button[@name='action_refuse']" position="before">
+                <button string="CE Approve" name="action_mcb_ce_approve" type="object"
+                        class="btn-primary"
+                        invisible="not mcb_require_ce_approval or mcb_ce_approved or not id"
+                        groups="mcb_hr_employee.group_mcb_ce"/>
+            </xpath>
+            <xpath expr="//field[@name='state'][1]" position="before">
+                <field name="mcb_require_ce_approval" invisible="1"/>
+                <field name="mcb_ce_approved" invisible="1"/>
+                <widget name="web_ribbon" title="Pending CE Approval"
+                        bg_color="text-bg-warning"
+                        invisible="not mcb_require_ce_approval or mcb_ce_approved"/>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- Expose the toggle on the leave-type form -->
+    <record id="view_hr_leave_type_form_mcb_ce" model="ir.ui.view">
+        <field name="name">hr.leave.type.form.mcb.ce</field>
+        <field name="model">hr.leave.type</field>
+        <field name="inherit_id" ref="mcb_hr_holidays.view_hr_leave_type_form_mcb"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='mcb_block_during_probation']" position="after">
+                <field name="mcb_require_ce_approval"/>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

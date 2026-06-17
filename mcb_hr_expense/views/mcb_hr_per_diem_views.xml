@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_mcb_per_diem_list" model="ir.ui.view">
+        <field name="name">mcb.hr.per.diem.list</field>
+        <field name="model">mcb.hr.per.diem</field>
+        <field name="arch" type="xml">
+            <list editable="bottom">
+                <field name="sequence" widget="handle"/>
+                <field name="band"/>
+                <field name="breakfast"/>
+                <field name="lunch"/>
+                <field name="afternoon"/>
+                <field name="dinner"/>
+                <field name="full_day"/>
+                <field name="field_visit_lunch"/>
+                <field name="rc_ta"/>
+                <field name="staff_ta"/>
+                <field name="support_ta"/>
+                <field name="currency_id" column_invisible="1"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="action_mcb_per_diem" model="ir.actions.act_window">
+        <field name="name">MCB Per Diem Rates</field>
+        <field name="res_model">mcb.hr.per.diem</field>
+        <field name="view_mode">list</field>
+        <field name="help" type="html">
+            <p>Configure per-diem rates per grade band — drives auto-fill on TA/DA expense claims (EXP-001).</p>
+        </field>
+    </record>
+
+</odoo>

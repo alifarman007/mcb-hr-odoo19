@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="0">
+
+        <record id="module_category_mcb_hr" model="ir.module.category">
+            <field name="name">MCB HR</field>
+            <field name="description">Mukti Cox's Bazar — Human Resources</field>
+            <field name="sequence">15</field>
+        </record>
+
+        <record id="privilege_mcb_hr_role" model="res.groups.privilege">
+            <field name="name">MCB HR Role</field>
+            <field name="category_id" ref="module_category_mcb_hr"/>
+            <field name="placeholder">No MCB HR role</field>
+            <field name="description">Roles defined in SRS §2.2 — CE, Project Manager / HoD, Recruitment Committee.</field>
+        </record>
+
+        <record id="group_mcb_ce" model="res.groups">
+            <field name="name">MCB Chief Executive (CE)</field>
+            <field name="privilege_id" ref="privilege_mcb_hr_role"/>
+            <field name="comment">Final approval authority — recruitment, payroll, separation, travel, WFH.</field>
+            <field name="implied_ids" eval="[(4, ref('hr.group_hr_manager'))]"/>
+        </record>
+
+        <record id="group_mcb_pm" model="res.groups">
+            <field name="name">MCB Project Manager / HoD</field>
+            <field name="privilege_id" ref="privilege_mcb_hr_role"/>
+            <field name="comment">Raises staff requisitions, 1st-level leave approval, attendance sign-off.</field>
+            <field name="implied_ids" eval="[(4, ref('hr.group_hr_user'))]"/>
+        </record>
+
+        <record id="group_mcb_rc" model="res.groups">
+            <field name="name">MCB Recruitment Committee</field>
+            <field name="privilege_id" ref="privilege_mcb_hr_role"/>
+            <field name="comment">Enters marking-sheet scores; signs Self-Declaration of conflict.</field>
+            <field name="implied_ids" eval="[(4, ref('hr.group_hr_user'))]"/>
+        </record>
+
+    </data>
+</odoo>

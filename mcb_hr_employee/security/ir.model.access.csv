@@ -1,0 +1,8 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_mcb_hr_grade_user,mcb.hr.grade user,model_mcb_hr_grade,base.group_user,1,0,0,0
+access_mcb_hr_grade_hr,mcb.hr.grade hr,model_mcb_hr_grade,hr.group_hr_user,1,1,1,0
+access_mcb_hr_grade_manager,mcb.hr.grade manager,model_mcb_hr_grade,hr.group_hr_manager,1,1,1,1
+access_mcb_hr_education_user,mcb.hr.education employee,model_mcb_hr_education,base.group_user,1,1,1,1
+access_mcb_hr_education_hr,mcb.hr.education hr,model_mcb_hr_education,hr.group_hr_user,1,1,1,1
+access_mcb_hr_experience_user,mcb.hr.experience employee,model_mcb_hr_experience,base.group_user,1,1,1,1
+access_mcb_hr_experience_hr,mcb.hr.experience hr,model_mcb_hr_experience,hr.group_hr_user,1,1,1,1

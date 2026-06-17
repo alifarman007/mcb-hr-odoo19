@@ -1,0 +1,401 @@
+=== PARAGRAPHS ===
+[Normal] 
+[Normal] Mukti Cox’s Bazar
+[Normal] Software Requirements Specification
+[Normal] ERP Implementation on Odoo Enterprise
+[Normal] Human Resource Management Module
+[Normal] 
+[Normal] 
+[Heading 1] 1. Introduction
+[Normal] 
+[Heading 2] 1.1 Purpose
+[Normal] This Software Requirements Specification (SRS) defines the functional and non-functional requirements for implementing Odoo Enterprise as the ERP system for Mukti Cox’s Bazar (MCB). It covers the full HR lifecycle — employee records, recruitment, payroll, leave, training, expenses, and offboarding — aligned to MCB’s Human Resources Policy (July 2025).
+[Normal] 
+[Heading 2] 1.2 Organization Background
+[Normal] Mukti Cox’s Bazar is a registered NGO based in Cox’s Bazar, Bangladesh, implementing humanitarian and development projects funded by UNFPA, CARE, UNICEF, and DFAT. MCB employs permanent, project-based, and contractual staff across multiple donor programmes, requiring a robust, donor-compliant HR and financial system.
+[Normal] 
+[Heading 2] 1.3 Scope — Odoo Modules
+[Normal] 
+[Heading 2] 1.4 Definitions
+[Normal] 
+[Heading 1] 2. Overall System Description
+[Normal] 
+[Heading 2] 2.1 As-Is vs To-Be
+[Normal] 
+[Heading 2] 2.2 User Roles & Permissions
+[Normal] 
+[Heading 1] 3. Employee Management Module
+[Normal] 
+[Heading 2] 3.1 Odoo Employee Profile Form Mockup
+[Normal] The following screen illustrates the Odoo Employee Profile form configured for MCB, showing all key fields including employment type, grade level, project assignment, and analytic cost code.
+[Normal] 
+[Normal] 
+[Normal] Figure 3.1 — Odoo Employee Profile Form (MCB Configuration)
+[Normal] 
+[Heading 2] 3.2 Employment Categories
+[Normal] 
+[Heading 2] 3.3 Grade Structure & Entitlements
+[Normal] 
+[Heading 2] 3.4 Employee Module Requirements
+[Normal] 
+[Heading 1] 4. Recruitment Module
+[Normal] 
+[Heading 2] 4.1 Recruitment Pipeline Flowchart
+[Normal] The following flowchart maps MCB’s complete end-to-end recruitment process — from Staff Requisition through Written/Oral Tests to Appointment — onto Odoo’s Recruitment pipeline stages.
+[Normal] 
+[Normal] 
+[Normal] Figure 4.1 — Recruitment Pipeline Flow mapped to Odoo Stages
+[Normal] 
+[Heading 2] 4.2 Odoo Recruitment Application Form Mockup
+[Normal] Each shortlisted candidate’s record in Odoo tracks their Admit Card ID, Written Score, Oral Score, and documents, all within a single Application form.
+[Normal] 
+[Normal] 
+[Normal] Figure 4.2 — Odoo Recruitment Application Form (MCB Configuration)
+[Normal] 
+[Heading 2] 4.3 Recruitment Stage Configuration in Odoo
+[Normal] 
+[Heading 2] 4.4 Recruitment Functional Requirements
+[Normal] 
+[Heading 1] 5. Payroll Module
+[Normal] 
+[Heading 2] 5.1 Payroll Processing Flow
+[Normal] The diagram below shows the monthly payroll processing cycle in Odoo, from automatic attendance data collection through to payslip generation and bank disbursement.
+[Normal] 
+[Normal] 
+[Normal] Figure 5.1 — Payroll Processing Flow in Odoo Enterprise
+[Normal] 
+[Heading 2] 5.2 Odoo Payslip Form Mockup
+[Normal] The payslip is configured to show MCB’s grade-based salary components, PF deduction, income tax, analytic donor cost code, and net payable amount.
+[Normal] 
+[Normal] 
+[Normal] Figure 5.2 — Odoo Payslip Form (MCB Salary Structure)
+[Normal] 
+[Heading 2] 5.3 Payroll Requirements
+[Normal] 
+[Heading 1] 6. Leave Management Module
+[Normal] 
+[Heading 2] 6.1 Leave Approval Flow
+[Normal] The leave workflow enforces MCB’s two-level approval requirement: Line Manager (1st approval) followed by HR Department (2nd approval). Work-from-Home requests require CE pre-approval.
+[Normal] 
+[Normal] 
+[Normal] Figure 6.1 — Leave Request & Approval Flow in Odoo
+[Normal] 
+[Heading 2] 6.2 Odoo Leave Request Form Mockup
+[Normal] Employees submit leave requests through the self-service portal. The form auto-displays current leave balances and shows the approval chain status in real time.
+[Normal] 
+[Normal] 
+[Normal] Figure 6.2 — Odoo Leave Request Form with Approval Chain
+[Normal] 
+[Heading 2] 6.3 Leave Types Configuration
+[Normal] 
+[Heading 2] 6.4 Leave Requirements
+[Normal] 
+[Heading 1] 7. Employee Onboarding Module
+[Normal] 
+[Heading 2] 7.1 Onboarding Flow
+[Normal] When a candidate is hired and their Odoo employee record created, the system automatically generates and assigns an Onboarding Plan with tasks distributed to HR, Finance, IT, and the Line Manager.
+[Normal] 
+[Normal] 
+[Normal] Figure 7.1 — Employee Onboarding Flow in Odoo
+[Normal] 
+[Heading 2] 7.2 Odoo Onboarding Checklist Form Mockup
+[Normal] The Onboarding module tracks task completion with a visual progress bar, showing each department’s responsibilities, deadlines, and current status.
+[Normal] 
+[Normal] 
+[Normal] Figure 7.2 — Odoo Onboarding Checklist Form with Progress Tracking
+[Normal] 
+[Heading 2] 7.3 Onboarding Requirements
+[Normal] 
+[Heading 1] 8. Expenses & TA/DA Module
+[Normal] 
+[Heading 2] 8.1 Expense & TA/DA Claim Flow
+[Normal] Expense claims follow a structured approval workflow with grade-based per diem auto-population, mandatory donor cost coding, and auto-generation of the Recruitment Expenditure Top Sheet.
+[Normal] 
+[Normal] 
+[Normal] Figure 8.1 — Expense / TA-DA Claim Approval Flow in Odoo
+[Normal] 
+[Heading 2] 8.2 Odoo Expense Claim Form Mockup
+[Normal] The Expense form auto-populates per diem rates from the employee’s grade, maps each line to the correct donor analytic account, and generates the Expenditure Top Sheet for submission.
+[Normal] 
+[Normal] 
+[Normal] Figure 8.2 — Odoo Expense Claim Form (TA/DA — Recruitment Day)
+[Normal] 
+[Heading 2] 8.3 Per Diem Rate Configuration
+[Normal] 
+[Heading 2] 8.4 Expense Requirements
+[Normal] 
+[Heading 1] 9. Separation & Offboarding
+[Normal] 
+[Heading 2] 9.1 Separation Flow
+[Normal] The offboarding workflow enforces notice period rules, triggers an exit interview, calculates the final settlement (salary + leave encashment + PF entitlement + gratuity), and deactivates the employee account upon CE approval.
+[Normal] 
+[Normal] 
+[Normal] Figure 9.1 — Employee Separation & Offboarding Flow in Odoo
+[Normal] 
+[Heading 2] 9.2 Separation Requirements
+[Normal] 
+[Heading 1] 10. Non-Functional Requirements
+[Normal] 
+[Normal] 
+[Heading 1] 11. Implementation Roadmap
+[Normal] 
+[Heading 2] 11.1 Gantt Chart
+[Normal] The 18-week implementation is structured in six phases. Key milestones are marked at Weeks 4 (database live), 8 (first recruitment), 12 (first payroll run), and 18 (go-live).
+[Normal] 
+[Normal] 
+[Normal] Figure 11.1 — Odoo ERP Implementation Gantt Chart (18 Weeks)
+[Normal] 
+[Heading 2] 11.2 Phase Summary
+[Normal] 
+[Heading 1] 12. Data Migration
+[Normal] 
+[Normal] 
+[Heading 1] 13. Open Items & Assumptions
+[Normal] 
+[Heading 2] 13.1 Open Items Requiring MCB Confirmation
+[List Paragraph] Exact salary grade bands (Grade 1–10 BDT ranges) for payroll structure configuration.
+[List Paragraph] Complete leave entitlement table per grade and employment type.
+[List Paragraph] Donor-specific chart of accounts / analytic account structure.
+[List Paragraph] Hosting decision: Odoo.com cloud SaaS vs self-hosted on own server.
+[List Paragraph] Integration with any existing accounting software (Tally, QuickBooks, etc.).
+[List Paragraph] Bengali language scope — which specific forms need Bangla output.
+[List Paragraph] Odoo version: v17 (LTS, stable) vs v18 (latest features).
+[Normal] 
+[Heading 2] 13.2 Assumptions
+[List Paragraph] MCB will obtain an Odoo Enterprise license with sufficient named user seats.
+[List Paragraph] An Odoo implementation partner with Bangladesh NGO sector experience will be engaged.
+[List Paragraph] HR Policy (July 2025) is the authoritative policy; amendments during implementation require SRS revision.
+[List Paragraph] Uploaded recruitment documents (Admit Cards, Marking Sheets, Expenditure PDFs) serve as output templates.
+[List Paragraph] Reliable internet connectivity available at MCB Head Office for cloud Odoo access.
+[Normal] 
+[Heading 1] 14. Document Sign-Off
+[Normal] 
+[Normal] 
+[Normal] This document is subject to review and approval by the above signatories before implementation commences. Any deviations must be documented in a Change Request and approved by the Chief Executive.
+
+=== TABLES ===
+
+=== TABLE 0 ===
+Field | Details
+Document Title | SRS — HR & Recruitment Module for Odoo Enterprise
+Organization | Mukti Cox’s Bazar (MCB)
+Address | Mukti Bhaban, Goldighirpar, Cox’s Bazar, Bangladesh
+ERP Platform | Odoo Enterprise (v17 / v18)
+Modules in Scope | Employees, Recruitment, Payroll, Leave, Appraisal, Expenses, Onboarding
+Document Version | 2.0 (with Flowcharts & UI Mockups)
+Prepared Date | April 2026
+Classification | CONFIDENTIAL — Internal Use Only
+
+=== TABLE 1 ===
+Module | Odoo App | Primary HR Function
+Employee Management | hr | Staff database, contracts, org chart
+Recruitment | hr_recruitment | End-to-end hiring pipeline
+Payroll | hr_payroll | Salary, PF, gratuity, bonus
+Leave | hr_holidays | Annual, sick, maternity, casual leave
+Appraisal | hr_appraisal | Performance reviews, training needs
+Expenses | hr_expense | TA/DA claims, recruitment expenditure
+Onboarding | hr_onboarding | Checklist, orientation task automation
+Accounting (integration) | account | Payroll journals, PF/gratuity fund
+
+=== TABLE 2 ===
+Term | Definition
+MCB | Mukti Cox’s Bazar
+CE | Chief Executive
+BDT | Bangladeshi Taka
+PF | Provident Fund (10% employee + 10% employer)
+TA/DA | Travel Allowance / Daily Allowance
+MEAL | Monitoring, Evaluation, Accountability & Learning
+RC | Recruitment Committee
+PSEA | Protection from Sexual Exploitation and Abuse
+FDMN | Forcibly Displaced Myanmar Nationals (Rohingya refugees)
+SRS | Software Requirements Specification
+
+=== TABLE 3 ===
+Aspect | Current (As-Is) | Future with Odoo (To-Be)
+Employee Data | Scattered Excel & paper files | Centralized employee database
+Recruitment | Manual Word/Excel per vacancy | Digital pipeline with auto-generated forms
+Payroll | Manual calculation, no payslips | Automated payroll run with grade-based structures
+Leave | Paper-based, no real-time balance | Self-service portal with approval workflows
+PF / Gratuity | Manual spreadsheet calculation | Automatic deduction, accrual & fund tracking
+Onboarding | Blank checklist template | Auto-assigned task workflows per role
+Expenditure | Separate PDF per recruitment event | Integrated expense management with donor coding
+
+=== TABLE 4 ===
+Role | Key Permissions
+Chief Executive (CE) | Final approval: recruitment, payroll, separations, travel, budgets
+HR Manager | Employee records, leave, recruitment coordination, onboarding tasks
+Project Manager / HoD | Staff requisition, attendance approval, leave 1st approval
+Finance Officer | Payroll run, PF deposits, TA/DA reimbursements, expense posting
+Recruitment Committee | Marking sheet entry, shortlist confirmation, self-declaration
+Employee (Self-Service) | Apply leave, submit expense, view payslip, update profile
+System Administrator | Full system access, module config, role assignment
+
+=== TABLE 5 ===
+Employment Type | Notice Period | PF Eligible | Gratuity | Festival Bonus
+Permanent / Regular | 60 days | Yes (after 1 yr + confirmation) | Yes (after 1 yr) | 100% basic ×2 + 20% Baishakhi
+Project / Contractual | 30 days | Per project provision | Per project provision | 100% gross ×2 (donor-dependent)
+Probationary | 15 days | No | No | Pro-rata if > 6 months
+Support Staff / Driver | 30 days | Per provision | Per provision | Per project terms
+
+=== TABLE 6 ===
+Grade | Travel Entitlement | Per Diem Full Day (BDT) | Overtime Eligible
+Grade 1–5 (Senior) | AC Chair / Air (Economy) | 1,200 | No
+Grade 6–8 (Mid-level) | AC Chair (CE approval for air) | 1,000 | No
+Grade 9–10 (Support/Driver) | Standard transport | 800 | Yes
+
+=== TABLE 7 ===
+ID | Requirement | Priority
+EMP-001 | Complete employee profile: name, NID, father/mother name, photo, contact, address, emergency contact, education, prior experience | Must Have
+EMP-002 | Employment type field (Permanent / Project / Contractual / Probationary) | Must Have
+EMP-003 | Project assignment, donor, and analytic cost center per employee contract | Must Have
+EMP-004 | Grade level (1–10) linked to salary structure | Must Have
+EMP-005 | Service continuity date, probation start/end, confirmation date | Must Have
+EMP-006 | PF nominee details stored in employee record | Must Have
+EMP-007 | Document attachment: NID, CV, signed contract, certificates | Must Have
+EMP-008 | Auto-generated employee ID with project prefix (e.g. MEAL-O-01) | Should Have
+
+=== TABLE 8 ===
+Stage # | Stage Name | Description | Responsible
+1 | New / Requisition | Staff Requisition Form (21a/21b) submitted by Project Manager | Project Manager
+2 | Approved | HR reviews; CE approves; File Note prepared | CE / HR Manager
+3 | Published | Job Circular / Invitation Letter generated and advertised | HR Manager
+4 | Application Received | Candidates apply; data entered in Odoo | HR Officer
+5 | Shortlisted | HR shortlists by qualification & experience; Short List Report generated | HR Manager
+6 | Admit Card Issued | System generates Admit Cards with unique IDs; Top Sheet printed | HR Officer
+7 | Written Test | Attendance Sheet captured; candidate scripts collected | Invigilator
+8 | Oral Test | Recruitment Committee enters marks (Education, Experience, Skills, Knowledge) | RC Members
+9 | Merit Review | System auto-ranks candidates by total score; Board reviews | CE / RC
+10 | Offer / Hired | Appointment letter issued; Onboarding Plan auto-created | HR Manager
+
+=== TABLE 9 ===
+ID | Requirement | Source | Priority
+REC-001 | Staff Requisition Form (21a/21b): position, qualification, vacancies, gender, salary, working area, effective date, replacement/new flag | Forms 21a, 21b | Must Have
+REC-002 | Multi-level requisition approval: Project Manager → HR → CE | HR Policy | Must Have
+REC-003 | Recruitment budget check before publishing vacancy | Budget PDF | Must Have
+REC-004 | Auto-generate Job Circular / Invitation Letter from approved requisition | Invitation Doc | Should Have
+REC-005 | Candidate profile: name, parents’ names, address, mobile, education, experience | Shortlist XLSX | Must Have
+REC-006 | Shortlisting tool with qualification filter; generate Shortlist Report | Shortlist XLSX | Must Have
+REC-007 | Admit Card auto-generation with unique ID (MEAL O #1 format), exam date/time/venue, signed by CE | Admit Card PDF | Must Have
+REC-008 | Batch Admit Card Top Sheet listing all candidates for a position | Top Sheet PDF | Must Have
+REC-009 | Attendance Sheet: candidate list with mobile number and signature column | Attendance PDF | Must Have
+REC-010 | Marks configuration: Written (70), Computer (30), Oral/VIVA (30) per recruitment | Marks Dist. XLSX | Must Have
+REC-011 | Oral Marking Sheet: per-examiner entry (Education 3, Experience 3, Skills 12, Knowledge 12) | Marking Sheet XLSX | Must Have
+REC-012 | Auto-ranking merit list by total score; selection flag | Written/Oral Test | Must Have
+REC-013 | Self-Declaration form for RC members (conflict of interest) | Self-Declaration | Must Have
+REC-014 | Recruitment Expenditure Top Sheet: voucher-level breakdown vs budget | Expenditure PDF | Must Have
+REC-015 | TA auto-calculated per grade: RC Members BDT 2,000; Staff BDT 1,000; Support BDT 300 | Budget PDF | Must Have
+
+=== TABLE 10 ===
+ID | Requirement | Policy Ref | Priority
+PAY-001 | Configure salary structures: Permanent (grade-based), Project (consolidated), Support Staff | HR Policy Sec.3 | Must Have
+PAY-002 | Auto salary review trigger on promotion/transfer to new grade | HR Policy 3.11 | Must Have
+PAY-003 | Overtime: Support Staff & Drivers only. ≥4 hrs <8 = 0.5 day; ≥8 hrs = full day; >10 hrs = hourly. CE approval required | HR Policy 3.12 | Must Have
+PAY-004 | Festival Bonus: 2×100% basic (permanent); 2×100% gross (project); Baishakhi 20% basic. Pro-rata if <6 months service | HR Policy 5.2.5 | Must Have
+PAY-005 | PF deduction: 10% employee basic + 10% employer match. Permanent staff after regularization + 1 yr. Separate PF account | HR Policy 5.2.6 | Must Have
+PAY-006 | Gratuity accrual: 30 days basic/yr for <10 yrs; 45 days basic/yr for ≥10 yrs. Permanent only. Monthly deposit to Gratuity Fund | HR Policy 5.2.7 | Must Have
+PAY-007 | Income tax withholding per Bangladesh tax slabs | Standard | Must Have
+PAY-008 | Payslip with MCB letterhead, all components, PF breakdown, net pay | Standard | Must Have
+PAY-009 | Bank transfer file generation for payroll disbursement | Standard | Should Have
+PAY-010 | Payroll cost lines mapped to analytic account (project + donor code) for donor reporting | Donor compliance | Must Have
+
+=== TABLE 11 ===
+Leave Type | Entitlement | Carry Over | Approval Level | Notes
+Annual / Earned Leave | Grade-dependent (18–21 days/yr) | Limited | Manager + HR | All employment types
+Sick Leave | As per HR Policy | No | Manager + HR | Medical cert for extended
+Casual Leave | As per HR Policy | No | Manager + HR | Short-notice only
+Maternity Leave | As per Bangladesh Labour Law | N/A | HR + CE | Female staff only
+Paternity Leave | As per HR Policy | N/A | HR | Male staff
+Compensatory Leave | Equivalent to worked holidays | Limited | Manager + HR | Linked to public holiday work
+Leave Without Pay (LWP) | CE discretion | N/A | CE only | Extraordinary circumstances
+Work From Home | Pre-approved positions only | N/A | CE only | Policy 3.10: riot/pandemic/org policy
+
+=== TABLE 12 ===
+ID | Requirement | Priority
+LVE-001 | Configure all leave types with entitlement rules per employment category | Must Have
+LVE-002 | Two-level approval: Line Manager → HR Manager | Must Have
+LVE-003 | Real-time leave balance on self-service portal | Must Have
+LVE-004 | Leave encashment calculation for separation final settlement | Must Have
+LVE-005 | Probation restriction: block certain leave types during probation | Should Have
+LVE-006 | Notice period enforcement: flag resignation if below required days (60/30/15) | Must Have
+LVE-007 | Bangladesh public holiday + religious festival calendar | Must Have
+LVE-008 | Work-from-Home as separate approval requiring CE pre-approval | Should Have
+
+=== TABLE 13 ===
+ID | Requirement | Source | Priority
+ONB-001 | Auto-create Onboarding Plan on hire: tasks assigned to HR, Finance, IT, Line Manager | Onboarding Checklist | Must Have
+ONB-002 | Mandatory orientations tracked: Code of Conduct, Gender Equality, PSEA, AMLTF/Fraud, Org History, JD Session | HR Policy Sec.6 | Must Have
+ONB-003 | Issue of ID card, email account, equipment, bank setup as tracked tasks | Onboarding Checklist | Must Have
+ONB-004 | Auto-reminder 15 days before probation end for Line Manager confirmation decision | HR Policy Sec.3.3 | Must Have
+ONB-005 | PF membership form auto-task to HR & Finance after 1 yr + regularization | HR Policy 5.2.6 | Must Have
+ONB-006 | Contract signing tracked as mandatory task; document attached on completion | Standard | Must Have
+ONB-007 | Visual progress bar showing % onboarding completion per employee | Standard | Should Have
+
+=== TABLE 14 ===
+Grade | Breakfast (BDT) | Lunch (BDT) | Afternoon Snack (BDT) | Dinner (BDT) | Full Day (BDT)
+Grade 1–5 | 250 | 400 | 150 | 400 | 1,200
+Grade 6–8 | 250 | 300 | 150 | 300 | 1,000
+Grade 9–10 | 150 | 300 | 100 | 250 | 800
+
+=== TABLE 15 ===
+ID | Requirement | Policy Ref | Priority
+EXP-001 | TA/DA form: grade auto-populated; per diem rates applied automatically; 50km+ / night stay trigger | HR Policy 9.5.1 | Must Have
+EXP-002 | Approval: HoD approves domestic travel; CE required for air travel or Grade 2+ staff | HR Policy 9.5 | Must Have
+EXP-003 | Air travel restricted to Economy class; system validation | HR Policy 9.5 | Must Have
+EXP-004 | Recruitment expenditure lines: food (morning/lunch/afternoon), RC TA, Staff TA, Communication — mapped to budget | Recruitment Budget | Must Have
+EXP-005 | Expenditure Top Sheet auto-generation: voucher no., receiver, purpose, bill amount, VAT, net paid | Expenditure PDF | Must Have
+EXP-006 | Each expense line coded to analytic account (project + donor) for donor financial reporting | Donor compliance | Must Have
+EXP-007 | 6-hour field visit rule: BDT 400 lunch if office does not provide food (not for microfinance field staff) | HR Policy 9.5.1 | Should Have
+
+=== TABLE 16 ===
+ID | Requirement | Policy Ref | Priority
+SEP-001 | Resignation workflow: Employee submits → HR receives → Line Manager recommends → HR processes | HR Policy 10.1 | Must Have
+SEP-002 | Notice period: 60 days (permanent), 30 days (project), 15 days (probation). Salary in lieu auto-calculated | HR Policy 10.1 | Must Have
+SEP-003 | Exit Interview form; outcome recorded in personnel file; CE notified | HR Policy 10.2 | Must Have
+SEP-004 | Final settlement: outstanding salary + leave encashment + PF + gratuity | HR Policy 10, 5.2 | Must Have
+SEP-005 | PF entitlement: <1 yr = own only; ≥1 yr regular = own + employer; dismissal for financial misconduct = own only | HR Policy 5.2.6 | Must Have
+SEP-006 | Property handover checklist: accounts, data, records, equipment as offboarding tasks | HR Policy 10.3 | Must Have
+SEP-007 | Experience certificate generation on clean separation | Standard | Should Have
+SEP-008 | Employee Odoo account deactivated; access revoked on final day | Standard | Must Have
+
+=== TABLE 17 ===
+Category | Requirement
+Language | System interface in English; key reports and forms available in Bengali (Bangla)
+Currency | BDT primary; multi-currency for donor-denominated budgets (USD, GBP, AUD)
+Date Format | DD/MM/YYYY (Bangladesh convention)
+Security | Role-based access; HR data restricted to HR Manager, Finance, CE. Self-service limited to own records
+Audit Trail | All changes to salary, leave, and employee records logged with user, timestamp, old/new value
+Backup | Daily automated backup; 90-day minimum retention
+Availability | 99.5% uptime SLA; cloud-hosted Odoo preferred
+Integration | Accounting integration for payroll journals and PF/Gratuity fund entries
+Reports | Standard Odoo + custom: Recruitment Expenditure Top Sheet, Payslip (MCB header), Grade-wise headcount, Donor-wise staff cost
+Scalability | Support up to 500 active employee records across all projects
+Compliance | Bangladesh Labour Law 2006, NGO Affairs Bureau, UNFPA/CARE/UNICEF/DFAT donor compliance
+Document Templates | All auto-generated documents use MCB branded letterhead with logo
+
+=== TABLE 18 ===
+Phase | Weeks | Modules | Key Deliverables
+Phase 1: Foundation | 1–4 | Employees, Contracts, Org Chart | Staff database live; org chart; user roles
+Phase 2: Recruitment | 3–8 | hr_recruitment | Full pipeline; Admit Card; Expenditure reports
+Phase 3: Payroll & Leave | 6–12 | hr_payroll, hr_holidays | First payroll run; leave balances migrated
+Phase 4: Benefits | 10–14 | PF, Gratuity, hr_expense | PF deductions live; Gratuity accrual; TA/DA workflows
+Phase 5: Onboarding & Training | 12–16 | hr_onboarding, hr_appraisal | Onboarding plans; mandatory training tracking
+Phase 6: UAT & Go-Live | 15–18 | All modules | Parallel run; user training; hypercare support
+
+=== TABLE 19 ===
+Data Entity | Source | Migration Method
+Active Employee Records | Excel / personnel files | CSV import via Odoo wizard; validate against NID
+Employment Contracts | Paper / Word files | Manual entry for active contracts; scan & attach
+Leave Balances (opening) | Excel leave tracker | Leave Allocation import via CSV
+PF Member Data | PF Trust records | Manual entry; validate against PF trust ledger
+Gratuity Accrual (opening) | Manual calculation | Opening liability journal entry in Accounting
+Recruitment History | Excel shortlists / File Notes | Archive only; no active pipeline migration
+Training Records | Paper / email records | Manual entry for completed mandatory orientations
+
+=== TABLE 20 ===
+Role | Name | Signature | Date
+Chief Executive | Bimal Chandra Dey Sarker |  | 
+General Secretary (In-charge) | Shormin Siddiqua Lima |  | 
+Vice President | Zebun Nessa |  | 
+HR Manager / Focal Point |  |  | 
+Implementation Partner Lead |  |  | 
+Odoo System Administrator |  |  | 

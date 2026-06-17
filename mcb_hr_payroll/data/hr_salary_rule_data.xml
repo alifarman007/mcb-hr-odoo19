@@ -1,0 +1,340 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="0">
+
+        <!-- ============= MCB PERMANENT MONTHLY ============= -->
+
+        <record id="rule_perm_basic" model="hr.salary.rule">
+            <field name="name">Basic Salary</field>
+            <field name="code">BASIC</field>
+            <field name="sequence">10</field>
+            <field name="category_id" ref="hr_payroll.BASIC"/>
+            <field name="struct_id" ref="structure_mcb_permanent"/>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = version.wage * 0.60 if version.wage else 0.0</field>
+        </record>
+
+        <record id="rule_perm_house_rent" model="hr.salary.rule">
+            <field name="name">House Rent Allowance</field>
+            <field name="code">HRA</field>
+            <field name="sequence">20</field>
+            <field name="category_id" ref="hr_payroll.ALW"/>
+            <field name="struct_id" ref="structure_mcb_permanent"/>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = result_rules['BASIC']['total'] * 0.40</field>
+        </record>
+
+        <record id="rule_perm_medical" model="hr.salary.rule">
+            <field name="name">Medical Allowance</field>
+            <field name="code">MEDA</field>
+            <field name="sequence">30</field>
+            <field name="category_id" ref="hr_payroll.ALW"/>
+            <field name="struct_id" ref="structure_mcb_permanent"/>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = result_rules['BASIC']['total'] * 0.10</field>
+        </record>
+
+        <record id="rule_perm_conveyance" model="hr.salary.rule">
+            <field name="name">Conveyance Allowance</field>
+            <field name="code">CONV</field>
+            <field name="sequence">40</field>
+            <field name="category_id" ref="hr_payroll.ALW"/>
+            <field name="struct_id" ref="structure_mcb_permanent"/>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = result_rules['BASIC']['total'] * 0.05</field>
+        </record>
+
+        <record id="rule_perm_gross" model="hr.salary.rule">
+            <field name="name">Gross Salary</field>
+            <field name="code">GROSS</field>
+            <field name="sequence">100</field>
+            <field name="category_id" ref="hr_payroll.GROSS"/>
+            <field name="struct_id" ref="structure_mcb_permanent"/>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = (
+    result_rules['BASIC']['total']
+    + result_rules['HRA']['total']
+    + result_rules['MEDA']['total']
+    + result_rules['CONV']['total']
+)</field>
+        </record>
+
+        <!-- PAY-004 Festival bonus (Eid x2) — only in festival months -->
+        <record id="rule_perm_festival_bonus" model="hr.salary.rule">
+            <field name="name">Festival Bonus</field>
+            <field name="code">FBON</field>
+            <field name="sequence">110</field>
+            <field name="category_id" ref="hr_payroll.ALW"/>
+            <field name="struct_id" ref="structure_mcb_permanent"/>
+            <field name="condition_select">python</field>
+            <field name="condition_python">months = payslip._rule_parameter('MCB_FESTIVAL_MONTHS')
+result = payslip.date_from.month in months</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = result_rules['BASIC']['total']</field>
+        </record>
+
+        <!-- PAY-004 Baishakhi 20% basic — only in April -->
+        <record id="rule_perm_baishakhi" model="hr.salary.rule">
+            <field name="name">Baishakhi Bonus</field>
+            <field name="code">BAISHAKHI</field>
+            <field name="sequence">115</field>
+            <field name="category_id" ref="hr_payroll.ALW"/>
+            <field name="struct_id" ref="structure_mcb_permanent"/>
+            <field name="condition_select">python</field>
+            <field name="condition_python">result = payslip.date_from.month == payslip._rule_parameter('MCB_BAISHAKHI_MONTH')</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = result_rules['BASIC']['total'] * 0.20</field>
+        </record>
+
+        <!-- PAY-005 PF Employee (deduction) -->
+        <record id="rule_perm_pf_employee" model="hr.salary.rule">
+            <field name="name">PF Contribution — Employee (10%)</field>
+            <field name="code">PFEE</field>
+            <field name="sequence">200</field>
+            <field name="category_id" ref="hr_payroll.DED"/>
+            <field name="struct_id" ref="structure_mcb_permanent"/>
+            <field name="condition_select">python</field>
+            <field name="condition_python">result = (
+    employee.mcb_confirmation_date and
+    (payslip.date_from - employee.mcb_confirmation_date).days &gt;= 365
+)</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">rates = payslip._rule_parameter('MCB_PF_RATES')
+result = -1.0 * result_rules['BASIC']['total'] * rates.get('employee_pct', 0.10)</field>
+        </record>
+
+        <!-- PAY-005 PF Employer (company contribution) -->
+        <record id="rule_perm_pf_employer" model="hr.salary.rule">
+            <field name="name">PF Contribution — Employer (10%)</field>
+            <field name="code">PFER</field>
+            <field name="sequence">210</field>
+            <field name="category_id" ref="hr_payroll.COMP"/>
+            <field name="struct_id" ref="structure_mcb_permanent"/>
+            <field name="appears_on_employee_cost_dashboard">True</field>
+            <field name="condition_select">python</field>
+            <field name="condition_python">result = (
+    employee.mcb_confirmation_date and
+    (payslip.date_from - employee.mcb_confirmation_date).days &gt;= 365
+)</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">rates = payslip._rule_parameter('MCB_PF_RATES')
+result = result_rules['BASIC']['total'] * rates.get('employer_pct', 0.10)</field>
+        </record>
+
+        <!-- PAY-006 Gratuity accrual (30/45 days basic per year of service) -->
+        <record id="rule_perm_gratuity" model="hr.salary.rule">
+            <field name="name">Gratuity (Yearly Deposit)</field>
+            <field name="code">GRAT</field>
+            <field name="sequence">220</field>
+            <field name="category_id" ref="hr_payroll.COMP"/>
+            <field name="struct_id" ref="structure_mcb_permanent"/>
+            <field name="appears_on_employee_cost_dashboard">True</field>
+            <field name="condition_select">python</field>
+            <field name="condition_python"><![CDATA[
+# SRS v2 feedback (PAY-006): Gratuity is deposited to the Gratuity Fund YEARLY,
+# not monthly. The full year's gratuity is posted only in the configured
+# deposit month (default June = end of BD fiscal year).
+deposit_month = payslip.company_id.mcb_gratuity_deposit_month or 6
+result = bool(employee.mcb_service_continuity_date) and payslip.date_from.month == deposit_month
+]]></field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute"><![CDATA[
+years = 0.0
+if employee.mcb_service_continuity_date:
+    years = (payslip.date_from - employee.mcb_service_continuity_date).days / 365.25
+threshold = payslip.company_id.mcb_gratuity_threshold_years or 10.0
+days_per_year = 45.0 if years >= threshold else 30.0
+basic_per_day = result_rules['BASIC']['total'] / 30.0
+# Full year's gratuity, deposited once per year
+result = basic_per_day * days_per_year
+]]></field>
+        </record>
+
+        <!-- PAY-007 Income tax (BD slabs) -->
+        <record id="rule_perm_income_tax" model="hr.salary.rule">
+            <field name="name">Income Tax (Bangladesh)</field>
+            <field name="code">BDTAX</field>
+            <field name="sequence">230</field>
+            <field name="category_id" ref="hr_payroll.DED"/>
+            <field name="struct_id" ref="structure_mcb_permanent"/>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute"><![CDATA[
+slabs = payslip._rule_parameter('MCB_BD_TAX_SLABS')
+annual_gross = result_rules['GROSS']['total'] * 12.0
+tax = 0.0
+prev_ceiling = 0.0
+for ceiling, rate in slabs:
+    band_amount = max(0.0, min(annual_gross, ceiling) - prev_ceiling)
+    tax += band_amount * rate
+    if annual_gross <= ceiling:
+        break
+    prev_ceiling = ceiling
+result = -1.0 * tax / 12.0
+]]></field>
+        </record>
+
+        <!-- NET -->
+        <record id="rule_perm_net" model="hr.salary.rule">
+            <field name="name">Net Salary</field>
+            <field name="code">NET</field>
+            <field name="sequence">300</field>
+            <field name="category_id" ref="hr_payroll.NET"/>
+            <field name="struct_id" ref="structure_mcb_permanent"/>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = (
+    result_rules['GROSS']['total']
+    + result_rules.get('FBON', {}).get('total', 0)
+    + result_rules.get('BAISHAKHI', {}).get('total', 0)
+    + result_rules.get('PFEE', {}).get('total', 0)
+    + result_rules.get('BDTAX', {}).get('total', 0)
+)</field>
+        </record>
+
+        <!-- ============= MCB PROJECT (Consolidated) ============= -->
+        <record id="rule_proj_gross" model="hr.salary.rule">
+            <field name="name">Consolidated Gross</field>
+            <field name="code">BASIC</field>
+            <field name="sequence">10</field>
+            <field name="category_id" ref="hr_payroll.BASIC"/>
+            <field name="struct_id" ref="structure_mcb_project"/>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = version.wage or 0.0</field>
+        </record>
+        <record id="rule_proj_gross2" model="hr.salary.rule">
+            <field name="name">Gross Salary</field>
+            <field name="code">GROSS</field>
+            <field name="sequence">100</field>
+            <field name="category_id" ref="hr_payroll.GROSS"/>
+            <field name="struct_id" ref="structure_mcb_project"/>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = result_rules['BASIC']['total']</field>
+        </record>
+        <!-- PAY-004 Project festival bonus: 2 x 50% gross (donor-dependent).
+             SRS v2 feedback: project festival bonus changed from 100% to 50% gross. -->
+        <record id="rule_proj_festival" model="hr.salary.rule">
+            <field name="name">Festival Bonus (Project, 50% gross)</field>
+            <field name="code">FBON</field>
+            <field name="sequence">110</field>
+            <field name="category_id" ref="hr_payroll.ALW"/>
+            <field name="struct_id" ref="structure_mcb_project"/>
+            <field name="condition_select">python</field>
+            <field name="condition_python">months = payslip._rule_parameter('MCB_FESTIVAL_MONTHS')
+result = payslip.date_from.month in months</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = result_rules['GROSS']['total'] * 0.50</field>
+        </record>
+        <record id="rule_proj_tax" model="hr.salary.rule">
+            <field name="name">Income Tax (Bangladesh)</field>
+            <field name="code">BDTAX</field>
+            <field name="sequence">230</field>
+            <field name="category_id" ref="hr_payroll.DED"/>
+            <field name="struct_id" ref="structure_mcb_project"/>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute"><![CDATA[
+slabs = payslip._rule_parameter('MCB_BD_TAX_SLABS')
+annual_gross = result_rules['GROSS']['total'] * 12.0
+tax = 0.0
+prev_ceiling = 0.0
+for ceiling, rate in slabs:
+    band_amount = max(0.0, min(annual_gross, ceiling) - prev_ceiling)
+    tax += band_amount * rate
+    if annual_gross <= ceiling:
+        break
+    prev_ceiling = ceiling
+result = -1.0 * tax / 12.0
+]]></field>
+        </record>
+        <record id="rule_proj_net" model="hr.salary.rule">
+            <field name="name">Net Salary</field>
+            <field name="code">NET</field>
+            <field name="sequence">300</field>
+            <field name="category_id" ref="hr_payroll.NET"/>
+            <field name="struct_id" ref="structure_mcb_project"/>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = (
+    result_rules['GROSS']['total']
+    + result_rules.get('FBON', {}).get('total', 0)
+    + result_rules.get('BDTAX', {}).get('total', 0)
+)</field>
+        </record>
+
+        <!-- ============= MCB SUPPORT / DRIVER ============= -->
+        <record id="rule_sup_basic" model="hr.salary.rule">
+            <field name="name">Basic Salary</field>
+            <field name="code">BASIC</field>
+            <field name="sequence">10</field>
+            <field name="category_id" ref="hr_payroll.BASIC"/>
+            <field name="struct_id" ref="structure_mcb_support"/>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = version.wage * 0.65 if version.wage else 0.0</field>
+        </record>
+        <record id="rule_sup_house_rent" model="hr.salary.rule">
+            <field name="name">House Rent</field>
+            <field name="code">HRA</field>
+            <field name="sequence">20</field>
+            <field name="category_id" ref="hr_payroll.ALW"/>
+            <field name="struct_id" ref="structure_mcb_support"/>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = result_rules['BASIC']['total'] * 0.35</field>
+        </record>
+        <!-- PAY-003 OT only for support / driver -->
+        <record id="rule_sup_overtime" model="hr.salary.rule">
+            <field name="name">Overtime Pay</field>
+            <field name="code">OT</field>
+            <field name="sequence">50</field>
+            <field name="category_id" ref="hr_payroll.ALW"/>
+            <field name="struct_id" ref="structure_mcb_support"/>
+            <field name="condition_select">python</field>
+            <field name="condition_python">result = version.mcb_overtime_eligible</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute"><![CDATA[
+hourly = (result_rules['BASIC']['total'] or 0) / (30.0 * 8.0)
+basic_per_day = (result_rules['BASIC']['total'] or 0) / 30.0
+total = 0.0
+inputs_d = {l.code: l.amount for l in payslip.input_line_ids}
+total += basic_per_day * 0.5 * inputs_d.get('MCB_OT_HALFDAY', 0)
+total += basic_per_day * 1.0 * inputs_d.get('MCB_OT_FULLDAY', 0)
+total += hourly * inputs_d.get('MCB_OT_HOURS', 0)
+result = total
+]]></field>
+        </record>
+        <record id="rule_sup_gross" model="hr.salary.rule">
+            <field name="name">Gross Salary</field>
+            <field name="code">GROSS</field>
+            <field name="sequence">100</field>
+            <field name="category_id" ref="hr_payroll.GROSS"/>
+            <field name="struct_id" ref="structure_mcb_support"/>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = (
+    result_rules['BASIC']['total']
+    + result_rules['HRA']['total']
+    + result_rules.get('OT', {}).get('total', 0)
+)</field>
+        </record>
+        <record id="rule_sup_net" model="hr.salary.rule">
+            <field name="name">Net Salary</field>
+            <field name="code">NET</field>
+            <field name="sequence">300</field>
+            <field name="category_id" ref="hr_payroll.NET"/>
+            <field name="struct_id" ref="structure_mcb_support"/>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = result_rules['GROSS']['total']</field>
+        </record>
+
+    </data>
+</odoo>

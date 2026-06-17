@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="action_report_mcb_experience_cert" model="ir.actions.report">
+        <field name="name">Experience Certificate</field>
+        <field name="model">mcb.hr.resignation</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">mcb_hr_separation.report_mcb_experience_cert</field>
+        <field name="report_file">mcb_hr_separation.report_mcb_experience_cert</field>
+        <field name="binding_model_id" ref="model_mcb_hr_resignation"/>
+        <field name="binding_type">report</field>
+    </record>
+
+    <template id="report_mcb_experience_cert">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <h2 style="text-align:center;">Mukti Cox's Bazar</h2>
+                        <h3 style="text-align:center;">Experience Certificate</h3>
+                        <br/>
+                        <p>To Whom It May Concern,</p>
+                        <p>This is to certify that <strong t-esc="doc.employee_id.name"/>
+                            (Employee Code <span t-esc="doc.employee_id.mcb_employee_code"/>)
+                            served at Mukti Cox's Bazar from
+                            <strong t-esc="doc.employee_id.mcb_service_continuity_date"/>
+                            to <strong t-esc="doc.intended_last_day"/>
+                            in the position of <strong t-esc="doc.employee_id.job_title or doc.employee_id.job_id.name"/>.
+                        </p>
+                        <p>During the tenure of service, the employee was found
+                        sincere, dedicated, and professional in carrying out the
+                        assigned responsibilities.</p>
+                        <p>We wish them every success in their future endeavours.</p>
+                        <br/><br/>
+                        <p>Sincerely,</p>
+                        <p style="margin-top:60px;">
+                            <strong>____________________</strong><br/>
+                            Chief Executive<br/>
+                            Mukti Cox's Bazar
+                        </p>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+
+</odoo>

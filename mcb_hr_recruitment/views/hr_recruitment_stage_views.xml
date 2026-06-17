@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="hr_recruitment_stage_form_mcb_inherit" model="ir.ui.view">
+        <field name="name">hr.recruitment.stage.form.mcb</field>
+        <field name="model">hr.recruitment.stage</field>
+        <field name="inherit_id" ref="hr_recruitment.hr_recruitment_stage_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//group[@name='stage_definition']/group[2]" position="inside">
+                <field name="mcb_stage_code"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

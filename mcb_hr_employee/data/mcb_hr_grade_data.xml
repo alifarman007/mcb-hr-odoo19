@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="0">
+
+        <record id="grade_g1" model="mcb.hr.grade">
+            <field name="code">G1</field>
+            <field name="name">Senior Manager / Director</field>
+            <field name="band">senior</field>
+            <field name="sequence">1</field>
+            <field name="annual_leave_days">21</field>
+            <field name="travel_entitlement">Air (Economy) / AC Chair</field>
+        </record>
+        <record id="grade_g2" model="mcb.hr.grade">
+            <field name="code">G2</field>
+            <field name="name">Manager</field>
+            <field name="band">senior</field>
+            <field name="sequence">2</field>
+            <field name="annual_leave_days">21</field>
+            <field name="travel_entitlement">Air (Economy) / AC Chair</field>
+        </record>
+        <record id="grade_g3" model="mcb.hr.grade">
+            <field name="code">G3</field>
+            <field name="name">Deputy Manager</field>
+            <field name="band">senior</field>
+            <field name="sequence">3</field>
+            <field name="annual_leave_days">20</field>
+            <field name="travel_entitlement">AC Chair</field>
+        </record>
+        <record id="grade_g4" model="mcb.hr.grade">
+            <field name="code">G4</field>
+            <field name="name">Assistant Manager</field>
+            <field name="band">senior</field>
+            <field name="sequence">4</field>
+            <field name="annual_leave_days">20</field>
+            <field name="travel_entitlement">AC Chair</field>
+        </record>
+        <record id="grade_g5" model="mcb.hr.grade">
+            <field name="code">G5</field>
+            <field name="name">Senior Officer</field>
+            <field name="band">senior</field>
+            <field name="sequence">5</field>
+            <field name="annual_leave_days">20</field>
+            <field name="travel_entitlement">AC Chair</field>
+        </record>
+        <record id="grade_g6" model="mcb.hr.grade">
+            <field name="code">G6</field>
+            <field name="name">Officer</field>
+            <field name="band">mid</field>
+            <field name="sequence">6</field>
+            <field name="annual_leave_days">18</field>
+            <field name="travel_entitlement">Standard Transport (CE approval for AC Chair &amp; air)</field>
+        </record>
+        <record id="grade_g7" model="mcb.hr.grade">
+            <field name="code">G7</field>
+            <field name="name">Junior Officer</field>
+            <field name="band">mid</field>
+            <field name="sequence">7</field>
+            <field name="annual_leave_days">18</field>
+            <field name="travel_entitlement">Standard Transport (CE approval for AC Chair &amp; air)</field>
+        </record>
+        <record id="grade_g8" model="mcb.hr.grade">
+            <field name="code">G8</field>
+            <field name="name">Assistant</field>
+            <field name="band">mid</field>
+            <field name="sequence">8</field>
+            <field name="annual_leave_days">18</field>
+            <field name="travel_entitlement">Standard Transport (CE approval for AC Chair &amp; air)</field>
+        </record>
+        <record id="grade_g9" model="mcb.hr.grade">
+            <field name="code">G9</field>
+            <field name="name">Support Staff</field>
+            <field name="band">support</field>
+            <field name="sequence">9</field>
+            <field name="annual_leave_days">18</field>
+            <field name="overtime_eligible">True</field>
+            <field name="travel_entitlement">Standard transport</field>
+        </record>
+        <record id="grade_g10" model="mcb.hr.grade">
+            <field name="code">G10</field>
+            <field name="name">Driver</field>
+            <field name="band">support</field>
+            <field name="sequence">10</field>
+            <field name="annual_leave_days">18</field>
+            <field name="overtime_eligible">True</field>
+            <field name="travel_entitlement">Standard transport</field>
+        </record>
+
+    </data>
+</odoo>

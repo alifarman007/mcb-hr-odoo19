@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="0">
+
+        <!-- Bangladesh income-tax slabs (FY 2024-25, general male) -->
+        <record id="rule_param_bd_tax_slabs" model="hr.rule.parameter">
+            <field name="name">Bangladesh Income Tax Slabs (Individual)</field>
+            <field name="code">MCB_BD_TAX_SLABS</field>
+            <field name="country_id" ref="base.bd"/>
+            <field name="description"><![CDATA[
+                <p>Slabs from FY 2024-25 (general individual taxpayer):</p>
+                <ul>
+                    <li>Up to BDT 350,000: 0%</li>
+                    <li>Next 100,000: 5%</li>
+                    <li>Next 400,000: 10%</li>
+                    <li>Next 500,000: 15%</li>
+                    <li>Next 500,000: 20%</li>
+                    <li>Next 2,000,000: 25%</li>
+                    <li>Above: 30%</li>
+                </ul>
+                <p>Stored as a list of (band_ceiling, rate) tuples consumed by the BD_INCOME_TAX rule.</p>
+            ]]></field>
+        </record>
+        <record id="rule_param_bd_tax_slabs_v1" model="hr.rule.parameter.value">
+            <field name="rule_parameter_id" ref="rule_param_bd_tax_slabs"/>
+            <field name="date_from">2024-07-01</field>
+            <field name="parameter_value">[(350000, 0.00), (450000, 0.05), (850000, 0.10), (1350000, 0.15), (1850000, 0.20), (3850000, 0.25), (999999999, 0.30)]</field>
+        </record>
+
+        <!-- PF rates -->
+        <record id="rule_param_pf_rates" model="hr.rule.parameter">
+            <field name="name">MCB PF Employee + Employer rates</field>
+            <field name="code">MCB_PF_RATES</field>
+            <field name="country_id" ref="base.bd"/>
+        </record>
+        <record id="rule_param_pf_rates_v1" model="hr.rule.parameter.value">
+            <field name="rule_parameter_id" ref="rule_param_pf_rates"/>
+            <field name="date_from">2020-01-01</field>
+            <field name="parameter_value">{"employee_pct": 0.10, "employer_pct": 0.10}</field>
+        </record>
+
+        <!-- Festival bonus configuration -->
+        <record id="rule_param_festival" model="hr.rule.parameter">
+            <field name="name">MCB Festival Bonus Months</field>
+            <field name="code">MCB_FESTIVAL_MONTHS</field>
+            <field name="country_id" ref="base.bd"/>
+            <field name="description">Eid-ul-Fitr (Apr) and Eid-ul-Azha (Jun) by default.</field>
+        </record>
+        <record id="rule_param_festival_v1" model="hr.rule.parameter.value">
+            <field name="rule_parameter_id" ref="rule_param_festival"/>
+            <field name="date_from">2020-01-01</field>
+            <field name="parameter_value">[4, 6]</field>
+        </record>
+
+        <!-- Baishakhi month (April) -->
+        <record id="rule_param_baishakhi_month" model="hr.rule.parameter">
+            <field name="name">MCB Baishakhi Month</field>
+            <field name="code">MCB_BAISHAKHI_MONTH</field>
+            <field name="country_id" ref="base.bd"/>
+        </record>
+        <record id="rule_param_baishakhi_month_v1" model="hr.rule.parameter.value">
+            <field name="rule_parameter_id" ref="rule_param_baishakhi_month"/>
+            <field name="date_from">2020-01-01</field>
+            <field name="parameter_value">4</field>
+        </record>
+
+    </data>
+</odoo>

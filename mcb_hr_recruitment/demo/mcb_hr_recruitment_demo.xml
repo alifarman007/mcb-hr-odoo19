@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="0">
+
+        <record id="demo_requisition_1" model="mcb.hr.staff.requisition">
+            <field name="position_title">MEAL Officer (Cox's Bazar)</field>
+            <field name="department_id" ref="mcb_hr_employee.dept_meal"/>
+            <field name="grade_id" ref="mcb_hr_employee.grade_g6"/>
+            <field name="number_of_vacancies">2</field>
+            <field name="employment_type">project</field>
+            <field name="qualification">Bachelor's degree, 2+ years NGO/MEAL experience, English fluency.</field>
+            <field name="working_area">Cox's Bazar / Ukhia</field>
+            <field name="project_code">MEAL</field>
+            <field name="donor">UNFPA</field>
+            <field name="analytic_code">MEAL-UNFPA-001</field>
+            <field name="effective_date" eval="(DateTime.today()).strftime('%Y-%m-%d')"/>
+            <field name="proposed_salary">42000</field>
+            <field name="budget_available">True</field>
+            <field name="state">published</field>
+        </record>
+
+        <record id="demo_applicant_1" model="hr.applicant">
+            <field name="partner_name">Mizanur Rahman</field>
+            <field name="email_from">mizanur@example.com</field>
+            <field name="partner_phone">+8801711000001</field>
+            <field name="mcb_requisition_id" ref="demo_requisition_1"/>
+            <field name="mcb_father_name">Md. Abdur Rahman</field>
+            <field name="mcb_mother_name">Mrs. Selina Rahman</field>
+            <field name="mcb_nid">19881122334455667</field>
+            <field name="mcb_education_summary">MBA, Dhaka University, 2014</field>
+            <field name="mcb_experience_summary">4 yrs at BRAC; 2 yrs at IOM</field>
+            <field name="mcb_written_score">42</field>
+            <field name="mcb_computer_score">16</field>
+            <field name="mcb_oral_score_skills">12</field>
+            <field name="mcb_oral_score_knowledge">11</field>
+        </record>
+
+        <record id="demo_applicant_2" model="hr.applicant">
+            <field name="partner_name">Sumaiya Akter</field>
+            <field name="email_from">sumaiya@example.com</field>
+            <field name="partner_phone">+8801711000002</field>
+            <field name="mcb_requisition_id" ref="demo_requisition_1"/>
+            <field name="mcb_father_name">Md. Helal Uddin</field>
+            <field name="mcb_mother_name">Mrs. Roksana Akter</field>
+            <field name="mcb_nid">19920099887766554</field>
+            <field name="mcb_education_summary">MSc Statistics, BUET, 2016</field>
+            <field name="mcb_experience_summary">5 yrs at Save the Children</field>
+            <field name="mcb_written_score">46</field>
+            <field name="mcb_computer_score">18</field>
+            <field name="mcb_oral_score_skills">14</field>
+            <field name="mcb_oral_score_knowledge">13</field>
+        </record>
+
+    </data>
+</odoo>

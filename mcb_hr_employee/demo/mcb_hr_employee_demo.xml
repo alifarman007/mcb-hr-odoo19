@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="0">
+
+        <!-- Demo MCB Department -->
+        <record id="dept_meal" model="hr.department">
+            <field name="name">MEAL — Monitoring, Evaluation, Accountability &amp; Learning</field>
+        </record>
+        <record id="dept_finance" model="hr.department">
+            <field name="name">Finance</field>
+        </record>
+        <record id="dept_admin" model="hr.department">
+            <field name="name">Administration / HR</field>
+        </record>
+
+        <!-- Demo job positions -->
+        <record id="job_meal_officer" model="hr.job">
+            <field name="name">MEAL Officer</field>
+            <field name="department_id" ref="dept_meal"/>
+        </record>
+        <record id="job_driver" model="hr.job">
+            <field name="name">Driver</field>
+            <field name="department_id" ref="dept_admin"/>
+        </record>
+        <record id="job_finance_officer" model="hr.job">
+            <field name="name">Finance Officer</field>
+            <field name="department_id" ref="dept_finance"/>
+        </record>
+
+        <!-- Demo employees -->
+        <record id="emp_rashed" model="hr.employee">
+            <field name="name">Rashedul Karim</field>
+            <field name="job_id" ref="job_meal_officer"/>
+            <field name="department_id" ref="dept_meal"/>
+            <field name="mcb_employment_type">permanent</field>
+            <field name="mcb_grade_id" ref="grade_g6"/>
+            <field name="mcb_project_code">MEAL</field>
+            <field name="mcb_donor">UNFPA</field>
+            <field name="mcb_analytic_code">MEAL-UNFPA-001</field>
+            <field name="mcb_nid">19851234567890123</field>
+            <field name="mcb_father_name">Md. Karimullah</field>
+            <field name="mcb_mother_name">Mrs. Hasina Begum</field>
+            <field name="mcb_blood_group">B+</field>
+            <field name="mcb_service_continuity_date">2024-02-01</field>
+            <field name="mcb_probation_start_date">2024-02-01</field>
+            <field name="mcb_probation_end_date">2024-07-31</field>
+            <field name="mcb_confirmation_date">2024-08-01</field>
+            <field name="mcb_pf_nominee_name">Salma Karim</field>
+            <field name="mcb_pf_nominee_relation">Spouse</field>
+            <field name="mcb_pf_nominee_share">100</field>
+            <field name="work_email">rashed@mukticox.org</field>
+            <field name="mobile_phone">+8801711111111</field>
+        </record>
+
+        <record id="emp_aminul" model="hr.employee">
+            <field name="name">Aminul Haque</field>
+            <field name="job_id" ref="job_driver"/>
+            <field name="department_id" ref="dept_admin"/>
+            <field name="mcb_employment_type">support</field>
+            <field name="mcb_grade_id" ref="grade_g10"/>
+            <field name="mcb_project_code">CORE</field>
+            <field name="mcb_donor">Org</field>
+            <field name="mcb_analytic_code">CORE-ADM-010</field>
+            <field name="mcb_nid">19782233445566778</field>
+            <field name="mcb_father_name">Mohammad Haque</field>
+            <field name="mcb_mother_name">Mrs. Roksana Haque</field>
+            <field name="mcb_blood_group">A+</field>
+            <field name="mcb_service_continuity_date">2020-06-15</field>
+            <field name="work_email">aminul@mukticox.org</field>
+            <field name="mobile_phone">+8801722222222</field>
+        </record>
+
+        <record id="emp_farzana" model="hr.employee">
+            <field name="name">Farzana Akter</field>
+            <field name="job_id" ref="job_finance_officer"/>
+            <field name="department_id" ref="dept_finance"/>
+            <field name="mcb_employment_type">permanent</field>
+            <field name="mcb_grade_id" ref="grade_g5"/>
+            <field name="mcb_project_code">CORE</field>
+            <field name="mcb_donor">Org</field>
+            <field name="mcb_analytic_code">CORE-FIN-005</field>
+            <field name="mcb_nid">19902244668800113</field>
+            <field name="mcb_father_name">Md. Akter Hossain</field>
+            <field name="mcb_mother_name">Mrs. Rehana Akter</field>
+            <field name="mcb_blood_group">O+</field>
+            <field name="mcb_service_continuity_date">2022-09-01</field>
+            <field name="mcb_probation_start_date">2022-09-01</field>
+            <field name="mcb_probation_end_date">2023-03-01</field>
+            <field name="mcb_confirmation_date">2023-03-02</field>
+            <field name="work_email">farzana@mukticox.org</field>
+            <field name="mobile_phone">+8801733333333</field>
+        </record>
+
+    </data>
+</odoo>

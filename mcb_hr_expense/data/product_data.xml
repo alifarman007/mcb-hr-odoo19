@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="0">
+
+        <record id="product_mcb_taDa" model="product.product">
+            <field name="name">MCB TA / DA Per Diem</field>
+            <field name="type">service</field>
+            <field name="can_be_expensed">True</field>
+            <field name="list_price">0.0</field>
+            <field name="standard_price">0.0</field>
+        </record>
+        <record id="product_mcb_air_ticket" model="product.product">
+            <field name="name">MCB Air Ticket (Economy)</field>
+            <field name="type">service</field>
+            <field name="can_be_expensed">True</field>
+        </record>
+        <record id="product_mcb_food" model="product.product">
+            <field name="name">MCB Food / Meals</field>
+            <field name="type">service</field>
+            <field name="can_be_expensed">True</field>
+        </record>
+
+    </data>
+</odoo>

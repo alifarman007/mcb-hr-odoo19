@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_mcb_bank_transfer_wizard_form" model="ir.ui.view">
+        <field name="name">mcb.hr.bank.transfer.wizard.form</field>
+        <field name="model">mcb.hr.bank.transfer.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Bank Disbursement File (PAY-009)">
+                <group>
+                    <field name="payslip_run_id"/>
+                    <field name="bank_id"/>
+                    <field name="transfer_date"/>
+                </group>
+                <group string="Generated File" invisible="not file_data">
+                    <field name="file_name" readonly="1"/>
+                    <field name="file_data" filename="file_name" readonly="1"/>
+                </group>
+                <footer>
+                    <button name="action_generate" type="object"
+                            string="Generate CSV" class="btn-primary"/>
+                    <button special="cancel" string="Close"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_mcb_bank_transfer_wizard" model="ir.actions.act_window">
+        <field name="name">Generate Bank Disbursement</field>
+        <field name="res_model">mcb.hr.bank.transfer.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+        <field name="binding_model_id" ref="hr_payroll.model_hr_payslip_run"/>
+        <field name="binding_view_types">form,list</field>
+    </record>
+
+</odoo>

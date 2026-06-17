@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="0">
+
+        <record id="stage_mcb_requisition" model="hr.recruitment.stage">
+            <field name="name">1 — Requisition</field>
+            <field name="sequence">1</field>
+            <field name="mcb_stage_code">requisition</field>
+        </record>
+        <record id="stage_mcb_published" model="hr.recruitment.stage">
+            <field name="name">3 — Published</field>
+            <field name="sequence">3</field>
+            <field name="mcb_stage_code">published</field>
+        </record>
+        <record id="stage_mcb_received" model="hr.recruitment.stage">
+            <field name="name">4 — Application Received</field>
+            <field name="sequence">4</field>
+            <field name="mcb_stage_code">received</field>
+        </record>
+        <record id="stage_mcb_shortlist" model="hr.recruitment.stage">
+            <field name="name">5 — Shortlisted</field>
+            <field name="sequence">5</field>
+            <field name="mcb_stage_code">shortlist</field>
+        </record>
+        <record id="stage_mcb_admit_card" model="hr.recruitment.stage">
+            <field name="name">6 — Admit Card Issued</field>
+            <field name="sequence">6</field>
+            <field name="mcb_stage_code">admit_card</field>
+        </record>
+        <record id="stage_mcb_written" model="hr.recruitment.stage">
+            <field name="name">7 — Written Test</field>
+            <field name="sequence">7</field>
+            <field name="mcb_stage_code">written</field>
+        </record>
+        <record id="stage_mcb_oral" model="hr.recruitment.stage">
+            <field name="name">8 — Oral Test</field>
+            <field name="sequence">8</field>
+            <field name="mcb_stage_code">oral</field>
+        </record>
+        <record id="stage_mcb_merit" model="hr.recruitment.stage">
+            <field name="name">9 — Merit Review</field>
+            <field name="sequence">9</field>
+            <field name="mcb_stage_code">merit</field>
+        </record>
+        <record id="stage_mcb_hired" model="hr.recruitment.stage">
+            <field name="name">10 — Hired</field>
+            <field name="sequence">10</field>
+            <field name="mcb_stage_code">hired</field>
+            <field name="hired_stage">True</field>
+        </record>
+
+    </data>
+</odoo>

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="action_report_mcb_recruitment_topsheet" model="ir.actions.report">
+        <field name="name">Recruitment Expenditure Top Sheet</field>
+        <field name="model">mcb.hr.recruitment.expenditure</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">mcb_hr_recruitment.report_mcb_recruitment_topsheet</field>
+        <field name="report_file">mcb_hr_recruitment.report_mcb_recruitment_topsheet</field>
+        <field name="binding_model_id" ref="model_mcb_hr_recruitment_expenditure"/>
+        <field name="binding_type">report</field>
+    </record>
+
+    <template id="report_mcb_recruitment_topsheet">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <h2 style="text-align:center;">Mukti Cox's Bazar</h2>
+                        <h3 style="text-align:center;">Recruitment Expenditure Top Sheet</h3>
+                        <p><strong>Reference:</strong> <span t-esc="doc.name"/> ·
+                           <strong>Date:</strong> <span t-esc="doc.date"/></p>
+                        <p><strong>Requisition:</strong>
+                           <span t-esc="doc.requisition_id.name"/> —
+                           <span t-esc="doc.requisition_id.position_title"/></p>
+                        <table class="table table-sm" style="border:1px solid #555;">
+                            <thead>
+                                <tr style="background:#eee;">
+                                    <th>#</th>
+                                    <th>Voucher #</th>
+                                    <th>Receiver</th>
+                                    <th>Description</th>
+                                    <th class="text-end">Bill</th>
+                                    <th class="text-end">VAT/TDS</th>
+                                    <th class="text-end">Net Paid</th>
+                                    <th>Analytic</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr t-foreach="doc.line_ids" t-as="l">
+                                    <td t-esc="l_index + 1"/>
+                                    <td t-esc="l.voucher_no"/>
+                                    <td t-esc="l.receiver"/>
+                                    <td t-esc="l.description"/>
+                                    <td class="text-end" t-esc="l.bill_amount"/>
+                                    <td class="text-end" t-esc="l.vat_amount"/>
+                                    <td class="text-end" t-esc="l.net_paid"/>
+                                    <td t-esc="l.analytic_code"/>
+                                </tr>
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <th colspan="6" class="text-end">Total</th>
+                                    <th class="text-end"><span t-esc="doc.total_amount"/></th>
+                                    <th></th>
+                                </tr>
+                                <tr>
+                                    <th colspan="6" class="text-end">Budget</th>
+                                    <th class="text-end"><span t-esc="doc.budget_amount"/></th>
+                                    <th></th>
+                                </tr>
+                                <tr>
+                                    <th colspan="6" class="text-end">Variance (Budget − Actual)</th>
+                                    <th class="text-end"><span t-esc="doc.variance"/></th>
+                                    <th></th>
+                                </tr>
+                            </tfoot>
+                        </table>
+                        <br/><br/>
+                        <table style="width:100%;">
+                            <tr>
+                                <td style="border-top:1px solid #000; text-align:center; width:30%;">Prepared by HR</td>
+                                <td style="width:5%;"/>
+                                <td style="border-top:1px solid #000; text-align:center; width:30%;">Approved Finance</td>
+                                <td style="width:5%;"/>
+                                <td style="border-top:1px solid #000; text-align:center; width:30%;">Approved CE</td>
+                            </tr>
+                        </table>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+
+</odoo>

@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="action_report_mcb_shortlist" model="ir.actions.report">
+        <field name="name">Shortlist Report</field>
+        <field name="model">mcb.hr.staff.requisition</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">mcb_hr_recruitment.report_mcb_shortlist</field>
+        <field name="report_file">mcb_hr_recruitment.report_mcb_shortlist</field>
+        <field name="binding_model_id" ref="model_mcb_hr_staff_requisition"/>
+        <field name="binding_type">report</field>
+    </record>
+
+    <template id="report_mcb_shortlist">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <div style="text-align:center;">
+                            <h2 style="margin:0;">Mukti Cox's Bazar</h2>
+                            <h3 style="margin:6px 0;">Shortlist Report</h3>
+                            <p>
+                                Position: <strong t-esc="doc.position_title"/>
+                                · Requisition: <strong t-esc="doc.name"/>
+                                · Grade: <strong t-esc="doc.grade_id.code"/>
+                            </p>
+                            <p>
+                                Project: <strong t-esc="doc.project_code"/>
+                                <span t-if="doc.donor"> / Donor: <strong t-esc="doc.donor"/></span>
+                                · Date: <strong><t t-esc="context_timestamp(datetime.datetime.now()).strftime('%d %B %Y')"/></strong>
+                            </p>
+                        </div>
+
+                        <t t-set="shortlisted" t-value="doc.applicant_ids.filtered(lambda a: a.stage_id and a.stage_id.mcb_stage_code in ('shortlist','admit_card','written','oral','merit','hired'))"/>
+                        <p>Total shortlisted candidates: <strong t-esc="len(shortlisted)"/></p>
+
+                        <table class="table table-bordered table-sm" style="font-size:9pt;">
+                            <thead style="background:#1F4E79; color:white;">
+                                <tr>
+                                    <th>#</th>
+                                    <th>Candidate</th>
+                                    <th>Father / Mother</th>
+                                    <th>Mobile</th>
+                                    <th>NID</th>
+                                    <th>Education</th>
+                                    <th>Experience</th>
+                                    <th>Stage</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr t-foreach="shortlisted" t-as="app">
+                                    <td t-esc="app_index + 1"/>
+                                    <td>
+                                        <strong t-esc="app.partner_name"/>
+                                    </td>
+                                    <td>
+                                        <span t-esc="app.mcb_father_name or ''"/><br/>
+                                        <span t-esc="app.mcb_mother_name or ''"/>
+                                    </td>
+                                    <td t-esc="app.partner_phone or app.email_from"/>
+                                    <td t-esc="app.mcb_nid"/>
+                                    <td style="white-space:pre-wrap;" t-esc="app.mcb_education_summary"/>
+                                    <td style="white-space:pre-wrap;" t-esc="app.mcb_experience_summary"/>
+                                    <td t-esc="app.stage_id.name"/>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <p style="margin-top:20px;">
+                            The above candidates meet the minimum qualifications
+                            published in the Job Circular (Ref: <strong t-esc="doc.name"/>)
+                            and have been short-listed for the written / oral examination
+                            by HR.
+                        </p>
+
+                        <table style="width:100%; margin-top:60px;">
+                            <tr>
+                                <td style="border-top:1px solid #000; text-align:center; width:30%;">
+                                    <strong>Prepared by HR Officer</strong>
+                                </td>
+                                <td style="width:5%;"></td>
+                                <td style="border-top:1px solid #000; text-align:center; width:30%;">
+                                    <strong>Reviewed by HR Manager</strong>
+                                </td>
+                                <td style="width:5%;"></td>
+                                <td style="border-top:1px solid #000; text-align:center; width:30%;">
+                                    <strong>Approved by CE</strong>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+
+</odoo>

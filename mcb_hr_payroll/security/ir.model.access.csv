@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_mcb_salary_rev_hr,salary revision hr,model_mcb_hr_salary_revision_wizard,hr.group_hr_user,1,1,1,1
+access_mcb_salary_rev_manager,salary revision manager,model_mcb_hr_salary_revision_wizard,hr.group_hr_manager,1,1,1,1
+access_mcb_bank_transfer_hr,bank transfer hr,model_mcb_hr_bank_transfer_wizard,hr.group_hr_user,1,1,1,1
+access_mcb_bank_transfer_manager,bank transfer manager,model_mcb_hr_bank_transfer_wizard,hr.group_hr_manager,1,1,1,1

@@ -1,0 +1,16 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_mcb_req_user,requisition user,model_mcb_hr_staff_requisition,base.group_user,1,0,0,0
+access_mcb_req_pm,requisition pm,model_mcb_hr_staff_requisition,mcb_hr_employee.group_mcb_pm,1,1,1,0
+access_mcb_req_hr,requisition hr,model_mcb_hr_staff_requisition,hr.group_hr_user,1,1,1,0
+access_mcb_req_manager,requisition manager,model_mcb_hr_staff_requisition,hr.group_hr_manager,1,1,1,1
+access_mcb_req_ce,requisition ce,model_mcb_hr_staff_requisition,mcb_hr_employee.group_mcb_ce,1,1,1,1
+access_mcb_exp_user,expenditure user,model_mcb_hr_recruitment_expenditure,base.group_user,1,0,0,0
+access_mcb_exp_hr,expenditure hr,model_mcb_hr_recruitment_expenditure,hr.group_hr_user,1,1,1,0
+access_mcb_exp_manager,expenditure manager,model_mcb_hr_recruitment_expenditure,hr.group_hr_manager,1,1,1,1
+access_mcb_exp_line_user,expenditure line user,model_mcb_hr_recruitment_expenditure_line,base.group_user,1,0,0,0
+access_mcb_exp_line_hr,expenditure line hr,model_mcb_hr_recruitment_expenditure_line,hr.group_hr_user,1,1,1,1
+access_mcb_exp_line_manager,expenditure line manager,model_mcb_hr_recruitment_expenditure_line,hr.group_hr_manager,1,1,1,1
+access_mcb_sd_user,self decl user,model_mcb_hr_recruitment_self_declaration,base.group_user,1,1,1,0
+access_mcb_sd_rc,self decl rc,model_mcb_hr_recruitment_self_declaration,mcb_hr_employee.group_mcb_rc,1,1,1,0
+access_mcb_sd_hr,self decl hr,model_mcb_hr_recruitment_self_declaration,hr.group_hr_user,1,1,1,1
+access_mcb_sd_manager,self decl manager,model_mcb_hr_recruitment_self_declaration,hr.group_hr_manager,1,1,1,1

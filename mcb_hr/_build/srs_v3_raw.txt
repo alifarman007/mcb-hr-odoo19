@@ -1,0 +1,675 @@
+=== PARAGRAPHS ===
+[] 
+[] Mukti Cox's Bazar
+[] 
+[] Software Requirements Specification
+[] 
+[] ERP Implementation on Odoo Enterprise
+[] 
+[] Full ERP System — All Modules
+[] 
+[] 
+[Heading 1] Table of Contents
+[] 
+[] PART A — HUMAN RESOURCE MANAGEMENT MODULE
+[] 
+[Heading 2] 1. Introduction & Purpose
+[] This section defines the HR lifecycle requirements for Mukti Cox's Bazar (MCB) on Odoo Enterprise, covering employee records, recruitment, payroll, leave, onboarding, expenses, and offboarding, aligned with MCB's HR Policy (July 2025).
+[] 
+[Heading 2] 2. Employee Management
+[Heading 3] 2.1 Employment Categories
+[] 
+[Heading 3] 2.2 Grade Structure & Entitlements
+[] 
+[Heading 3] 2.3 Employee Module Requirements
+[] 
+[Heading 2] 3. Recruitment Module
+[Heading 3] 3.1 Recruitment Stage Configuration
+[] 
+[Heading 3] 3.2 Recruitment Functional Requirements
+[] 
+[Heading 2] 4. Payroll Module
+[Heading 3] 4.1 Payroll Requirements
+[] 
+[Heading 2] 5. Leave Management
+[Heading 3] 5.1 Leave Types Configuration
+[] 
+[Heading 2] 6. Onboarding, Expenses & Separation
+[] Onboarding, TA/DA expense management, and offboarding/separation requirements are implemented per the detailed specifications in SRS v2. Key requirements include:
+[] 
+[] 
+[] 
+[] PART B — PURCHASE / PROCUREMENT MODULE
+[] 
+[Heading 2] 7. Introduction
+[] This part defines the functional and non-functional requirements for implementing the Purchase Module of Odoo Enterprise for MCB. It covers all 11 procurement steps — from Purchase Request (PR) through Comparative Statement, Technical Analysis, Evaluation, NOAL, Purchase Order — along with their Annexures and document templates.
+[] 
+[Heading 2] 8. Procurement Method Thresholds
+[] 
+[Heading 2] 9. Odoo Module Mapping (11 Steps)
+[] 
+[Heading 2] 10. Step-by-Step Functional Requirements
+[Heading 3] 10.1 Purchase Request (PR) — Step 1
+[] 
+[Heading 3] 10.2 Comparative Statement — Step 6
+[] 
+[Heading 3] 10.3 NOAL & Purchase Order — Steps 9–10
+[] 
+[Heading 3] 10.4 Procurement Reports — Step 11
+[] 
+[] 
+[] PART C — ACCOUNTS / FINANCIAL MANAGEMENT MODULE
+[] 
+[Heading 2] 11. Introduction
+[] This section defines the requirements for implementing the Accounts / Financial Management module of Odoo Enterprise for Mukti Cox's Bazar (MCB). The module covers the full finance lifecycle — Chart of Accounts, voucher management, bank/cash management, advance management, budget management, donor financial reporting, asset management, payroll integration, tax compliance, and period-end closing — aligned to MCB's Financial Management Manual (5th edition, September 2022) and donor requirements (UNFPA, CARE, UNICEF, DFAT).
+[] 
+[Heading 2] 12. As-Is vs To-Be: Accounts
+[] 
+[Heading 2] 13. Chart of Accounts Configuration
+[Heading 3] 13.1 CoA Structure Requirements
+[] MCB's Chart of Accounts must be structured to support multi-donor, multi-project operations with analytic accounting. The standard Odoo account.account model will be configured with MCB's account codes as documented in Budget_Chart_of_Accounts.xlsx.
+[] 
+[] 
+[Heading 2] 14. Voucher Management
+[Heading 3] 14.1 Voucher Types
+[] MCB uses five voucher types per its Financial Management Manual. All must be reproducible as Odoo journal entries with the standard MCB-branded PDF layouts matching Annexures 03–06.
+[] 
+[] 
+[Heading 3] 14.2 Voucher Functional Requirements
+[] 
+[Heading 2] 15. Bank & Cash Management
+[Heading 3] 15.1 Bank Reconciliation (Annexure-17)
+[] 
+[Heading 3] 15.2 Petty Cash Management (Annexures 14, 15, 16)
+[] 
+[Heading 2] 16. Advance Management
+[Heading 3] 16.1 Advance Lifecycle Requirements (Annexures 18 & 19)
+[] 
+[Heading 2] 17. Budget Management
+[Heading 3] 17.1 Budget Structure and Tracking
+[] MCB operates multi-donor, multi-project budgets. The Odoo budget module must reflect the structures defined in Budget_Chart_of_Accounts.xlsx, Budget_Head_GBViE.xlsx, and Quarterly_report_AprJun2026.xlsx. Budgets are structured by Activity Code, Cost Category, and Financial Year.
+[] 
+[] 
+[Heading 2] 18. Fixed Asset Management
+[Heading 3] 18.1 Asset Register Requirements (Annexures 07 & 22)
+[] 
+[Heading 2] 19. Tax Compliance (VAT & TDS)
+[] 
+[Heading 2] 20. Donor Financial Reporting
+[] 
+[Heading 2] 21. Period-End Closing & Audit
+[] 
+[] 
+[] PART D — PROJECT MANAGEMENT MODULE
+[] 
+[Heading 2] 22. Introduction
+[] Mukti Cox's Bazar simultaneously implements multiple donor-funded humanitarian and development projects (FDMN/Rohingya response, GBViE, SRHR, and others funded by UNFPA, CARE, UNICEF, DFAT). The Projects module in Odoo must provide a unified platform for project planning, activity tracking, staff time allocation, milestone monitoring, work planning, and donor reporting — integrated with HR, Finance, and Procurement modules.
+[] 
+[Heading 2] 23. As-Is vs To-Be: Projects
+[] 
+[Heading 2] 24. Project Structure Configuration
+[] 
+[Heading 2] 25. Timesheet & Attendance Management
+[Heading 3] 25.1 Individual Staff Timesheet (Annexure-23)
+[] The Time Sheet of Individual Staff (Annexure-23) tracks daily work status, in/out time, and hours allocated to each project (P-01 through P-04) and leave. This maps directly to Odoo's Timesheet module with MCB-specific multi-project allocation columns.
+[] 
+[] 
+[Heading 3] 25.2 Monthly Staff Attendance (Annexure-20)
+[] 
+[Heading 2] 26. Volunteer / FDMN Staff Management
+[] MCB deploys significant numbers of Rohingya volunteers (FDMN — Forcibly Displaced Myanmar Nationals) as community volunteers and trained facilitators in its humanitarian projects. These are tracked separately from staff in the Volunteers Database (7 FDMN Project) with their own incentive payment process.
+[] 
+[] 
+[Heading 2] 27. Project Monitoring & Reporting
+[] 
+[Heading 2] 28. Vehicle & Movement Management
+[Heading 3] 28.1 Vehicle Log Book (Annexure-10)
+[] 
+[Heading 3] 28.2 Daily Movement Register (Annexure-09)
+[] 
+[Heading 2] 29. Inventory / Store Management
+[Heading 3] 29.1 Store Register (Annexure-08) & Monthly Stock Report
+[] MCB maintains stores of project materials, NFI (Non-Food Items), equipment, and stationery. The Store Register and Monthly Stock Report Form must be implemented in Odoo Inventory with Annexure-compliant layouts.
+[] 
+[] 
+[] 
+[] PART E — CROSS-CUTTING REQUIREMENTS & IMPLEMENTATION
+[] 
+[Heading 2] 30. Module Integration Map
+[] 
+[Heading 2] 31. Non-Functional Requirements
+[] 
+[Heading 2] 32. User Roles & Permissions Summary
+[] 
+[Heading 2] 33. Document Templates — Full Annexure Register
+[] 
+[Heading 2] 34. Implementation Roadmap — Full ERP
+[] 
+[Heading 2] 35. Data Migration Plan
+[] 
+[Heading 2] 36. Open Items & Assumptions
+[Heading 3] 36.1 Open Items Requiring MCB Confirmation
+[] The following items must be confirmed by MCB before configuration commences:
+[] 
+[] 
+[Heading 3] 36.2 Assumptions
+[] This SRS is prepared on the following assumptions:
+[] 
+[] 
+[] 
+[Heading 1] 37. Document Sign-Off
+[] This document is subject to review and approval by the below signatories before implementation commences. Any deviations must be documented in a Change Request and approved by the Chief Executive.
+[] 
+[] 
+[] 
+[] Mukti Cox's Bazar | Odoo ERP Full SRS v3.0 | May 2026 | CONFIDENTIAL
+
+=== TABLES ===
+
+=== TABLE 0 ===
+Field | Details
+Document Title | SRS — HR, Purchase, Accounts & Projects Modules
+Organization | Mukti Cox's Bazar (MCB)
+Address | Mukti Bhaban, Goldighirpar, Cox's Bazar, Bangladesh
+ERP Platform | Odoo Enterprise (v17/v18/v19)
+Modules in Scope | HR, Recruitment, Payroll, Leave, Purchase, Accounts, Projects
+Document Version | 3.0 (Full Combined SRS)
+Prepared Date | May 2026
+Classification | CONFIDENTIAL — Internal Use Only
+
+=== TABLE 1 ===
+Employment Type | Notice Period | PF Eligible | Gratuity | Festival Bonus
+Permanent / Regular | 60 days | Yes (after 1yr + confirmation) | Yes (after 1yr) | 100% basic ×2 + 20% Baishakhi
+Project / Contractual | 30 days | Per project provision | Per project provision | 100% gross ×2 (donor-dependent)
+Probationary | 15 days | No | No | Pro-rata if > 6 months
+Support Staff / Driver | 30 days | Per provision | Per provision | Per project terms
+
+=== TABLE 2 ===
+Grade | Travel Entitlement | Per Diem Full Day (BDT) | Overtime Eligible
+Grade 1–5 (Senior) | AC Chair / Air (Economy) | 1,200 | No
+Grade 6–8 (Mid-level) | AC Chair (CE approval for air) | 1,000 | No
+Grade 9–10 (Support/Driver) | Standard transport | 800 | Yes
+
+=== TABLE 3 ===
+ID | Requirement | Priority
+EMP-001 | Complete employee profile: name, NID, father/mother name, photo, contact, address, emergency contact, education, prior experience | Must Have
+EMP-002 | Employment type field (Permanent / Project / Contractual / Probationary) | Must Have
+EMP-003 | Project assignment, donor, and analytic cost center per employee contract | Must Have
+EMP-004 | Grade level (1–10) linked to salary structure | Must Have
+EMP-005 | Service continuity date, probation start/end, confirmation date | Must Have
+EMP-006 | PF nominee details stored in employee record | Must Have
+EMP-007 | Document attachment: NID, CV, signed contract, certificates | Must Have
+EMP-008 | Auto-generated employee ID with project prefix (e.g. MEAL-O-01) | Should Have
+
+=== TABLE 4 ===
+Stage # | Stage Name | Description | Responsible
+1 | New / Requisition | Staff Requisition Form (21a/21b) submitted by Project Manager | Project Manager
+2 | Approved | HR reviews; CE approves; File Note prepared | CE / HR Manager
+3 | Published | Job Circular / Invitation Letter generated and advertised | HR Manager
+4 | Application Received | Candidates apply; data entered in Odoo | HR Officer
+5 | Shortlisted | HR shortlists by qualification & experience; Shortlist Report generated | HR Manager
+6 | Admit Card Issued | System generates Admit Cards with unique IDs; Top Sheet printed | HR Officer
+7 | Written Test | Attendance Sheet captured; candidate scripts collected | Invigilator
+8 | Oral Test | Recruitment Committee enters marks (Education, Experience, Skills, Knowledge) | RC Members
+9 | Merit Review | System auto-ranks candidates by total score; Board reviews | CE / RC
+10 | Offer / Hired | Appointment letter issued; Onboarding Plan auto-created | HR Manager
+
+=== TABLE 5 ===
+ID | Requirement | Priority | Source
+REC-001 | Staff Requisition Form (21a/21b): position, qualification, vacancies, gender, salary, working area, effective date, replacement/new flag | Must Have | Forms 21a,21b
+REC-002 | Multi-level requisition approval: Project Manager → HR → CE | Must Have | HR Policy
+REC-003 | Recruitment budget check before publishing vacancy | Must Have | Budget PDF
+REC-004 | Auto-generate Job Circular / Invitation Letter from approved requisition | Should Have | Invitation Doc
+REC-005 | Candidate profile: name, parents' names, address, mobile, education, experience | Must Have | Shortlist XLSX
+REC-006 | Shortlisting tool with qualification filter; generate Shortlist Report | Must Have | Shortlist XLSX
+REC-007 | Admit Card auto-generation with unique ID, exam date/time/venue, signed by CE | Must Have | Admit Card PDF
+REC-008 | Batch Admit Card Top Sheet listing all candidates for a position | Must Have | Top Sheet PDF
+REC-009 | Attendance Sheet: candidate list with mobile number and signature column | Must Have | Attendance PDF
+REC-010 | Marks: Written (70), Computer (30), Oral/VIVA (30) per recruitment | Must Have | Marks Dist.
+REC-011 | Oral Marking Sheet: per-examiner entry (Education 3, Experience 3, Skills 12, Knowledge 12) | Must Have | Marking Sheet
+REC-012 | Auto-ranking merit list by total score; selection flag | Must Have | Written/Oral Test
+REC-013 | Self-Declaration form for RC members (conflict of interest) | Must Have | Self-Declaration
+REC-014 | Recruitment Expenditure Top Sheet: voucher-level breakdown vs budget | Must Have | Expenditure PDF
+REC-015 | TA auto-calculated per grade: RC Members BDT 2,000; Staff BDT 1,000; Support BDT 300 | Must Have | Budget PDF
+
+=== TABLE 6 ===
+ID | Requirement | Policy Ref | Priority
+PAY-001 | Configure salary structures: Permanent (grade-based), Project (consolidated), Support Staff | HR Policy Sec.3 | Must Have
+PAY-002 | Auto salary review trigger on promotion/transfer to new grade | HR Policy 3.11 | Must Have
+PAY-003 | Overtime: Support Staff & Drivers only. ≥4hrs <8=0.5 day; ≥8hrs=full day; >10hrs=hourly. CE approval required | HR Policy 3.12 | Must Have
+PAY-004 | Festival Bonus: 2×100% basic (permanent); 2×100% gross (project); Baishakhi 20% basic | HR Policy 5.2.5 | Must Have
+PAY-005 | PF deduction: 10% employee basic + 10% employer match. Permanent after regularization + 1yr. Separate PF account | HR Policy 5.2.6 | Must Have
+PAY-006 | Gratuity: 30 days basic/yr for <10 yrs; 45 days basic/yr for ≥10 yrs. Monthly deposit to Gratuity Fund | HR Policy 5.2.7 | Must Have
+PAY-007 | Income tax withholding per Bangladesh tax slabs | Standard | Must Have
+PAY-008 | Payslip with MCB letterhead, all components, PF breakdown, net pay | Standard | Must Have
+PAY-009 | Bank transfer file generation for payroll disbursement | Standard | Should Have
+PAY-010 | Payroll cost lines mapped to analytic account (project + donor code) for donor reporting | Donor compliance | Must Have
+
+=== TABLE 7 ===
+Leave Type | Entitlement | Carry Over | Approval | Notes
+Annual / Earned Leave | Grade-dependent (18–21 days/yr) | Limited | Manager + HR | All employment types
+Sick Leave | As per HR Policy | No | Manager + HR | Medical cert for extended
+Casual Leave | As per HR Policy | No | Manager + HR | Short-notice only
+Maternity Leave | Bangladesh Labour Law | N/A | HR + CE | Female staff only
+Paternity Leave | As per HR Policy | N/A | HR | Male staff
+Compensatory Leave | Equivalent to worked holidays | Limited | Manager + HR | Linked to public holiday work
+Leave Without Pay | CE discretion | N/A | CE only | Extraordinary circumstances
+Work From Home | Pre-approved positions only | N/A | CE only | Policy 3.10
+
+=== TABLE 8 ===
+ID | Requirement | Priority
+ONB-001 | Auto-create Onboarding Plan on hire: tasks assigned to HR, Finance, IT, Line Manager | Must Have
+ONB-002 | Mandatory orientations: Code of Conduct, Gender Equality, PSEA, AMLTF/Fraud, Org History, JD Session | Must Have
+ONB-004 | Auto-reminder 15 days before probation end for Line Manager confirmation decision | Must Have
+EXP-001 | TA/DA form: grade auto-populated; per diem rates applied automatically; 50km+ / night stay trigger | Must Have
+EXP-004 | Recruitment expenditure lines: food, RC TA, Staff TA, Communication — mapped to budget | Must Have
+EXP-006 | Each expense line coded to analytic account (project + donor) for donor financial reporting | Must Have
+SEP-002 | Notice period: 60 days (permanent), 30 days (project), 15 days (probation). Salary in lieu auto-calculated | Must Have
+SEP-004 | Final settlement: outstanding salary + leave encashment + PF + gratuity | Must Have
+SEP-008 | Employee Odoo account deactivated; access revoked on final day | Must Have
+
+=== TABLE 9 ===
+Method | Value Range (BDT) | Min. Quotations | NOAL Required | Key Documents
+Direct Purchase / Petty Cash | < 10,000 | 1 | No | Receipt / Petty Cash Voucher
+RFQ (Request for Quotation) | 10,000 – 2,00,000 | 3 | No | TA-1, CS, Eval-1, Note-3
+RFP (Request for Proposal) | 2,00,001 – 5,00,000 | 3 | No | TA-1, CS, Eval-1, Note-3
+IFT / Open Tender | > 5,00,000 | Open | Yes (NOAL) | TA-2, CS, Eval-2, Note-3, NOAL
+
+=== TABLE 10 ===
+MCB Step | Document / Annexure | Odoo Object | Module
+Step 1: PR + Note #1 | PR Form (Annexure-02), Note Sheet-1 | purchase.request | Purchase / Custom
+Step 2: Note #2 | Procurement Committee Minutes | purchase.request (approval notes) | Purchase
+Step 3: RFQ/RFP/IFT | RFQ Template, IFT Schedule | purchase.order (RFQ state) | Purchase
+Step 4: Opening Sheet | RFQ/Tender Opening Sheet (Annexure-09) | Custom opening.sheet model | Purchase (custom)
+Step 5: Technical Analysis | TA-1 (RFQ), TA-2 (Tender) | Custom technical.analysis model | Purchase (custom)
+Step 6: Comparative Statement | CS Template | Custom comparative.statement model | Purchase (custom)
+Step 7: Evaluation Report | Eval-1 (RFQ), Eval-2 (Tender) | Custom vendor.evaluation model | Purchase (custom)
+Step 8: Note #3 | Note Sheet-3 Award Recommendation | purchase.order (approval flow) | Purchase
+Step 9: NOAL | Notification of Award Letter | Custom noal model / Email template | Purchase (custom)
+Step 10: PO/CO/WO | Purchase Order / Work Order | purchase.order (confirmed) | Purchase
+Step 11: Reports | 6 report types | purchase.report / custom views | Purchase Reporting
+
+=== TABLE 11 ===
+Req. ID | Requirement | Priority
+PR-001 | Auto-generate PR Number in format PR: XXXX/YY-YY per financial year sequence | Must Have
+PR-002 | PR fields: Project Name, Donor/Funder, Budget Head & Code, Total Budget, Current Balance, Procurement Deadline, Delivery Point, Contact Person & Phone | Must Have
+PR-003 | Item lines: Name of Items, Specifications, Category, M.Unit, Qty, Unit Price, Total Price; auto-calculate Grand Total | Must Have
+PR-004 | Budget validation: PR total must not exceed current budget balance; warning/block on overage | Must Have
+PR-005 | 4-level approval workflow: Applicant → Accounts Officer → PC/In-charge → CE | Must Have
+PR-006 | Note Sheet-1 auto-generated from PR data for CE instruction to Procurement Committee | Must Have
+PR-007 | Link PR to project analytic account for donor cost coding | Must Have
+PR-008 | PR status tracking: Draft → Confirmed → Approved → Sent to PC → In Progress → PO Issued → Closed | Must Have
+
+=== TABLE 12 ===
+Req. ID | Requirement | Priority
+CS-001 | CS header: Project, Donor, Circular/Tender Date, PR Ref, Opening Date, Evaluation Date | Must Have
+CS-002 | Item-level price comparison: SL, Items Name, Description, M.Unit, Qty, then Unit Price + Total Amount per supplier (minimum 3) | Must Have
+CS-003 | Auto-calculate Grand Total per supplier from item lines | Must Have
+CS-004 | Auto-identify bidding position: 1st Lowest, 2nd, 3rd, etc. | Must Have
+CS-005 | Only technically qualified vendors (passed TA) appear in CS | Must Have
+CS-006 | Procurement Committee comment field: free text recommendation narrative | Must Have
+CS-008 | Print-ready CS PDF with MCB letterhead | Must Have
+
+=== TABLE 13 ===
+Req. ID | Requirement | Priority
+NOAL-001 | Auto-trigger NOAL creation when approved PO value ≥ BDT 5,00,000; skip for lower values | Must Have
+NOAL-002 | NOAL fields: Reference No, Date, Vendor Name & Address, Contract Price (BDT + words), Performance Security Amount | Must Have
+NOAL-006 | PO cannot be confirmed without NOAL for >5 Lac orders | Must Have
+PO-001 | Auto-populate PO from approved evaluation: Vendor, items, quantities, unit prices, PR reference | Must Have
+PO-002 | PO Number auto-generated: PO-YYYY-XXXX; separate sequences for PO, CO, WO | Must Have
+PO-007 | GRN prerequisite: payment release only after GRN certified by project approver | Must Have
+PO-008 | 4-level authorization: Prepared by, Checked by, Reviewed by, Approved by (CE) | Must Have
+PO-010 | VAT/Tax auto-calculated per GoB rules; deducted at source on payment | Must Have
+PO-011 | Donor analytic account code on each PO line for cost allocation | Must Have
+
+=== TABLE 14 ===
+Report Type | Key Fields | Priority
+PR Report | PR#, PR Entry Date, PO/WO Date, PO/WO#, Items/Service Head, WO Value (BDT), Selected Vendor, Project, Remarks | Must Have
+PR Process Report | PR# → Method → Opening → CS → Evaluation → Note-3 → NOAL → PO; days elapsed per stage | Must Have
+PR Pending Report | PRs not yet converted to PO; stage, responsible person, days pending | Must Have
+Project-wise Procurement | All PRs/POs grouped by project; total value; % of project budget spent on procurement | Must Have
+Work Order Wise Report | All Work Orders with contractor, value, start/end date, completion status, GRN status | Must Have
+Vendor-wise Report | All POs per vendor; total spend; delivery performance; last delivery date | Must Have
+
+=== TABLE 15 ===
+Aspect | Current (As-Is) | Future with Odoo (To-Be)
+Chart of Accounts | Multiple Excel files per project; no unified CoA | Single Odoo CoA with analytic accounts per donor/project
+Voucher Management | Manual Word/Excel vouchers; physical filing | Digital vouchers (Credit, Debit, Contra, Journal) with workflow
+Bank Reconciliation | Manual monthly on Excel (Annexure-17) | Auto-import bank statement; one-click reconciliation
+Advance Management | Paper IOU/Advance Request forms; no tracking | Full advance lifecycle from request to adjustment in Odoo
+Budget Tracking | Manual Budget Variance report (Annexure-11) | Real-time budget consumption against analytic accounts
+Donor Reporting | Manual extraction from Excel per donor | One-click donor financial report by analytic account/project
+Asset Management | Manual Fixed Assets Register (Annexure-07) | Odoo Assets with auto-depreciation and physical inventory
+Petty Cash | Paper-based Petty Cash Book (Annexure-15) | Digital petty cash with daily balance certification
+Tax Compliance | Manual VAT/TDS calculation and filing | Auto VAT/TDS deduction, challan tracking, period summary
+
+=== TABLE 16 ===
+ID | Requirement | Priority
+COA-001 | Import MCB's full Chart of Accounts from Budget_Chart_of_Accounts.xlsx; retain existing account codes | Must Have
+COA-002 | Account types: Assets, Liabilities, Equity, Income, Expense — configured per Bangladesh GAAP | Must Have
+COA-003 | Analytic account structure: one analytic account per project per donor (e.g., FDMN-UNFPA, GBViE-CARE) | Must Have
+COA-004 | Analytic account codes to mirror Budget Head structure (Budget_Head_GBViE.xlsx and similar per project) | Must Have
+COA-005 | Multi-currency: BDT primary; USD, GBP, AUD for donor-denominated budgets with exchange rate management | Must Have
+COA-006 | Restrict deletion of accounts with transaction history; archive only | Must Have
+COA-007 | Account groups for consolidated balance sheet and income statement reporting by project/donor | Must Have
+COA-008 | Separate bank accounts per project/donor as reflected in Cheque Issue Register (Annexure-02) | Must Have
+
+=== TABLE 17 ===
+Voucher Type | Annexure | Odoo Journal Type | Key Fields
+Bank/Cash Receipt Voucher | Annexure-03 | Bank / Cash (Credit) | Check No, Check Date, Voucher No, Date, Received From, Account Name & Code, Memo, Class, Debit, Credit
+Bank/Cash Payment Voucher | Annexure-04 | Bank / Cash (Debit) | Check No, Check Date, Voucher No, Date, Received From, Account Name & Code, Memo, Customer: Job, Class, Debit, Credit
+Contra / Transfer Voucher | Annexure-05 | Bank/Cash Transfer | Voucher No, Date, Account Name & Code, Memo, Name, Class, Debit, Credit
+Journal Voucher | Annexure-06 | Miscellaneous | Voucher No, Date, Account Name & Code, Memo, Name, Class, Debit, Credit
+Cheque Issue Register | Annexure-02 | Bank journal log | Cheque No, Date, Party Name, Purpose, Amount BDT, Amount in Words, 4-signatory block
+
+=== TABLE 18 ===
+ID | Requirement | Priority
+VOU-001 | Auto-generate voucher number per journal per financial year (e.g., JV-2526-001, RV-2526-001) | Must Have
+VOU-002 | Voucher approval workflow: Prepared By → Checked By → Reviewed By → Approved By (4 levels matching Annexure format) | Must Have
+VOU-003 | Each voucher line must carry analytic account code (project + donor) for donor cost reporting | Must Have
+VOU-004 | Amount in words auto-generated in English for all vouchers | Must Have
+VOU-005 | Class / Cost Centre field on each voucher line for activity-based cost tracking | Must Have
+VOU-006 | PDF generation of all voucher types on MCB letterhead matching Annexures 03–06 | Must Have
+VOU-007 | Checklist for Payment Voucher (Annexure-28) auto-generated and linked to payment journal entry | Must Have
+VOU-008 | Expenses Top Sheet (Annexure-24) auto-generated from expense journal: Date, Vendor, Purpose, Activity Code, Bill No, Bill Amount, VAT, Tax, Net Paid | Must Have
+VOU-009 | Voucher search and filter: by date, project, donor, account, amount range, approval status | Must Have
+VOU-010 | Audit trail: all voucher changes logged with user, timestamp, old/new values; locked after approval | Must Have
+
+=== TABLE 19 ===
+ID | Requirement | Priority
+BNK-001 | Import bank statements (CSV/OFX/XLSX) per bank account; auto-match with Odoo transactions | Must Have
+BNK-002 | Bank Reconciliation Statement (Annexure-17): Balance as per Bank Statement, Add Outstanding Credits, Less Outstanding Cheques, Balance per Cash Book, Difference | Must Have
+BNK-003 | Track outstanding cheques with cheque number, party name, purpose, and amount as per Annexure-02 (Cheque Issue Register) | Must Have
+BNK-004 | Multi-bank account support: separate reconciliation per project per bank account | Must Have
+BNK-005 | Print-ready Bank Reconciliation Statement PDF with reporting period, bank account details, and approval signatures | Must Have
+BNK-006 | Alert for cheques outstanding more than 30 days | Should Have
+
+=== TABLE 20 ===
+ID | Requirement | Priority
+PCH-001 | Petty Cash Book (Annexure-15): SL#, Date, Bill#, Particulars, Accounts Code, Received Amount, Payment Amount, Running Balance | Must Have
+PCH-002 | Daily Cash Balance Report / Cash Count (Annexure-14): denomination-wise physical cash count; Amount in Words; Prepared By and Approved By signature block | Must Have
+PCH-003 | Petty Cash Statement (Annexure-16): summarized by accounts head columns (multi-column expenditure analysis) | Must Have
+PCH-004 | Petty Cash top-up workflow: request → finance approval → replenishment journal entry | Must Have
+PCH-005 | Configurable petty cash limit per project office; alert when balance below 20% threshold | Should Have
+PCH-006 | IOU / Cash Requisition Form (Annexure-13): Scroll, Receiving Date, Adjustment Date, Amount, Purpose, Adjustment commitment statement with signature block | Must Have
+
+=== TABLE 21 ===
+ID | Requirement | Priority
+ADV-001 | Advance Request Form (Annexure-18): Project, Funder, Name of Activity, Accounts Head & Code, Advance Requirement Date, itemized budget table, Amount in Words, applicant certification, finance comments, Reviewed By, Approved By | Must Have
+ADV-002 | Advance approval workflow: Applicant → Finance → Reviewed By → Approved By | Must Have
+ADV-003 | Outstanding advance check: system warns if applicant has unadjusted advance before issuing new one | Must Have
+ADV-004 | Advance Adjustment Form (Annexure-19): Name of Activity, Date of Adjustment, itemized expenditure with Accounts Code, Amount Received, Payment Voucher Ref, Amount Claimable/Refundable | Must Have
+ADV-005 | Adjustment must be completed within 5 working days of activity completion; auto-reminder sent to staff and supervisor | Must Have
+ADV-006 | Outstanding advance report: filter by staff, project, date range; flag overdue adjustments | Must Have
+ADV-007 | Advance account balance auto-cleared upon approved adjustment; refund or additional payment journal auto-generated | Must Have
+
+=== TABLE 22 ===
+ID | Requirement | Priority
+BUD-001 | Project Budget (Annexure-27): configure approved budget by Activity Code, Activity Serial, Cost Category, Implementing Organization, Activities, Unit Description, Unit, Month/Day/Time, Unit Cost, Total Budget BDT | Must Have
+BUD-002 | Working Budget (Annexure-26): operational budget per activity for field-level planning; linked to parent Project Budget | Must Have
+BUD-003 | Budget Variance Statement (Annexure-11): SL#, Head of Accounts/Expenditure, Account Code, Approved Budget Amount, Actual Expenditure, Variance Amount, Variance %, Reason for Variance | Must Have
+BUD-004 | Real-time budget consumption: each confirmed voucher/PO reduces available budget in analytic account; block/warn on overage | Must Have
+BUD-005 | Budget revision workflow: CE approval required for any budget reallocation exceeding 10% of line item | Must Have
+BUD-006 | Quarterly report generation: actual vs budget per quarter, per project, per donor (aligned to Quarterly_report_AprJun2026.xlsx format) | Must Have
+BUD-007 | Multi-year budget support: project budgets spanning multiple financial years with year-wise breakdown | Should Have
+BUD-008 | Budget lock: CE can lock budget lines to prevent further expenditure at project close-out | Must Have
+
+=== TABLE 23 ===
+ID | Requirement | Priority
+AST-001 | Fixed Assets Register (Annexure-07): SL No, Description of Assets, ID Number, Date of Purchase, Cost of Assets, Depreciation Rate, Depreciation (Opening Balance / Charge During Period / Adjustment / Closing Balance), Written Down Value, Location, Condition, Name of User | Must Have
+AST-002 | Auto-depreciation: straight-line method; monthly depreciation journal entries auto-posted to expense account | Must Have
+AST-003 | Asset ID number auto-generated; linked to project and donor funding source | Must Have
+AST-004 | Fixed Assets Physical Inventory Report (Annexure-22): Item of Assets, Cost, Written Down Value, Qty as per Register, Qty Physically Found, Short/Excess, Recommendation (Sales/Disposal/Repairable) | Must Have
+AST-005 | Asset disposal/write-off workflow: CE approval required; disposal journal auto-generated; assets register updated | Must Have
+AST-006 | Asset transfer between projects: update location, user, and donor code; generate transfer record | Must Have
+AST-007 | Asset barcode/ID label generation for physical tagging | Should Have
+
+=== TABLE 24 ===
+ID | Requirement | Priority
+TAX-001 | Auto-calculate VAT (15% standard or applicable rate) and TDS (Tax Deducted at Source) on vendor payments per GoB rules | Must Have
+TAX-002 | VAT and TDS amounts displayed separately on Expenses Top Sheet (Annexure-24) for each transaction | Must Have
+TAX-003 | Checklist for Payment Voucher (Annexure-28) includes VAT & TDS challan photocopy requirement verification field | Must Have
+TAX-004 | Monthly VAT/TDS summary report: total VAT collected, total TDS deducted, by vendor, by project | Must Have
+TAX-005 | VAT/TDS challan tracking: challan reference, date, amount, submitted to NBR — linked to payment voucher | Must Have
+TAX-006 | Vendor BIN (Business Identification Number) stored in vendor profile; validate VAT applicability | Must Have
+TAX-007 | Income tax withholding per Bangladesh income tax slabs for employee payroll (linked to Payroll module) | Must Have
+
+=== TABLE 25 ===
+ID | Requirement | Priority
+DFR-001 | Financial report by analytic account (project + donor): income, expenditure, balance — filterable by date range | Must Have
+DFR-002 | Quarterly report format aligned to Quarterly_report_AprJun2026.xlsx: budget head, approved budget, quarterly actuals, cumulative actuals, variance | Must Have
+DFR-003 | Multi-currency donor reporting: transactions posted in BDT; reports can display in USD/GBP/AUD at specified exchange rate | Must Have
+DFR-004 | Combined (consolidated) financial statement across all projects for MCB management reporting | Must Have
+DFR-005 | Export to Excel (XLSX) and PDF for all financial reports; MCB letterhead on PDFs | Must Have
+DFR-006 | Trial Balance, General Ledger, and Aged Payables / Receivables — standard Odoo reports configured for MCB | Must Have
+DFR-007 | Money Receipts (Annexure-01 / Annexure-31) auto-generated on receipt posting with acknowledgement number, date, received from, amount, purpose, bank/cheque details | Must Have
+
+=== TABLE 26 ===
+ID | Requirement | Priority
+PER-001 | Monthly period-lock: Finance Manager locks period after bank reconciliation and management review; no entries without CE override | Must Have
+PER-002 | Year-end closing: retained earnings / fund balance journal auto-generated; opening balances carried forward | Must Have
+PER-003 | Audit trail: all accounting actions logged with user, timestamp, before/after values; non-repudiable | Must Have
+PER-004 | External audit support: auditor read-only access role; ability to export general ledger and voucher copies for audit | Must Have
+PER-005 | Fiscal year configuration: July–June (Bangladesh NGO standard); financial year label format YY-YY (e.g., 25-26) | Must Have
+
+=== TABLE 27 ===
+Aspect | Current (As-Is) | Future with Odoo (To-Be)
+Project Structure | Ad hoc Excel per project; no unified system | Odoo project hierarchy: Project → Activity → Task
+Staff Time Tracking | Time Sheet paper-based (Annexure-23) | Digital timesheet per staff per project with % allocation
+Activity Monitoring | Manual email/meeting updates | Task-level progress tracking with due dates and owners
+Staff Attendance | Camp attendance sheets & Excel (Annexures 20, Revised Camp17) | Integrated attendance → payroll → time allocation
+Volunteer Management | Separate Excel (Volunteers Database 7 FDMN) | Odoo partner/contact database with incentive payment tracking
+Donor Reporting | Manual extraction and formatting per donor | Auto-generated narrative and financial data per project/donor
+Work Planning | Ad hoc documents | Online Gantt chart and milestone tracker per project
+Budget Integration | Disconnected from Finance | Real-time budget utilization from Finance analytic accounts
+
+=== TABLE 28 ===
+ID | Requirement | Priority
+PRJ-001 | Project profile: Project Name, Project Code, Donor/Funder, Contract Number, Project Start Date, Project End Date, Total Budget (BDT and donor currency), Project Manager, Implementation Area (camp/union/district) | Must Have
+PRJ-002 | Project hierarchy: Project → Output → Activity → Task; minimum 3-level decomposition | Must Have
+PRJ-003 | Activity code configuration aligned to Budget_Chart_of_Accounts.xlsx and Annexure-27 (Project Budget) structure | Must Have
+PRJ-004 | Multi-project view: all active projects on a single dashboard showing status (on track / at risk / delayed / completed) | Must Have
+PRJ-005 | Project-wise staff assignment: each staff member linked to project(s) with % time allocation per month | Must Have
+PRJ-006 | Working Budget (Annexure-26) link: each project activity linked to its working budget; consumption tracked in real time | Must Have
+PRJ-007 | Project close-out workflow: final report checklist, asset handover, budget reconciliation, system archival | Must Have
+
+=== TABLE 29 ===
+ID | Requirement | Priority
+TMS-001 | Individual timesheet: Date, Day, Day Status (Working/Holiday/Leave), Work Status, In Time, Out Time, Working Hours per project (P-01 to P-04), Leave hours, Total Hours per Day, Remarks | Must Have
+TMS-002 | 'At a Glance' summary section: Total Working Days, Total Working Hours, % of time spent per project vs policy allocation — both 'As per Policy' and 'At Actual' rows | Must Have
+TMS-003 | Auto-populate timesheet from attendance records; staff can edit and submit; supervisor approves | Must Have
+TMS-004 | Timesheet used for multi-donor cost allocation: payroll cost split across analytic accounts per % time worked | Must Have
+TMS-005 | Monthly timesheet lock after supervisor approval; Finance receives for payroll processing | Must Have
+TMS-006 | Timesheet summary report: hours by staff, by project, by month — for donor reporting and audit | Must Have
+
+=== TABLE 30 ===
+ID | Requirement | Priority
+ATT-001 | Monthly Staff Attendance Information (Annexure-20): Name of Employee, Designation, Joining Date, Leave Enjoyed (EL/CL/SL), Leave Balance (EL/CL/SL), Days Present, Leave with Pay, Leave without Pay, Absence, Holidays, Total Days, Total Days of Salary Payable | Must Have
+ATT-002 | Working Day, Holy Day, Total Day header fields per month per project/office | Must Have
+ATT-003 | Attendance feed into Payroll module: days payable auto-linked to payroll run | Must Have
+ATT-004 | Support for field-based attendance (camp offices): mobile attendance input or uploaded Excel import from camp attendance sheets | Must Have
+ATT-005 | Camp 17 attendance pattern support: Revised Camp17 Attendance Sheet format — HTV (Host Trained Volunteers) and RTV (Rohingya Trained Volunteers) separate tracking | Must Have
+ATT-006 | Attendance dashboard: real-time headcount, absenteeism rate, late arrivals per project office | Should Have
+
+=== TABLE 31 ===
+ID | Requirement | Priority
+VOL-001 | Volunteer database: Name, Camp Number, Block/Sub-block, Phone, NID/Registration Number, Volunteer Type (HTV/RTV/Community), Project Assignment, Joining Date, Status (Active/Inactive) | Must Have
+VOL-002 | Separate incentive payment module (not payroll): monthly incentive amount, attendance-based calculation, payment by cash or bKash/mobile banking | Must Have
+VOL-003 | Rohingya Volunteer Incentive sheet (aligned to Rohingya_Volunteers_Incentive_Dec2025.xlsm): Name, Camp, Days Present, Incentive Amount, Payment Mode, Signature column | Must Have
+VOL-004 | Bulk incentive calculation: configurable daily rate per volunteer category; attendance days × rate = incentive | Must Have
+VOL-005 | Volunteer payment report: camp-wise, month-wise, project-wise summary for donor reporting | Must Have
+VOL-006 | Volunteer database searchable/filterable by camp, project, type, status; exportable to Excel | Must Have
+VOL-007 | Integration with Finance: volunteer incentive payments posted to correct analytic account (project + donor) | Must Have
+
+=== TABLE 32 ===
+ID | Requirement | Priority
+MON-001 | Gantt chart view per project: activities, tasks, milestones, start/end dates, assigned staff, % completion | Must Have
+MON-002 | Task-level progress tracking: status (Not Started / In Progress / Completed / Delayed), due date, owner, % complete, comments | Must Have
+MON-003 | Milestone tracking: key deliverables with planned vs actual completion dates; auto-alert on delay | Must Have
+MON-004 | Quarterly reporting dashboard aligned to Quarterly_report_AprJun2026.xlsx: activities planned, activities completed, % achievement, key challenges, next quarter plan | Must Have
+MON-005 | Beneficiary data entry: number of direct/indirect beneficiaries per activity per reporting period; disaggregated by gender, age, location (camp/host community) | Must Have
+MON-006 | Travel Authorization Form (Annexure-30) digital workflow: Employee Name, Designation, Departure/Return Date, Destination, Purpose, Estimated Cost, Transport/Lodging/Food/Registration/Other costs, Employee Certification, Finance Comments, Recommendation, Approval | Must Have
+MON-007 | MEAL (Monitoring, Evaluation, Accountability & Learning) integration: link Odoo activities to MEAL indicator tracking | Should Have
+MON-008 | Document management: attach activity reports, photos, field visit notes to respective project tasks | Should Have
+
+=== TABLE 33 ===
+ID | Requirement | Priority
+VEH-001 | Vehicle/MC Log Book (Annexure-10): Name of Project, Work Station, Name of Staff, Designation, Vehicle No, Month; daily records of Date, Name & Designation, Purpose, Destination From/To, Time Start/End, Total Time, Meter Reading Start/End, KM Run, Fuel Litre, Lubricant, Remarks/Signature | Must Have
+VEH-002 | Vehicle master register: Vehicle No, Type (car/motorbike/CNG), Registration, Assigned Project, Driver Name, Insurance Expiry, Fitness Certificate Expiry | Must Have
+VEH-003 | Monthly vehicle usage summary: KM run per vehicle, fuel cost, trips per project; donor cost allocation | Must Have
+VEH-004 | Alert for insurance and fitness certificate expiry within 30 days | Must Have
+VEH-005 | Link vehicle trips to Movement Register (Annexure-09): cross-reference staff movements with vehicle log | Should Have
+
+=== TABLE 34 ===
+ID | Requirement | Priority
+MOV-001 | Daily Movement Register (Annexure-09): SL No, Name, Designation, Destination, Purpose, Departure Date/Time/Sign, Arrival Date/Time/Sign, Remarks | Must Have
+MOV-002 | Location field: project office location for multi-office operations | Must Have
+MOV-003 | Movement register feeds into Travel Bill (Annexure-25) and TA/DA expense claims | Must Have
+MOV-004 | Movement register cross-referenced with Travel Authorization Form (Annexure-30) for compliance | Should Have
+
+=== TABLE 35 ===
+ID | Requirement | Priority
+STO-001 | Store Register (Annexure-08): SL No, Date, GRN/Challan# (Materials Received), Quantity, Purchase Rate, SRF/Challan# (Materials Issue), Quantity, Balance Quantity, Name & Designation of Recipient, Remarks | Must Have
+STO-002 | Monthly Stock Report (aligned to Monthly_Stock_Report_Form.xlsx): opening balance, receipts, issues, closing balance per item per month per project | Must Have
+STO-003 | GRN (Goods Receipt Note) created on PO receipt; triggers store register entry and payment eligibility in Finance | Must Have
+STO-004 | Store Requisition Form (SRF): digital issue request workflow; approved SRF auto-updates store register | Must Have
+STO-005 | Minimum stock level alert per item per project location; notification to procurement for reorder | Should Have
+STO-006 | Physical inventory count reconciliation: count vs register; variance report and adjustment workflow | Must Have
+STO-007 | NFI distribution muster roll: item, beneficiary name/ID, quantity distributed, signature — linked to project activity | Must Have
+
+=== TABLE 36 ===
+Integration | Description | Priority
+HR ↔ Payroll | Attendance + Timesheet → Payroll run → Finance journal entries | Must Have
+HR ↔ Finance | Payroll cost allocated to analytic accounts per project/donor; PF & Gratuity fund journals | Must Have
+Purchase ↔ Finance | Confirmed PO → vendor invoice → payment voucher → bank journal; VAT/TDS auto-posted | Must Have
+Purchase ↔ Inventory | PO receipt → GRN → stock update → store register entry | Must Have
+Projects ↔ Finance | Project activity codes link to analytic accounts; real-time budget utilization | Must Have
+Projects ↔ HR | Staff assignment per project; timesheet → cost allocation per donor | Must Have
+Projects ↔ Purchase | Purchase Request raised from project activity; PO links to project analytic account | Must Have
+Finance ↔ Inventory | GRN triggers payment eligibility; asset purchases → Fixed Asset Register | Must Have
+Volunteer Incentive ↔ Finance | Monthly incentive payrun → payment voucher → analytic account | Must Have
+MEAL ↔ Projects | Indicator data linked to project tasks and reporting periods | Should Have
+
+=== TABLE 37 ===
+Category | Requirement
+Language | System in English; key reports and forms available in Bengali (Bangla) — at minimum: Payslip, Money Receipt, and field-facing documents
+Currency | BDT primary; USD, GBP, AUD for donor budgets; daily exchange rate management
+Date Format | DD/MM/YYYY (Bangladesh convention)
+Fiscal Year | July–June; financial year code format YY-YY (e.g., 25-26)
+Security | Role-based access control; HR data restricted to HR/Finance/CE; self-service limited to own records; vendor portal limited to own transactions
+Audit Trail | All changes logged: user, timestamp, old/new value — across HR, Finance, Purchase, Projects
+Backup | Daily automated backup; 90-day minimum retention; point-in-time recovery
+Availability | 99.5% uptime SLA; cloud-hosted Odoo preferred
+Performance | Procurement and financial reports for 500+ records load within 5 seconds
+Scalability | Support up to 500 active staff, 50 concurrent users, 10 simultaneous active projects
+Compliance | Bangladesh Labour Law 2006, NGO Affairs Bureau, UNFPA/CARE/UNICEF/DFAT donor requirements, Bangladesh VAT/Tax (GoB rules)
+Document Standards | All auto-generated PDFs use MCB branded letterhead (logo, address, contact); Annexure reference numbers preserved
+Integration | Accounting integration for all module-generated journals; email integration for approvals and notifications
+
+=== TABLE 38 ===
+Role | Modules Access | Key Permissions
+Chief Executive (CE) | All modules | Final approval: recruitment, payroll, PO, separation, travel, budget revisions
+HR Manager | HR, Payroll, Leave, Onboarding, Expenses | Employee records, leave mgmt, recruitment coordination, onboarding tasks
+Finance Manager / Officer | Accounts, Payroll, Purchase (payments) | Payroll run, PF deposits, voucher approval, bank reconciliation, donor reports
+Project Manager / HoD | Projects, HR (read), Purchase (PR) | Staff requisition, PR submission, attendance approval, activity monitoring
+Procurement Officer | Purchase | Create PR/RFQ, manage TA/CS/Evaluation, generate procurement documents
+Procurement Manager | Purchase | All Procurement Officer rights + approve CS, Evaluation, issue NOAL
+MEAL Officer | Projects (read), Reports | Indicator data entry, beneficiary data, quarterly reporting
+Employee (Self-Service) | HR self-service, Projects (own) | Apply leave, submit expense, view payslip, timesheet entry, advance request
+Volunteer Coordinator | Projects (volunteers) | Volunteer database mgmt, attendance entry, incentive calculation
+Vendor (Portal) | Purchase (portal) | Submit quotation, view own RFQ/PO, upload documents
+System Administrator | All modules | Full access, config, user management, template customization
+
+=== TABLE 39 ===
+Annexure | Document Name | Module | Generated From
+Annex-01 / 31 | Money Receipt / Acknowledgement | Accounts | Payment receipt journal entry
+Annex-02 | Cheque Issue Register | Accounts | Bank payment journal
+Annex-03 | Bank/Cash Receipt Voucher (Credit) | Accounts | Cash/Bank receipt journal
+Annex-04 | Bank/Cash Payment Voucher (Debit) | Accounts | Cash/Bank payment journal
+Annex-05 | Contra / Transfer Voucher | Accounts | Internal transfer journal
+Annex-06 | Journal Voucher | Accounts | Miscellaneous journal
+Annex-07 | Fixed Assets Register | Accounts | asset.asset records
+Annex-08 | Store Register | Projects / Inventory | stock.move records
+Annex-09 | Daily Movement Register / Tender Opening Sheet | Projects / Purchase | staff.movement / opening.sheet
+Annex-10 | Vehicle / MC Log Book | Projects | vehicle.log records
+Annex-11 | Budget Variance Statement | Accounts / Projects | analytic account vs budget
+Annex-13 | Cash Requisition (IOU) | Accounts | petty.cash.request record
+Annex-14 | Daily Cash Balance (Cash Count) | Accounts | petty.cash.count record
+Annex-15 | Petty Cash Book | Accounts | petty.cash.line records
+Annex-16 | Petty Cash Statement | Accounts | petty.cash.statement record
+Annex-17 | Bank Reconciliation Statement | Accounts | account.bank.reconciliation
+Annex-18 | Advance Request Form | Accounts | hr.expense (advance type)
+Annex-19 | Advance Adjustment Form | Accounts | hr.expense.sheet (adjustment)
+Annex-20 | Monthly Staff Attendance Information | HR / Projects | hr.attendance monthly summary
+Annex-21 | Staff Payroll Sheet | HR / Payroll | hr.payslip.run
+Annex-22 | Fixed Assets Physical Inventory Report | Accounts | asset.physical.inventory
+Annex-23 | Time Sheet of Individual Staff | Projects / HR | account.analytic.line (timesheet)
+Annex-24 | Expenses Top Sheet | Accounts | hr.expense.sheet / vendor bills
+Annex-25 | Travel Bill / Per-diem Expenses Report | HR / Projects | hr.expense (travel)
+Annex-26 | Working Budget | Projects / Accounts | crossovered.budget.lines
+Annex-27 | Project Budget | Projects / Accounts | account.budget.post
+Annex-28 | Checklist for Payment Voucher | Accounts / Purchase | payment.checklist record
+Annex-29 | Checklist for Procurement Procedures | Purchase | procurement.checklist record
+Annex-30 | Employee Travel Authorization Form | HR / Projects | hr.travel.authorization
+PR (Annex-02 Purchase) | Purchase Request | Purchase | purchase.request record
+NOAL | Notification of Award Letter | Purchase | custom noal model
+PO/CO/WO | Purchase / Work Order | Purchase | purchase.order (confirmed)
+
+=== TABLE 40 ===
+Phase | Weeks | Modules | Key Deliverables
+Phase 1: Foundation | 1–4 | Employees, Contracts, Org Chart, CoA | Staff database live; org chart; user roles; Chart of Accounts configured
+Phase 2: HR & Payroll | 3–10 | hr_payroll, hr_holidays, hr_recruitment | Recruitment pipeline; first payroll run; leave balances migrated
+Phase 3: Purchase | 6–12 | purchase, custom procurement models | Full 11-step procurement digital; RFQ/NOAL/PO live; vendor database
+Phase 4: Accounts | 8–14 | account, asset, petty cash, advances | All voucher types live; bank reconciliation; budget tracking; donor reports
+Phase 5: Projects | 10–16 | project, timesheet, inventory, volunteers | Project dashboards; timesheets; store register; volunteer incentive payrun
+Phase 6: Integration & UAT | 14–18 | All modules | End-to-end transaction tests; parallel run; user training
+Phase 7: Go-Live & Hypercare | 17–20 | All modules | Full go-live; hypercare support; final data migration validation
+
+=== TABLE 41 ===
+Data Entity | Source | Migration Method
+Active Employee Records | Google_Sheet_78_Staff_Database_23Apr26.xlsx | CSV import via Odoo wizard; validate against NID
+Staff Salary Structures | Final_Staffs_Salary_March_2026.xlsm / Staff_Salary_Annuex_March2026.xlsx | Configure payroll structures; import opening balances
+Volunteer Database | Volunteers_Database_7_FDMN_Project.xlsx | Import to Odoo partner/volunteer model via CSV
+Chart of Accounts | Budget_Chart_of_Accounts.xlsx | Odoo CoA import; map to existing account codes
+Project Budgets | Budget_Head_GBViE.xlsx; Quarterly_report_AprJun2026.xlsx | Configure analytic accounts; enter opening budget balances
+Leave Balances | HR Excel leave tracker | Leave Allocation import via CSV
+Fixed Assets | Annexure-07 records | Manual entry for active assets; opening depreciation journal
+Open POs / PRs | Existing procurement files | Manual entry for in-progress procurement only
+Bank Opening Balances | Bank statements | Opening balance journal entry per bank account
+PF / Gratuity Accruals | PF Trust records / manual calculation | Opening liability journal entry in Accounting
+Attendance History | Revised_Camp17_Attendance sheet; HTV_RTV_March_2026.pdf | Archive only; no active migration for historical data
+
+=== TABLE 42 ===
+# | Open Item | Owner
+1 | Exact salary grade bands (Grade 1–10 BDT ranges) for payroll structure configuration | HR Manager
+2 | Complete leave entitlement table per grade and employment type | HR Manager
+3 | Donor-specific Chart of Accounts / analytic account structure per active project | Finance Manager
+4 | Hosting decision: Odoo.com cloud SaaS vs self-hosted on own server | CE / IT
+5 | Integration with any existing accounting software (Tally, QuickBooks, etc.) | Finance Manager
+6 | Bengali language scope: which specific forms/reports require Bangla output | HR Manager / CE
+7 | Odoo version decision: v17 (LTS) vs v18 vs v19 | Implementation Partner
+8 | Volunteer incentive payment method: cash, bKash, or bank transfer per project | Project Manager
+9 | MEAL indicator framework: which indicators to configure in Odoo Projects | MEAL Officer
+10 | Vehicle fleet list: all project vehicles with current assignments and documentation status | Admin / Project Managers
+
+=== TABLE 43 ===
+# | Assumption
+1 | MCB will obtain an Odoo Enterprise license with sufficient named user seats for all roles defined in Section 32
+2 | An Odoo implementation partner with Bangladesh NGO sector experience will be engaged for configuration and training
+3 | MCB's HR Policy (July 2025) and Financial Management Manual (5th ed., September 2022) are authoritative; amendments during implementation require SRS revision via a Change Request
+4 | All uploaded Annexure documents (Annex-01 through Annex-31) serve as authoritative output templates for PDF generation
+5 | Reliable internet connectivity is available at MCB Head Office and all field project offices for cloud Odoo access
+6 | Data migration will be performed by the Implementation Partner with MCB finance and HR staff participation
+7 | Parallel run period (Phase 6) will last a minimum of one full payroll cycle before cutover
+
+=== TABLE 44 ===
+Role | Name | Signature | Date
+Chief Executive | Bimal Chandra Dey Sarker |  | 
+General Secretary (In-charge) | Shormin Siddiqua Lima |  | 
+Vice President | Zebun Nessa |  | 
+HR Manager / Focal Point |  |  | 
+Finance Manager |  |  | 
+Manager, Procurement |  |  | 
+Project Manager (FDMN) |  |  | 
+Implementation Partner Lead |  |  | 
+Odoo System Administrator |  |  | 

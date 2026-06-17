@@ -1,0 +1,6 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_mcb_resign_user,resignation user,model_mcb_hr_resignation,base.group_user,1,1,1,0
+access_mcb_resign_hr,resignation hr,model_mcb_hr_resignation,hr.group_hr_user,1,1,1,0
+access_mcb_resign_manager,resignation manager,model_mcb_hr_resignation,hr.group_hr_manager,1,1,1,1
+access_mcb_exit_user,exit interview user,model_mcb_hr_exit_interview,hr.group_hr_user,1,1,1,0
+access_mcb_exit_manager,exit interview manager,model_mcb_hr_exit_interview,hr.group_hr_manager,1,1,1,1

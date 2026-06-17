@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="0">
+
+        <record id="input_mcb_ot_hours" model="hr.payslip.input.type">
+            <field name="name">Overtime Hours</field>
+            <field name="code">MCB_OT_HOURS</field>
+        </record>
+
+        <record id="input_mcb_ot_days_half" model="hr.payslip.input.type">
+            <field name="name">Overtime Half-Days</field>
+            <field name="code">MCB_OT_HALFDAY</field>
+        </record>
+
+        <record id="input_mcb_ot_days_full" model="hr.payslip.input.type">
+            <field name="name">Overtime Full Days</field>
+            <field name="code">MCB_OT_FULLDAY</field>
+        </record>
+
+    </data>
+</odoo>

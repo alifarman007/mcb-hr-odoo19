@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="action_report_mcb_admit_card_topsheet" model="ir.actions.report">
+        <field name="name">Admit Card Top Sheet (Batch)</field>
+        <field name="model">mcb.hr.staff.requisition</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">mcb_hr_recruitment.report_mcb_admit_card_topsheet</field>
+        <field name="report_file">mcb_hr_recruitment.report_mcb_admit_card_topsheet</field>
+        <field name="binding_model_id" ref="model_mcb_hr_staff_requisition"/>
+        <field name="binding_type">report</field>
+    </record>
+
+    <template id="report_mcb_admit_card_topsheet">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <div style="text-align:center;">
+                            <h2 style="margin:0;">Mukti Cox's Bazar</h2>
+                            <h3 style="margin:6px 0;">Admit Card Top Sheet (Attendance Sheet)</h3>
+                            <p>
+                                Position: <strong t-esc="doc.position_title"/>
+                                · Requisition: <strong t-esc="doc.name"/>
+                            </p>
+                            <p>
+                                <span t-set="any_app" t-value="doc.applicant_ids.filtered(lambda a: a.mcb_admit_card_issued)[:1]"/>
+                                Exam Date: <strong t-esc="any_app.mcb_exam_date or '____________'"/>
+                                · Time: <strong t-esc="any_app.mcb_exam_time or '____________'"/>
+                                · Venue: <strong t-esc="any_app.mcb_exam_venue or '____________'"/>
+                            </p>
+                        </div>
+
+                        <t t-set="issued" t-value="doc.applicant_ids.filtered(lambda a: a.mcb_admit_card_issued)"/>
+                        <p>Total admit cards issued: <strong t-esc="len(issued)"/></p>
+
+                        <table class="table table-bordered" style="font-size:10pt;">
+                            <thead style="background:#1F4E79; color:white;">
+                                <tr>
+                                    <th>#</th>
+                                    <th>Admit Card ID</th>
+                                    <th>Candidate Name</th>
+                                    <th>Father's Name</th>
+                                    <th>Mother's Name</th>
+                                    <th>Mobile</th>
+                                    <th>Written</th>
+                                    <th>Oral</th>
+                                    <th>Signature</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr t-foreach="issued" t-as="app">
+                                    <td t-esc="app_index + 1"/>
+                                    <td><strong t-esc="app.mcb_admit_card_id"/></td>
+                                    <td t-esc="app.partner_name"/>
+                                    <td t-esc="app.mcb_father_name"/>
+                                    <td t-esc="app.mcb_mother_name"/>
+                                    <td t-esc="app.partner_phone"/>
+                                    <td style="text-align:center;">
+                                        <span t-if="app.mcb_attended_written">P</span>
+                                        <span t-if="not app.mcb_attended_written">☐</span>
+                                    </td>
+                                    <td style="text-align:center;">
+                                        <span t-if="app.mcb_attended_oral">P</span>
+                                        <span t-if="not app.mcb_attended_oral">☐</span>
+                                    </td>
+                                    <td style="height:35px;"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <p style="margin-top:30px;">
+                            I, the invigilator, hereby certify that the above candidates appeared
+                            for the written / oral examination on the date and venue mentioned, and
+                            their signatures are recorded against their names.
+                        </p>
+
+                        <table style="width:100%; margin-top:60px;">
+                            <tr>
+                                <td style="border-top:1px solid #000; text-align:center; width:45%;">
+                                    <strong>Invigilator</strong><br/>
+                                    Date: ________________
+                                </td>
+                                <td style="width:10%;"></td>
+                                <td style="border-top:1px solid #000; text-align:center; width:45%;">
+                                    <strong>HR Officer</strong><br/>
+                                    Date: ________________
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+
+</odoo>

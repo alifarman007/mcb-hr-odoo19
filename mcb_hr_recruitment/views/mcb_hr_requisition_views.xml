@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_mcb_requisition_list" model="ir.ui.view">
+        <field name="name">mcb.hr.staff.requisition.list</field>
+        <field name="model">mcb.hr.staff.requisition</field>
+        <field name="arch" type="xml">
+            <list string="Staff Requisitions" default_order="request_date desc">
+                <field name="name"/>
+                <field name="position_title"/>
+                <field name="department_id"/>
+                <field name="grade_id"/>
+                <field name="number_of_vacancies"/>
+                <field name="employment_type"/>
+                <field name="effective_date"/>
+                <field name="state" widget="badge"
+                       decoration-success="state == 'ce_approval' or state == 'published'"
+                       decoration-info="state == 'pm_approval' or state == 'hr_approval'"
+                       decoration-muted="state == 'closed' or state == 'cancelled'"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_mcb_requisition_form" model="ir.ui.view">
+        <field name="name">mcb.hr.staff.requisition.form</field>
+        <field name="model">mcb.hr.staff.requisition</field>
+        <field name="arch" type="xml">
+            <form string="Staff Requisition">
+                <header>
+                    <button name="action_submit_pm" type="object" string="Submit (PM)"
+                            class="btn-primary" invisible="state != 'draft'"
+                            groups="mcb_hr_employee.group_mcb_pm,hr.group_hr_user"/>
+                    <button name="action_submit_hr" type="object" string="HR Review"
+                            invisible="state != 'pm_approval'"
+                            groups="hr.group_hr_user"/>
+                    <button name="action_ce_approve" type="object" string="CE Approve"
+                            class="btn-primary" invisible="state != 'hr_approval'"
+                            groups="mcb_hr_employee.group_mcb_ce"/>
+                    <button name="action_publish" type="object" string="Publish Vacancy"
+                            class="btn-primary" invisible="state != 'ce_approval'"
+                            groups="hr.group_hr_user"/>
+                    <button name="action_close" type="object" string="Close"
+                            invisible="state not in ('published',)"
+                            groups="hr.group_hr_user"/>
+                    <button name="action_cancel" type="object" string="Cancel"
+                            invisible="state in ('cancelled','closed')"/>
+                    <button name="action_reset" type="object" string="Reset to Draft"
+                            invisible="state == 'draft'" groups="hr.group_hr_manager"/>
+                    <button name="%(action_report_mcb_job_circular)d" type="action"
+                            string="Print Job Circular"
+                            invisible="state in ('draft','pm_approval','cancelled')"/>
+                    <button name="%(action_report_mcb_shortlist)d" type="action"
+                            string="Print Shortlist"
+                            invisible="state not in ('published','closed')"/>
+                    <button name="%(action_report_mcb_admit_card_topsheet)d" type="action"
+                            string="Print Admit Card Top Sheet"
+                            invisible="state not in ('published','closed')"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,pm_approval,hr_approval,ce_approval,published,closed"/>
+                </header>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="action_view_applicants" type="object"
+                                class="oe_stat_button" icon="fa-users">
+                            <field name="applicant_count" widget="statinfo" string="Applicants"/>
+                        </button>
+                    </div>
+                    <div class="oe_title">
+                        <label for="name"/>
+                        <h1><field name="name" readonly="1"/></h1>
+                        <field name="position_title" placeholder="Position title (e.g. MEAL Officer)"/>
+                    </div>
+                    <group>
+                        <group string="Request">
+                            <field name="request_date"/>
+                            <field name="requester_id"/>
+                            <field name="department_id"/>
+                            <field name="job_id"/>
+                            <field name="effective_date"/>
+                        </group>
+                        <group string="Position Details">
+                            <field name="grade_id"/>
+                            <field name="employment_type"/>
+                            <field name="number_of_vacancies"/>
+                            <field name="gender_preference"/>
+                            <field name="working_area"/>
+                        </group>
+                    </group>
+                    <group>
+                        <group string="Salary &amp; Budget">
+                            <field name="proposed_salary"/>
+                            <field name="currency_id" groups="base.group_multi_currency"/>
+                            <field name="budget_available"/>
+                            <field name="budget_remarks"/>
+                        </group>
+                        <group string="Project / Donor">
+                            <field name="project_code"/>
+                            <field name="donor"/>
+                            <field name="analytic_code"/>
+                        </group>
+                    </group>
+                    <group>
+                        <group string="Replacement">
+                            <field name="replacement"/>
+                            <field name="replacement_of"
+                                   invisible="replacement != 'replacement'"
+                                   required="replacement == 'replacement'"/>
+                        </group>
+                        <group string="Marks Configuration (REC-010)">
+                            <field name="marks_written"/>
+                            <field name="marks_computer"/>
+                            <field name="marks_oral"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Qualifications &amp; Justification">
+                            <field name="qualification" placeholder="Minimum qualifications..."/>
+                            <field name="justification" placeholder="Why is this position needed?"/>
+                        </page>
+                        <page string="Applicants">
+                            <field name="applicant_ids">
+                                <list>
+                                    <field name="partner_name"/>
+                                    <field name="email_from"/>
+                                    <field name="partner_phone"/>
+                                    <field name="stage_id"/>
+                                    <field name="mcb_admit_card_id"/>
+                                    <field name="mcb_total_score"/>
+                                    <field name="mcb_merit_rank"/>
+                                </list>
+                            </field>
+                        </page>
+                        <page string="Expenditure">
+                            <field name="expenditure_id"/>
+                        </page>
+                    </notebook>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_mcb_requisition_kanban" model="ir.ui.view">
+        <field name="name">mcb.hr.staff.requisition.kanban</field>
+        <field name="model">mcb.hr.staff.requisition</field>
+        <field name="arch" type="xml">
+            <kanban default_group_by="state" records_draggable="0">
+                <field name="name"/>
+                <field name="position_title"/>
+                <field name="department_id"/>
+                <field name="grade_id"/>
+                <field name="number_of_vacancies"/>
+                <field name="state"/>
+                <templates>
+                    <t t-name="card">
+                        <div class="oe_kanban_card oe_kanban_global_click">
+                            <div class="o_kanban_record_top">
+                                <strong><field name="name"/></strong>
+                                <span class="float-end"><field name="number_of_vacancies"/> vacancies</span>
+                            </div>
+                            <div class="o_kanban_record_body">
+                                <field name="position_title"/><br/>
+                                <small><field name="department_id"/> · <field name="grade_id"/></small>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <record id="action_mcb_requisition" model="ir.actions.act_window">
+        <field name="name">Staff Requisitions</field>
+        <field name="res_model">mcb.hr.staff.requisition</field>
+        <field name="view_mode">list,kanban,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">Raise a new Staff Requisition (Form 21a / 21b)</p>
+            <p>SRS REC-001 / REC-002 — flow: Project Manager → HR → CE → Publish.</p>
+        </field>
+    </record>
+
+</odoo>

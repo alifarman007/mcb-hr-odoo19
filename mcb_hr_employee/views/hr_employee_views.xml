@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_employee_form_mcb_inherit" model="ir.ui.view">
+        <field name="name">hr.employee.form.mcb</field>
+        <field name="model">hr.employee</field>
+        <field name="inherit_id" ref="hr.view_employee_form"/>
+        <field name="arch" type="xml">
+
+            <!-- MCB Employee Code + Grade shown beside name -->
+            <xpath expr="//field[@name='employee_properties']" position="before">
+                <group>
+                    <group string="MCB Position">
+                        <field name="mcb_employee_code" readonly="1"/>
+                        <field name="mcb_employment_type"/>
+                        <field name="mcb_grade_id"/>
+                        <field name="mcb_grade_band" readonly="1"/>
+                    </group>
+                    <group string="Project / Donor">
+                        <field name="mcb_project_code"/>
+                        <field name="mcb_donor"/>
+                        <field name="mcb_analytic_code"/>
+                    </group>
+                </group>
+            </xpath>
+
+            <!-- MCB page on the notebook -->
+            <xpath expr="//notebook" position="inside">
+                <page name="mcb_info" string="MCB Profile" groups="hr.group_hr_user">
+                    <group>
+                        <group string="Identity (Bangladesh)">
+                            <field name="mcb_nid" placeholder="10 or 17 digit NID"/>
+                            <field name="mcb_father_name"/>
+                            <field name="mcb_mother_name"/>
+                            <field name="mcb_blood_group"/>
+                            <field name="mcb_emergency_relation"/>
+                        </group>
+                        <group string="Service Dates">
+                            <field name="mcb_service_continuity_date"/>
+                            <field name="mcb_probation_start_date"/>
+                            <field name="mcb_probation_end_date"/>
+                            <field name="mcb_confirmation_date"/>
+                        </group>
+                    </group>
+                    <group string="Provident Fund Nominee (PF-006)">
+                        <group>
+                            <field name="mcb_pf_nominee_name"/>
+                            <field name="mcb_pf_nominee_relation"/>
+                        </group>
+                        <group>
+                            <field name="mcb_pf_nominee_nid"/>
+                            <field name="mcb_pf_nominee_share"/>
+                        </group>
+                    </group>
+                    <group string="Education">
+                        <field name="mcb_education_ids" nolabel="1">
+                            <list editable="bottom">
+                                <field name="degree"/>
+                                <field name="institution"/>
+                                <field name="major"/>
+                                <field name="passing_year"/>
+                                <field name="result"/>
+                            </list>
+                        </field>
+                    </group>
+                    <group string="Prior Experience">
+                        <field name="mcb_experience_ids" nolabel="1">
+                            <list editable="bottom">
+                                <field name="employer"/>
+                                <field name="position"/>
+                                <field name="date_from"/>
+                                <field name="date_to"/>
+                                <field name="reference_name"/>
+                                <field name="reference_phone"/>
+                            </list>
+                        </field>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- List view: surface code + grade -->
+    <record id="view_employee_tree_mcb_inherit" model="ir.ui.view">
+        <field name="name">hr.employee.list.mcb</field>
+        <field name="model">hr.employee</field>
+        <field name="inherit_id" ref="hr.view_employee_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='name']" position="after">
+                <field name="mcb_employee_code" optional="show"/>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

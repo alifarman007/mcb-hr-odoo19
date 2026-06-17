@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="action_report_mcb_admit_card" model="ir.actions.report">
+        <field name="name">MCB Admit Card</field>
+        <field name="model">hr.applicant</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">mcb_hr_recruitment.report_mcb_admit_card</field>
+        <field name="report_file">mcb_hr_recruitment.report_mcb_admit_card</field>
+        <field name="binding_model_id" ref="hr_recruitment.model_hr_applicant"/>
+        <field name="binding_type">report</field>
+    </record>
+
+    <template id="report_mcb_admit_card">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <h2 style="text-align:center;">Mukti Cox's Bazar — Admit Card</h2>
+                        <h4 style="text-align:center;" t-esc="doc.mcb_admit_card_id or 'NOT YET ISSUED'"/>
+                        <hr/>
+                        <table class="table table-sm" style="border:1px solid #999;">
+                            <tr><td><strong>Candidate</strong></td><td t-esc="doc.partner_name"/></tr>
+                            <tr><td><strong>Father's Name</strong></td><td t-esc="doc.mcb_father_name"/></tr>
+                            <tr><td><strong>Mother's Name</strong></td><td t-esc="doc.mcb_mother_name"/></tr>
+                            <tr><td><strong>Mobile</strong></td><td t-esc="doc.partner_phone"/></tr>
+                            <tr><td><strong>Position</strong></td>
+                                <td t-esc="doc.mcb_requisition_id.position_title or doc.job_id.name"/></tr>
+                            <tr><td><strong>Exam Date</strong></td><td t-esc="doc.mcb_exam_date"/></tr>
+                            <tr><td><strong>Exam Time</strong></td><td t-esc="doc.mcb_exam_time"/></tr>
+                            <tr><td><strong>Exam Venue</strong></td><td t-esc="doc.mcb_exam_venue"/></tr>
+                        </table>
+                        <p>The above named candidate is invited to appear in the written / oral examination.
+                           Please bring this admit card with a valid photo ID.</p>
+                        <br/><br/>
+                        <table style="width:100%; margin-top:30px;">
+                            <tr>
+                                <td style="border-top:1px solid #000; text-align:center; width:40%;">Candidate Signature</td>
+                                <td style="width:20%;"></td>
+                                <td style="border-top:1px solid #000; text-align:center; width:40%;">Authorised Signature (CE / Director-HR &amp; Admin)</td>
+                            </tr>
+                        </table>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+
+</odoo>

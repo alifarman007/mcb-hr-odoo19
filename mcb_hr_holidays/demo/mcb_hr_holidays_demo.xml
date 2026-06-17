@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="0">
+
+        <!-- Seed annual leave allocation for demo employees -->
+        <record id="demo_allocation_rashed" model="hr.leave.allocation">
+            <field name="name">Annual leave 2026</field>
+            <field name="employee_id" ref="mcb_hr_employee.emp_rashed"/>
+            <field name="holiday_status_id" ref="mcb_hr_holidays.mcb_leave_type_annual"/>
+            <field name="number_of_days">18</field>
+            <field name="allocation_type">regular</field>
+        </record>
+        <record id="demo_allocation_farzana" model="hr.leave.allocation">
+            <field name="name">Annual leave 2026</field>
+            <field name="employee_id" ref="mcb_hr_employee.emp_farzana"/>
+            <field name="holiday_status_id" ref="mcb_hr_holidays.mcb_leave_type_annual"/>
+            <field name="number_of_days">20</field>
+            <field name="allocation_type">regular</field>
+        </record>
+
+    </data>
+</odoo>

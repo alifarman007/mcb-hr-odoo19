@@ -45,13 +45,12 @@ Native Enterprise apps carrying requirements (no custom code needed): `account_a
 
 | Status | Count |
 |---|---|
-| ✅ Done | **140** |
-| ⚠ Partial | **6** |
+| ✅ Done | **141** |
+| ⚠ Partial | **5** |
 | ❌ Deferred | 0 |
 
 ⚠ Partial detail:
 - **COA-001** — BD chart + native CSV import preserve MCB codes; the actual `Budget_Chart_of_Accounts.xlsx` file was not supplied → data load pending (SRS §36 open item 3).
-- **BNK-006** (Should) — outstanding cheques listed on the Annex-17 statement; a dedicated >30-day alert cron not yet added.
 - **BUD-007** (Should) — multi-year budgets modelled as one budget per FY; consolidated multi-FY view pending.
 - **MON-007** (Should) — MEAL indicators scaffolded (target/achieved/%), full indicator framework awaits MEAL officer's list (SRS §36 open item 9).
 - **ATT-006** (Should) — attendance data + pivots available; bespoke absenteeism dashboard not built.

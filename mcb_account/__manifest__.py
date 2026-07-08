@@ -39,6 +39,7 @@ MCB Accounts core (SRS v3 §11–§21)
         "security/mcb_account_security.xml",
         "security/ir.model.access.csv",
         "data/ir_sequence_data.xml",
+        "data/ir_cron_data.xml",
         "data/analytic_plan_data.xml",
         "data/checklist_template_data.xml",
         "reports/voucher_report.xml",

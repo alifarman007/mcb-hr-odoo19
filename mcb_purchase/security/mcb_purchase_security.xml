@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="0">
+        <record id="group_mcb_proc_officer" model="res.groups">
+            <field name="name">MCB Procurement Officer</field>
+            <field name="privilege_id" ref="mcb_hr_employee.privilege_mcb_hr_role"/>
+            <field name="comment">Create PR/RFQ; manage TA, CS, Evaluation; generate procurement documents (T38).</field>
+            <field name="implied_ids" eval="[(4, ref('purchase.group_purchase_user'))]"/>
+        </record>
+        <record id="group_mcb_proc_manager" model="res.groups">
+            <field name="name">MCB Procurement Manager</field>
+            <field name="privilege_id" ref="mcb_hr_employee.privilege_mcb_hr_role"/>
+            <field name="comment">All officer rights + approve CS/Evaluation, issue NOAL (T38).</field>
+            <field name="implied_ids" eval="[(4, ref('group_mcb_proc_officer')), (4, ref('purchase.group_purchase_manager'))]"/>
+        </record>
+    </data>
+</odoo>

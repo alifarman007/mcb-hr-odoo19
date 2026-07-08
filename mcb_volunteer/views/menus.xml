@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="menu_mcb_volunteer_root" name="MCB Volunteers"
+              web_icon="mcb_volunteer,static/description/icon.png" sequence="87"/>
+    <menuitem id="menu_mcb_volunteers" name="Volunteers Database"
+              parent="menu_mcb_volunteer_root" action="action_mcb_volunteer" sequence="10"/>
+    <menuitem id="menu_mcb_vol_att" name="Attendance"
+              parent="menu_mcb_volunteer_root" action="action_mcb_vol_att" sequence="20"/>
+    <menuitem id="menu_mcb_vib" name="Incentive Batches"
+              parent="menu_mcb_volunteer_root" action="action_mcb_vib" sequence="30"/>
+</odoo>

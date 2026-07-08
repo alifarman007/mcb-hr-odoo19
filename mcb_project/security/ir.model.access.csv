@@ -1,0 +1,21 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_mcb_assign_user,assignment read,model_mcb_project_assignment,base.group_user,1,0,0,0
+access_mcb_assign_pm,assignment pm,model_mcb_project_assignment,project.group_project_manager,1,1,1,1
+access_mcb_assign_hr,assignment hr,model_mcb_project_assignment,hr.group_hr_user,1,1,1,0
+access_mcb_assign_audit,assignment audit,model_mcb_project_assignment,mcb_account.group_mcb_audit,1,0,0,0
+access_mcb_ben_user,beneficiary user,model_mcb_beneficiary_entry,project.group_project_user,1,1,1,0
+access_mcb_ben_pm,beneficiary pm,model_mcb_beneficiary_entry,project.group_project_manager,1,1,1,1
+access_mcb_ben_audit,beneficiary audit,model_mcb_beneficiary_entry,mcb_account.group_mcb_audit,1,0,0,0
+access_mcb_ta_emp,travel auth employee,model_mcb_travel_authorization,base.group_user,1,1,1,0
+access_mcb_ta_pm,travel auth pm,model_mcb_travel_authorization,project.group_project_manager,1,1,1,1
+access_mcb_ta_audit,travel auth audit,model_mcb_travel_authorization,mcb_account.group_mcb_audit,1,0,0,0
+access_mcb_meal_user,meal user,model_mcb_meal_indicator,project.group_project_user,1,1,1,0
+access_mcb_meal_pm,meal pm,model_mcb_meal_indicator,project.group_project_manager,1,1,1,1
+access_mcb_meal_audit,meal audit,model_mcb_meal_indicator,mcb_account.group_mcb_audit,1,0,0,0
+access_mcb_alloc_wiz,payroll alloc wiz,model_mcb_payroll_allocation_wizard,account.group_account_user,1,1,1,1
+access_mcb_ts_wiz,timesheet wiz,model_mcb_timesheet_report_wizard,hr.group_hr_user,1,1,1,1
+access_mcb_att_wiz,attendance wiz,model_mcb_attendance_report_wizard,hr.group_hr_user,1,1,1,1
+access_mcb_qtr_wiz,quarterly wiz,model_mcb_quarterly_report_wizard,project.group_project_user,1,1,1,1
+access_mcb_att_imp_wiz,attendance import wiz,model_mcb_attendance_import_wizard,hr.group_hr_user,1,1,1,1
+access_project_audit,project audit read,project.model_project_project,mcb_account.group_mcb_audit,1,0,0,0
+access_task_audit,task audit read,project.model_project_task,mcb_account.group_mcb_audit,1,0,0,0

@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- PR form + Note Sheets 1/2/3 (PR-006) -->
+    <record id="action_report_mcb_pr_form" model="ir.actions.report">
+        <field name="name">Purchase Request + Note Sheets</field>
+        <field name="model">mcb.purchase.request</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">mcb_purchase.report_mcb_pr_form</field>
+        <field name="report_file">mcb_purchase.report_mcb_pr_form</field>
+        <field name="binding_model_id" ref="model_mcb_purchase_request"/>
+        <field name="binding_type">report</field>
+    </record>
+
+    <template id="report_mcb_pr_form">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <div style="text-align:center;">
+                            <h3 style="margin:0;">Mukti Cox's Bazar</h3>
+                            <h4>Purchase Request — <t t-out="doc.name"/></h4>
+                        </div>
+                        <table style="width:100%; font-size:9pt; margin-bottom:8px;">
+                            <tr>
+                                <td style="width:50%;">
+                                    <strong>Project:</strong> <t t-out="doc.project_analytic_id.name"/><br/>
+                                    <strong>Donor/Funder:</strong> <t t-out="doc.donor or ''"/><br/>
+                                    <strong>Budget Head &amp; Code:</strong>
+                                    <t t-out="doc.budget_line_id.mcb_activity_code or ''"/>
+                                    <t t-out="doc.budget_line_id.mcb_activity_name or ''"/><br/>
+                                    <strong>Total Budget:</strong> <t t-out="'%.2f' % doc.total_budget"/> ·
+                                    <strong>Current Balance:</strong> <t t-out="'%.2f' % doc.current_balance"/>
+                                </td>
+                                <td style="width:50%;">
+                                    <strong>Deadline:</strong> <t t-out="doc.deadline or ''"/><br/>
+                                    <strong>Delivery Point:</strong> <t t-out="doc.delivery_point or ''"/><br/>
+                                    <strong>Contact:</strong> <t t-out="doc.contact_person or ''"/>
+                                    (<t t-out="doc.contact_phone or ''"/>)<br/>
+                                    <strong>Method:</strong>
+                                    <t t-out="dict(doc._fields['procurement_method'].selection).get(doc.procurement_method)"/>
+                                </td>
+                            </tr>
+                        </table>
+                        <table class="table table-sm table-bordered" style="font-size:9pt;">
+                            <thead style="background:#eee;">
+                                <tr><th>Sl</th><th>Name of Items</th><th>Specifications</th><th>Category</th>
+                                    <th>M.Unit</th><th class="text-end">Qty</th>
+                                    <th class="text-end">Unit Price</th><th class="text-end">Total</th></tr>
+                            </thead>
+                            <tbody>
+                                <t t-set="i" t-value="0"/>
+                                <t t-foreach="doc.line_ids" t-as="l">
+                                    <t t-set="i" t-value="i + 1"/>
+                                    <tr>
+                                        <td><t t-out="i"/></td>
+                                        <td><t t-out="l.name"/></td>
+                                        <td><t t-out="l.specification or ''"/></td>
+                                        <td><t t-out="l.category or ''"/></td>
+                                        <td><t t-out="l.uom_id.name or ''"/></td>
+                                        <td class="text-end"><t t-out="l.quantity"/></td>
+                                        <td class="text-end"><t t-out="'%.2f' % l.price_unit"/></td>
+                                        <td class="text-end"><t t-out="'%.2f' % l.price_total"/></td>
+                                    </tr>
+                                </t>
+                            </tbody>
+                            <tfoot>
+                                <tr style="background:#eee;">
+                                    <th colspan="7">Grand Total</th>
+                                    <th class="text-end"><t t-out="'%.2f' % doc.amount_total"/></th>
+                                </tr>
+                            </tfoot>
+                        </table>
+                        <table style="width:100%; margin-top:35px; text-align:center; font-size:9pt;">
+                            <tr>
+                                <td style="border-top:1px solid #000; width:22%;">Applicant<br/><t t-out="doc.requester_id.name"/></td>
+                                <td style="width:4%;"/>
+                                <td style="border-top:1px solid #000; width:22%;">Accounts Officer<br/><t t-out="doc.accounts_officer_id.name or ''"/></td>
+                                <td style="width:4%;"/>
+                                <td style="border-top:1px solid #000; width:22%;">PC / In-charge<br/><t t-out="doc.pc_incharge_id.name or ''"/></td>
+                                <td style="width:4%;"/>
+                                <td style="border-top:1px solid #000; width:22%;">Chief Executive<br/><t t-out="doc.ce_id.name or ''"/></td>
+                            </tr>
+                        </table>
+
+                        <div style="page-break-before:always;">
+                            <h4 style="text-align:center;">Note Sheet-1 — CE Instruction to Procurement Committee</h4>
+                            <p><strong>Ref:</strong> <t t-out="doc.name"/> · <strong>Date:</strong> <t t-out="doc.date_approved or ''"/></p>
+                            <t t-out="doc.note1_html or ''"/>
+                        </div>
+                        <div t-if="doc.note2_html" style="page-break-before:always;">
+                            <h4 style="text-align:center;">Note Sheet-2 — Procurement Committee Minutes</h4>
+                            <t t-out="doc.note2_html"/>
+                        </div>
+                        <div t-if="doc.note3_html" style="page-break-before:always;">
+                            <h4 style="text-align:center;">Note Sheet-3 — Award Recommendation</h4>
+                            <t t-out="doc.note3_html"/>
+                        </div>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+
+    <!-- Table-14 PR / Process report (wizard) -->
+    <record id="action_report_mcb_pr_report" model="ir.actions.report">
+        <field name="name">PR / Process Report (Table-14)</field>
+        <field name="model">mcb.pr.report.wizard</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">mcb_purchase.report_mcb_pr_process</field>
+        <field name="report_file">mcb_purchase.report_mcb_pr_process</field>
+    </record>
+
+    <template id="report_mcb_pr_process">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-set="rows" t-value="doc._rows()"/>
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <div style="text-align:center;">
+                            <h3 style="margin:0;">Mukti Cox's Bazar</h3>
+                            <h4>PR &amp; Process Report</h4>
+                            <p><strong>Period:</strong> <t t-out="doc.date_from"/> — <t t-out="doc.date_to"/></p>
+                        </div>
+                        <table class="table table-sm table-bordered" style="font-size:8pt;">
+                            <thead style="background:#eee;">
+                                <tr>
+                                    <th>PR#</th><th>Entry Date</th><th>Project</th><th>Method</th>
+                                    <th>PO/WO#</th><th>Vendor</th><th class="text-end">Value</th>
+                                    <th>d:Confirm</th><th>d:CE</th><th>d:PC</th><th>d:PO</th><th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <t t-foreach="rows" t-as="r">
+                                    <tr>
+                                        <td><t t-out="r['pr'].name"/></td>
+                                        <td><t t-out="r['pr'].date_request"/></td>
+                                        <td><t t-out="r['pr'].project_analytic_id.name"/></td>
+                                        <td><t t-out="r['pr'].procurement_method"/></td>
+                                        <td><t t-out="r['po'].mcb_order_ref or r['po'].name or ''"/></td>
+                                        <td><t t-out="r['po'].partner_id.name or ''"/></td>
+                                        <td class="text-end"><t t-out="'%.0f' % (r['po'].amount_total or 0)"/></td>
+                                        <td><t t-out="r['d_confirm'].days if r['d_confirm'] else ''"/></td>
+                                        <td><t t-out="r['d_approve'].days if r['d_approve'] else ''"/></td>
+                                        <td><t t-out="r['d_pc'].days if r['d_pc'] else ''"/></td>
+                                        <td><t t-out="r['d_po'].days if r['d_po'] else ''"/></td>
+                                        <td><t t-out="r['pr'].state"/></td>
+                                    </tr>
+                                </t>
+                            </tbody>
+                        </table>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+
+    <record id="view_mcb_pr_report_wizard" model="ir.ui.view">
+        <field name="name">mcb.pr.report.wizard.form</field>
+        <field name="model">mcb.pr.report.wizard</field>
+        <field name="arch" type="xml">
+            <form string="PR / Process Report">
+                <group>
+                    <field name="date_from"/>
+                    <field name="date_to"/>
+                    <field name="project_analytic_id"/>
+                </group>
+                <footer>
+                    <button name="action_print_pr_report" type="object" string="Print PDF"
+                            class="btn-primary"/>
+                    <button name="action_export_xlsx" type="object" string="Export XLSX"/>
+                    <button special="cancel" string="Close"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+    <record id="action_mcb_pr_report_wizard" model="ir.actions.act_window">
+        <field name="name">PR / Process Report</field>
+        <field name="res_model">mcb.pr.report.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+</odoo>

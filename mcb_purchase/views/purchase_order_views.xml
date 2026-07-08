@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="purchase_order_form_mcb" model="ir.ui.view">
+        <field name="name">purchase.order.form.mcb</field>
+        <field name="model">purchase.order</field>
+        <field name="inherit_id" ref="purchase.purchase_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//header" position="inside">
+                <button name="action_mcb_check" type="object" string="Check (MCB)"
+                        invisible="mcb_checked_by_id or state not in ('draft', 'sent')"
+                        groups="mcb_purchase.group_mcb_proc_officer"/>
+                <button name="action_mcb_review" type="object" string="Review (MCB)"
+                        invisible="not mcb_checked_by_id or mcb_reviewed_by_id or state not in ('draft', 'sent')"
+                        groups="mcb_purchase.group_mcb_proc_manager"/>
+                <button name="action_mcb_approve" type="object" string="Approve (MCB/CE)"
+                        class="btn-primary"
+                        invisible="not mcb_reviewed_by_id or mcb_approved_by_id or state not in ('draft', 'sent')"
+                        groups="mcb_hr_employee.group_mcb_ce"/>
+            </xpath>
+            <xpath expr="//sheet" position="inside">
+                <group string="MCB Procurement">
+                    <group>
+                        <field name="mcb_po_type"/>
+                        <field name="mcb_order_ref" readonly="1"/>
+                        <field name="mcb_pr_id"/>
+                        <field name="mcb_evaluation_id" readonly="1"/>
+                    </group>
+                    <group>
+                        <field name="mcb_noal_required" readonly="1"/>
+                        <field name="mcb_noal_id" readonly="1"/>
+                        <field name="mcb_checked_by_id" readonly="1"/>
+                        <field name="mcb_reviewed_by_id" readonly="1"/>
+                        <field name="mcb_approved_by_id" readonly="1"/>
+                    </group>
+                </group>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- Table-14: Work Order Wise Report — filtered action -->
+    <record id="action_mcb_wo_report" model="ir.actions.act_window">
+        <field name="name">Work Order Wise Report</field>
+        <field name="res_model">purchase.order</field>
+        <field name="view_mode">list,form</field>
+        <field name="domain">[('mcb_po_type', '=', 'wo')]</field>
+    </record>
+
+    <!-- Table-14: Vendor-wise report — grouped pivot -->
+    <record id="action_mcb_vendorwise" model="ir.actions.act_window">
+        <field name="name">Vendor-wise Procurement</field>
+        <field name="res_model">purchase.order</field>
+        <field name="view_mode">pivot,list,form</field>
+        <field name="context">{'search_default_group_by_vendor': 1}</field>
+        <field name="domain">[('state', 'in', ('purchase', 'done'))]</field>
+    </record>
+</odoo>

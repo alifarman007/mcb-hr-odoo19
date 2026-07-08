@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="action_report_mcb_top_sheet" model="ir.actions.report">
+        <field name="name">Expenses Top Sheet (Annexure-24)</field>
+        <field name="model">mcb.top.sheet.wizard</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">mcb_account.report_mcb_top_sheet</field>
+        <field name="report_file">mcb_account.report_mcb_top_sheet</field>
+    </record>
+
+    <template id="report_mcb_top_sheet">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-set="rows" t-value="doc._bill_rows()"/>
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <div style="text-align:center;">
+                            <h3 style="margin:0;">Mukti Cox's Bazar</h3>
+                            <h4>Expenses Top Sheet</h4>
+                        </div>
+                        <p>
+                            <strong>Name of Project/Office:</strong> <t t-out="doc.project_name or (doc.analytic_account_id.name or '')"/> ·
+                            <strong>Funded By:</strong> <t t-out="doc.funded_by or ''"/> ·
+                            <strong>Period:</strong> <t t-out="doc.date_from"/> — <t t-out="doc.date_to"/>
+                        </p>
+                        <table class="table table-sm table-bordered" style="font-size:8.5pt;">
+                            <thead style="background:#eee;">
+                                <tr>
+                                    <th>Sl</th><th>Date</th><th>Name of Vendor/Party</th><th>Purpose</th>
+                                    <th>Activity/Accounts Code</th><th>Bill No.</th>
+                                    <th class="text-end">Bill</th><th class="text-end">VAT</th>
+                                    <th class="text-end">Tax (TDS)</th><th class="text-end">Net Paid</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <t t-set="i" t-value="0"/>
+                                <t t-foreach="rows" t-as="r">
+                                    <t t-set="i" t-value="i + 1"/>
+                                    <tr>
+                                        <td><t t-out="i"/></td>
+                                        <td><t t-out="r['date']"/></td>
+                                        <td><t t-out="r['vendor']"/></td>
+                                        <td><t t-out="r['purpose']"/></td>
+                                        <td><t t-out="r['code']"/></td>
+                                        <td><t t-out="r['bill_no']"/></td>
+                                        <td class="text-end"><t t-out="'%.2f' % r['bill']"/></td>
+                                        <td class="text-end"><t t-out="'%.2f' % r['vat']"/></td>
+                                        <td class="text-end"><t t-out="'%.2f' % r['tds']"/></td>
+                                        <td class="text-end"><t t-out="'%.2f' % r['net']"/></td>
+                                    </tr>
+                                </t>
+                            </tbody>
+                            <tfoot>
+                                <tr style="background:#eee;">
+                                    <th colspan="6">Grand Total</th>
+                                    <th class="text-end"><t t-out="'%.2f' % sum(r['bill'] for r in rows)"/></th>
+                                    <th class="text-end"><t t-out="'%.2f' % sum(r['vat'] for r in rows)"/></th>
+                                    <th class="text-end"><t t-out="'%.2f' % sum(r['tds'] for r in rows)"/></th>
+                                    <th class="text-end"><t t-out="'%.2f' % sum(r['net'] for r in rows)"/></th>
+                                </tr>
+                            </tfoot>
+                        </table>
+                        <table style="width:100%; margin-top:45px; text-align:center; font-size:9pt;">
+                            <tr>
+                                <td style="border-top:1px solid #000; width:18%;">Prepared By</td>
+                                <td style="width:2%;"/>
+                                <td style="border-top:1px solid #000; width:18%;">Financed By</td>
+                                <td style="width:2%;"/>
+                                <td style="border-top:1px solid #000; width:18%;">Checked By</td>
+                                <td style="width:2%;"/>
+                                <td style="border-top:1px solid #000; width:18%;">Reviewed By</td>
+                                <td style="width:2%;"/>
+                                <td style="border-top:1px solid #000; width:18%;">Approved By</td>
+                            </tr>
+                        </table>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>

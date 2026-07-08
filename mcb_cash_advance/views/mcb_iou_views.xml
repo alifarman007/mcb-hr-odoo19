@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_mcb_iou_list" model="ir.ui.view">
+        <field name="name">mcb.iou.list</field>
+        <field name="model">mcb.iou</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="employee_id"/>
+                <field name="purpose"/>
+                <field name="amount"/>
+                <field name="receiving_date"/>
+                <field name="adjust_deadline"/>
+                <field name="state" widget="badge" decoration-warning="state == 'paid'"
+                       decoration-success="state == 'adjusted'"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_mcb_iou_form" model="ir.ui.view">
+        <field name="name">mcb.iou.form</field>
+        <field name="model">mcb.iou</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_submit" type="object" string="Submit" class="btn-primary"
+                            invisible="state != 'draft'"/>
+                    <button name="action_approve" type="object" string="Approve" class="btn-primary"
+                            invisible="state != 'submitted'" groups="account.group_account_user"/>
+                    <button name="action_pay" type="object" string="Pay Cash" class="btn-primary"
+                            invisible="state != 'approved'" groups="account.group_account_user"/>
+                    <button name="action_adjust" type="object" string="Adjust / Settle"
+                            class="btn-primary" invisible="state != 'paid'"
+                            groups="account.group_account_user"/>
+                    <button name="action_cancel" type="object" string="Cancel"
+                            invisible="state in ('adjusted','cancelled')"/>
+                    <field name="state" widget="statusbar"/>
+                </header>
+                <sheet>
+                    <div class="oe_title"><h1><field name="name" readonly="1"/></h1></div>
+                    <group>
+                        <group>
+                            <field name="employee_id"/>
+                            <field name="purpose"/>
+                            <field name="amount"/>
+                            <field name="amount_in_words" readonly="1"/>
+                            <field name="journal_id"/>
+                            <field name="currency_id" invisible="1"/>
+                        </group>
+                        <group>
+                            <field name="project_analytic_id"/>
+                            <field name="funded_by"/>
+                            <field name="days_to_adjust"/>
+                            <field name="receiving_date" readonly="1"/>
+                            <field name="adjust_deadline" readonly="1"/>
+                        </group>
+                    </group>
+                    <group string="Adjustment" invisible="state not in ('paid','adjusted')">
+                        <group>
+                            <field name="settle_account_id"/>
+                            <field name="settle_amount_spent"/>
+                        </group>
+                        <group>
+                            <field name="payment_move_id" readonly="1"/>
+                            <field name="settle_move_id" readonly="1"/>
+                        </group>
+                    </group>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_mcb_iou" model="ir.actions.act_window">
+        <field name="name">IOU / Cash Requisitions (Annexure-13)</field>
+        <field name="res_model">mcb.iou</field>
+        <field name="view_mode">list,form</field>
+    </record>
+</odoo>

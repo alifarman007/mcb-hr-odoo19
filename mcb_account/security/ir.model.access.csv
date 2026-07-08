@@ -1,0 +1,17 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_mcb_challan_user,challan acc user,model_mcb_tax_challan,account.group_account_user,1,1,1,0
+access_mcb_challan_mgr,challan acc mgr,model_mcb_tax_challan,account.group_account_manager,1,1,1,1
+access_mcb_challan_audit,challan audit,model_mcb_tax_challan,mcb_account.group_mcb_audit,1,0,0,0
+access_mcb_pay_chk_user,pay checklist user,model_mcb_payment_checklist,account.group_account_user,1,1,1,0
+access_mcb_pay_chk_mgr,pay checklist mgr,model_mcb_payment_checklist,account.group_account_manager,1,1,1,1
+access_mcb_pay_chk_audit,pay checklist audit,model_mcb_payment_checklist,mcb_account.group_mcb_audit,1,0,0,0
+access_mcb_pay_chk_line_user,pay checklist line user,model_mcb_payment_checklist_line,account.group_account_user,1,1,1,1
+access_mcb_pay_chk_line_audit,pay checklist line audit,model_mcb_payment_checklist_line,mcb_account.group_mcb_audit,1,0,0,0
+access_mcb_chk_tmpl_user,checklist template read,model_mcb_checklist_item_template,base.group_user,1,0,0,0
+access_mcb_chk_tmpl_mgr,checklist template mgr,model_mcb_checklist_item_template,account.group_account_manager,1,1,1,1
+access_mcb_bank_recon_wiz,bank recon wiz,model_mcb_bank_recon_wizard,account.group_account_user,1,1,1,1
+access_mcb_top_sheet_wiz,top sheet wiz,model_mcb_top_sheet_wizard,account.group_account_user,1,1,1,1
+access_mcb_vat_tds_wiz,vat tds wiz,model_mcb_vat_tds_wizard,account.group_account_user,1,1,1,1
+access_mcb_cheque_reg_wiz,cheque reg wiz,model_mcb_cheque_register_wizard,account.group_account_user,1,1,1,1
+access_mcb_analytic_wiz,analytic wiz,model_mcb_analytic_report_wizard,account.group_account_user,1,1,1,1
+access_mcb_year_end_wiz,year end wiz,model_mcb_year_end_wizard,account.group_account_manager,1,1,1,1

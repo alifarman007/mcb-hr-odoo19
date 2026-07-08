@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="0">
+        <record id="demo_pr_1" model="mcb.purchase.request">
+            <field name="project_analytic_id" ref="mcb_account.analytic_fdmn_unfpa"/>
+            <field name="donor">UNFPA</field>
+            <field name="delivery_point">Head Office Store, Cox's Bazar</field>
+            <field name="contact_person">Store Keeper</field>
+            <field name="contact_phone">+8801700000000</field>
+            <field name="line_ids" eval="[
+                (0, 0, {'name': 'Office chairs (steel, cushioned)', 'quantity': 20, 'price_unit': 4500,
+                        'specification': 'Steel frame, cushioned seat, local make'}),
+                (0, 0, {'name': 'Executive tables', 'quantity': 5, 'price_unit': 12000,
+                        'specification': '5x3 ft, processed wood'}),
+            ]"/>
+        </record>
+    </data>
+</odoo>

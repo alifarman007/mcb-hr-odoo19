@@ -1,0 +1,25 @@
+Annexure - 23
+Mukti Cox's Bazar
+Head Office, Goldighirpar, Cox’s Bazar
+Time Sheet of Individual Staff
+At a Glance
+Prepared By															Approved By
+
+[TABLE 0]
+Name | XXXXXX | Time Sheet Month | XXXXXX | Calculation Date
+Designation | XXXXXX | Financial Year | XXXXXX | XXXXXX
+
+[TABLE 1]
+Date | Day | Day Status | Work Status | In Time | Out Time | Project and organizational Involvement | Project and organizational Involvement | Project and organizational Involvement | Project and organizational Involvement | Project and organizational Involvement | Project and organizational Involvement | Total Hour Per Day | Remarks
+ |  |  |  |  |  | Working Hour | P-01 | P-02 | P-03 | P-04 | Leave |  | 
+ |  |  |  |  |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  |  |  |  |  | 
+Total Our Spent for  work | Total Our Spent for  work | Total Our Spent for  work | Total Our Spent for  work |  |  |  |  |  |  |  |  |  | 
+Project wise % | Project wise % | Project wise % | Project wise % | Project wise % | Project wise % |  |  |  |  |  |  |  | 
+
+[TABLE 2]
+Name |  | Total Working Days | Total Working Hours | % of time spent for Project or Organizations in this month | % of time spent for Project or Organizations in this month | % of time spent for Project or Organizations in this month | % of time spent for Project or Organizations in this month | % of time spent for Project or Organizations in this month | % of time spent for Project or Organizations in this month | % of  Total WH | Remarks
+Name |  | Total Working Days | Total Working Hours | Working Hour | P-01 | P-02 | P-03 | P-04 | Leave | % of  Total WH | Remarks
+XXXX | As per Policy |  |  |  |  |  |  |  |  |  | 
+XXXX | At Actual |  |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  |  |  | 

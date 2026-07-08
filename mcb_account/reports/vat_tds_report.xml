@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="action_report_mcb_vat_tds" model="ir.actions.report">
+        <field name="name">Monthly VAT / TDS Summary</field>
+        <field name="model">mcb.vat.tds.wizard</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">mcb_account.report_mcb_vat_tds</field>
+        <field name="report_file">mcb_account.report_mcb_vat_tds</field>
+    </record>
+
+    <template id="report_mcb_vat_tds">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-set="s" t-value="doc._summary()"/>
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <div style="text-align:center;">
+                            <h3 style="margin:0;">Mukti Cox's Bazar</h3>
+                            <h4>Monthly VAT / TDS Summary</h4>
+                            <p><strong>Period:</strong> <t t-out="doc.date_from"/> — <t t-out="doc.date_to"/></p>
+                        </div>
+                        <t t-foreach="[('VAT (Deducted at source)', s['vat_rows']), ('TDS (Deducted at source)', s['tds_rows'])]" t-as="section">
+                            <h5><t t-out="section[0]"/></h5>
+                            <table class="table table-sm table-bordered" style="font-size:9pt;">
+                                <thead style="background:#eee;">
+                                    <tr><th>Vendor</th><th>Project</th><th class="text-end">Amount</th></tr>
+                                </thead>
+                                <tbody>
+                                    <t t-foreach="sorted(section[1].items())" t-as="kv">
+                                        <tr>
+                                            <td><t t-out="kv[0][0]"/></td>
+                                            <td><t t-out="kv[0][1]"/></td>
+                                            <td class="text-end"><t t-out="'%.2f' % kv[1]"/></td>
+                                        </tr>
+                                    </t>
+                                </tbody>
+                            </table>
+                        </t>
+                        <h5>Deposits to Govt. Treasury (Challans)</h5>
+                        <table class="table table-sm table-bordered" style="font-size:9pt;">
+                            <thead style="background:#eee;">
+                                <tr><th>Type</th><th>Challan No.</th><th>Date</th><th>Bank</th><th>Branch</th><th class="text-end">Amount</th></tr>
+                            </thead>
+                            <tbody>
+                                <t t-foreach="s['challans']" t-as="c">
+                                    <tr>
+                                        <td><t t-out="dict(c._fields['challan_type'].selection).get(c.challan_type)"/></td>
+                                        <td><t t-out="c.challan_no"/></td>
+                                        <td><t t-out="c.date"/></td>
+                                        <td><t t-out="c.bank_name"/></td>
+                                        <td><t t-out="c.branch_name or ''"/></td>
+                                        <td class="text-end"><t t-out="'%.2f' % c.amount"/></td>
+                                    </tr>
+                                </t>
+                            </tbody>
+                        </table>
+                        <table class="table table-sm table-bordered" style="font-size:9pt; width:70%;">
+                            <thead style="background:#1F4E79; color:white;">
+                                <tr><th></th><th class="text-end">Deducted</th><th class="text-end">Deposited</th><th class="text-end">Dues</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr><th>VAT</th>
+                                    <td class="text-end"><t t-out="'%.2f' % s['vat_total']"/></td>
+                                    <td class="text-end"><t t-out="'%.2f' % s['vat_deposited']"/></td>
+                                    <td class="text-end"><t t-out="'%.2f' % s['vat_dues']"/></td></tr>
+                                <tr><th>TDS</th>
+                                    <td class="text-end"><t t-out="'%.2f' % s['tds_total']"/></td>
+                                    <td class="text-end"><t t-out="'%.2f' % s['tds_deposited']"/></td>
+                                    <td class="text-end"><t t-out="'%.2f' % s['tds_dues']"/></td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>

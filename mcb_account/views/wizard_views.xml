@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_mcb_bank_recon_wizard" model="ir.ui.view">
+        <field name="name">mcb.bank.recon.wizard.form</field>
+        <field name="model">mcb.bank.recon.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Bank Reconciliation Statement (Annexure-17)">
+                <group>
+                    <field name="journal_id"/>
+                    <field name="date_to"/>
+                    <field name="statement_balance"/>
+                    <field name="currency_id" invisible="1"/>
+                </group>
+                <footer>
+                    <button name="action_print_pdf" type="object" string="Print PDF" class="btn-primary"/>
+                    <button name="action_export_xlsx" type="object" string="Export XLSX"/>
+                    <button special="cancel" string="Close"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+    <record id="action_mcb_bank_recon_wizard" model="ir.actions.act_window">
+        <field name="name">Bank Reconciliation Statement (Annexure-17)</field>
+        <field name="res_model">mcb.bank.recon.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+    <record id="view_mcb_top_sheet_wizard" model="ir.ui.view">
+        <field name="name">mcb.top.sheet.wizard.form</field>
+        <field name="model">mcb.top.sheet.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Expenses Top Sheet (Annexure-24)">
+                <group>
+                    <group>
+                        <field name="date_from"/>
+                        <field name="date_to"/>
+                    </group>
+                    <group>
+                        <field name="analytic_account_id"/>
+                        <field name="project_name"/>
+                        <field name="funded_by"/>
+                    </group>
+                </group>
+                <footer>
+                    <button name="action_print_pdf" type="object" string="Print PDF" class="btn-primary"/>
+                    <button name="action_export_xlsx" type="object" string="Export XLSX"/>
+                    <button special="cancel" string="Close"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+    <record id="action_mcb_top_sheet_wizard" model="ir.actions.act_window">
+        <field name="name">Expenses Top Sheet (Annexure-24)</field>
+        <field name="res_model">mcb.top.sheet.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+    <record id="view_mcb_vat_tds_wizard" model="ir.ui.view">
+        <field name="name">mcb.vat.tds.wizard.form</field>
+        <field name="model">mcb.vat.tds.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Monthly VAT / TDS Summary">
+                <group>
+                    <field name="date_from"/>
+                    <field name="date_to"/>
+                </group>
+                <footer>
+                    <button name="action_print_pdf" type="object" string="Print PDF" class="btn-primary"/>
+                    <button name="action_export_xlsx" type="object" string="Export XLSX"/>
+                    <button special="cancel" string="Close"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+    <record id="action_mcb_vat_tds_wizard" model="ir.actions.act_window">
+        <field name="name">Monthly VAT / TDS Summary</field>
+        <field name="res_model">mcb.vat.tds.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+    <record id="view_mcb_cheque_register_wizard" model="ir.ui.view">
+        <field name="name">mcb.cheque.register.wizard.form</field>
+        <field name="model">mcb.cheque.register.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Cheque Issue Register (Annexure-02)">
+                <group>
+                    <group>
+                        <field name="journal_id"/>
+                        <field name="date_from"/>
+                        <field name="date_to"/>
+                    </group>
+                    <group>
+                        <field name="project_name"/>
+                        <field name="funded_by"/>
+                    </group>
+                </group>
+                <footer>
+                    <button name="action_print_pdf" type="object" string="Print PDF" class="btn-primary"/>
+                    <button name="action_export_xlsx" type="object" string="Export XLSX"/>
+                    <button special="cancel" string="Close"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+    <record id="action_mcb_cheque_register_wizard" model="ir.actions.act_window">
+        <field name="name">Cheque Issue Register (Annexure-02)</field>
+        <field name="res_model">mcb.cheque.register.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+    <record id="view_mcb_analytic_report_wizard" model="ir.ui.view">
+        <field name="name">mcb.analytic.report.wizard.form</field>
+        <field name="model">mcb.analytic.report.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Donor / Project Financial Report">
+                <group>
+                    <field name="analytic_account_ids" widget="many2many_tags"/>
+                    <field name="date_from"/>
+                    <field name="date_to"/>
+                </group>
+                <footer>
+                    <button name="action_print_pdf" type="object" string="Print PDF" class="btn-primary"/>
+                    <button name="action_export_xlsx" type="object" string="Export XLSX"/>
+                    <button special="cancel" string="Close"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+    <record id="action_mcb_analytic_report_wizard" model="ir.actions.act_window">
+        <field name="name">Donor / Project Financial Report (DFR-001)</field>
+        <field name="res_model">mcb.analytic.report.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+    <record id="view_mcb_year_end_wizard" model="ir.ui.view">
+        <field name="name">mcb.year.end.wizard.form</field>
+        <field name="model">mcb.year.end.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Year-End Fund Balance Closing (PER-002)">
+                <group>
+                    <field name="fiscal_date"/>
+                    <field name="journal_id"/>
+                </group>
+                <footer>
+                    <button name="action_close" type="object" string="Create Closing Entry" class="btn-primary"/>
+                    <button special="cancel" string="Close"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+    <record id="action_mcb_year_end_wizard" model="ir.actions.act_window">
+        <field name="name">Year-End Closing (PER-002)</field>
+        <field name="res_model">mcb.year.end.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+</odoo>

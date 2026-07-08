@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_budget_analytic_form_mcb" model="ir.ui.view">
+        <field name="name">budget.analytic.form.mcb</field>
+        <field name="model">budget.analytic</field>
+        <field name="inherit_id" ref="account_budget.view_budget_analytic_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//header" position="inside">
+                <button name="action_mcb_lock" type="object" string="CE Lock / Unlock (BUD-008)"
+                        groups="mcb_hr_employee.group_mcb_ce"/>
+            </xpath>
+            <xpath expr="//field[@name='budget_line_ids']/list/field[@name='budget_amount']" position="before">
+                <field name="mcb_activity_code" optional="show"/>
+                <field name="mcb_activity_serial" optional="hide"/>
+                <field name="mcb_cost_category" optional="show"/>
+                <field name="mcb_activity_name" optional="show"/>
+                <field name="mcb_unit_desc" optional="hide"/>
+                <field name="mcb_unit" optional="hide"/>
+                <field name="mcb_times" optional="hide"/>
+                <field name="mcb_unit_cost" optional="hide"/>
+            </xpath>
+            <xpath expr="//sheet" position="inside">
+                <group string="MCB (Annexure-27)">
+                    <group>
+                        <field name="mcb_project_code"/>
+                        <field name="mcb_donor"/>
+                        <field name="mcb_implementing_org"/>
+                    </group>
+                    <group>
+                        <field name="mcb_locked" readonly="1"/>
+                        <field name="mcb_overage_policy"/>
+                    </group>
+                </group>
+            </xpath>
+        </field>
+    </record>
+</odoo>

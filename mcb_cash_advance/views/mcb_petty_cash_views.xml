@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_mcb_cash_count_form" model="ir.ui.view">
+        <field name="name">mcb.cash.count.form</field>
+        <field name="model">mcb.cash.count</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_approve" type="object" string="Approve" class="btn-primary"
+                            invisible="state == 'approved'" groups="account.group_account_manager"/>
+                    <button name="%(action_report_mcb_cash_count)d" type="action"
+                            string="Print (Annexure-14)"/>
+                    <field name="state" widget="statusbar"/>
+                </header>
+                <sheet>
+                    <div class="oe_title"><h1><field name="name" readonly="1"/></h1></div>
+                    <group>
+                        <group>
+                            <field name="journal_id"/>
+                            <field name="date"/>
+                            <field name="project_name"/>
+                            <field name="funded_by"/>
+                        </group>
+                        <group>
+                            <field name="total_counted" readonly="1"/>
+                            <field name="book_balance" readonly="1"/>
+                            <field name="difference" readonly="1"/>
+                            <field name="amount_in_words" readonly="1"/>
+                            <field name="currency_id" invisible="1"/>
+                        </group>
+                    </group>
+                    <field name="line_ids">
+                        <list editable="bottom">
+                            <field name="denomination"/>
+                            <field name="quantity"/>
+                            <field name="subtotal"/>
+                            <field name="currency_id" column_invisible="1"/>
+                        </list>
+                    </field>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_mcb_cash_count_list" model="ir.ui.view">
+        <field name="name">mcb.cash.count.list</field>
+        <field name="model">mcb.cash.count</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="journal_id"/>
+                <field name="date"/>
+                <field name="total_counted"/>
+                <field name="book_balance"/>
+                <field name="difference"/>
+                <field name="state" widget="badge"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="action_mcb_cash_count" model="ir.actions.act_window">
+        <field name="name">Daily Cash Counts (Annexure-14)</field>
+        <field name="res_model">mcb.cash.count</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <record id="view_mcb_petty_topup_form" model="ir.ui.view">
+        <field name="name">mcb.petty.topup.form</field>
+        <field name="model">mcb.petty.topup</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_request" type="object" string="Request" class="btn-primary"
+                            invisible="state != 'draft'"/>
+                    <button name="action_approve" type="object" string="Approve" class="btn-primary"
+                            invisible="state != 'requested'" groups="account.group_account_manager"/>
+                    <button name="action_done" type="object" string="Replenish (Post JE)"
+                            class="btn-primary" invisible="state != 'approved'"
+                            groups="account.group_account_user"/>
+                    <field name="state" widget="statusbar"/>
+                </header>
+                <sheet>
+                    <div class="oe_title"><h1><field name="name" readonly="1"/></h1></div>
+                    <group>
+                        <group>
+                            <field name="cash_journal_id"/>
+                            <field name="bank_journal_id"/>
+                        </group>
+                        <group>
+                            <field name="amount"/>
+                            <field name="move_id" readonly="1"/>
+                            <field name="currency_id" invisible="1"/>
+                        </group>
+                    </group>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_mcb_petty_topup_list" model="ir.ui.view">
+        <field name="name">mcb.petty.topup.list</field>
+        <field name="model">mcb.petty.topup</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="cash_journal_id"/>
+                <field name="bank_journal_id"/>
+                <field name="amount"/>
+                <field name="state" widget="badge"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="action_mcb_petty_topup" model="ir.actions.act_window">
+        <field name="name">Petty Cash Top-Ups</field>
+        <field name="res_model">mcb.petty.topup</field>
+        <field name="view_mode">list,form</field>
+    </record>
+</odoo>

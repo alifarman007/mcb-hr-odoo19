@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="action_report_mcb_bank_recon" model="ir.actions.report">
+        <field name="name">Bank Reconciliation Statement (Annexure-17)</field>
+        <field name="model">mcb.bank.recon.wizard</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">mcb_account.report_mcb_bank_recon</field>
+        <field name="report_file">mcb_account.report_mcb_bank_recon</field>
+    </record>
+
+    <template id="report_mcb_bank_recon">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-set="v" t-value="doc._report_values()"/>
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <div style="text-align:center;">
+                            <h3 style="margin:0;">Mukti Cox's Bazar</h3>
+                            <h4>Bank Reconciliation Statement</h4>
+                        </div>
+                        <p>
+                            <strong>Bank Journal:</strong> <t t-out="doc.journal_id.name"/> ·
+                            <strong>Account:</strong> <t t-out="doc.journal_id.bank_account_id.acc_number or ''"/> ·
+                            <strong>Reporting Date:</strong> <t t-out="doc.date_to"/>
+                        </p>
+                        <table class="table table-sm table-bordered" style="font-size:9pt;">
+                            <tr style="background:#eee;">
+                                <th style="width:8%;">A</th><th>Balance as per Bank Statement</th>
+                                <th class="text-end" style="width:18%;"><t t-out="'%.2f' % v['A']"/></th>
+                            </tr>
+                            <tr style="background:#eee;">
+                                <th>B</th><th>Add: Outstanding Credits</th>
+                                <th class="text-end"><t t-out="'%.2f' % v['B']"/></th>
+                            </tr>
+                            <t t-foreach="v['out_credits']" t-as="l">
+                                <tr>
+                                    <td/>
+                                    <td><t t-out="l.date"/> — <t t-out="l.partner_id.name or l.name or ''"/></td>
+                                    <td class="text-end"><t t-out="'%.2f' % l.debit"/></td>
+                                </tr>
+                            </t>
+                            <tr style="background:#eee;">
+                                <th>C</th><th>Total (A+B)</th>
+                                <th class="text-end"><t t-out="'%.2f' % v['C']"/></th>
+                            </tr>
+                            <tr style="background:#eee;">
+                                <th>D</th><th>Less: Outstanding Cheques</th>
+                                <th class="text-end"><t t-out="'%.2f' % v['D']"/></th>
+                            </tr>
+                            <t t-foreach="v['out_cheques']" t-as="l">
+                                <tr>
+                                    <td/>
+                                    <td>
+                                        <t t-out="l.date"/>
+                                        <t t-if="l.payment_id.check_number"> — Chq #<t t-out="l.payment_id.check_number"/></t>
+                                        — <t t-out="l.partner_id.name or l.name or ''"/>
+                                    </td>
+                                    <td class="text-end"><t t-out="'%.2f' % l.credit"/></td>
+                                </tr>
+                            </t>
+                            <tr style="background:#eee;">
+                                <th>E</th><th>Balance (C−D)</th>
+                                <th class="text-end"><t t-out="'%.2f' % v['E']"/></th>
+                            </tr>
+                            <tr style="background:#eee;">
+                                <th>G</th><th>Balance as per Cash Book</th>
+                                <th class="text-end"><t t-out="'%.2f' % v['G']"/></th>
+                            </tr>
+                            <tr style="background:#ddd;">
+                                <th>F</th><th>Difference (E−G)</th>
+                                <th class="text-end"><t t-out="'%.2f' % v['F']"/></th>
+                            </tr>
+                        </table>
+                        <table style="width:100%; margin-top:45px; text-align:center; font-size:9pt;">
+                            <tr>
+                                <td style="border-top:1px solid #000; width:30%;">Prepared By</td>
+                                <td style="width:5%;"/>
+                                <td style="border-top:1px solid #000; width:30%;">Checked By</td>
+                                <td style="width:5%;"/>
+                                <td style="border-top:1px solid #000; width:30%;">Approved By</td>
+                            </tr>
+                        </table>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>

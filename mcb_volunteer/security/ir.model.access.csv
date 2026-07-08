@@ -1,0 +1,13 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_mcb_vol_user,volunteer read,model_mcb_volunteer,base.group_user,1,0,0,0
+access_mcb_vol_pm,volunteer coordinator,model_mcb_volunteer,project.group_project_user,1,1,1,0
+access_mcb_vol_mgr,volunteer manager,model_mcb_volunteer,project.group_project_manager,1,1,1,1
+access_mcb_vol_audit,volunteer audit,model_mcb_volunteer,mcb_account.group_mcb_audit,1,0,0,0
+access_mcb_vol_att_pm,vol attendance coordinator,model_mcb_volunteer_attendance,project.group_project_user,1,1,1,1
+access_mcb_vol_att_audit,vol attendance audit,model_mcb_volunteer_attendance,mcb_account.group_mcb_audit,1,0,0,0
+access_mcb_vib_pm,incentive batch coordinator,model_mcb_volunteer_incentive_batch,project.group_project_user,1,1,1,0
+access_mcb_vib_mgr,incentive batch manager,model_mcb_volunteer_incentive_batch,project.group_project_manager,1,1,1,1
+access_mcb_vib_fin,incentive batch finance,model_mcb_volunteer_incentive_batch,account.group_account_user,1,1,0,0
+access_mcb_vib_audit,incentive batch audit,model_mcb_volunteer_incentive_batch,mcb_account.group_mcb_audit,1,0,0,0
+access_mcb_vil_pm,incentive line coordinator,model_mcb_volunteer_incentive_line,project.group_project_user,1,1,1,1
+access_mcb_vil_audit,incentive line audit,model_mcb_volunteer_incentive_line,mcb_account.group_mcb_audit,1,0,0,0

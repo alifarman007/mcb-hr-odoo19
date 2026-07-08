@@ -1,0 +1,30 @@
+Annexure - 17
+Mukti Cox's Bazar
+Head Office, Goldighirpar, Cox’s Bazar
+Bank Reconciliation Statement
+Name of Project/ Office	: XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+Funded By		: XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+Project Duration	: XXXXXXXXXXXXX		Financial Year		: XXXXXXXXXXXX
+Reporting Time		: XXXXXXXXXXXXX		Bank Account No.	: XXXXXXXXXXXX
+Bank Account Name	: XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+Name of Bank		: XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+Name of Branch	: XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+Prepared By					Checked By				Approved By
+
+[TABLE 0]
+Sl. No. | Date | Cheque No. | Name of Party | Purpose | Sub Amount | Amount
+A |  | Balance as per Bank Statement | Balance as per Bank Statement | Balance as per Bank Statement | Balance as per Bank Statement | 
+B | Add: Outstanding Credit | Add: Outstanding Credit | Add: Outstanding Credit | Add: Outstanding Credit | Add: Outstanding Credit | 
+1 |  |  |  |  |  | 
+2 |  |  |  |  |  | 
+3 |  |  |  |  |  | 
+Total amount of outstanding credit | Total amount of outstanding credit | Total amount of outstanding credit | Total amount of outstanding credit | Total amount of outstanding credit | Total amount of outstanding credit | 
+C | Total (A+B) | Total (A+B) | Total (A+B) | Total (A+B) | Total (A+B) | 
+D | Less: Outstanding Cheques | Less: Outstanding Cheques | Less: Outstanding Cheques | Less: Outstanding Cheques | Less: Outstanding Cheques | 
+1 |  |  |  |  |  | 
+2 |  |  |  |  |  | 
+3 |  |  |  |  |  | 
+Total amount of outstanding cheque | Total amount of outstanding cheque | Total amount of outstanding cheque | Total amount of outstanding cheque | Total amount of outstanding cheque | Total amount of outstanding cheque | 
+E |  | Balance (C-D) | Balance (C-D) | Balance (C-D) | Balance (C-D) | 
+F |  | Difference (E-G) | Difference (E-G) | Difference (E-G) | Difference (E-G) | 
+G |  | Balance as per Cash Book | Balance as per Cash Book | Balance as per Cash Book | Balance as per Cash Book | 

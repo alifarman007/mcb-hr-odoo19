@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_move_form_mcb" model="ir.ui.view">
+        <field name="name">account.move.form.mcb</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_move_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//header" position="inside">
+                <button name="action_mcb_check" type="object" string="Check (MCB)"
+                        invisible="not mcb_approval_required or mcb_checked_by_id or state != 'draft'"
+                        groups="account.group_account_user"/>
+                <button name="action_mcb_review" type="object" string="Review (MCB)"
+                        invisible="not mcb_approval_required or not mcb_checked_by_id or mcb_reviewed_by_id or state != 'draft'"
+                        groups="account.group_account_user"/>
+                <button name="action_mcb_approve" type="object" string="Approve (MCB)" class="btn-primary"
+                        invisible="not mcb_approval_required or not mcb_reviewed_by_id or mcb_approved_by_id or state != 'draft'"
+                        groups="account.group_account_manager"/>
+            </xpath>
+            <xpath expr="//notebook" position="inside">
+                <page string="MCB Voucher" name="mcb_voucher">
+                    <group>
+                        <group string="Voucher">
+                            <field name="mcb_voucher_no"/>
+                            <field name="mcb_voucher_type"/>
+                            <field name="mcb_amount_in_words"/>
+                            <field name="mcb_approval_required" invisible="1"/>
+                        </group>
+                        <group string="4-Level Approval (VOU-002)">
+                            <field name="mcb_checked_by_id" readonly="1"/>
+                            <field name="mcb_reviewed_by_id" readonly="1"/>
+                            <field name="mcb_approved_by_id" readonly="1"/>
+                        </group>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- server action: XLSX export from list selection (VOU-006 feedback) -->
+    <record id="action_server_voucher_xlsx" model="ir.actions.server">
+        <field name="name">Export Vouchers XLSX (MCB)</field>
+        <field name="model_id" ref="account.model_account_move"/>
+        <field name="binding_model_id" ref="account.model_account_move"/>
+        <field name="binding_view_types">list,form</field>
+        <field name="state">code</field>
+        <field name="code">action = records.action_mcb_export_voucher_xlsx()</field>
+    </record>
+</odoo>

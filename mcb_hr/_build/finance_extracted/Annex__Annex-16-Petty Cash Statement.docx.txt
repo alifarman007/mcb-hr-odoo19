@@ -1,0 +1,15 @@
+Annexure - 16
+Mukti Cox's Bazar
+Head Office, Goldighirpar, Cox’s Bazar
+Petty Cash Statement
+Name of Project/ Office	: XXXXXXXXXXXXXXXXXXX
+Funded By		: XXXXXXXXXXXXXXXXXXX
+Project Duration	: XXXXXXXXXXXXX			Financial Year	: XXXXXXXXXXXXX
+Prepared By				Checked By				Reviewed By					Approved By
+
+[TABLE 0]
+SL # | Date | Ref. No. of PCB | Particulars | Accounts Code | Expenditure Amount | Expenditure Amount | Expenditure Amount | Expenditure Amount | Expenditure Amount | Expenditure Amount | Expenditure Amount
+SL # | Date | Ref. No. of PCB | Particulars | Accounts Code | Expenditure Amount | Accounts Head | Accounts Head | Accounts Head | Accounts Head | Accounts Head | Total
+ |  |  |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  |  |  | 
+Total Expenditure Amount | Total Expenditure Amount | Total Expenditure Amount | Total Expenditure Amount | Total Expenditure Amount |  |  |  |  |  |  | 

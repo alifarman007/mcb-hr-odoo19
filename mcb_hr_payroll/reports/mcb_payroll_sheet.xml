@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Annexure-21 — Staff Payroll Sheet from a payslip batch -->
+    <record id="action_report_mcb_payroll_sheet" model="ir.actions.report">
+        <field name="name">Staff Payroll Sheet (Annexure-21)</field>
+        <field name="model">hr.payslip.run</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">mcb_hr_payroll.report_mcb_payroll_sheet</field>
+        <field name="report_file">mcb_hr_payroll.report_mcb_payroll_sheet</field>
+        <field name="binding_model_id" ref="hr_payroll.model_hr_payslip_run"/>
+        <field name="binding_type">report</field>
+    </record>
+
+    <template id="report_mcb_payroll_sheet">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <div style="text-align:center;">
+                            <h3 style="margin:0;">Mukti Cox's Bazar</h3>
+                            <h4>Staff Payroll Sheet — <t t-out="doc.name"/></h4>
+                            <p><strong>Period:</strong> <t t-out="doc.date_start"/> — <t t-out="doc.date_end"/></p>
+                        </div>
+                        <table class="table table-sm table-bordered" style="font-size:7.5pt;">
+                            <thead style="background:#eee;">
+                                <tr>
+                                    <th>Sl</th><th>Name of Employee</th><th>Designation</th>
+                                    <th class="text-end">Basic</th>
+                                    <th class="text-end">House Rent</th>
+                                    <th class="text-end">Medical</th>
+                                    <th class="text-end">Gross Total</th>
+                                    <th class="text-end">PF (Org)</th>
+                                    <th class="text-end">Festival Bonus</th>
+                                    <th class="text-end">PF Deduction</th>
+                                    <th class="text-end">TDS</th>
+                                    <th class="text-end">Net Payable</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <t t-set="i" t-value="0"/>
+                                <t t-foreach="doc.slip_ids" t-as="slip">
+                                    <t t-set="i" t-value="i + 1"/>
+                                    <t t-set="L" t-value="{l.code: l.total for l in slip.line_ids}"/>
+                                    <tr>
+                                        <td><t t-out="i"/></td>
+                                        <td><t t-out="slip.employee_id.name"/></td>
+                                        <td><t t-out="slip.employee_id.job_title or ''"/></td>
+                                        <td class="text-end"><t t-out="'%.0f' % L.get('BASIC', 0)"/></td>
+                                        <td class="text-end"><t t-out="'%.0f' % L.get('HRA', 0)"/></td>
+                                        <td class="text-end"><t t-out="'%.0f' % L.get('MEDA', 0)"/></td>
+                                        <td class="text-end"><t t-out="'%.0f' % L.get('GROSS', 0)"/></td>
+                                        <td class="text-end"><t t-out="'%.0f' % L.get('PFER', 0)"/></td>
+                                        <td class="text-end"><t t-out="'%.0f' % L.get('FBON', 0)"/></td>
+                                        <td class="text-end"><t t-out="'%.0f' % L.get('PFEE', 0)"/></td>
+                                        <td class="text-end"><t t-out="'%.0f' % L.get('BDTAX', 0)"/></td>
+                                        <td class="text-end"><strong t-out="'%.0f' % L.get('NET', 0)"/></td>
+                                    </tr>
+                                </t>
+                            </tbody>
+                        </table>
+                        <table style="width:100%; margin-top:35px; text-align:center; font-size:9pt;">
+                            <tr>
+                                <td style="border-top:1px solid #000; width:22%;">Prepared By</td>
+                                <td style="width:4%;"/>
+                                <td style="border-top:1px solid #000; width:22%;">Checked By</td>
+                                <td style="width:4%;"/>
+                                <td style="border-top:1px solid #000; width:22%;">Reviewed By</td>
+                                <td style="width:4%;"/>
+                                <td style="border-top:1px solid #000; width:22%;">Approved By</td>
+                            </tr>
+                        </table>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>

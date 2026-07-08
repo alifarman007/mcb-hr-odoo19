@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="menu_mcb_budget_root" name="MCB Budgets"
+              parent="account.menu_finance" sequence="92"/>
+    <menuitem id="menu_mcb_working_budget" name="Working Budgets (Annex-26)"
+              parent="menu_mcb_budget_root" action="action_mcb_working_budget" sequence="10"/>
+    <menuitem id="menu_mcb_budget_revision" name="Budget Revisions (BUD-005)"
+              parent="menu_mcb_budget_root" action="action_mcb_budget_revision" sequence="20"/>
+    <menuitem id="menu_mcb_donor_report" name="Donor Budget Report / Variance"
+              parent="menu_mcb_budget_root" action="action_mcb_donor_report_wizard" sequence="30"/>
+</odoo>

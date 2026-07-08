@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_mcb_payment_checklist_list" model="ir.ui.view">
+        <field name="name">mcb.payment.checklist.list</field>
+        <field name="model">mcb.payment.checklist</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="move_id"/>
+                <field name="project_name"/>
+                <field name="prepared_by_id"/>
+                <field name="checked_by_id"/>
+                <field name="state" widget="badge" decoration-success="state == 'done'"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_mcb_payment_checklist_form" model="ir.ui.view">
+        <field name="name">mcb.payment.checklist.form</field>
+        <field name="model">mcb.payment.checklist</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_done" type="object" string="Mark Verified"
+                            class="btn-primary" invisible="state == 'done'"/>
+                    <button name="%(action_report_mcb_payment_checklist)d" type="action"
+                            string="Print (Annexure-28)"/>
+                    <field name="state" widget="statusbar"/>
+                </header>
+                <sheet>
+                    <div class="oe_title"><h1><field name="name" readonly="1"/></h1></div>
+                    <group>
+                        <group>
+                            <field name="move_id"/>
+                            <field name="project_name"/>
+                            <field name="funded_by"/>
+                        </group>
+                        <group>
+                            <field name="prepared_by_id"/>
+                            <field name="checked_by_id"/>
+                        </group>
+                    </group>
+                    <field name="line_ids">
+                        <list editable="bottom">
+                            <field name="sequence" widget="handle"/>
+                            <field name="name"/>
+                            <field name="status"/>
+                            <field name="remarks"/>
+                        </list>
+                    </field>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_mcb_payment_checklist" model="ir.actions.act_window">
+        <field name="name">Payment Voucher Checklists</field>
+        <field name="res_model">mcb.payment.checklist</field>
+        <field name="view_mode">list,form</field>
+    </record>
+</odoo>

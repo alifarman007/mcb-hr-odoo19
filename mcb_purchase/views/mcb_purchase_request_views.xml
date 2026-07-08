@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_mcb_pr_list" model="ir.ui.view">
+        <field name="name">mcb.purchase.request.list</field>
+        <field name="model">mcb.purchase.request</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="date_request"/>
+                <field name="requester_id"/>
+                <field name="project_analytic_id"/>
+                <field name="donor" optional="hide"/>
+                <field name="amount_total"/>
+                <field name="procurement_method"/>
+                <field name="deadline" optional="show"/>
+                <field name="state" widget="badge"
+                       decoration-success="state in ('approved','po_issued','closed')"
+                       decoration-info="state in ('confirmed','accounts','sent_pc','in_progress')"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_mcb_pr_search" model="ir.ui.view">
+        <field name="name">mcb.purchase.request.search</field>
+        <field name="model">mcb.purchase.request</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="project_analytic_id"/>
+                <field name="requester_id"/>
+                <filter name="pending" string="Pending (no PO yet)"
+                        domain="[('state', 'not in', ('po_issued', 'closed', 'cancelled'))]"/>
+                <filter name="po_issued" string="PO Issued" domain="[('state', '=', 'po_issued')]"/>
+                <group>
+                    <filter name="group_project" string="Project"
+                            context="{'group_by': 'project_analytic_id'}"/>
+                    <filter name="group_method" string="Method"
+                            context="{'group_by': 'procurement_method'}"/>
+                    <filter name="group_state" string="Status" context="{'group_by': 'state'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="view_mcb_pr_form" model="ir.ui.view">
+        <field name="name">mcb.purchase.request.form</field>
+        <field name="model">mcb.purchase.request</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_confirm" type="object" string="Confirm" class="btn-primary"
+                            invisible="state != 'draft'"/>
+                    <button name="action_accounts_check" type="object" string="Accounts Check"
+                            invisible="state != 'confirmed'" groups="account.group_account_user"/>
+                    <button name="action_ce_approve" type="object" string="CE Approve" class="btn-primary"
+                            invisible="state != 'accounts'" groups="mcb_hr_employee.group_mcb_ce"/>
+                    <button name="action_send_pc" type="object" string="Send to PC"
+                            invisible="state != 'approved'"
+                            groups="mcb_purchase.group_mcb_proc_officer"/>
+                    <button name="action_create_rfqs" type="object" string="Create RFQs" class="btn-primary"
+                            invisible="state not in ('sent_pc', 'in_progress')"
+                            groups="mcb_purchase.group_mcb_proc_officer"/>
+                    <button name="action_close" type="object" string="Close"
+                            invisible="state != 'po_issued'"/>
+                    <button name="action_cancel" type="object" string="Cancel"
+                            invisible="state in ('closed', 'cancelled')"/>
+                    <field name="state" widget="statusbar"
+                           statusbar_visible="draft,confirmed,accounts,approved,sent_pc,in_progress,po_issued,closed"/>
+                </header>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="action_view_orders" type="object" class="oe_stat_button"
+                                icon="fa-shopping-cart">
+                            <field name="order_count" widget="statinfo" string="RFQs/POs"/>
+                        </button>
+                    </div>
+                    <div class="oe_title"><h1><field name="name" readonly="1"/></h1></div>
+                    <group>
+                        <group string="Request">
+                            <field name="requester_id"/>
+                            <field name="date_request"/>
+                            <field name="deadline"/>
+                            <field name="delivery_point"/>
+                            <field name="contact_person"/>
+                            <field name="contact_phone"/>
+                        </group>
+                        <group string="Project / Budget (PR-002/004/007)">
+                            <field name="project_analytic_id"/>
+                            <field name="donor"/>
+                            <field name="budget_id"/>
+                            <field name="budget_line_id"/>
+                            <field name="total_budget"/>
+                            <field name="current_balance"/>
+                            <field name="budget_override" groups="mcb_hr_employee.group_mcb_ce"/>
+                        </group>
+                    </group>
+                    <group>
+                        <group string="Method (Table-9)">
+                            <field name="amount_total" readonly="1"/>
+                            <field name="procurement_method" readonly="1"/>
+                            <field name="min_quotations" readonly="1"/>
+                            <field name="noal_required" readonly="1"/>
+                            <field name="currency_id" invisible="1"/>
+                        </group>
+                        <group string="Approvals (PR-005)">
+                            <field name="accounts_officer_id" readonly="1"/>
+                            <field name="ce_id" readonly="1"/>
+                            <field name="pc_incharge_id" readonly="1"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Items (PR-003)">
+                            <field name="line_ids">
+                                <list editable="bottom">
+                                    <field name="product_id"/>
+                                    <field name="name"/>
+                                    <field name="specification" optional="show"/>
+                                    <field name="category" optional="hide"/>
+                                    <field name="uom_id"/>
+                                    <field name="quantity"/>
+                                    <field name="price_unit"/>
+                                    <field name="price_total"/>
+                                    <field name="currency_id" column_invisible="1"/>
+                                </list>
+                            </field>
+                        </page>
+                        <page string="Note Sheet-1 (CE → PC)">
+                            <field name="note1_html"/>
+                        </page>
+                        <page string="Note Sheet-2 (PC Minutes)">
+                            <field name="note2_html"/>
+                        </page>
+                        <page string="Note Sheet-3 (Award Recommendation)">
+                            <field name="note3_html"/>
+                        </page>
+                    </notebook>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_mcb_pr_rfq_wizard" model="ir.ui.view">
+        <field name="name">mcb.pr.rfq.wizard.form</field>
+        <field name="model">mcb.pr.rfq.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Generate RFQs">
+                <group>
+                    <field name="request_id" readonly="1"/>
+                    <field name="vendor_ids" widget="many2many_tags"/>
+                </group>
+                <footer>
+                    <button name="action_generate" type="object" string="Create RFQs"
+                            class="btn-primary"/>
+                    <button special="cancel" string="Cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_mcb_pr" model="ir.actions.act_window">
+        <field name="name">Purchase Requests</field>
+        <field name="res_model">mcb.purchase.request</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <!-- Table-14: PR Pending Report — filtered action -->
+    <record id="action_mcb_pr_pending" model="ir.actions.act_window">
+        <field name="name">PR Pending Report</field>
+        <field name="res_model">mcb.purchase.request</field>
+        <field name="view_mode">list,form</field>
+        <field name="context">{'search_default_pending': 1, 'search_default_group_state': 1}</field>
+    </record>
+
+    <!-- Table-14: Project-wise procurement — grouped action -->
+    <record id="action_mcb_pr_projectwise" model="ir.actions.act_window">
+        <field name="name">Project-wise Procurement</field>
+        <field name="res_model">mcb.purchase.request</field>
+        <field name="view_mode">list,pivot,form</field>
+        <field name="context">{'search_default_group_project': 1}</field>
+    </record>
+</odoo>

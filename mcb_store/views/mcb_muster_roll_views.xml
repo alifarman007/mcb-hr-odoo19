@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_mcb_muster_form" model="ir.ui.view">
+        <field name="name">mcb.muster.roll.form</field>
+        <field name="model">mcb.muster.roll</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_done" type="object" string="Mark Distributed"
+                            class="btn-primary" invisible="state == 'done'"/>
+                    <button name="%(action_report_mcb_muster_roll)d" type="action" string="Print"/>
+                    <field name="state" widget="statusbar"/>
+                </header>
+                <sheet>
+                    <div class="oe_title"><h1><field name="name" readonly="1"/></h1></div>
+                    <group>
+                        <group>
+                            <field name="project_id"/>
+                            <field name="task_id"/>
+                            <field name="product_id"/>
+                        </group>
+                        <group>
+                            <field name="date"/>
+                            <field name="location"/>
+                            <field name="picking_id"/>
+                            <field name="total_qty" readonly="1"/>
+                        </group>
+                    </group>
+                    <field name="line_ids">
+                        <list editable="bottom">
+                            <field name="beneficiary_name"/>
+                            <field name="beneficiary_id_no"/>
+                            <field name="quantity"/>
+                            <field name="remarks"/>
+                        </list>
+                    </field>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_mcb_muster_list" model="ir.ui.view">
+        <field name="name">mcb.muster.roll.list</field>
+        <field name="model">mcb.muster.roll</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="project_id"/>
+                <field name="product_id"/>
+                <field name="date"/>
+                <field name="location"/>
+                <field name="total_qty"/>
+                <field name="state" widget="badge"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="action_mcb_muster" model="ir.actions.act_window">
+        <field name="name">NFI Muster Rolls (STO-007)</field>
+        <field name="res_model">mcb.muster.roll</field>
+        <field name="view_mode">list,form</field>
+    </record>
+</odoo>

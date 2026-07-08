@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="action_report_mcb_payment_checklist" model="ir.actions.report">
+        <field name="name">Checklist for Payment Voucher (Annexure-28)</field>
+        <field name="model">mcb.payment.checklist</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">mcb_account.report_mcb_payment_checklist</field>
+        <field name="report_file">mcb_account.report_mcb_payment_checklist</field>
+        <field name="binding_model_id" ref="model_mcb_payment_checklist"/>
+        <field name="binding_type">report</field>
+    </record>
+
+    <template id="report_mcb_payment_checklist">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <div style="text-align:center;">
+                            <h3 style="margin:0;">Mukti Cox's Bazar</h3>
+                            <h4>Checklist for Payment Voucher</h4>
+                        </div>
+                        <p>
+                            <strong>Name of Project/Office:</strong> <t t-out="doc.project_name or ''"/> ·
+                            <strong>Funded By:</strong> <t t-out="doc.funded_by or ''"/><br/>
+                            <strong>Voucher:</strong> <t t-out="doc.move_id.mcb_voucher_no or doc.move_id.name"/> ·
+                            <strong>Date:</strong> <t t-out="doc.move_id.date"/>
+                        </p>
+                        <table class="table table-sm table-bordered" style="font-size:9pt;">
+                            <thead style="background:#eee;">
+                                <tr><th>SL#</th><th>Particulars</th><th>Yes</th><th>No</th><th>N/A</th><th>Remarks</th></tr>
+                            </thead>
+                            <tbody>
+                                <t t-set="i" t-value="0"/>
+                                <t t-foreach="doc.line_ids" t-as="l">
+                                    <t t-set="i" t-value="i + 1"/>
+                                    <tr>
+                                        <td><t t-out="i"/></td>
+                                        <td><t t-out="l.name"/></td>
+                                        <td style="text-align:center;"><t t-if="l.status == 'yes'">✔</t></td>
+                                        <td style="text-align:center;"><t t-if="l.status == 'no'">✔</t></td>
+                                        <td style="text-align:center;"><t t-if="l.status == 'na'">✔</t></td>
+                                        <td><t t-out="l.remarks or ''"/></td>
+                                    </tr>
+                                </t>
+                            </tbody>
+                        </table>
+                        <table style="width:100%; margin-top:45px; text-align:center; font-size:9pt;">
+                            <tr>
+                                <td style="border-top:1px solid #000; width:40%;">Prepared By<br/><t t-out="doc.prepared_by_id.name"/></td>
+                                <td style="width:20%;"/>
+                                <td style="border-top:1px solid #000; width:40%;">Checked By<br/><t t-out="doc.checked_by_id.name or ''"/></td>
+                            </tr>
+                        </table>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>

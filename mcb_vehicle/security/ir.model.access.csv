@@ -1,0 +1,9 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_mcb_vlog_user,vehicle log user,model_mcb_vehicle_log,base.group_user,1,1,1,0
+access_mcb_vlog_mgr,vehicle log fleet mgr,model_mcb_vehicle_log,fleet.fleet_group_manager,1,1,1,1
+access_mcb_vlog_audit,vehicle log audit,model_mcb_vehicle_log,mcb_account.group_mcb_audit,1,0,0,0
+access_mcb_mov_user,movement user,model_mcb_movement_register,base.group_user,1,1,1,0
+access_mcb_mov_hr,movement hr,model_mcb_movement_register,hr.group_hr_user,1,1,1,1
+access_mcb_mov_audit,movement audit,model_mcb_movement_register,mcb_account.group_mcb_audit,1,0,0,0
+access_fleet_audit,fleet vehicle audit read,fleet.model_fleet_vehicle,mcb_account.group_mcb_audit,1,0,0,0
+access_mcb_logbook_wiz,logbook wiz,model_mcb_logbook_wizard,base.group_user,1,1,1,1

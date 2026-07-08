@@ -1,0 +1,16 @@
+Annexure - 07
+Mukti Cox's Bazar
+Head Office, Goldighirpar, Cox’s Bazar
+Fixed Assets Register
+Name of Project/ Office	: XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX	Funded By	: XXXXXXXXXXXXXXXXXX
+Project Duration	: XXXXXXXXXXX	Financial Year	: XXXXXXXXXXXXX		Reporting Date	: XXXXXXXXXXXXXXXXXX
+Name of Assets: _____________________________________
+Prepared By							Reviewed By							Approved By
+
+[TABLE 0]
+Sl. No. | Description of Assets | ID Number | Date of Purchase | Cost of Assets | Depreciation Rate | Depreciation | Depreciation | Depreciation | Depreciation | Written down value | Location | Condition | Name of Use
+Sl. No. | Description of Assets | ID Number | Date of Purchase | Cost of Assets | Depreciation Rate | Opening Balance | Charge during the Period | Adjustment | Closing Balance | Written down value | Location | Condition | Name of Use
+1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14
+ |  |  |  |  |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  |  |  |  |  | 
+Total Value | Total Value | Total Value | Total Value |  |  |  |  |  |  |  |  |  | 

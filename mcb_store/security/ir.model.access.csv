@@ -1,0 +1,14 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_mcb_srf_user,srf all users,model_mcb_srf,base.group_user,1,1,1,0
+access_mcb_srf_stock,srf stock user,model_mcb_srf,stock.group_stock_user,1,1,1,0
+access_mcb_srf_mgr,srf stock manager,model_mcb_srf,stock.group_stock_manager,1,1,1,1
+access_mcb_srf_audit,srf audit,model_mcb_srf,mcb_account.group_mcb_audit,1,0,0,0
+access_mcb_srf_line,srf line,model_mcb_srf_line,base.group_user,1,1,1,1
+access_mcb_muster_user,muster user,model_mcb_muster_roll,base.group_user,1,1,1,0
+access_mcb_muster_mgr,muster manager,model_mcb_muster_roll,stock.group_stock_manager,1,1,1,1
+access_mcb_muster_audit,muster audit,model_mcb_muster_roll,mcb_account.group_mcb_audit,1,0,0,0
+access_mcb_muster_line,muster line,model_mcb_muster_roll_line,base.group_user,1,1,1,1
+access_mcb_store_wiz,store register wiz,model_mcb_store_register_wizard,stock.group_stock_user,1,1,1,1
+access_stock_picking_audit,stock picking audit,stock.model_stock_picking,mcb_account.group_mcb_audit,1,0,0,0
+access_stock_move_audit,stock move audit,stock.model_stock_move,mcb_account.group_mcb_audit,1,0,0,0
+access_stock_quant_audit,stock quant audit,stock.model_stock_quant,mcb_account.group_mcb_audit,1,0,0,0

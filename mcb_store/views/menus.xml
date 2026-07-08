@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="menu_mcb_store_root" name="MCB Store"
+              parent="stock.menu_stock_root" sequence="30"/>
+    <menuitem id="menu_mcb_srf" name="Store Requisitions (SRF)"
+              parent="menu_mcb_store_root" action="action_mcb_srf" sequence="10"/>
+    <menuitem id="menu_mcb_muster" name="NFI Muster Rolls"
+              parent="menu_mcb_store_root" action="action_mcb_muster" sequence="20"/>
+    <menuitem id="menu_mcb_store_register" name="Store Register / Monthly Stock"
+              parent="menu_mcb_store_root" action="action_mcb_store_register_wizard" sequence="30"/>
+</odoo>

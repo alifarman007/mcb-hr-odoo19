@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="0">
+        <record id="demo_vol_1" model="mcb.volunteer">
+            <field name="name">Mohammed Ayas</field>
+            <field name="vol_type">rtv</field>
+            <field name="camp_no">Camp 12</field>
+            <field name="block">B-7</field>
+            <field name="nid_or_reg">FCN-778812</field>
+            <field name="project_id" ref="mcb_project.demo_project_gbvie"/>
+            <field name="payment_mode">cash</field>
+        </record>
+        <record id="demo_vol_2" model="mcb.volunteer">
+            <field name="name">Shahida Begum</field>
+            <field name="vol_type">htv</field>
+            <field name="camp_no">Ukhiya (Host)</field>
+            <field name="phone">+8801811223344</field>
+            <field name="project_id" ref="mcb_project.demo_project_gbvie"/>
+            <field name="payment_mode">bkash</field>
+            <field name="bkash_no">01811223344</field>
+        </record>
+    </data>
+</odoo>

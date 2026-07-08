@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_mcb_alloc_wizard" model="ir.ui.view">
+        <field name="name">mcb.payroll.allocation.wizard.form</field>
+        <field name="model">mcb.payroll.allocation.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Monthly Payroll Cost Allocation (TMS-004)">
+                <group>
+                    <field name="month_date"/>
+                    <field name="journal_id"/>
+                    <field name="salary_account_id"/>
+                </group>
+                <footer>
+                    <button name="action_post_allocation" type="object"
+                            string="Post Allocation JE" class="btn-primary"/>
+                    <button name="action_export_xlsx" type="object" string="Export XLSX"/>
+                    <button special="cancel" string="Close"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+    <record id="action_mcb_alloc_wizard" model="ir.actions.act_window">
+        <field name="name">Payroll Cost Allocation (TMS-004)</field>
+        <field name="res_model">mcb.payroll.allocation.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+    <record id="view_mcb_ts_wizard" model="ir.ui.view">
+        <field name="name">mcb.timesheet.report.wizard.form</field>
+        <field name="model">mcb.timesheet.report.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Individual Staff Timesheet (Annexure-23)">
+                <group>
+                    <field name="employee_id"/>
+                    <field name="month_date"/>
+                </group>
+                <footer>
+                    <button name="action_print_pdf" type="object" string="Print PDF"
+                            class="btn-primary"/>
+                    <button name="action_export_xlsx" type="object" string="Export XLSX"/>
+                    <button special="cancel" string="Close"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+    <record id="action_mcb_ts_wizard" model="ir.actions.act_window">
+        <field name="name">Individual Timesheet (Annexure-23)</field>
+        <field name="res_model">mcb.timesheet.report.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+    <record id="view_mcb_att_wizard" model="ir.ui.view">
+        <field name="name">mcb.attendance.report.wizard.form</field>
+        <field name="model">mcb.attendance.report.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Monthly Staff Attendance (Annexure-20)">
+                <group>
+                    <field name="month_date"/>
+                    <field name="department_id"/>
+                    <field name="project_name"/>
+                    <field name="funded_by"/>
+                </group>
+                <footer>
+                    <button name="action_print_pdf" type="object" string="Print PDF"
+                            class="btn-primary"/>
+                    <button name="action_export_xlsx" type="object" string="Export XLSX"/>
+                    <button special="cancel" string="Close"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+    <record id="action_mcb_att_wizard" model="ir.actions.act_window">
+        <field name="name">Monthly Attendance (Annexure-20)</field>
+        <field name="res_model">mcb.attendance.report.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+    <record id="view_mcb_qtr_wizard" model="ir.ui.view">
+        <field name="name">mcb.quarterly.report.wizard.form</field>
+        <field name="model">mcb.quarterly.report.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Quarterly Project Report (MON-004)">
+                <group>
+                    <group>
+                        <field name="project_id"/>
+                        <field name="date_from"/>
+                        <field name="date_to"/>
+                    </group>
+                </group>
+                <field name="challenges" placeholder="Key challenges this quarter..."/>
+                <field name="next_plan" placeholder="Next quarter plan..."/>
+                <footer>
+                    <button name="action_print_pdf" type="object" string="Print PDF"
+                            class="btn-primary"/>
+                    <button special="cancel" string="Close"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+    <record id="action_mcb_qtr_wizard" model="ir.actions.act_window">
+        <field name="name">Quarterly Project Report (MON-004)</field>
+        <field name="res_model">mcb.quarterly.report.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+    <record id="view_mcb_att_import_wizard" model="ir.ui.view">
+        <field name="name">mcb.attendance.import.wizard.form</field>
+        <field name="model">mcb.attendance.import.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Camp Attendance Import (ATT-004)">
+                <group>
+                    <field name="file_data" filename="file_name"/>
+                    <field name="file_name" invisible="1"/>
+                </group>
+                <p class="text-muted">
+                    CSV headers: employee_code, date (YYYY-MM-DD), check_in (HH:MM),
+                    check_out (HH:MM). Employee code = MCB Employee Code or full name.
+                </p>
+                <footer>
+                    <button name="action_import" type="object" string="Import"
+                            class="btn-primary"/>
+                    <button special="cancel" string="Cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+    <record id="action_mcb_att_import_wizard" model="ir.actions.act_window">
+        <field name="name">Camp Attendance Import (ATT-004)</field>
+        <field name="res_model">mcb.attendance.import.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+</odoo>

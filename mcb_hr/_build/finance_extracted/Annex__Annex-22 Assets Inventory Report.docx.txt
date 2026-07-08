@@ -1,0 +1,14 @@
+Annexure - 22
+Mukti Cox's Bazar
+Head Office, Goldighirpar, Cox’s Bazar
+Fixed Assets Physical Inventory Report
+Name of Project/ Office	: XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX	Funded By	: XXXXXXXXXXXXXXXXXX
+Project Duration	: XXXXXXXXXXX	Financial Year	: XXXXXXXXXXXXX		Reporting Date	: XXXXXXXXXXXXXXXXXX
+Prepared By							Reviewed By							Approved By
+
+[TABLE 0]
+Sl. No. | Item of Assets | Cost of Assets | Written down Value | Quantity of Assets as per Register | Quantity of Assets Physically Found | Short/ Excess of Assets as per Physical Verification | Recommendation for number of Assets | Recommendation for number of Assets | Recommendation for number of Assets | Remarks
+Sl. No. | Item of Assets | Cost of Assets | Written down Value | Quantity of Assets as per Register | Quantity of Assets Physically Found | Short/ Excess of Assets as per Physical Verification | Sales | Disposal | Repairable | Remarks
+1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11
+ |  |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  |  | 

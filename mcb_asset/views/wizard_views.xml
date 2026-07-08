@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_mcb_asset_register_wizard" model="ir.ui.view">
+        <field name="name">mcb.asset.register.wizard.form</field>
+        <field name="model">mcb.asset.register.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Fixed Assets Register (Annexure-07)">
+                <group>
+                    <group>
+                        <field name="date_from"/>
+                        <field name="date_to"/>
+                    </group>
+                    <group>
+                        <field name="project_analytic_id"/>
+                        <field name="project_name"/>
+                        <field name="funded_by"/>
+                    </group>
+                </group>
+                <footer>
+                    <button name="action_print_pdf" type="object" string="Print PDF" class="btn-primary"/>
+                    <button name="action_export_xlsx" type="object" string="Export XLSX"/>
+                    <button special="cancel" string="Close"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+    <record id="action_mcb_asset_register_wizard" model="ir.actions.act_window">
+        <field name="name">Fixed Assets Register (Annexure-07)</field>
+        <field name="res_model">mcb.asset.register.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+</odoo>

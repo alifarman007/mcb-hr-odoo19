@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="0">
+        <record id="demo_budget_gbvie" model="budget.analytic">
+            <field name="name">GBViE-CARE FY 25-26</field>
+            <field name="mcb_donor">CARE</field>
+            <field name="mcb_project_code">GBViE</field>
+            <field name="budget_type">expense</field>
+            <field name="date_from">2025-07-01</field>
+            <field name="date_to">2026-06-30</field>
+        </record>
+    </data>
+</odoo>

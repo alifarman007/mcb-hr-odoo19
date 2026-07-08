@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <record id="seq_mcb_money_receipt" model="ir.sequence">
+            <field name="name">MCB Money Receipt</field>
+            <field name="code">mcb.money.receipt</field>
+            <field name="prefix">MR/%(year)s/</field>
+            <field name="padding">4</field>
+        </record>
+        <record id="seq_mcb_tax_challan" model="ir.sequence">
+            <field name="name">MCB Tax Challan</field>
+            <field name="code">mcb.tax.challan</field>
+            <field name="prefix">CHL/%(year)s/</field>
+            <field name="padding">4</field>
+        </record>
+        <record id="seq_mcb_payment_checklist" model="ir.sequence">
+            <field name="name">MCB Payment Checklist</field>
+            <field name="code">mcb.payment.checklist</field>
+            <field name="prefix">PVC/%(year)s/</field>
+            <field name="padding">4</field>
+        </record>
+    </data>
+</odoo>

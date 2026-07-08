@@ -1,0 +1,12 @@
+Annexure - 10
+Mukti Cox's Bazar
+Head Office, Goldighirpar, Cox’s Bazar
+Vehicle/MC Log Book
+Name of Project	: XXXXXXXXXXXXXXXXXXX					Work Station	: XXXXXXXXXXXXXXX
+Name of Staff		: XXXXXXXXXXXXX							Designation	: XXXXXXXXXXXXXXX
+Vehicle No		: XXXXXXXXXXXXXXX						Month		: XXXXXXXXXXXXXXX
+
+[TABLE 0]
+Date | Name & Designation | Purpose | Destination | Destination | Time | Time | Total Time | Meter Reading | Meter Reading | Meter Reading | Fuel | Fuel | Remarks/ Signature
+Date | Name & Designation | Purpose | From | To | Start | End | Total Time | Start | End | KM Run | Liter | Lub | Remarks/ Signature
+ |  |  |  |  |  |  |  |  |  |  |  |  | 

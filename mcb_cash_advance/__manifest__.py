@@ -1,0 +1,26 @@
+{
+    "name": "MCB Advances, IOU & Petty Cash",
+    "version": "19.0.1.0.0",
+    "category": "Accounting",
+    "summary": "Advance lifecycle (Annex-18/19), IOU (Annex-13), petty cash count/book/"
+               "statement (Annex-14/15/16), top-up workflow (SRS ADV-001..008, PCH-001..006)",
+    "author": "MCB ERP Team",
+    "license": "OEEL-1",
+    "depends": ["mcb_account", "hr"],
+    "data": [
+        "security/ir.model.access.csv",
+        "security/mcb_cash_advance_security.xml",
+        "data/ir_sequence_data.xml",
+        "data/ir_cron_data.xml",
+        "reports/advance_reports.xml",
+        "reports/petty_cash_reports.xml",
+        "views/mcb_advance_views.xml",
+        "views/mcb_iou_views.xml",
+        "views/mcb_petty_cash_views.xml",
+        "views/wizard_views.xml",
+        "views/menus.xml",
+    ],
+    "demo": ["demo/mcb_cash_advance_demo.xml"],
+    "installable": True,
+    "application": False,
+}

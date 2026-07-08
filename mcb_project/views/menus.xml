@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="menu_mcb_project_root" name="MCB"
+              parent="project.menu_main_pm" sequence="30"/>
+
+    <menuitem id="menu_mcb_assignment" name="Staff Assignments (% Time)"
+              parent="menu_mcb_project_root" action="action_mcb_assignment" sequence="10"/>
+    <menuitem id="menu_mcb_beneficiary" name="Beneficiary Data (MON-005)"
+              parent="menu_mcb_project_root" action="action_mcb_beneficiary" sequence="20"/>
+    <menuitem id="menu_mcb_travel_auth" name="Travel Authorizations (Annex-30)"
+              parent="menu_mcb_project_root" action="action_mcb_travel_auth" sequence="30"/>
+    <menuitem id="menu_mcb_meal" name="MEAL Indicators"
+              parent="menu_mcb_project_root" action="action_mcb_meal" sequence="40"/>
+    <menuitem id="menu_mcb_qtr" name="Quarterly Report (MON-004)"
+              parent="menu_mcb_project_root" action="action_mcb_qtr_wizard" sequence="50"/>
+    <menuitem id="menu_mcb_ts_report" name="Individual Timesheet (Annex-23)"
+              parent="menu_mcb_project_root" action="action_mcb_ts_wizard" sequence="60"/>
+    <menuitem id="menu_mcb_att_report" name="Monthly Attendance (Annex-20)"
+              parent="menu_mcb_project_root" action="action_mcb_att_wizard" sequence="70"/>
+    <menuitem id="menu_mcb_att_import" name="Camp Attendance Import (ATT-004)"
+              parent="menu_mcb_project_root" action="action_mcb_att_import_wizard" sequence="80"/>
+    <menuitem id="menu_mcb_alloc" name="Payroll Cost Allocation (TMS-004)"
+              parent="menu_mcb_project_root" action="action_mcb_alloc_wizard" sequence="90"
+              groups="account.group_account_user"/>
+</odoo>

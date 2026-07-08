@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="action_report_mcb_incentive_sheet" model="ir.actions.report">
+        <field name="name">Volunteer Incentive Sheet (VOL-003)</field>
+        <field name="model">mcb.volunteer.incentive.batch</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">mcb_volunteer.report_mcb_incentive_sheet</field>
+        <field name="report_file">mcb_volunteer.report_mcb_incentive_sheet</field>
+        <field name="binding_model_id" ref="model_mcb_volunteer_incentive_batch"/>
+        <field name="binding_type">report</field>
+    </record>
+
+    <template id="report_mcb_incentive_sheet">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <div style="text-align:center;">
+                            <h3 style="margin:0;">Mukti Cox's Bazar</h3>
+                            <h4>Volunteer Incentive Sheet — <t t-out="doc.month_date.strftime('%B %Y')"/></h4>
+                        </div>
+                        <p>
+                            <strong>Project:</strong> <t t-out="doc.project_id.name or 'All'"/> ·
+                            <strong>Batch:</strong> <t t-out="doc.name"/> ·
+                            <strong>Total:</strong> BDT <t t-out="'%.2f' % doc.amount_total"/>
+                        </p>
+                        <table class="table table-sm table-bordered" style="font-size:8.5pt;">
+                            <thead style="background:#eee;">
+                                <tr><th>Sl</th><th>Name</th><th>Camp</th><th>Type</th>
+                                    <th class="text-end">Days Present</th>
+                                    <th class="text-end">Daily Rate</th>
+                                    <th class="text-end">Incentive Amount</th>
+                                    <th>Payment Mode</th><th>Signature / Thumb</th></tr>
+                            </thead>
+                            <tbody>
+                                <t t-set="i" t-value="0"/>
+                                <t t-foreach="doc.line_ids" t-as="l">
+                                    <t t-set="i" t-value="i + 1"/>
+                                    <tr>
+                                        <td><t t-out="i"/></td>
+                                        <td><t t-out="l.volunteer_id.name"/></td>
+                                        <td><t t-out="l.camp_no or ''"/></td>
+                                        <td><t t-out="(l.vol_type or '').upper()"/></td>
+                                        <td class="text-end"><t t-out="l.days_present"/></td>
+                                        <td class="text-end"><t t-out="'%.0f' % l.daily_rate"/></td>
+                                        <td class="text-end"><t t-out="'%.0f' % l.amount"/></td>
+                                        <td><t t-out="l.payment_mode"/></td>
+                                        <td style="height:24px;"/>
+                                    </tr>
+                                </t>
+                            </tbody>
+                            <tfoot>
+                                <tr style="background:#eee;">
+                                    <th colspan="6">Total</th>
+                                    <th class="text-end"><t t-out="'%.0f' % doc.amount_total"/></th>
+                                    <th colspan="2"/>
+                                </tr>
+                            </tfoot>
+                        </table>
+                        <table style="width:100%; margin-top:40px; text-align:center; font-size:9pt;">
+                            <tr>
+                                <td style="border-top:1px solid #000; width:30%;">Volunteer Coordinator</td>
+                                <td style="width:5%;"/>
+                                <td style="border-top:1px solid #000; width:30%;">Finance</td>
+                                <td style="width:5%;"/>
+                                <td style="border-top:1px solid #000; width:30%;">Project Manager</td>
+                            </tr>
+                        </table>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>

@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Annexure-23 Individual Timesheet -->
+    <record id="action_report_mcb_timesheet" model="ir.actions.report">
+        <field name="name">Time Sheet of Individual Staff (Annexure-23)</field>
+        <field name="model">mcb.timesheet.report.wizard</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">mcb_project.report_mcb_timesheet</field>
+        <field name="report_file">mcb_project.report_mcb_timesheet</field>
+    </record>
+
+    <template id="report_mcb_timesheet">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-set="pr" t-value="doc._day_rows()"/>
+                <t t-set="projects" t-value="pr[0]"/>
+                <t t-set="rows" t-value="pr[1]"/>
+                <t t-set="glance" t-value="doc._glance(projects, rows)"/>
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <div style="text-align:center;">
+                            <h3 style="margin:0;">Mukti Cox's Bazar</h3>
+                            <h4>Time Sheet of Individual Staff</h4>
+                        </div>
+                        <p>
+                            <strong>Name:</strong> <t t-out="doc.employee_id.name"/> ·
+                            <strong>Designation:</strong> <t t-out="doc.employee_id.job_title or ''"/> ·
+                            <strong>Month:</strong> <t t-out="doc.month_date.strftime('%B %Y')"/>
+                        </p>
+                        <table class="table table-sm table-bordered" style="font-size:7.5pt;">
+                            <thead style="background:#eee;">
+                                <tr>
+                                    <th>Date</th><th>Day</th><th>Status</th><th>In</th><th>Out</th>
+                                    <t t-foreach="projects" t-as="p">
+                                        <th><t t-out="p.name"/></th>
+                                    </t>
+                                    <th>Total Hrs</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <t t-foreach="rows" t-as="r">
+                                    <tr>
+                                        <td><t t-out="r['date'].day"/></td>
+                                        <td><t t-out="r['day']"/></td>
+                                        <td><t t-out="r['status']"/></td>
+                                        <td><t t-out="r['in_time']"/></td>
+                                        <td><t t-out="r['out_time']"/></td>
+                                        <t t-foreach="projects" t-as="p">
+                                            <td class="text-end"><t t-out="'%.1f' % r['per_project'].get(p, 0.0)"/></td>
+                                        </t>
+                                        <td class="text-end"><t t-out="'%.1f' % r['total']"/></td>
+                                    </tr>
+                                </t>
+                            </tbody>
+                        </table>
+                        <h5>At a Glance (TMS-002)</h5>
+                        <table class="table table-sm table-bordered" style="font-size:8.5pt; width:80%;">
+                            <thead style="background:#eee;">
+                                <tr><th></th><th>Working Days</th><th>Total Hours</th>
+                                    <t t-foreach="projects" t-as="p"><th><t t-out="p.name"/> %</th></t>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th>As per Policy</th>
+                                    <td class="text-end"><t t-out="glance['working_days']"/></td>
+                                    <td/>
+                                    <t t-foreach="projects" t-as="p">
+                                        <td class="text-end"><t t-out="'%.0f%%' % glance['policy_pct'].get(p, 0.0)"/></td>
+                                    </t>
+                                </tr>
+                                <tr>
+                                    <th>At Actual</th>
+                                    <td class="text-end"><t t-out="glance['working_days']"/></td>
+                                    <td class="text-end"><t t-out="'%.1f' % glance['total_hours']"/></td>
+                                    <t t-foreach="projects" t-as="p">
+                                        <td class="text-end"><t t-out="'%.0f%%' % glance['actual_pct'].get(p, 0.0)"/></td>
+                                    </t>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table style="width:100%; margin-top:35px; text-align:center; font-size:9pt;">
+                            <tr>
+                                <td style="border-top:1px solid #000; width:40%;">Prepared By (Staff)</td>
+                                <td style="width:20%;"/>
+                                <td style="border-top:1px solid #000; width:40%;">Approved By (Supervisor)</td>
+                            </tr>
+                        </table>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+
+    <!-- Annexure-20 Monthly Attendance -->
+    <record id="action_report_mcb_attendance" model="ir.actions.report">
+        <field name="name">Monthly Staff Attendance (Annexure-20)</field>
+        <field name="model">mcb.attendance.report.wizard</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">mcb_project.report_mcb_attendance</field>
+        <field name="report_file">mcb_project.report_mcb_attendance</field>
+    </record>
+
+    <template id="report_mcb_attendance">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-set="rows" t-value="doc._rows()"/>
+                <t t-set="cal" t-value="doc._calendar_counts()"/>
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <div style="text-align:center;">
+                            <h3 style="margin:0;">Mukti Cox's Bazar</h3>
+                            <h4>Monthly Staff Attendance Information</h4>
+                        </div>
+                        <p>
+                            <strong>Project/Office:</strong> <t t-out="doc.project_name or (doc.department_id.name or 'All')"/> ·
+                            <strong>Funded By:</strong> <t t-out="doc.funded_by or ''"/> ·
+                            <strong>Month:</strong> <t t-out="doc.month_date.strftime('%B %Y')"/><br/>
+                            <strong>Working Days:</strong> <t t-out="cal[2]"/> ·
+                            <strong>Holy Days:</strong> <t t-out="cal[1]"/> ·
+                            <strong>Total Days:</strong> <t t-out="cal[0]"/>
+                        </p>
+                        <table class="table table-sm table-bordered" style="font-size:7.5pt;">
+                            <thead style="background:#eee;">
+                                <tr>
+                                    <th>Sl</th><th>Name of Employee</th><th>Designation</th>
+                                    <th>Joining</th><th>EL</th><th>CL</th><th>SL</th>
+                                    <th>Present</th><th>Leave w/Pay</th><th>Leave w/o Pay</th>
+                                    <th>Absent</th><th>Holy Day</th><th>Total</th><th>Days Payable</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <t t-set="i" t-value="0"/>
+                                <t t-foreach="rows" t-as="r">
+                                    <t t-set="i" t-value="i + 1"/>
+                                    <tr>
+                                        <td><t t-out="i"/></td>
+                                        <td><t t-out="r['emp'].name"/></td>
+                                        <td><t t-out="r['emp'].job_title or ''"/></td>
+                                        <td><t t-out="r['joining']"/></td>
+                                        <td><t t-out="r['el']"/></td>
+                                        <td><t t-out="r['cl']"/></td>
+                                        <td><t t-out="r['sl']"/></td>
+                                        <td><t t-out="r['present']"/></td>
+                                        <td><t t-out="r['leave_paid']"/></td>
+                                        <td><t t-out="r['leave_unpaid']"/></td>
+                                        <td><t t-out="r['absent']"/></td>
+                                        <td><t t-out="r['holidays']"/></td>
+                                        <td><t t-out="r['total']"/></td>
+                                        <td><t t-out="r['payable']"/></td>
+                                    </tr>
+                                </t>
+                            </tbody>
+                        </table>
+                        <table style="width:100%; margin-top:35px; text-align:center; font-size:9pt;">
+                            <tr>
+                                <td style="border-top:1px solid #000; width:30%;">Prepared By</td>
+                                <td style="width:5%;"/>
+                                <td style="border-top:1px solid #000; width:30%;">Checked By</td>
+                                <td style="width:5%;"/>
+                                <td style="border-top:1px solid #000; width:30%;">Approved By</td>
+                            </tr>
+                        </table>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+
+    <!-- Annexure-30 Travel Authorization -->
+    <record id="action_report_mcb_travel_auth" model="ir.actions.report">
+        <field name="name">Employee Travel Authorization (Annexure-30)</field>
+        <field name="model">mcb.travel.authorization</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">mcb_project.report_mcb_travel_auth</field>
+        <field name="report_file">mcb_project.report_mcb_travel_auth</field>
+        <field name="binding_model_id" ref="model_mcb_travel_authorization"/>
+        <field name="binding_type">report</field>
+    </record>
+
+    <template id="report_mcb_travel_auth">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <div style="text-align:center;">
+                            <h3 style="margin:0;">Mukti Cox's Bazar</h3>
+                            <h4>Employee Travel Authorization Form — <t t-out="doc.name"/></h4>
+                        </div>
+                        <table class="table table-sm table-bordered" style="font-size:9pt;">
+                            <tr><th style="background:#eee; width:30%;">Employee Name</th>
+                                <td><t t-out="doc.employee_id.name"/></td></tr>
+                            <tr><th style="background:#eee;">Designation</th>
+                                <td><t t-out="doc.designation or ''"/></td></tr>
+                            <tr><th style="background:#eee;">Project / Funded By</th>
+                                <td><t t-out="doc.project_id.name or ''"/> / <t t-out="doc.funded_by or ''"/></td></tr>
+                            <tr><th style="background:#eee;">Destination</th>
+                                <td><t t-out="doc.destination"/></td></tr>
+                            <tr><th style="background:#eee;">Purpose of Travel</th>
+                                <td><t t-out="doc.purpose"/></td></tr>
+                            <tr><th style="background:#eee;">Departure / Return</th>
+                                <td><t t-out="doc.departure_date"/> — <t t-out="doc.return_date"/></td></tr>
+                            <tr><th style="background:#eee;">Mode of Transportation</th>
+                                <td><t t-out="doc.transport_mode or ''"/></td></tr>
+                        </table>
+                        <h5>Estimated Cost (BDT)</h5>
+                        <table class="table table-sm table-bordered" style="font-size:9pt; width:70%;">
+                            <tr><th style="background:#eee;">Travel</th><td class="text-end"><t t-out="'%.2f' % doc.travel_cost"/></td>
+                                <th style="background:#eee;">Lodging</th><td class="text-end"><t t-out="'%.2f' % doc.lodging_cost"/></td></tr>
+                            <tr><th style="background:#eee;">Food</th><td class="text-end"><t t-out="'%.2f' % doc.food_cost"/></td>
+                                <th style="background:#eee;">Registration</th><td class="text-end"><t t-out="'%.2f' % doc.registration_cost"/></td></tr>
+                            <tr><th style="background:#eee;">Other</th><td class="text-end"><t t-out="'%.2f' % doc.other_cost"/></td>
+                                <th style="background:#eee;">Total</th><td class="text-end"><strong t-out="'%.2f' % doc.total_cost"/></td></tr>
+                        </table>
+                        <p style="font-size:9pt;">
+                            <em>Employee Certification — by signing below, I certify the requested travel is
+                            appropriate and necessary for conducting official business, and agree to comply
+                            with the organization policy for this travel.</em>
+                        </p>
+                        <p><strong>Finance Comments:</strong> <t t-out="doc.finance_comment or '____________________'"/></p>
+                        <table style="width:100%; margin-top:40px; text-align:center; font-size:9pt;">
+                            <tr>
+                                <td style="border-top:1px solid #000; width:30%;">Employee Signature</td>
+                                <td style="width:5%;"/>
+                                <td style="border-top:1px solid #000; width:30%;">Recommendation By<br/>
+                                    <t t-out="doc.recommended_by_id.name or ''"/></td>
+                                <td style="width:5%;"/>
+                                <td style="border-top:1px solid #000; width:30%;">Approved By<br/>
+                                    <t t-out="doc.approved_by_id.name or ''"/></td>
+                            </tr>
+                        </table>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+
+    <!-- MON-004 quarterly report -->
+    <record id="action_report_mcb_quarterly" model="ir.actions.report">
+        <field name="name">Quarterly Project Report (MON-004)</field>
+        <field name="model">mcb.quarterly.report.wizard</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">mcb_project.report_mcb_quarterly</field>
+        <field name="report_file">mcb_project.report_mcb_quarterly</field>
+    </record>
+
+    <template id="report_mcb_quarterly">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-set="s" t-value="doc._stats()"/>
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <div style="text-align:center;">
+                            <h3 style="margin:0;">Mukti Cox's Bazar</h3>
+                            <h4>Quarterly Project Report — <t t-out="doc.project_id.name"/></h4>
+                            <p><strong>Period:</strong> <t t-out="doc.date_from"/> — <t t-out="doc.date_to"/> ·
+                               <strong>Donor:</strong> <t t-out="doc.project_id.mcb_donor or ''"/></p>
+                        </div>
+                        <h5>Activity Achievement</h5>
+                        <table class="table table-sm table-bordered" style="font-size:9pt; width:70%;">
+                            <tr><th style="background:#eee;">Activities planned (due in period)</th>
+                                <td class="text-end"><t t-out="len(s['planned'])"/></td></tr>
+                            <tr><th style="background:#eee;">Activities completed</th>
+                                <td class="text-end"><t t-out="len(s['done'])"/></td></tr>
+                            <tr><th style="background:#eee;">% Achievement</th>
+                                <td class="text-end"><t t-out="'%.1f%%' % s['pct']"/></td></tr>
+                        </table>
+                        <h5>Beneficiary Reach (MON-005)</h5>
+                        <table class="table table-sm table-bordered" style="font-size:9pt; width:70%;">
+                            <tr><th style="background:#eee;">Direct</th>
+                                <td class="text-end"><t t-out="s['ben_direct']"/></td>
+                                <th style="background:#eee;">Indirect</th>
+                                <td class="text-end"><t t-out="s['ben_indirect']"/></td></tr>
+                            <tr><th style="background:#eee;">Male</th>
+                                <td class="text-end"><t t-out="s['ben_male']"/></td>
+                                <th style="background:#eee;">Female</th>
+                                <td class="text-end"><t t-out="s['ben_female']"/></td></tr>
+                        </table>
+                        <h5>Milestones</h5>
+                        <table class="table table-sm table-bordered" style="font-size:9pt;">
+                            <thead style="background:#eee;">
+                                <tr><th>Milestone</th><th>Planned</th><th>Reached</th></tr>
+                            </thead>
+                            <tbody>
+                                <t t-foreach="s['milestones']" t-as="m">
+                                    <tr>
+                                        <td><t t-out="m.name"/></td>
+                                        <td><t t-out="m.deadline or ''"/></td>
+                                        <td><t t-if="m.is_reached">Yes</t><t t-else="">No</t></td>
+                                    </tr>
+                                </t>
+                            </tbody>
+                        </table>
+                        <h5>Key Challenges</h5>
+                        <p><t t-out="doc.challenges or ''"/></p>
+                        <h5>Next Quarter Plan</h5>
+                        <p><t t-out="doc.next_plan or ''"/></p>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>

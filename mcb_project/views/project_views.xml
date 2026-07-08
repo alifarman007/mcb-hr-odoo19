@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="edit_project_mcb" model="ir.ui.view">
+        <field name="name">project.project.form.mcb</field>
+        <field name="model">project.project</field>
+        <field name="inherit_id" ref="project.edit_project"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook" position="inside">
+                <page string="MCB Profile" name="mcb_profile">
+                    <group>
+                        <group string="Project Profile (PRJ-001)">
+                            <field name="mcb_project_code"/>
+                            <field name="mcb_donor"/>
+                            <field name="mcb_contract_number"/>
+                            <field name="mcb_activity_code"/>
+                            <field name="mcb_implementation_area"/>
+                        </group>
+                        <group string="Budget">
+                            <field name="mcb_total_budget_bdt"/>
+                            <field name="mcb_donor_currency_id"/>
+                            <field name="mcb_donor_budget"/>
+                            <field name="mcb_budget_id"/>
+                        </group>
+                    </group>
+                    <group string="Close-Out Checklist (PRJ-007)">
+                        <group>
+                            <field name="mcb_closeout_final_report"/>
+                            <field name="mcb_closeout_assets"/>
+                            <field name="mcb_closeout_budget"/>
+                        </group>
+                        <group>
+                            <field name="mcb_closed_out" readonly="1"/>
+                            <button name="action_mcb_closeout" type="object"
+                                    string="Close Out Project" class="btn-primary"
+                                    invisible="mcb_closed_out"
+                                    groups="project.group_project_manager"/>
+                        </group>
+                    </group>
+                    <group string="Staff Assignments (PRJ-005)">
+                        <field name="mcb_assignment_ids" nolabel="1">
+                            <list editable="bottom">
+                                <field name="employee_id"/>
+                                <field name="date_from"/>
+                                <field name="date_to"/>
+                                <field name="percent"/>
+                            </list>
+                        </field>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_task_form_mcb" model="ir.ui.view">
+        <field name="name">project.task.form.mcb</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="project.view_task_form2"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='date_deadline']" position="after">
+                <field name="mcb_task_level"/>
+                <field name="mcb_progress" widget="progressbar"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

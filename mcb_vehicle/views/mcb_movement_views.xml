@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_mcb_movement_list" model="ir.ui.view">
+        <field name="name">mcb.movement.register.list</field>
+        <field name="model">mcb.movement.register</field>
+        <field name="arch" type="xml">
+            <list editable="bottom">
+                <field name="name"/>
+                <field name="employee_id"/>
+                <field name="designation"/>
+                <field name="office_location"/>
+                <field name="destination"/>
+                <field name="purpose"/>
+                <field name="departure_date"/>
+                <field name="departure_time" widget="float_time"/>
+                <field name="arrival_date"/>
+                <field name="arrival_time" widget="float_time"/>
+                <field name="travel_auth_id" optional="show"/>
+                <field name="expense_id" optional="show"/>
+                <field name="remarks" optional="hide"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="action_mcb_movement" model="ir.actions.act_window">
+        <field name="name">Daily Movement Register (Annexure-09)</field>
+        <field name="res_model">mcb.movement.register</field>
+        <field name="view_mode">list</field>
+    </record>
+</odoo>

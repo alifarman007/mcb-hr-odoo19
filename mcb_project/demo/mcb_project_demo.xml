@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="0">
+        <record id="demo_project_gbvie" model="project.project">
+            <field name="name">GBViE — Gender Based Violence in Emergency</field>
+            <field name="mcb_project_code">GBViE</field>
+            <field name="mcb_donor">CARE</field>
+            <field name="mcb_contract_number">CARE-BD-2025-118</field>
+            <field name="mcb_total_budget_bdt">18500000</field>
+            <field name="mcb_implementation_area">Camps 4, 12, 19 + host community, Ukhiya</field>
+            <field name="mcb_activity_code">GBV-01</field>
+        </record>
+        <record id="demo_beneficiary_1" model="mcb.beneficiary.entry">
+            <field name="project_id" ref="demo_project_gbvie"/>
+            <field name="beneficiary_type">direct</field>
+            <field name="male">40</field>
+            <field name="female">160</field>
+            <field name="children">60</field>
+            <field name="adults">120</field>
+            <field name="elderly">20</field>
+            <field name="location_type">camp</field>
+            <field name="camp_no">Camp 12</field>
+        </record>
+    </data>
+</odoo>

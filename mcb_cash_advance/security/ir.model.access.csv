@@ -1,0 +1,24 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_mcb_advance_emp,advance employee,model_mcb_advance,base.group_user,1,1,1,0
+access_mcb_advance_fin,advance finance,model_mcb_advance,account.group_account_user,1,1,1,0
+access_mcb_advance_mgr,advance manager,model_mcb_advance,account.group_account_manager,1,1,1,1
+access_mcb_advance_audit,advance audit,model_mcb_advance,mcb_account.group_mcb_audit,1,0,0,0
+access_mcb_advance_line_emp,advance line employee,model_mcb_advance_line,base.group_user,1,1,1,1
+access_mcb_adv_adj_emp,adjustment employee,model_mcb_advance_adjustment,base.group_user,1,1,1,0
+access_mcb_adv_adj_fin,adjustment finance,model_mcb_advance_adjustment,account.group_account_user,1,1,1,0
+access_mcb_adv_adj_mgr,adjustment manager,model_mcb_advance_adjustment,account.group_account_manager,1,1,1,1
+access_mcb_adv_adj_audit,adjustment audit,model_mcb_advance_adjustment,mcb_account.group_mcb_audit,1,0,0,0
+access_mcb_adv_adj_line_emp,adjustment line employee,model_mcb_advance_adjustment_line,base.group_user,1,1,1,1
+access_mcb_iou_emp,iou employee,model_mcb_iou,base.group_user,1,1,1,0
+access_mcb_iou_fin,iou finance,model_mcb_iou,account.group_account_user,1,1,1,0
+access_mcb_iou_mgr,iou manager,model_mcb_iou,account.group_account_manager,1,1,1,1
+access_mcb_iou_audit,iou audit,model_mcb_iou,mcb_account.group_mcb_audit,1,0,0,0
+access_mcb_cash_count_fin,cash count finance,model_mcb_cash_count,account.group_account_user,1,1,1,0
+access_mcb_cash_count_mgr,cash count manager,model_mcb_cash_count,account.group_account_manager,1,1,1,1
+access_mcb_cash_count_audit,cash count audit,model_mcb_cash_count,mcb_account.group_mcb_audit,1,0,0,0
+access_mcb_cash_count_line_fin,cash count line finance,model_mcb_cash_count_line,account.group_account_user,1,1,1,1
+access_mcb_cash_count_line_audit,cash count line audit,model_mcb_cash_count_line,mcb_account.group_mcb_audit,1,0,0,0
+access_mcb_petty_topup_fin,petty topup finance,model_mcb_petty_topup,account.group_account_user,1,1,1,0
+access_mcb_petty_topup_mgr,petty topup manager,model_mcb_petty_topup,account.group_account_manager,1,1,1,1
+access_mcb_petty_topup_audit,petty topup audit,model_mcb_petty_topup,mcb_account.group_mcb_audit,1,0,0,0
+access_mcb_petty_book_wiz,petty book wiz,model_mcb_petty_book_wizard,account.group_account_user,1,1,1,1

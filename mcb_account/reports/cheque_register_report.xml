@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="action_report_mcb_cheque_register" model="ir.actions.report">
+        <field name="name">Cheque Issue Register (Annexure-02)</field>
+        <field name="model">mcb.cheque.register.wizard</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">mcb_account.report_mcb_cheque_register</field>
+        <field name="report_file">mcb_account.report_mcb_cheque_register</field>
+    </record>
+
+    <template id="report_mcb_cheque_register">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <div style="text-align:center;">
+                            <h3 style="margin:0;">Mukti Cox's Bazar</h3>
+                            <p style="margin:2px 0;">Head Office, Goldighirpar, Cox's Bazar</p>
+                            <h4>Cheque Issue Register</h4>
+                        </div>
+                        <p>
+                            <strong>Name of Project/Office:</strong> <t t-out="doc.project_name or ''"/> ·
+                            <strong>Funded By:</strong> <t t-out="doc.funded_by or ''"/> ·
+                            <strong>Bank:</strong> <t t-out="doc.journal_id.name"/> ·
+                            <strong>Period:</strong> <t t-out="doc.date_from"/> — <t t-out="doc.date_to"/>
+                        </p>
+                        <table class="table table-sm table-bordered" style="font-size:9pt;">
+                            <thead style="background:#eee;">
+                                <tr>
+                                    <th>Sl</th><th>Date</th><th>Cheque No.</th><th>Name of Party</th>
+                                    <th>Purpose</th><th class="text-end">Amount BDT</th><th>Amount in Words</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <t t-set="i" t-value="0"/>
+                                <t t-foreach="doc._payments()" t-as="p">
+                                    <t t-set="i" t-value="i + 1"/>
+                                    <tr>
+                                        <td><t t-out="i"/></td>
+                                        <td><t t-out="p.date"/></td>
+                                        <td><t t-out="p.check_number or ''"/></td>
+                                        <td><t t-out="p.partner_id.name or ''"/></td>
+                                        <td><t t-out="p.memo or ''"/></td>
+                                        <td class="text-end"><t t-out="'%.2f' % p.amount"/></td>
+                                        <td><t t-out="p.mcb_amount_in_words or ''"/></td>
+                                    </tr>
+                                </t>
+                            </tbody>
+                        </table>
+                        <table style="width:100%; margin-top:45px; text-align:center; font-size:9pt;">
+                            <tr>
+                                <td style="border-top:1px solid #000; width:18%;">Cheque Prepared by (Finance)</td>
+                                <td style="width:2%;"/>
+                                <td style="border-top:1px solid #000; width:18%;">Checked by (PC/PM)</td>
+                                <td style="width:2%;"/>
+                                <td style="border-top:1px solid #000; width:18%;">1st Signatory</td>
+                                <td style="width:2%;"/>
+                                <td style="border-top:1px solid #000; width:18%;">2nd Signatory</td>
+                                <td style="width:2%;"/>
+                                <td style="border-top:1px solid #000; width:18%;">3rd Signatory</td>
+                            </tr>
+                        </table>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>

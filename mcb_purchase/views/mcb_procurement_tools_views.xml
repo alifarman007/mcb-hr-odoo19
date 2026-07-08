@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Opening Sheet -->
+    <record id="view_mcb_opening_form" model="ir.ui.view">
+        <field name="name">mcb.opening.sheet.form</field>
+        <field name="model">mcb.opening.sheet</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_fill_bidders" type="object" string="Load Bidders from PR"
+                            class="btn-secondary" invisible="state == 'done'"/>
+                    <button name="action_done" type="object" string="Record" class="btn-primary"
+                            invisible="state == 'done'"/>
+                    <button name="%(action_report_mcb_opening_sheet)d" type="action" string="Print"/>
+                    <field name="state" widget="statusbar"/>
+                </header>
+                <sheet>
+                    <div class="oe_title"><h1><field name="name" readonly="1"/></h1></div>
+                    <group>
+                        <group>
+                            <field name="request_id"/>
+                            <field name="opening_datetime"/>
+                        </group>
+                        <group>
+                            <field name="member_ids" widget="many2many_tags"/>
+                        </group>
+                    </group>
+                    <field name="line_ids">
+                        <list editable="bottom">
+                            <field name="vendor_id"/>
+                            <field name="quoted_total"/>
+                            <field name="security_submitted"/>
+                            <field name="remarks"/>
+                        </list>
+                    </field>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+    <record id="action_mcb_opening" model="ir.actions.act_window">
+        <field name="name">Opening Sheets (Step 4)</field>
+        <field name="res_model">mcb.opening.sheet</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <!-- Technical Analysis -->
+    <record id="view_mcb_ta_form" model="ir.ui.view">
+        <field name="name">mcb.technical.analysis.form</field>
+        <field name="model">mcb.technical.analysis</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_fill_vendors" type="object" string="Load Vendors from PR"
+                            class="btn-secondary" invisible="state == 'done'"/>
+                    <button name="action_done" type="object" string="Complete" class="btn-primary"
+                            invisible="state == 'done'"
+                            groups="mcb_purchase.group_mcb_proc_manager"/>
+                    <button name="%(action_report_mcb_ta)d" type="action" string="Print"/>
+                    <field name="state" widget="statusbar"/>
+                </header>
+                <sheet>
+                    <div class="oe_title"><h1><field name="name" readonly="1"/></h1></div>
+                    <group>
+                        <field name="request_id"/>
+                        <field name="ta_type"/>
+                    </group>
+                    <field name="line_ids">
+                        <list editable="bottom">
+                            <field name="vendor_id"/>
+                            <field name="spec_compliance"/>
+                            <field name="delivery_compliance"/>
+                            <field name="result"/>
+                            <field name="remarks"/>
+                        </list>
+                    </field>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+    <record id="action_mcb_ta" model="ir.actions.act_window">
+        <field name="name">Technical Analysis (Step 5)</field>
+        <field name="res_model">mcb.technical.analysis</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <!-- Comparative Statement -->
+    <record id="view_mcb_cs_form" model="ir.ui.view">
+        <field name="name">mcb.comparative.statement.form</field>
+        <field name="model">mcb.comparative.statement</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_fill_vendors" type="object"
+                            string="Load Qualified Vendors" class="btn-secondary"
+                            invisible="state == 'done'"/>
+                    <button name="action_done" type="object" string="Finalise" class="btn-primary"
+                            invisible="state == 'done'"
+                            groups="mcb_purchase.group_mcb_proc_manager"/>
+                    <button name="%(action_report_mcb_cs)d" type="action"
+                            string="Print CS (CS-008)"/>
+                    <field name="state" widget="statusbar"/>
+                </header>
+                <sheet>
+                    <div class="oe_title"><h1><field name="name" readonly="1"/></h1></div>
+                    <group>
+                        <group>
+                            <field name="request_id"/>
+                            <field name="technical_analysis_id"/>
+                            <field name="project_analytic_id"/>
+                            <field name="donor"/>
+                        </group>
+                        <group>
+                            <field name="circular_date"/>
+                            <field name="opening_date"/>
+                            <field name="evaluation_date"/>
+                        </group>
+                    </group>
+                    <field name="vendor_line_ids">
+                        <list editable="bottom">
+                            <field name="vendor_id"/>
+                            <field name="order_id"/>
+                            <field name="grand_total"/>
+                            <field name="position"/>
+                        </list>
+                    </field>
+                    <field name="pc_comment" placeholder="Procurement Committee recommendation narrative (CS-006)..."/>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+    <record id="action_mcb_cs" model="ir.actions.act_window">
+        <field name="name">Comparative Statements (Step 6)</field>
+        <field name="res_model">mcb.comparative.statement</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <!-- Vendor Evaluation -->
+    <record id="view_mcb_eval_form" model="ir.ui.view">
+        <field name="name">mcb.vendor.evaluation.form</field>
+        <field name="model">mcb.vendor.evaluation</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_done" type="object" string="Approve" class="btn-primary"
+                            invisible="state == 'done'"
+                            groups="mcb_purchase.group_mcb_proc_manager"/>
+                    <button name="action_create_po" type="object" string="Create PO (PO-001)"
+                            class="btn-primary" invisible="state != 'done'"
+                            groups="mcb_purchase.group_mcb_proc_manager"/>
+                    <button name="%(action_report_mcb_eval)d" type="action" string="Print"/>
+                    <field name="state" widget="statusbar"/>
+                </header>
+                <sheet>
+                    <div class="oe_title"><h1><field name="name" readonly="1"/></h1></div>
+                    <group>
+                        <group>
+                            <field name="request_id"/>
+                            <field name="cs_id"/>
+                            <field name="eval_type"/>
+                        </group>
+                        <group>
+                            <field name="recommended_vendor_id"/>
+                        </group>
+                    </group>
+                    <field name="line_ids">
+                        <list editable="bottom">
+                            <field name="vendor_id"/>
+                            <field name="price_score"/>
+                            <field name="quality_score"/>
+                            <field name="delivery_score"/>
+                            <field name="experience_score"/>
+                            <field name="total_score"/>
+                        </list>
+                    </field>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+    <record id="action_mcb_eval" model="ir.actions.act_window">
+        <field name="name">Vendor Evaluations (Step 7)</field>
+        <field name="res_model">mcb.vendor.evaluation</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <!-- NOAL -->
+    <record id="view_mcb_noal_form" model="ir.ui.view">
+        <field name="name">mcb.noal.form</field>
+        <field name="model">mcb.noal</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_issue" type="object" string="Issue NOAL" class="btn-primary"
+                            invisible="state != 'draft'"
+                            groups="mcb_purchase.group_mcb_proc_manager"/>
+                    <button name="action_acknowledge" type="object" string="Vendor Acknowledged"
+                            invisible="state != 'issued'"/>
+                    <button name="%(action_report_mcb_noal)d" type="action" string="Print NOAL"/>
+                    <field name="state" widget="statusbar"/>
+                </header>
+                <sheet>
+                    <div class="oe_title"><h1><field name="name" readonly="1"/></h1></div>
+                    <group>
+                        <group>
+                            <field name="date"/>
+                            <field name="order_id"/>
+                            <field name="vendor_id"/>
+                            <field name="vendor_address" readonly="1"/>
+                        </group>
+                        <group>
+                            <field name="contract_price"/>
+                            <field name="contract_price_words" readonly="1"/>
+                            <field name="performance_security_pct"/>
+                            <field name="performance_security_amount" readonly="1"/>
+                            <field name="currency_id" invisible="1"/>
+                        </group>
+                    </group>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+    <record id="action_mcb_noal" model="ir.actions.act_window">
+        <field name="name">NOAL (Step 9)</field>
+        <field name="res_model">mcb.noal</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <!-- Procurement checklist -->
+    <record id="view_mcb_proc_checklist_form" model="ir.ui.view">
+        <field name="name">mcb.procurement.checklist.form</field>
+        <field name="model">mcb.procurement.checklist</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_done" type="object" string="Mark Verified" class="btn-primary"
+                            invisible="state == 'done'"/>
+                    <button name="%(action_report_mcb_proc_checklist)d" type="action"
+                            string="Print (Annexure-29)"/>
+                    <field name="state" widget="statusbar"/>
+                </header>
+                <sheet>
+                    <div class="oe_title"><h1><field name="name" readonly="1"/></h1></div>
+                    <group>
+                        <field name="request_id"/>
+                        <field name="order_id"/>
+                    </group>
+                    <field name="line_ids">
+                        <list editable="bottom">
+                            <field name="sequence" widget="handle"/>
+                            <field name="name"/>
+                            <field name="status"/>
+                            <field name="remarks"/>
+                        </list>
+                    </field>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+    <record id="action_mcb_proc_checklist" model="ir.actions.act_window">
+        <field name="name">Procurement Checklists (Annexure-29)</field>
+        <field name="res_model">mcb.procurement.checklist</field>
+        <field name="view_mode">list,form</field>
+    </record>
+</odoo>

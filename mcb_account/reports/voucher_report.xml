@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="action_report_mcb_voucher" model="ir.actions.report">
+        <field name="name">MCB Voucher (Annexure 03–06)</field>
+        <field name="model">account.move</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">mcb_account.report_mcb_voucher</field>
+        <field name="report_file">mcb_account.report_mcb_voucher</field>
+        <field name="binding_model_id" ref="account.model_account_move"/>
+        <field name="binding_type">report</field>
+    </record>
+
+    <template id="report_mcb_voucher">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <div style="text-align:center;">
+                            <h3 style="margin:0;">Mukti Cox's Bazar</h3>
+                            <p style="margin:2px 0;">Head Office, Goldighirpar, Cox's Bazar</p>
+                            <h4 style="margin:6px 0;"><t t-out="doc.mcb_voucher_title()"/></h4>
+                        </div>
+                        <table style="width:100%; font-size:10pt; margin-bottom:8px;">
+                            <tr>
+                                <td style="width:50%;">
+                                    <strong>Voucher No.:</strong> <t t-out="doc.mcb_voucher_no or doc.name"/><br/>
+                                    <strong>Voucher Date:</strong> <t t-out="doc.date"/><br/>
+                                    <t t-if="doc.partner_id"><strong>Received From / Party:</strong> <t t-out="doc.partner_id.name"/></t>
+                                </td>
+                                <td style="width:50%;">
+                                    <strong>Journal:</strong> <t t-out="doc.journal_id.name"/><br/>
+                                    <t t-set="pay" t-value="doc.origin_payment_id"/>
+                                    <t t-if="pay and pay.check_number">
+                                        <strong>Cheque No.:</strong> <t t-out="pay.check_number"/><br/>
+                                    </t>
+                                    <strong>Reference:</strong> <t t-out="doc.ref or ''"/>
+                                </td>
+                            </tr>
+                        </table>
+                        <table class="table table-sm table-bordered" style="font-size:9pt;">
+                            <thead style="background:#eee;">
+                                <tr>
+                                    <th>Account Name &amp; Code</th>
+                                    <th>Memo</th>
+                                    <th>Name / Party</th>
+                                    <th>Class (Analytic)</th>
+                                    <th class="text-end">Debit</th>
+                                    <th class="text-end">Credit</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <t t-foreach="doc.line_ids.filtered(lambda l: l.display_type not in ('line_section','line_note'))" t-as="line">
+                                    <tr>
+                                        <td><t t-out="line.account_id.code"/> — <t t-out="line.account_id.name"/></td>
+                                        <td><t t-out="line.name or ''"/></td>
+                                        <td><t t-out="line.partner_id.name or ''"/></td>
+                                        <td>
+                                            <t t-foreach="(line.analytic_distribution or {}).keys()" t-as="aid">
+                                                <t t-out="doc.env['account.analytic.account'].browse(int(aid)).name"/><br/>
+                                            </t>
+                                        </td>
+                                        <td class="text-end"><t t-out="'%.2f' % line.debit"/></td>
+                                        <td class="text-end"><t t-out="'%.2f' % line.credit"/></td>
+                                    </tr>
+                                </t>
+                            </tbody>
+                            <tfoot>
+                                <tr style="background:#eee;">
+                                    <th colspan="4">Total</th>
+                                    <th class="text-end"><t t-out="'%.2f' % sum(doc.line_ids.mapped('debit'))"/></th>
+                                    <th class="text-end"><t t-out="'%.2f' % sum(doc.line_ids.mapped('credit'))"/></th>
+                                </tr>
+                            </tfoot>
+                        </table>
+                        <p><strong>Amount in words:</strong> <t t-out="doc.mcb_amount_in_words or ''"/></p>
+                        <table style="width:100%; margin-top:50px; font-size:9pt; text-align:center;">
+                            <tr>
+                                <td style="border-top:1px solid #000; width:22%;">Prepared By<br/><t t-out="doc.create_uid.name"/></td>
+                                <td style="width:4%;"/>
+                                <td style="border-top:1px solid #000; width:22%;">Checked By<br/><t t-out="doc.mcb_checked_by_id.name or ''"/></td>
+                                <td style="width:4%;"/>
+                                <td style="border-top:1px solid #000; width:22%;">Reviewed By<br/><t t-out="doc.mcb_reviewed_by_id.name or ''"/></td>
+                                <td style="width:4%;"/>
+                                <td style="border-top:1px solid #000; width:22%;">Approved By<br/><t t-out="doc.mcb_approved_by_id.name or ''"/></td>
+                            </tr>
+                        </table>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>

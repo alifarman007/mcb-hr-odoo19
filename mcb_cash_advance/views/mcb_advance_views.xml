@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_mcb_advance_list" model="ir.ui.view">
+        <field name="name">mcb.advance.list</field>
+        <field name="model">mcb.advance</field>
+        <field name="arch" type="xml">
+            <list decoration-danger="outstanding > 0 and adjust_deadline and adjust_deadline &lt; current_date">
+                <field name="name"/>
+                <field name="employee_id"/>
+                <field name="activity_name"/>
+                <field name="project_analytic_id"/>
+                <field name="amount"/>
+                <field name="date_paid"/>
+                <field name="adjust_deadline"/>
+                <field name="outstanding"/>
+                <field name="state" widget="badge"
+                       decoration-success="state in ('approved','adjusted')"
+                       decoration-warning="state == 'paid'"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_mcb_advance_form" model="ir.ui.view">
+        <field name="name">mcb.advance.form</field>
+        <field name="model">mcb.advance</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_submit" type="object" string="Submit" class="btn-primary"
+                            invisible="state != 'draft'"/>
+                    <button name="action_finance_check" type="object" string="Finance Check"
+                            invisible="state != 'submitted'" groups="account.group_account_user"/>
+                    <button name="action_review" type="object" string="Review"
+                            invisible="state != 'finance'" groups="account.group_account_user"/>
+                    <button name="action_approve" type="object" string="Approve" class="btn-primary"
+                            invisible="state != 'reviewed'" groups="account.group_account_manager"/>
+                    <button name="action_pay" type="object" string="Pay Advance" class="btn-primary"
+                            invisible="state != 'approved'" groups="account.group_account_user"/>
+                    <button name="action_cancel" type="object" string="Cancel"
+                            invisible="state in ('adjusted','cancelled')"/>
+                    <field name="state" widget="statusbar"
+                           statusbar_visible="draft,submitted,finance,reviewed,approved,paid,adjusted"/>
+                </header>
+                <sheet>
+                    <div class="oe_title"><h1><field name="name" readonly="1"/></h1></div>
+                    <group>
+                        <group string="Requester">
+                            <field name="employee_id"/>
+                            <field name="activity_name"/>
+                            <field name="required_date"/>
+                            <field name="journal_id"/>
+                        </group>
+                        <group string="Project / Accounts">
+                            <field name="project_analytic_id"/>
+                            <field name="funded_by"/>
+                            <field name="account_id"/>
+                            <field name="company_id" invisible="1"/>
+                        </group>
+                    </group>
+                    <field name="line_ids">
+                        <list editable="bottom">
+                            <field name="name"/>
+                            <field name="amount"/>
+                            <field name="remarks"/>
+                            <field name="currency_id" column_invisible="1"/>
+                        </list>
+                    </field>
+                    <group>
+                        <group>
+                            <field name="amount" readonly="1"/>
+                            <field name="amount_in_words" readonly="1"/>
+                            <field name="currency_id" invisible="1"/>
+                        </group>
+                        <group>
+                            <field name="date_paid" readonly="1"/>
+                            <field name="adjust_deadline" readonly="1"/>
+                            <field name="outstanding" readonly="1"/>
+                            <field name="payment_move_id" readonly="1"/>
+                            <field name="finance_comment"/>
+                        </group>
+                    </group>
+                    <field name="adjustment_ids" readonly="1">
+                        <list>
+                            <field name="name"/>
+                            <field name="date_adjustment"/>
+                            <field name="amount_spent"/>
+                            <field name="amount_diff"/>
+                            <field name="state"/>
+                        </list>
+                    </field>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_mcb_advance" model="ir.actions.act_window">
+        <field name="name">Advance Requests (Annexure-18)</field>
+        <field name="res_model">mcb.advance</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <record id="view_mcb_adv_adj_form" model="ir.ui.view">
+        <field name="name">mcb.advance.adjustment.form</field>
+        <field name="model">mcb.advance.adjustment</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_submit" type="object" string="Submit" class="btn-primary"
+                            invisible="state != 'draft'"/>
+                    <button name="action_approve" type="object" string="Approve &amp; Settle"
+                            class="btn-primary" invisible="state != 'submitted'"
+                            groups="account.group_account_manager"/>
+                    <field name="state" widget="statusbar"/>
+                </header>
+                <sheet>
+                    <div class="oe_title"><h1><field name="name" readonly="1"/></h1></div>
+                    <group>
+                        <group>
+                            <field name="advance_id"/>
+                            <field name="employee_id"/>
+                            <field name="date_adjustment"/>
+                        </group>
+                        <group>
+                            <field name="amount_received"/>
+                            <field name="amount_spent" readonly="1"/>
+                            <field name="amount_diff" readonly="1"/>
+                            <field name="settle_move_id" readonly="1"/>
+                            <field name="currency_id" invisible="1"/>
+                        </group>
+                    </group>
+                    <field name="line_ids">
+                        <list editable="bottom">
+                            <field name="name"/>
+                            <field name="account_id"/>
+                            <field name="amount"/>
+                            <field name="remarks"/>
+                            <field name="currency_id" column_invisible="1"/>
+                        </list>
+                    </field>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_mcb_adv_adj_list" model="ir.ui.view">
+        <field name="name">mcb.advance.adjustment.list</field>
+        <field name="model">mcb.advance.adjustment</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="advance_id"/>
+                <field name="employee_id"/>
+                <field name="date_adjustment"/>
+                <field name="amount_spent"/>
+                <field name="amount_diff"/>
+                <field name="state" widget="badge"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="action_mcb_adv_adjustment" model="ir.actions.act_window">
+        <field name="name">Advance Adjustments (Annexure-19)</field>
+        <field name="res_model">mcb.advance.adjustment</field>
+        <field name="view_mode">list,form</field>
+    </record>
+</odoo>

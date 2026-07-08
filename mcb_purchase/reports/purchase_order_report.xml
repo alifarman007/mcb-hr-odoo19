@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- PO-008 — 4-signature block appended to the standard PO report -->
+    <template id="report_purchaseorder_document_mcb"
+              inherit_id="purchase.report_purchaseorder_document">
+        <xpath expr="//div[@id='total']" position="after">
+            <div style="margin-top:40px;">
+                <table style="width:100%; text-align:center; font-size:9pt;">
+                    <tr>
+                        <td style="border-top:1px solid #000; width:22%;">
+                            Prepared By<br/><span t-out="o.create_uid.name"/>
+                        </td>
+                        <td style="width:4%;"/>
+                        <td style="border-top:1px solid #000; width:22%;">
+                            Checked By<br/><span t-out="o.mcb_checked_by_id.name or ''"/>
+                        </td>
+                        <td style="width:4%;"/>
+                        <td style="border-top:1px solid #000; width:22%;">
+                            Reviewed By<br/><span t-out="o.mcb_reviewed_by_id.name or ''"/>
+                        </td>
+                        <td style="width:4%;"/>
+                        <td style="border-top:1px solid #000; width:22%;">
+                            Approved By (CE)<br/><span t-out="o.mcb_approved_by_id.name or ''"/>
+                        </td>
+                    </tr>
+                </table>
+                <p style="font-size:8pt; margin-top:6px;">
+                    <span t-if="o.mcb_order_ref">MCB Order No: <strong t-out="o.mcb_order_ref"/> · </span>
+                    <span t-if="o.mcb_pr_id">PR Ref: <strong t-out="o.mcb_pr_id.name"/> · </span>
+                    <span t-if="o.mcb_noal_id">NOAL: <strong t-out="o.mcb_noal_id.name"/></span>
+                </p>
+            </div>
+        </xpath>
+    </template>
+</odoo>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_mcb_beneficiary_list" model="ir.ui.view">
+        <field name="name">mcb.beneficiary.entry.list</field>
+        <field name="model">mcb.beneficiary.entry</field>
+        <field name="arch" type="xml">
+            <list editable="bottom">
+                <field name="project_id"/>
+                <field name="task_id"/>
+                <field name="date"/>
+                <field name="beneficiary_type"/>
+                <field name="location_type"/>
+                <field name="camp_no"/>
+                <field name="male"/>
+                <field name="female"/>
+                <field name="other"/>
+                <field name="children"/>
+                <field name="adults"/>
+                <field name="elderly"/>
+                <field name="total"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_mcb_beneficiary_pivot" model="ir.ui.view">
+        <field name="name">mcb.beneficiary.entry.pivot</field>
+        <field name="model">mcb.beneficiary.entry</field>
+        <field name="arch" type="xml">
+            <pivot>
+                <field name="project_id" type="row"/>
+                <field name="location_type" type="col"/>
+                <field name="total" type="measure"/>
+                <field name="male" type="measure"/>
+                <field name="female" type="measure"/>
+            </pivot>
+        </field>
+    </record>
+
+    <record id="action_mcb_beneficiary" model="ir.actions.act_window">
+        <field name="name">Beneficiary Data (MON-005)</field>
+        <field name="res_model">mcb.beneficiary.entry</field>
+        <field name="view_mode">list,pivot</field>
+    </record>
+
+    <record id="view_mcb_meal_list" model="ir.ui.view">
+        <field name="name">mcb.meal.indicator.list</field>
+        <field name="model">mcb.meal.indicator</field>
+        <field name="arch" type="xml">
+            <list editable="bottom">
+                <field name="name"/>
+                <field name="project_id"/>
+                <field name="task_id"/>
+                <field name="period"/>
+                <field name="unit"/>
+                <field name="target"/>
+                <field name="achieved"/>
+                <field name="achievement_pct" widget="progressbar"/>
+            </list>
+        </field>
+    </record>
+    <record id="action_mcb_meal" model="ir.actions.act_window">
+        <field name="name">MEAL Indicators (MON-007)</field>
+        <field name="res_model">mcb.meal.indicator</field>
+        <field name="view_mode">list</field>
+    </record>
+</odoo>

@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="action_report_mcb_store_register" model="ir.actions.report">
+        <field name="name">Store Register (Annexure-08)</field>
+        <field name="model">mcb.store.register.wizard</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">mcb_store.report_mcb_store_register</field>
+        <field name="report_file">mcb_store.report_mcb_store_register</field>
+    </record>
+
+    <template id="report_mcb_store_register">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-set="pr" t-value="doc._register_rows()"/>
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <div style="text-align:center;">
+                            <h3 style="margin:0;">Mukti Cox's Bazar</h3>
+                            <h4>Store Register</h4>
+                        </div>
+                        <p>
+                            <strong>Project:</strong> <t t-out="doc.project_name or ''"/> ·
+                            <strong>Funded By:</strong> <t t-out="doc.funded_by or ''"/> ·
+                            <strong>Store:</strong> <t t-out="doc.location_id.display_name"/><br/>
+                            <strong>Name of Item:</strong> <t t-out="doc.product_id.display_name or '(choose an item)'"/> ·
+                            <strong>Period:</strong> <t t-out="doc.date_from"/> — <t t-out="doc.date_to"/> ·
+                            <strong>Opening:</strong> <t t-out="pr[0]"/>
+                        </p>
+                        <table class="table table-sm table-bordered" style="font-size:8.5pt;">
+                            <thead style="background:#eee;">
+                                <tr>
+                                    <th rowspan="2">Sl</th><th rowspan="2">Date</th>
+                                    <th colspan="3">Materials Received</th>
+                                    <th colspan="2">Materials Issue</th>
+                                    <th rowspan="2">Balance Qty</th>
+                                    <th rowspan="2">Recipient</th>
+                                </tr>
+                                <tr>
+                                    <th>GRN/Challan #</th><th>Qty</th><th>Purchase Rate</th>
+                                    <th>SRF/Challan #</th><th>Qty</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <t t-set="i" t-value="0"/>
+                                <t t-foreach="pr[1]" t-as="r">
+                                    <t t-set="i" t-value="i + 1"/>
+                                    <tr>
+                                        <td><t t-out="i"/></td>
+                                        <td><t t-out="r['date']"/></td>
+                                        <td><t t-out="r['grn']"/></td>
+                                        <td class="text-end"><t t-out="r['received']"/></td>
+                                        <td class="text-end"><t t-out="'%.2f' % r['rate']"/></td>
+                                        <td><t t-out="r['srf']"/></td>
+                                        <td class="text-end"><t t-out="r['issued']"/></td>
+                                        <td class="text-end"><t t-out="r['balance']"/></td>
+                                        <td><t t-out="r['recipient']"/></td>
+                                    </tr>
+                                </t>
+                            </tbody>
+                        </table>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+
+    <record id="action_report_mcb_monthly_stock" model="ir.actions.report">
+        <field name="name">Monthly Stock Report</field>
+        <field name="model">mcb.store.register.wizard</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">mcb_store.report_mcb_monthly_stock</field>
+        <field name="report_file">mcb_store.report_mcb_monthly_stock</field>
+    </record>
+
+    <template id="report_mcb_monthly_stock">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-set="rows" t-value="doc._monthly_rows()"/>
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <div style="text-align:center;">
+                            <h3 style="margin:0;">Mukti Cox's Bazar</h3>
+                            <h4>Monthly Stock Report</h4>
+                        </div>
+                        <p>
+                            <strong>Store:</strong> <t t-out="doc.location_id.display_name"/> ·
+                            <strong>Period:</strong> <t t-out="doc.date_from"/> — <t t-out="doc.date_to"/>
+                        </p>
+                        <table class="table table-sm table-bordered" style="font-size:9pt;">
+                            <thead style="background:#eee;">
+                                <tr><th>Item</th><th class="text-end">Opening</th>
+                                    <th class="text-end">Receipts</th><th class="text-end">Issues</th>
+                                    <th class="text-end">Closing</th></tr>
+                            </thead>
+                            <tbody>
+                                <t t-foreach="rows" t-as="r">
+                                    <tr>
+                                        <td><t t-out="r['product'].display_name"/></td>
+                                        <td class="text-end"><t t-out="r['opening']"/></td>
+                                        <td class="text-end"><t t-out="r['received']"/></td>
+                                        <td class="text-end"><t t-out="r['issued']"/></td>
+                                        <td class="text-end"><t t-out="r['closing']"/></td>
+                                    </tr>
+                                </t>
+                            </tbody>
+                        </table>
+                        <table style="width:100%; margin-top:40px; text-align:center; font-size:9pt;">
+                            <tr>
+                                <td style="border-top:1px solid #000; width:30%;">Store Keeper</td>
+                                <td style="width:5%;"/>
+                                <td style="border-top:1px solid #000; width:30%;">Checked By</td>
+                                <td style="width:5%;"/>
+                                <td style="border-top:1px solid #000; width:30%;">Approved By</td>
+                            </tr>
+                        </table>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+
+    <record id="action_report_mcb_muster_roll" model="ir.actions.report">
+        <field name="name">NFI Distribution Muster Roll</field>
+        <field name="model">mcb.muster.roll</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">mcb_store.report_mcb_muster_roll</field>
+        <field name="report_file">mcb_store.report_mcb_muster_roll</field>
+        <field name="binding_model_id" ref="model_mcb_muster_roll"/>
+        <field name="binding_type">report</field>
+    </record>
+
+    <template id="report_mcb_muster_roll">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <div style="text-align:center;">
+                            <h3 style="margin:0;">Mukti Cox's Bazar</h3>
+                            <h4>NFI Distribution Muster Roll — <t t-out="doc.name"/></h4>
+                        </div>
+                        <p>
+                            <strong>Project:</strong> <t t-out="doc.project_id.name or ''"/> ·
+                            <strong>Activity:</strong> <t t-out="doc.task_id.name or ''"/> ·
+                            <strong>Item:</strong> <t t-out="doc.product_id.display_name"/> ·
+                            <strong>Date:</strong> <t t-out="doc.date"/> ·
+                            <strong>Location:</strong> <t t-out="doc.location or ''"/>
+                        </p>
+                        <table class="table table-sm table-bordered" style="font-size:9pt;">
+                            <thead style="background:#eee;">
+                                <tr><th>Sl</th><th>Beneficiary Name</th><th>ID / NID / FCN</th>
+                                    <th class="text-end">Qty</th><th>Signature / Thumb</th></tr>
+                            </thead>
+                            <tbody>
+                                <t t-set="i" t-value="0"/>
+                                <t t-foreach="doc.line_ids" t-as="l">
+                                    <t t-set="i" t-value="i + 1"/>
+                                    <tr>
+                                        <td><t t-out="i"/></td>
+                                        <td><t t-out="l.beneficiary_name"/></td>
+                                        <td><t t-out="l.beneficiary_id_no or ''"/></td>
+                                        <td class="text-end"><t t-out="l.quantity"/></td>
+                                        <td style="height:26px;"/>
+                                    </tr>
+                                </t>
+                            </tbody>
+                            <tfoot>
+                                <tr style="background:#eee;">
+                                    <th colspan="3">Total Distributed</th>
+                                    <th class="text-end"><t t-out="doc.total_qty"/></th><th/>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>

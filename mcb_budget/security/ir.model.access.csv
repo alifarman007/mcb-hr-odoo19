@@ -1,0 +1,10 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_mcb_wb_user,working budget user,model_mcb_working_budget,account.group_account_user,1,1,1,0
+access_mcb_wb_mgr,working budget mgr,model_mcb_working_budget,account.group_account_manager,1,1,1,1
+access_mcb_wb_all,working budget read all,model_mcb_working_budget,base.group_user,1,0,1,0
+access_mcb_wb_audit,working budget audit,model_mcb_working_budget,mcb_account.group_mcb_audit,1,0,0,0
+access_mcb_wb_line_user,working budget line user,model_mcb_working_budget_line,base.group_user,1,1,1,1
+access_mcb_rev_user,budget revision user,model_mcb_budget_revision,account.group_account_user,1,1,1,0
+access_mcb_rev_mgr,budget revision mgr,model_mcb_budget_revision,account.group_account_manager,1,1,1,1
+access_mcb_rev_audit,budget revision audit,model_mcb_budget_revision,mcb_account.group_mcb_audit,1,0,0,0
+access_mcb_donor_wiz,donor report wiz,model_mcb_donor_report_wizard,account.group_account_user,1,1,1,1

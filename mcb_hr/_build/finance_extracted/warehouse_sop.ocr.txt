@@ -1,0 +1,1166 @@
+3 Mukti Cox’s Bazar
+
+Goldighirpar, Cox’s Bazar-4700
+
+g oa
+
+WAREHOUSE &
+INVENTORY
+MANAGEMENT
+
+Email: mukticox@gmail.com
+Website: www.mukticox.org
+Facebook: www.facebook.com/mcbfb
+tear» Phone: +88034162558
+
+Missa «= Fax: +88034151103
+
+Standard Operating Procedures
+(SOP)
+for
+
+Warehouse &
+Inventory Management
+
+Mukti Cox’s Bazar
+
+Reviewed on 10th September, 2022
+
+OM . (P-- de
+
+au Nica Babla Paul Bimal Chandra Dey Sarker
+Mukti Cox'S Bazar Secretary Chief Executive
+
+Mukti Cox's Bazar. Mukti Cox's Bazar
+Mukti Cox’s Bazar inventories represent a significant investment and following the
+implementation of appropriate methodology in accordance with their monetary value is
+disclosed in its financial policy and ISA financial Statement.
+
+\e
+
+It is, therefore, the duty and responsibility of the Mukti Cox’s Bazar designated personal
+
+. ensure of Supply Management function and the Store keeper or designated personal
+(regardless if they are Mukti Cox’s Bazar staff, Project, or commercial companies) to closely
+ensure adequate and safe storing conditions, efficient warehouse operations and complete and
+accurate recording of all inventory movements.
+
+The objectives of warehouse and inventory management are to:
+e Ensure satisfactory receipt of goods;
+e Provide the ability to rapidly deliver goods requested;
+¢ Keep accurate account of the inventory movements and balance;
+e Maintain complete and accurate records of the inventory situation (physical, reserved,
+buffer, on hand, distribution, contingency, temporary and in transitinventories);
+e Maintain adequate storage conditions, to ensure that the inventory is in usable or
+serviceable condition when needed;
+. e Ensure appropriated measures to guarantee the safety and security of thegoods.
+e Ensure the inventory is maintained according to the Layout & Storage plan;and items are
+expediently staked.
+e Establish internal control mechanism and set the effective control at both Head office and
+Project office warehouse management system.
+
+Operative warehouse and inventory management includes proper planning, recording,
+controlling and monitoring of the inventory. While the planning of transactions (objectives,
+needs. priorities, budget, procurement, etc.) is performed at the Mukti Cox’s Bazar
+operational level the execution involves the warehouse. Functioning coordination and
+communication between the Head Office and project office warehouses are, therefore,
+essential.
+
+Unproductive inventory management could result among others in incorrect quantities
+
+released, incorrect data recorded, poor decisions, unnecessary inventory levels, wasteful use
+of funds, damage and losses.
+
+Mukti Cox’s Bazar Inyentory
+Mukti Cox’s Bazar inventories are all tangible items owned that are intended to be distributed
+to persons of concern. Inventories also include consumables, materials, and supplies consumed
+
+Bae
+
+Bimal Chandra Dey Sarker
+Chief Executive
+Mukti Cox's Bazar
+in the delivery of operations, when these items are of material value. Examples of inventory
+are including agriculture item(s) seeds, sapling, fertilizer, Vermicompost, Construction
+material, Rod, cement, sand, Brick, wood, bamboo, education material books, pen, paper,
+pencil, emergency nonfood item(s) tents, blankets, cookeries, hygiene kits, Menstrual hygiene
+material, Medicine and others item as appropriate.
+
+: Mukti Cox’s Bazar Warehouse
+
+Mukti Cox’s Bazar warehouse is defined as a planned space managed by either it’s head offices
+or together with its project office level where Mukti Cox’s Bazar preserved inventories are stored
+and recorded.
+
+Scope of the SOP
+
+The scope of this SOP covers the responsibilities for the related processes at the Mukti Cox’s
+Bazar Offices holding inventories and at the level of the store keeper or designated personal
+who will be Mukti Cox’s Bazar core staff or project staff.
+
+Any tangible or intangible items under the custody of Mukti Cox’s Bazar warehouse, defined
+. as the Property of Mukti Cox’s Bazar, are must cover the scope of this SOP even if these
+items are used to implement donor funded projects. Such Goods and Property include:
+¥ Goods and Property, i.e., items procured by the Mukti Cox’s Bazar for it’s
+mother/organization
+¥ Goods and Property, i.e., items provided in-kind by Donor/UN agency/GoB or any
+other sources;
+¥ Project Goods and Property; i.e., items procured by the Mukti Cox’s Bazar
+
+The management of these items will be covered by this SOP, excepts are required specific
+Guidelines to be developed based on this SOP
+
+This SOP covers the procedures for warehouse and inventory management up to the point
+where Mukti Cox’s Bazar inventory items are released from its warehouse for distribution.
+In case of donor requirement Mukti Cox’s Bazar will liberty to respect donor guideline and
+
+procedure in addition with this SOP.
+Bye MUC Alans tn tts eae eS ai]
+A Waybill/Challan is used as the warehouse issuing document, certifying the
+transfer/release of goods. It is the base document for financial transactions, such as the
+payment of the supplier/forwarder and the recording of the accounting entries. It is the
+ic Officer to ensure that the Challan/Waybill is properly filled in,
+
+responsibility of the Log
+signed and filed.
+
+The Challan/ Waybill can be also referred to as the carrier document, listing the load, weight,
+size, final destination, etc. of the goods carried. As such, it is used as the delivery document
+
+to be presented to the receiving warehouse.
+
+: Bimal Chandra Dey Sarker
+Chief Executive
+Mukti Cox's Bazar
+
+The Goods Receiving Note (GRN) is a standard Mukti Cox’s Bazar document to confirm
+receipt of goods. It is the base document for financial transactions, such as the payment of the
+supplier/forwarder and the recording of the accounting entries.
+
+Bin/Stack Cards are standard Mukti Cox’s Bazar documents that are fitted to an item
+bin/stack in the warehouse. The card displays the beginning balance, movements in and out
+and the current balance of an item at any given time. One bin/stack should only comprise one
+type of item from one unique Purchase Order (PO) number. The bin/stack cards facilitate
+picking and physical counts.
+
+The Bin/Stack Cards must be established or updated as a soon as an item is moved in or out
+for a specific bin/stack. The warehouse staff effecting the movement must note the approved
+Material Stock Request (MSR) number and sign after having updated the card.
+
+The Stock Card is a standard Mukti Cox’s Bazar document which consolidates the
+information of multiple bin/stack cards relating to the same item and Purchase Order (PO) in
+case it is stored in different bins/stacks of the warehouse. It should be continuously updated by
+the warehouse and maintained in the warehouse area.
+
+Stock Card ys. Bin/Stack Card
+
+In smaller warehouses, the Stock Cards provide the same information as the Bin/Stack Card. In
+larger warehouses the Stock Card information will consolidate the information of multiple
+Bin/Stack cards and show the total inventory holding of an item/ Purchase Order PO which is
+stored in different bins/stacks.
+
+The Stock Report is a non-standard Mukti Co’s Bazar document used to report the inventory
+position/holding for all inventory items by Purchase Order PO, at warehouse level. The
+reporting frequency will be determined based on the inventory turnover rate and/or the
+fluctuation in demand but is normally monthly. It is the responsibility of the head office to
+define the format of the report, and the reporting f-equency.
+
+The report is used by the warehouse and the head office to report the inventory holdings at
+warehouse and/or at filed level to stock owners and other donors. The reports provide timely
+information on inventory levels by warehouse and item which is important for operational,
+financial and procurement planning.
+
+Pw
+
+Bimal Chandra Dey Sarker
+Chief Executive
+Mukti Cox's Bazar
+
+The Layout & Storage Plan is standard Mukti Cox’s Bazar document showing by Purchases
+Order corresponding with invoices and challan where items are currently stored and where
+arriving items can be stored. Thus, it facilitates the picking process and warehouse
+management (e.g., physical verification, consolidation, warehouse space planning, etc.). It is
+the responsibility of the head Office to define the format to be used and to ensure proper
+implementation and updates. The plan should be regularly updated so that information on free
+space and storage locations of items is available
+
+Inventory management & update Books of Records: Store Keeper is responsible to ensure
+that the head office receives the information on the transactions effected for each day: copies
+of GRNs, Challan/Waybills, incoming and outgoing shipment reports and quality inspection
+reports.
+
+Based on the documentation received from the Warehouse it is the responsibility of the head
+office Inventory Focal Point to update Books of record by Automation Inventory software
+
+daily basis.
+
+The Mukti Cox’s Bazar inventory Focal point and the Store Keeper must ensure an effective
+flow of information to enable monitoring and control of the activities planned. Both parties are
+responsible to ensure that inventory records are timely and accurately updated. Any issues
+noted should be communicated openly and immediately between the Store Keeper of Mukti
+Cox's Bazar head Office or vice versa and jointly addressed.
+
+he Project Warehouse Focal point and the Head office jointly need to perform the Monthly
+Inventory Reconciliation to ensure that Stock Cards and Automation Inventory software
+quantities match. Before this exercise it is very important to update the Automation
+Inventory software system with all inventory transactions completed.
+
+In case discrepancies are identified the cause must be determined and the records corrected, if
+necessary. This process may include ensuring that all transactions are logged in Automation
+Inventory software, auditing physical warehouse files against Automation Inventory
+software transactions and reports, recounts of bin/stacks ete.
+
+After the verification, a report must be submitted to Coordinator Finance & Accounts at Mukti
+Head office with full documentation and explanations of the discrepancies, if any.
+
+Disposal of expired or damaged stock: When an approved Disposal Request is received from
+the head office the expired or damaged inventory items can be disposed of environmentally
+friendly and in line with local regulations. The Mukti Cox’s Bazar head office will adjust the
+inventory records in Automation Inventory software and the warehouse will adjust the quantities
+on the on the stock and stack/bin cards. The approved disposal list needs to be printed and filed
+
+in the appropriate file.
+
+bah
+Bimal Chandra Dey Sarker
+
+Chief Executive
+Mukti Cox's Bazar
+
+Quarterly Activities
+
+Quarterly Inventory Verification: The Store keeper /officer in charge for inventories in
+coordination with the Project warehouse focal point and guidance from Coordinator Finance &
+Accounts must conduct a full Physical Inventory Verification quarterly. Any discrepancy
+between the physical inventory as per count sheets and the Automation Inventory software stock
+records must be investigated and explained by the Store Keeper of head office and the Project
+warehouse focal. The head office must send the full documentation of the stock count including
+the reconciliation reports with full explanation for all discrepancies to Senior Management. If
+there is a high inventory turnover in the operation, the implementation of more frequent
+inventory verifications is recommended.
+
+Yearly Activities
+
+Yearly Inventory Verifications: The Yearly Physical Verification of Inventories is jointly
+performed by Mukti Cox’s Bazar head office core staff (Supply and Programme) and the Project
+warehouse Focal person in accordance with instructions issued by the Coordinator Finance &
+Accounts. As a part of this exercise, a full reconciliation between inventory quantities
+established by physical counts and Automation Inventory software records needs to be
+completed. Any discrepancy between the physical inventory as per count sheets and the
+Automation Inventory software stock records must be investigated and explained by the head
+office assign/designated and Project the warehouse and logistic Officer. The head office must
+send the full documentation of the stock count including the reconciliation reports with full
+explanation for all discrepancies to Senior Management.
+
+Handover procedures
+
+Any change of the Project level inventory and/or the Mukti Cox’s Bazar head offices Store
+keeper is responsible for inventory management requires that a complete physical inventory
+verification exercise is conducted.
+
+The responsible Store Keeper or Logistic Officer (outgoing/incoming) and the designated
+officer of warehouse (outgoing/incoming) must conduct this as a joint exercise. In case an
+external warehouse focal is changing the concern Officer in charge should be involved as well.
+The new Concern Officer/Warehouse Focal in charge must sign the complete and updated
+inventory records for which they are taking over the responsibility.
+
+Copies of the hand-over documentation should be stored both in the warehouse verification
+files and with the Supply function in the Mukti Cox’s Bazar head office.
+
+The Main Information Sheet of the warehouse should include details about the following:
+Address of the warehouse,
+
+|. General description of the area, access roads and the surface of roads and truck
+maneuvering area outside the warehouse;
+
+2. Description of the building(s), including the type, size and condition of the building(s),
+storage capacity size of the area designated for Mukti Cox’s Bazar inventory storage;
+3. Insurance arrangements for the building(s):
+
+4. Incase of a rented warehouse, the details of the legal owner of the building, the notice
+period for cancellation of rent and the monthly rental fee:
+
+Description of access control and security arrangements, system for control of key(s)
+and the location of spare keys
+
+6. Contact details of Warehouse Focal, the Mukti head office inventory focal point.
+
+in
+
+Warehouse Operational Procedures:
+
+Overall Responsibility & Staffing structure: At Mukti Cox’s Bazar, the Coordinator Finance
+& Accounts is responsible for supply in an operation is overall responsible for warehouse and
+inventory management. S/he must ensure that the function is properly implemented and
+adequately staffed and managed. This includes the daily update of Automation Inventory
+software with all inventory movements and providing timely reports to stakeholders. Each
+operation holding inventory must have the following Automation Inventory software roles
+assigned to adequately trained staff:
+¥ Inventory Focal Point / Logistics/supply function);
+¥Y _ PO/inter-unit Store Requisition From (SRF) receiver / Logistic (Supply function),
+. Y Purchases Requisition PR/ Store Requisition From (SRF) preparer / (Logistic/Supply
+function);
+Y Purchases Requisition PR / SRF approver / (Authority function);
+VY Purchases Requisition PR / SRF Process & function / (Procurement function);
+¥Y Back-up for each function mentioned above.
+
+A file detailing the persons assigned to each function must be maintained and included in the
+office’s Delegation of Authority Plan (DOAP). The officer responsible for the Supply
+function shall ensure that only competent staff is assigned to perform these tasks (e.g.
+provided training/support/oversight).
+
+|t is the responsibility of the Logistic and Supply function, in cooperation with Finance
+department, to ensure that each warehouse (regardless if managed by Mukti Cox’s Bazar
+
+- Core or external staff) has one designated Warehouse Focal person with the overall
+responsibility for managing the warehouse and its operations.
+
+‘ox’s Bazar Head Office Role
+
+Information to be provided to the Warehouse:
+To enable the warehouse to operate effectively and efficiently, the Mukti Cox’s Bazar head
+office as a minimum need to inform the warehouse of:
+
+Y Sourcing plan: Will assist the Program Coordinator in calculating the storage space
+needs for future periods.
+
+: Bimal Chandra Dey Sarker
+Chief Executive
+Mukti Cox's Bazar
+Y Incoming shipments: Pipeline information providing item specifications, quantities and
+PR/MSR numbers. It allows the Logistic Officer toverify the documentation/specifications
+of the items prior to arrival and to arrange for proper receipt/inspection and storage space.
+
+Y Distribution plans: Informed by sourcing plans and incoming pipeline information. lt
+allows the Logistic Officer to establish an estimated schedule for inventory movements,
+enabling work force and space planning.
+
+. ¥Y Approved PR/MSRs: Are the only valid documents authorizing the Logistic Officer to
+
+release inventory to a named organization/entity or their representative (i.c., truck driver
+showing appropriate documentation).
+
+Procedures for Receiving and Releasing Inventory
+
+The Mukti Cox’s Bazar head office shall initiate and approve the receiving of
+consignmentsat or releasing of inventory from a warehouse.
+
+> Receipt of inventory at a Mukti Cox’s Bazar head office at it central warehouse requires
+valid all corresponding documents verifying the following delivery details:
+
+> Mukti Cox’s Bazar head office Warehouses can only receive inventories that are
+
+procured for and owned by it projects and mother accounts and any consignment
+: delivered should have an it’s valid PO number reference (this is also applicable for
+donations in kind and donor funded project.
+
+> In order to properly receive the items in the warehouse the responsibleofficer in the MCB
+head office must ensure that all relevant information is provided to the warehouse,
+preferably well in advance of the delivery.
+
+> The warehouse is not allowed to dispatch any inventory without receiving a completed
+and approved MSR from the MCB head office. For external MSRs, a valid document
+with approval must be entered before it can be approved.
+
+Procedures of Error rectificati
+
+In case of reviewing of SRFs: Supply staff has to review the Release Request and if
+inconsistencies are noted the following applies.
+
+Error Rectification
+The quantity asked for in the Release Request is Resolve with the MCB and amend the
+greater than the available quantity. Release Request. Prepare the SRF
+
+According to the revised details.
+
+The customer has requested goods which are current Check with Sourcing staff. Discuss with the
+aueseee Y | customer (prior to creating the SRF) and
+
+not in the pipeline or the warehouse. ; :
+Pip : issue a modified SRF or cancel the Release
+Request.
+
+Bimal Chandra Dey Sarker
+Chief Executive
+Mukti Cox's Bazar
+Additional items are expected to arrive later than the Consult with the customer and agree a
+SRF revised distribution schedule. Create SRF
+distribution dates. with modified schedule.
+
+In case of modification of SRFs: Supply staff may need to modify or cancel the MSR, if it has not been
+shipped and/or if it was changed, as follows.
+
+Error Rectification
+A customer sends a modification The SRF should be modified as per the
+toa Release Request for which aSRF has already updated Release Request. Inform the
+been created. warehouse accordingly.
+Aaditionaligocdsiare necded. Change the SRF to reflect the increased
+a quantity. Inform the warehouse to reserve.
+
+Change the SRF to reflect the reduced
+quantity. Inform the warehouse to “un-
+reserve”
+
+If the quantities of goods isreduced.
+
+SRF is no longer needed due to ;
+ae Cancel the SRF and ‘un-reserve’ the surplus.
+a modification or a change to theRelease Request. ‘
+Inform the warehouse accordingly.
+
+Procedures of goods return:
+
+Items ordered and delivered might have to be returned to the vendor or the dispatching
+warehouse due to:
+e Detect or damages:
+e Duplicate orders or over deliveries;
+Delayed delivery (in case items are no longer required).
+
+Process for return to vendor: If goods are returned or rejected for quality reasons the vendor has to
+replace them or issue a credit note.
+
+Returning dispatched inventory: Return of inventory items dispatched from a warehouse should be
+an exception and avoided by carefully planning the distribution quantities. If a dispatch, or part of it, is
+nevertheless returned to the issuing warehouse, the items are to be recorded back to Automation
+Inventory software. This cannot be done at the country level; therefore, the Mukti Cox’s Bazar head
+office needs to inform Senior Management at Head office about the details of the adjustment required.
+
+utomation Inventory software
+
+Recording of Transactions through
+
+The Mukti Cox’s Bazar head office must ensure that the Automation Inventory software Inventory
+module is updated daily with all inventory transactions, i.e. PO/inter-unit SRF receipts and SRF Pick &
+
+(dispatch).
+
+inventory transaction may only be recorded in Automation Inventory software upon receipt of
+documentation from the warehouse providing proof of the physical movement, such as Waybills and
+
+bw
+
+Bimal Chandra Dey Sarker
+Chief Executive
+Mukti Cox's Bazar
+The MCB head office shall establish a filing system for hardcopy documents related to warehouse
+transactions and inventory holdings, and retain them for five years. The following documents need to
+be filed:
+
+Contracts/POs;
+
+Goods Receiving Notes (GRNs);
+Waybills and Delivery Notes;
+Inspection & Weekly reports;
+Bin/Stack Cards & Stock Cards;
+Inventory counting sheets;
+
+Loss/Damage forms:
+
+ee ee
+
+Import/export documents
+
+The MCB management must arrange adequate insurance for inventories stored for the warehouse
+
+One of the main objectives of warehouse management is to ensure that inventories stored for a shorter or
+longer periods of time are in the best possible condition when dispatched for use by the beneficiaries. The
+Layout & Storage plan is a tool to manage space utilization in the warehouse.
+
+A clear segregation between inventory items owned by Mukti Cox’s Bazar and other goods must be
+maintained in case the warehouse is shared with other organizations, or when the warehouse operator
+stores goods for other clients in the same locality.
+
+Layout & Storage plan: All warehouses should maintain a Layout and Storage Plan based on a grid
+layout. showing where the different items are stored, and update it regularly. The storage areas should be
+marked by marker /paint on the floor and include area, row and aisle identification codes (e.g.: grid Area
+2/Row A/Aisle 1).
+
+As a minimum of five areas should be designated:
+
+1.Office area;
+
+2.Goods receiving area;
+
+3.Goods storage area(s) (can include outdoor space);
+
+4.Damaged/expired goods area;
+
+5.Staging/loading area for items picked and ready for release.
+
+Bo
+
+Bimal Chandra Dey Sarker
+Chief Executive
+Mukti Cox's Bazar
+Further areas can be required for larger warehouses such as:
+“» Sealed/locked area, for attractive and/or high value items;
+“ Spare parts storage area;
+“+ Temperature controlled/cold chain storage area;
+*» Dangerous goods area (pesticides, fuel, etc.).
+When developing the Layout & Storage plan, the following must be ensured:
+> Separate food and non-food item storage areas;
+> Store items on pallets (food always, Core Relief Items (CRI’s) preferably):
+
+» Allow at least one meter space around stacks and between stacks, walls, pillars, beams or other
+obstructions, for ventilation and directional;
+
+» Store different consignments (lot IDs/PO numbers) of the same item in separate stacks;
+» Use the FIFO (First in, first out) principle, unless special circumstances such as emergencies
+require to deviate;
+
+Record the location of stock in the Layout & Storage plan, and the Stock Card, and include the
+following details:
+
+* Storage area code (e.g.: grid: Area 1/Row A/Aisle 2);
+
+** Commodity code or description of the item;
+
+“+ Lot ID/PO number of the item.
+
+Safety and Security of Stock
+
+Ensure safety and security of Stock of Warehouse is big concern. Since, all are valuable item(s) are stored
+in warehouse, therefore, ensure safety and security of stored item(s) must be ensured and need to be
+minimized risky. To ensure safety and Security, Mukti Cox’s Bazar will take following precautionary
+
+measure against each risk factor;
+
+Safety andSecurity of Stock: Goods should be protected from the risks of fire, loss, breakage, damage
+and theft. A security risk assessment and facilities assessment should be undertaken. The warehouse shall
+prepare an infrastructure plan covering:
+
+Security lighting, evacuation plan (escape exits) and assembly points clearly identified and marked;
+
+Appropriated fencing and other security measures as alarms; perimeter walls/fences towards adjoining
+buildings/areas. This may include security guards/ response plan / support from Ansar and Battalion;
+
+** No smoking policy;
+
+* Firefighting equipment and fire safety plan:
+
+“+ Limited and controlled entry/exit to the warehouse/storage area;
+“+ Storage requirements for hazardous goods (especially fuel);
+“Special storage and security conditions for high value items:
+
+“* Occurrence response plan.
+
+ba
+
+Bimal Chandra Dey Sarker
+Chief Executive
+Mukti Cox's Bazar
+
+Hazardous Goods: Paint, fertilizers, pesticides, disinfectants and water treatment chemicals are examples
+of materials which are potentially hazardous. Hazardous, flammable or explosive materials need to be
+stored away from populated areas and surrounded by metal or masonry barriers. In addition, the
+following precautionary need to be in place:
+
+* Keep hazardous goods away from other products, especially foodstuffs;
+
+“Be aware of the different hazard classes and which hazardous/dangerous goods that cannot be
+stored together;
+
+All hazardous/dangerous goods must be appropriately marked with markings/stickers on the
+goods/packing:
+
+“Provide protective clothing such as spectacles and gloves when necessary:
+
+* Proximity to hazardous substance manufacturers should be avoided
+
+Fire: Fire is a major safety and security hazard in a warehouse. Some items (e.g. petrol) may catch fire
+spontaneously as a result of natural heating.
+
+“ Take special precautions with hazardous, inflammable or explosive materials;
+Ensure regular inspection by firefighting authorities;
+
+Provide fire extinguishers, regularly maintained (available and tested);
+Post and circulate fire prevention and extinction instructions;
+
+Organize regular fire drills:
+
+Place sand buckets and shovels near main exits;
+
+Prohibit smoking in the warehouse area;
+
+Nominate and train fire wardens;
+
+Regularly control the status of the electrical systems;
+
+Maintain list of relevant emergency contact numbers.
+
+>
+
+CG
+
+ee
+te
+
+,
+°
+
+%
+
+.
+
+*,
+%
+
+¢,
+Oo
+
+o
+<
+Se
+
+<
+
+Ss
+
+*,
+fe
+
+2
+fe
+
+o
+te
+
+Flood and water damage: Take precautions to prevent water damage, e.g. by elevating the bottom layer
+of stacks from the floor. Repair and replace roofs during the dry season.
+
+Access control:
+
+% Restrict access to the storage area to authorized personnel only.
+“ Arrange for security services and establish inspection routines.
+*e Establish strict controls of access to keys.
+“> Establish vehicle and personnel checking and control routines at gates.
+Pest control: Insects and rodents attack foodstuffs and paper products, as well as textiles. It is estimated
+
+that insects and rodents damage as much as 10% of stored cereals on average worldwide, with as much as
+30% damaged in subtropical regions, especially when foodstuffs are stored over long periods.
+
+4
+
+Doth.
+
+Bimal Chandra Dey Sarker
+Chief Executive
+Mukti Cox's Bazar
+To reduce potential losses, follow the below guidelines:
+
+Risk Factor
+
+Precautionary Mitigation Guidelines
+
+Storage period
+
+Never store susceptible foodstuffs for longer than four
+months.
+
+Swarm
+
+Separate and treat infected goods when detected.
+
+e Inspect all potentially affected stocks every two weeks,
+and take immediate remedial action (as spraying. dusting
+or fumigating with pesticides). If part of a consignment
+needs to be fumigated, the entire warehouse must be
+fumigated.
+
+Note: Seek expert advice on chemicals to use and dangers
+
+related to humans.
+
+Disease
+
+¢ Control regularly for rats, mice, cockroaches and birds
+(they carry parasites that can spread diseases).
+
+Pest control
+
+e Use preventative and curative methods to kill insects at
+all stages of their development.
+
+e Take care not to damage commodities, nor endanger
+humans working with or consuming the goods.
+
+Fumigation (prevention)
+
+e Spray during bagging or when loading goods.
+e Mark consignment with: date of fumigation, chemicals
+used and expected duration of the protection.
+
+Fumigation(treatment)
+
+e Fumigate in a closed, preferably airtight space.
+
+e Fumigate when the insects are most active, usually just
+before nightfall, close warehouse for at least 24 hours
+afterwards.
+
+Note: Seek expert advice on chemicals to use, usage/
+
+handling, quarantine periods before consumption/use and
+
+dangers related to humans.
+
+Chemicals
+
+Keep all pest control chemicals in a separate locked store.
+
+Perishable goods control: Special attention should be paid to unpreserved goods, and appropriate
+systems and monitoring routines should be in place to manage unpreserved consumables. The
+warehouse management should develop a system notifying about expiry dates, and inform MCB head
+office in advance (at least 60 days prior to expiry).
+
+Appropriate and careful stacking is essential to ensure the stability of stacks, maximize the use of space,
+facilitate stocktaking and prevent damage or loss to goods being stored.
+
+tye
+
+Bimal Chandra Dey Sarker
+Chief Executive
+Mukti Cox's Bazar
+
+Stacking principles : Follow the below general stacking principles and guidelines:
+
+Principles
+
+Guidelines
+
+Stability
+
+e Never store goods directly on the warehouse floor, elevate to avoid moisture.
+
+e Never store goods directly against walls, pipes, or supports as stacks place
+stress on the structures, will hamper access and could expose goods to
+moisture.
+
+e ‘Bond’ stacks of rectangular bags or boxes by orienting every other layer in
+different directions, to prevent the
+stack from falling over.
+
+Stacking
+order
+
+e Keep different items, packages and consignments indifferent stacks.
+
+e Ensure that perishable goods can be rotated, if necessary.
+
+e Ensure that all stacks, including older stacks placed in therear areas, are
+accessible so that the FIFO principle can
+be applied.
+
+Light and
+ventilation
+
+e Limit stack sizes to a maximum of 6 by 6 meters to prevent excessive floor
+load and pressure damage to packaging or contents inside the stack.
+
+e The maximum height of stacks depends on the type of goods and their
+packing, ensure safe storage and handling
+for warehouse workers.
+
+Damaged
+goods
+
+e Stack damaged goods separately, repair or repack (ifpossible) and issue first
+if they are usable.
+¢ Do not mix different types of damaged goods together.
+
+Open areas
+
+e Separate foodstuffs from other supplies to avoidcontamination.
+e Store fuels, lubricants and other hazardous substances ina separate building
+or a protected area.
+
+Rotation e Rotate or turn goods over periodically.
+Bottles e Stack packages containing cans or bottles upright.
+& Cans
+
+Stacking different units: As a general principle, issue goods in their smallest possible units,
+to simplifylater distribution.
+
+Repackaging: If goods are issued in a form different from their distributing needs, or
+different field offices need different packaging unit sizes, some repackaging may be
+
+required.
+
+Follow the below guidelines stacking different packaging units and goods:
+
+byw
+Bimal Chandra Dey Sarker
+
+Chief Executiv
+n )
+Mukti Cox's Bazar
+
+Items Guidelines
+
+Bags& @ Make sure the floor is levelled and strong.
+
+Tents e Use dunnage (such as pallets, wooden planks, etc.) to elevate the bottom layer of
+bags from the floor, to for allow air circulation and prevention against moisture.
+
+e Check the stability of the stack while stacking, and in particular when reaching a
+height of five layers.
+
+e Ensure that the lower layer packs can sustain the weight.
+
+¢ Plan aisle space (1 metre) between stacks, and between the stacks and the walls.
+
+e Use either ‘criss-cross’ stacking (orienting every other layer of bags in different
+directions) or the block method (bags oriented both length-wise and width-wise
+in one layer, and a reversed pattern in the next layer).
+
+e Do not exceed the maximum safety height of 6 metres when stacking bags
+
+Elevation of bottom layer : Dunnage or pallets should always be used to elevate the bottom layer of
+goods from the floor and to allow for air circulation. Pallets should be clean, level and free of pr ojecting
+nails or splinters. Swipe and clean the floor prior to placing the dunnage/pallet, as spilled grains would
+for example be attractive for rodents and insects.
+
+If wooden pallets are not available Logistic Officer can arrange with suppliers to deliver goods palletised,
+to arrange for pallets from a logistics service provider or to use loose planks, thick woven mats or plastic
+
+sheeting.
+
+ipment for Warehouse:
+
+Supplies &Forms : Unless the Automation of Inventory system , Mukti Cox’s Bazar Head office should
+ensure that the following forms are always available in sufficient quantities:
+¥ Stock Cards:
+Bin Cards:
+Numbered Challan:
+Numbered Goods Receiving Notes (GRNs);
+Forms, ledgers and other stationary.
+
+Basic warehouse equipment
+
+For the warehouse to function properly, the following basic equipment must be made
+
+available:
+
+¥ First aid kits (and medical plan) in case a person is injured;
+
+Y  Internet/fax connection (if possible, internet connection should be arranged to
+facilitate exchange of information with the MCB head office);
+
+Y Computer & multifunction printer (copier, printers, scanner, fax);
+
+he a
+
+be
+
+Bimal Chandra Dey Sarker
+Chief Executive
+Mukti Cox's Bazar
+Y _ Tools for opening cases, such as hammers, crowbars, steel cutters etc.;
+
+¥ — Spare sacks, needles, twine and small containers or cartons to repacksupplies when
+packaging has been damaged;
+
+Y Scales for weighing commodities, suitable size sieves, and two wheeledhand
+and/or jack trolleys for moving goods;
+
+¥ Brooms, dust pans, brushes and rubbish bins;
+
+v First aid kit, flashlights, fire extinguishers and other firefighting equipment,both inside
+and outside the storage building;
+
+¥ Power cables or extension leads and compressed air unions;
+
+Y Provision of stand-by generators if the electric supply is not stable.
+
+Specialized Equipment: The potential need for power generators, forklifts and conveyors to handle
+large quantities of supplies or heavy items should be determined with the helpof expert advice.
+
+Receiving Consignments
+
+MCB Warehouses should only store inventories owned by MCB, and all consignments should have an
+MCB PO number reference (this is also applicable for donations. MCB should be clearly stated as the
+consignee on the Challan/Waybill (Bill of Lading, Air Waybill, Delivery Note from manufacturer, or
+other official documents. The responsible officer in the MCB head office must ensure that all relevant
+delivery information is provided to the warehouse well before the actualdelivery.
+
+Objectives: The Logistic Officer is responsible for the physical receipt of goods, confirming that the
+quantity and quality of the goods received is according to the specifications. In addition, s/he needs to
+verify if the necessary documents received are in order and inform the MCB head office after completion
+of receipt. An effective receiving process ensures that goods are properly inspected and received, stacked
+away and stored, that inventory records are timely updated and the required documentation sent to the
+MCB head office for update at Automation Inventory software.
+
+Within the goods receiving area
+
+Firstly, execute a visual inspection of the truck(s). Check if the goods are visibly in accordance with the
+Challan and Invoice. Inspect the goods for obvious visible damages or loss (e.g., bad quality canvas on
+the truck, holes in the container, destroyed outer packing, etc.).
+Offloading & inspecting for damage or loss: Goods should be carefully offloaded and handled to
+minimize damage following these general handling guidelines, if possible:
+
+* Avoid outside offloading during rain;
+
+“ Use forklifts for large or heavy items;
+
+“+ Use trolleys for lighter ones;
+
+* Do not drag, drop or throw items.
+
+bik
+
+Chandra Dey Sarker
+wa Executive
+
+Mukti Cox's Bazar
+Follow the below steps when receiving/inspecting the consignment:
+
+Step Action
+
+| If there is visible damage or non-conformity with necessary documents, immediately take
+photos using a digital camera or a mobile phone, inform the responsible MCB head officer,
+stop offloading and reject the consignment. Visible damage or non- conformity can
+include:
+e Water stains on packing;
+e Crushed boxes;
+e Date of expiry passed on packaging labels:
+e Goods are obviously not what was indicated on the challan, invoice & PO;
+e Lacking PO number and/or goods not marked for MCB.
+
+2 If there is any doubt unpack goods samples for further inspection.
+
+a If there is no obvious visible damage remove packaging and spot check some items in the
+
+presence of the carrier to ensure that the goods conform to specifications.
+
+Performing simple quality control tests (in particular for locally procured items). Weight
+scale and measuring meter must as a minimum be available in the warehouse (weight is
+often used as aninspection parameter for sealed boxes).
+
+If goods are damaged, short-landed or not of the expected qualitynote the details on challan,
+invoice & PO and fill in the Loss/Damage form (with photos if possible). Inform and send
+the documents tothe MCB head office on the same day.
+
+Confirming receipt:
+Confirmation of receipt is a necessary step to verify that the supplier of the goods and transport service
+supplier have fulfilled their obligations and is the basis to release the payment to the suppliers).
+
+In the warehouse, a GRN should be issued as the proof of delivery for the particular
+procurement or consignment (Note: for example, “one GRN per truck”). Obtain the signature
+of the transporter on the Waybill and the GRN and date all documents.
+
+In the event of lost or damaged goods follow the instructions provided by the MCB head office.
+The warehouse has to confirm the receipt and a prepare a Loss/Damage form in order for the
+MCB head office to initiate necessary complaint actions (Protest Letter and Claim Initiation)
+against the supplier and/or transporter.
+
+dating Stock records
+
+At the end of each working day, the Logistic Officer needs to ensure that:
+
+The GRNs, Bin/Stack and Stock Cards, PO files and the Layout & Storage plan have been
+properly updated;
+
+“ The Incoming/Outgoing Shipment report is updated;
+
+ba
+
+Bimal Chandra Dey Sarker
+Chief Executive
+Mukti Cox's Bazar
+Necessary documents (GRNs, challan and associate documents, etc.) are collected and sent to
+the MCB head office
+Returning items/inventory: Items that have been inspected may need to be returned either to the vendor
+or the dispatching warehouse because they were discovered to be:
+* Defective or damaged;
+“Duplicate or Actual in excess of challan quantity;
+*» The wrong items;
+Not delivered on time and no longer required.
+
+Rules for return to vendor: The process of returning goods to the vendor shall be managed by the
+responsible officer/Coordinator Finance & Accounts in the MCB head office providing clear instructions
+to the Logistic Officer.
+
+Returning dispatched inventory: Return of dispatched inventory from an Mukti Cox’s Bazar controlled
+warehouse should be an exception. If a dispatch, or part of it, is nevertheless returned to the issuing
+warehouse the warehouse should immediately contact the Mukti Cox’s Bazar head office to receive
+instructions on how to handle the returns in different situations, for example:
+
+Situation
+
+Action guideline
+
+The same goods can or will be
+re-dispatched to the same
+location.
+
+e Keep them overnight on the truck (if itcan be secured).
+e Do not adjust documentation.
+
+The goods are to be dispatched
+to a different location.
+
+Adjust the appropriate documents in the warehouse.
+
+After dispatch, some or all the
+goods in a delivery are returned
+to a warehouse and added to
+existing stock.
+
+e Use a GRN, to register the delivery as an “incoming”
+delivery under the samePO that it was transported out
+with.
+
+Note why the goods were returned on the challan.
+
+Goods returned are in ‘good
+order’.
+
+Return to their original storage location in the warehouse.
+
+Goods are damaged.
+
+Place them in the damaged goods sectionof the warehouse
+and take action to repair or dispose of them.
+
+When receiving the approval from the Mukti Cox’s Bazar head office, the regular processes
+for receiving deliveries (including the first visual inspection, the offloading & inspecting for
+
+damage or loss, etc.) must be followed.
+
+These goods must be clearly marked and stored separately as the returned goods cannot be
+dispatched again before the inventory adjustment process has been confirmed by the Mukti
+
+Cox’s Bazar head office.
+
+It is not allowed to issue inventory from an Mukti Cox’s Bazar warehouse managed by a Partner without
+a duly approved Store Requisition from (SRF) sent from the Mukti Cox’s Bazar head office to the
+warehouse.
+
+In order to execute the release, the Mukti Cox’s Bazar head officer in charge of inventory must ensure
+that all relevant information and documentation is received by the warehouse in due time before the
+physical release (as detailed in Section of this SOP).
+
+Objectives for releasing goods: Goods are approved/authorized for release from the warehouse for the
+following purposes:
+
+Distribution externally to Mukti Cox’s Bazar (External release);
+
+Transfer to another Mukti Cox’s Bazar field office warehouse (Inter office transfer);
+
+Internal Mukti Cox’s Bazar consumption (Internal issue);
+
+Disposal following the appropriate authorization (a process completely managed and controlled by the
+Mukti Cox’s Bazar Central office).
+
+Following the release of inventory, the warehouse inventory records and stock as well as stack/bin cards
+must be updated in a timely manner, all relevant information/ documentation must be filed and
+documents need to be sent to the Mukti Cox’s Bazar Central office for update of Automation Inventory
+
+Software.
+
+Reserving stock: When receiving an approved MSR from the Mukti Cox’s Bazar central office the
+Logistic Officer should ‘reserve’ the inventory as specified in the SRF (PO number(s) of items to be
+picked are stated in the MSR) to ensure that it will not be accidently released with another SRF
+
+The warehouse staffs need to ‘pick’ the goods from the storage area based onthe SRF, and place them in
+the assigned staging area.
+
+For larger shipments, the warehouse needs to prepare a loading plan and schedule, taking into account
+the physical limitations of the warehouse and the warchouse area, number of loading gates, country
+limitations on weight and volume of trucks, ete.
+
+As soon as the goods are moved from the storage area to the staging area, the Bin/Stack and
+Stock Cards must be updated.
+
+Staging area: Goods picked must be properly stacked in the staging area, ensuring a clear
+separation between the different SRFs.Items requiring packing must be packed and a packing
+list needs to beprepared. Ensure that all relevant SRF information is displayed on each stack
+in thestaging area to avoid possible mistakes during the loading process.
+
+be
+
+Bimal Chandra Dey Sarker
+Chief Executive
+Mukti Cox's Bazar
+«
+
+Prepare Challan: For any issue of inventory from a Mukti Cox’s Bazar warehouse a C hallan
+must be issued, countersigned by the receiver upon delivery of the goods and the original
+signed Challan must be returned to the warehouse.
+
+Inspectingoutgoing delivery: It is highly recommended that the controller/tally clerks or security guards
+count during loading to ensure that the vehicle is loaded as planned and in accordance with the Challan.
+
+Direct release: If goods are taken directly from the Mukti Cox’s Bazar warehouse by the
+customer/he or her/his representative must sign the Waybill when taking over the custody of
+the goods. The Challan will act as proof of delivery. The responsibility of Mukti Cox’s Bazar
+supply function and the warehouse ends when the Challan is duly signed by the consignee and
+the original returned to the warehouse.
+
+Updating stock records: At the end of each working day, the Logistic Officer needs to ensure that:
+“ Challans, PO files, Bin/Stack and Stock Cards and the Layout & Storageplan have
+been properly updated;
+
+“ The Incoming/Outgoing Shipment Report is completed for the movementsot the day
+
+It is the responsibility of the Logistic Officer to establish an internal system ensuring that relevant
+documents are properly issued, filled in and filed.
+
+The two main documents providing proof of transactions based on which payments are released and
+MSRP records are updated are the GRN and the Challan. It is recommended that the warehouse maintains
+two different files, both of which must be retained for five years:
+
+1. The PO file containing all related transaction documents such as:
+
+- GRNs;
+
+- All shipping documents received with the consignment(s) (e.g. Delivery Notes,
+Waybills, Packaging lists, Customs document);
+
+- Inspection documents prepared by the warehouse, such as Receipt report. Quality
+Inspection report, copy of Inventory Verification report in case of discrepancies,
+etc.;
+
+- Stock and Bin/Stack Cards;
+
+- Approved SRFs and issuing Challans;
+
+- Lost/Damage forms, if any.
+
+2. The Inventory Verification files containing all documents related to physical
+verifications, including Monthly Reconciliations and quarterly/annual Physical Stock
+Counts.
+
+Bk.
+
+Bimal Chandra Dey Sarker
+* Chief Executive
+Mukti Cox's Bazar
+To maintain the premises, a cleaning and garbage disposal plan needs to be developed for the
+warehouse. The plan should include the tasks, and timing of those, for the warehouse staffand
+cleaning personnel. Further, the plan needs to detail how waste is to be handled, and the
+dedicated areas for the different types of waste or surplus packing material.
+
+The plan needs to ensure:
+
+Y Daily: That dirt, rubbish and smaller quantities of spillage are removed from the storage
+areas and the floor is swept.
+
+v Weekly: That appropriate disposal of all types of waste, including oil, toxicand hazardous
+waste, and surplus packing material is taking place.
+
+Y Periodically: That the entire warehouse is cleaned from top to bottom and from the furthest
+point towards the main exit including: walls, stacks, floors, wall/floor joints and corners,
+roof beams, top of walls, doors, frames and door channels. Smaller damages to the
+warehouse building should be fixed as a part of the periodical check of the premises
+
+= ‘The End
+NB: Existing form will be set as annexure
+Page 21|21
+Babla Paul Bimal Chance oe Sarker
+Chief Executive
+Zebun Nessa Secretary H 's Bazar
+Vice President Mukti Cox's Bazar. Mukti Cox's B
+
+Mukti Cox’S Bazar
+

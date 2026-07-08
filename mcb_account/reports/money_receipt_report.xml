@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="action_report_mcb_money_receipt" model="ir.actions.report">
+        <field name="name">Money Receipt (Annexure-01/31)</field>
+        <field name="model">account.payment</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">mcb_account.report_mcb_money_receipt</field>
+        <field name="report_file">mcb_account.report_mcb_money_receipt</field>
+        <field name="binding_model_id" ref="account.model_account_payment"/>
+        <field name="binding_type">report</field>
+    </record>
+
+    <template id="report_mcb_money_receipt">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <div style="text-align:center;">
+                            <h3 style="margin:0;">Mukti Cox's Bazar</h3>
+                            <h4 style="margin:6px 0;">Acknowledgement (Money Receipt)</h4>
+                        </div>
+                        <p style="text-align:right;">
+                            <strong>Sl. No.:</strong> <t t-out="doc.mcb_receipt_no or doc.name"/>
+                            &#160;&#160; <strong>Date:</strong> <t t-out="doc.date"/>
+                        </p>
+                        <p style="line-height:2;">
+                            Received with thanks from <strong><t t-out="doc.partner_id.name or '____________'"/></strong>,
+                            Amount (BDT) <strong><t t-out="'%.2f' % doc.amount"/></strong><br/>
+                            In words: <strong><t t-out="doc.mcb_amount_in_words or ''"/></strong><br/>
+                            Through
+                            <t t-if="doc.journal_id.type == 'cash'">cash</t>
+                            <t t-else="">bank transfer / cheque</t>
+                            <t t-if="doc.check_number"> #<t t-out="doc.check_number"/></t>,
+                            Bank: <t t-out="doc.journal_id.bank_account_id.bank_id.name or doc.journal_id.name"/><br/>
+                            Purpose / Memo: <t t-out="doc.memo or ''"/>
+                        </p>
+                        <br/><br/>
+                        <table style="width:100%; margin-top:40px; text-align:center; font-size:9pt;">
+                            <tr>
+                                <td style="border-top:1px solid #000; width:35%;">(Signature)<br/>Name &amp; Seal</td>
+                                <td style="width:30%;"/>
+                                <td style="border-top:1px solid #000; width:35%;">Finance</td>
+                            </tr>
+                        </table>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>

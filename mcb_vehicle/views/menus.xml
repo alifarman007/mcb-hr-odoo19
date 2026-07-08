@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="menu_mcb_vehicle_root" name="MCB"
+              parent="fleet.menu_root" sequence="30"/>
+    <menuitem id="menu_mcb_vehicle_log" name="Vehicle Log Book (Annex-10)"
+              parent="menu_mcb_vehicle_root" action="action_mcb_vehicle_log" sequence="10"/>
+    <menuitem id="menu_mcb_movement" name="Movement Register (Annex-09)"
+              parent="menu_mcb_vehicle_root" action="action_mcb_movement" sequence="20"/>
+    <menuitem id="menu_mcb_logbook_print" name="Monthly Log Book PDF"
+              parent="menu_mcb_vehicle_root" action="action_mcb_logbook_wizard" sequence="30"/>
+</odoo>

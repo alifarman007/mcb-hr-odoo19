@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_mcb_donor_report_wizard" model="ir.ui.view">
+        <field name="name">mcb.donor.report.wizard.form</field>
+        <field name="model">mcb.donor.report.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Donor Budget vs Actual Report">
+                <group>
+                    <group>
+                        <field name="budget_id"/>
+                        <field name="granularity"/>
+                    </group>
+                    <group>
+                        <field name="display_currency_id"/>
+                        <field name="manual_rate" invisible="not display_currency_id"/>
+                    </group>
+                </group>
+                <footer>
+                    <button name="action_print_pdf" type="object"
+                            string="Budget vs Actual PDF" class="btn-primary"/>
+                    <button name="action_print_variance" type="object"
+                            string="Variance Statement (Annex-11)"/>
+                    <button name="action_export_xlsx" type="object" string="Export XLSX"/>
+                    <button special="cancel" string="Close"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+    <record id="action_mcb_donor_report_wizard" model="ir.actions.act_window">
+        <field name="name">Donor Budget Report (DFR-002 / Annex-11)</field>
+        <field name="res_model">mcb.donor.report.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+</odoo>

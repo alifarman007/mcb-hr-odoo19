@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Annexure-26 Working Budget -->
+    <record id="action_report_mcb_working_budget" model="ir.actions.report">
+        <field name="name">Working Budget (Annexure-26)</field>
+        <field name="model">mcb.working.budget</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">mcb_budget.report_mcb_working_budget</field>
+        <field name="report_file">mcb_budget.report_mcb_working_budget</field>
+        <field name="binding_model_id" ref="model_mcb_working_budget"/>
+        <field name="binding_type">report</field>
+    </record>
+
+    <template id="report_mcb_working_budget">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <div style="text-align:center;">
+                            <h3 style="margin:0;">Mukti Cox's Bazar</h3>
+                            <h4>Working Budget (<t t-out="doc.name"/>)</h4>
+                        </div>
+                        <p>
+                            <strong>Project:</strong> <t t-out="doc.analytic_account_id.name"/> ·
+                            <strong>Funded By:</strong> <t t-out="doc.budget_id.mcb_donor or ''"/> ·
+                            <strong>Activity:</strong> <t t-out="doc.activity_name"/><br/>
+                            <strong>Accounts Head:</strong> <t t-out="doc.account_id.display_name or ''"/> ·
+                            <strong>Period:</strong> <t t-out="doc.date_from"/> — <t t-out="doc.date_to"/>
+                        </p>
+                        <table class="table table-sm table-bordered" style="font-size:9pt;">
+                            <thead style="background:#eee;">
+                                <tr><th>Sl</th><th>Particulars</th><th>Unit Description</th><th>Unit</th>
+                                    <th>Days/Events/Times</th><th class="text-end">Unit Cost</th>
+                                    <th class="text-end">Amount BDT</th><th>Remarks</th></tr>
+                            </thead>
+                            <tbody>
+                                <t t-set="i" t-value="0"/>
+                                <t t-foreach="doc.line_ids" t-as="l">
+                                    <t t-set="i" t-value="i + 1"/>
+                                    <tr>
+                                        <td><t t-out="i"/></td>
+                                        <td><t t-out="l.name"/></td>
+                                        <td><t t-out="l.unit_desc or ''"/></td>
+                                        <td><t t-out="l.unit"/></td>
+                                        <td><t t-out="l.times"/></td>
+                                        <td class="text-end"><t t-out="'%.2f' % l.unit_cost"/></td>
+                                        <td class="text-end"><t t-out="'%.2f' % l.amount"/></td>
+                                        <td><t t-out="l.remarks or ''"/></td>
+                                    </tr>
+                                </t>
+                            </tbody>
+                            <tfoot>
+                                <tr style="background:#eee;">
+                                    <th colspan="6">Grand Total</th>
+                                    <th class="text-end"><t t-out="'%.2f' % doc.amount_total"/></th><th/>
+                                </tr>
+                            </tfoot>
+                        </table>
+                        <p><strong>Amount in words:</strong> <t t-out="doc.amount_in_words or ''"/></p>
+                        <table style="width:100%; margin-top:45px; text-align:center; font-size:9pt;">
+                            <tr>
+                                <td style="border-top:1px solid #000; width:22%;">Prepared By</td>
+                                <td style="width:4%;"/>
+                                <td style="border-top:1px solid #000; width:22%;">Checked By</td>
+                                <td style="width:4%;"/>
+                                <td style="border-top:1px solid #000; width:22%;">Reviewed By</td>
+                                <td style="width:4%;"/>
+                                <td style="border-top:1px solid #000; width:22%;">Approved By</td>
+                            </tr>
+                        </table>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+
+    <!-- Donor budget-vs-actual (DFR-002 / BUD-006) -->
+    <record id="action_report_mcb_donor_budget" model="ir.actions.report">
+        <field name="name">Donor Budget vs Actual</field>
+        <field name="model">mcb.donor.report.wizard</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">mcb_budget.report_mcb_donor_budget</field>
+        <field name="report_file">mcb_budget.report_mcb_donor_budget</field>
+    </record>
+
+    <template id="report_mcb_donor_budget">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-set="pr" t-value="doc._matrix()"/>
+                <t t-set="periods" t-value="pr[0]"/>
+                <t t-set="rows" t-value="pr[1]"/>
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <div style="text-align:center;">
+                            <h3 style="margin:0;">Mukti Cox's Bazar</h3>
+                            <h4>Budget vs Actual — <t t-out="doc.budget_id.name"/></h4>
+                            <p>
+                                <strong>Donor:</strong> <t t-out="doc.budget_id.mcb_donor or ''"/> ·
+                                <strong>Granularity:</strong> <t t-out="doc.granularity"/>
+                                <t t-if="doc.display_currency_id">
+                                    · <strong>Displayed in:</strong> <t t-out="doc.display_currency_id.name"/>
+                                    (rate <t t-out="doc.manual_rate"/>)
+                                </t>
+                            </p>
+                        </div>
+                        <table class="table table-sm table-bordered" style="font-size:8pt;">
+                            <thead style="background:#eee;">
+                                <tr>
+                                    <th>Code</th><th>Head / Activity</th>
+                                    <th class="text-end">Approved Budget</th>
+                                    <t t-foreach="periods" t-as="p">
+                                        <th class="text-end"><t t-out="p[0].strftime('%b %y')"/></th>
+                                    </t>
+                                    <th class="text-end">Cumulative</th>
+                                    <th class="text-end">Variance</th>
+                                    <th class="text-end">Var %</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <t t-foreach="rows" t-as="r">
+                                    <tr>
+                                        <td><t t-out="r['line'].mcb_activity_code or ''"/></td>
+                                        <td><t t-out="r['line'].mcb_activity_name or r['analytic'].name or ''"/></td>
+                                        <td class="text-end"><t t-out="'%.0f' % r['approved']"/></td>
+                                        <t t-foreach="r['cells']" t-as="c">
+                                            <td class="text-end"><t t-out="'%.0f' % c['actual']"/></td>
+                                        </t>
+                                        <td class="text-end"><t t-out="'%.0f' % r['cumulative']"/></td>
+                                        <td class="text-end"><t t-out="'%.0f' % r['variance']"/></td>
+                                        <td class="text-end"><t t-out="'%.1f%%' % r['variance_pct']"/></td>
+                                    </tr>
+                                </t>
+                            </tbody>
+                        </table>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+
+    <!-- Annexure-11 Variance Statement -->
+    <record id="action_report_mcb_variance" model="ir.actions.report">
+        <field name="name">Budget Variance Statement (Annexure-11)</field>
+        <field name="model">mcb.donor.report.wizard</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">mcb_budget.report_mcb_variance</field>
+        <field name="report_file">mcb_budget.report_mcb_variance</field>
+    </record>
+
+    <template id="report_mcb_variance">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-set="pr" t-value="doc._matrix()"/>
+                <t t-set="rows" t-value="pr[1]"/>
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <div style="text-align:center;">
+                            <h3 style="margin:0;">Mukti Cox's Bazar</h3>
+                            <h4>Statement of Budget Variance</h4>
+                            <p>
+                                <strong>Project:</strong> <t t-out="doc.budget_id.name"/> ·
+                                <strong>Funded By:</strong> <t t-out="doc.budget_id.mcb_donor or ''"/> ·
+                                <strong>Period:</strong> <t t-out="doc.budget_id.date_from"/> —
+                                <t t-out="doc.budget_id.date_to"/>
+                            </p>
+                        </div>
+                        <table class="table table-sm table-bordered" style="font-size:9pt;">
+                            <thead style="background:#eee;">
+                                <tr><th>SL#</th><th>Head of Accounts / Expenditure</th>
+                                    <th>Account / Activity Code</th>
+                                    <th class="text-end">Approved Budget</th>
+                                    <th class="text-end">Actual Expenditure</th>
+                                    <th class="text-end">Variance</th>
+                                    <th class="text-end">Variance %</th>
+                                    <th>Reason for Variance</th></tr>
+                            </thead>
+                            <tbody>
+                                <t t-set="i" t-value="0"/>
+                                <t t-foreach="rows" t-as="r">
+                                    <t t-set="i" t-value="i + 1"/>
+                                    <tr>
+                                        <td><t t-out="i"/></td>
+                                        <td><t t-out="r['line'].mcb_activity_name or r['analytic'].name or ''"/></td>
+                                        <td><t t-out="r['line'].mcb_activity_code or ''"/></td>
+                                        <td class="text-end"><t t-out="'%.2f' % r['approved']"/></td>
+                                        <td class="text-end"><t t-out="'%.2f' % r['cumulative']"/></td>
+                                        <td class="text-end"><t t-out="'%.2f' % r['variance']"/></td>
+                                        <td class="text-end"><t t-out="'%.1f%%' % r['variance_pct']"/></td>
+                                        <td><t t-out="r['line'].mcb_variance_reason or ''"/></td>
+                                    </tr>
+                                </t>
+                            </tbody>
+                        </table>
+                        <table style="width:100%; margin-top:45px; text-align:center; font-size:9pt;">
+                            <tr>
+                                <td style="border-top:1px solid #000; width:30%;">Prepared By</td>
+                                <td style="width:5%;"/>
+                                <td style="border-top:1px solid #000; width:30%;">Reviewed By</td>
+                                <td style="width:5%;"/>
+                                <td style="border-top:1px solid #000; width:30%;">Approved By</td>
+                            </tr>
+                        </table>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>

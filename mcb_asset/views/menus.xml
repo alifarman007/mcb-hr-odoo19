@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="menu_mcb_asset_register" name="Fixed Assets Register (Annex-07)"
+              parent="mcb_account.menu_mcb_account_root"
+              action="action_mcb_asset_register_wizard" sequence="82"/>
+    <menuitem id="menu_mcb_asset_inventory" name="Asset Physical Inventory (Annex-22)"
+              parent="mcb_account.menu_mcb_account_root"
+              action="action_mcb_asset_inventory" sequence="84"/>
+</odoo>

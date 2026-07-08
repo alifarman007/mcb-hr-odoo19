@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <record id="cron_advance_reminder" model="ir.cron">
+            <field name="name">MCB: Advance adjustment reminders (ADV-005)</field>
+            <field name="model_id" ref="model_mcb_advance"/>
+            <field name="state">code</field>
+            <field name="code">model._cron_adjustment_reminder()</field>
+            <field name="interval_number">1</field>
+            <field name="interval_type">days</field>
+            <field name="active">True</field>
+        </record>
+        <record id="cron_iou_reminder" model="ir.cron">
+            <field name="name">MCB: IOU adjustment reminders</field>
+            <field name="model_id" ref="model_mcb_iou"/>
+            <field name="state">code</field>
+            <field name="code">model._cron_iou_reminder()</field>
+            <field name="interval_number">1</field>
+            <field name="interval_type">days</field>
+            <field name="active">True</field>
+        </record>
+        <record id="cron_petty_low_balance" model="ir.cron">
+            <field name="name">MCB: Petty cash low-balance alert (PCH-005)</field>
+            <field name="model_id" ref="model_mcb_cash_count"/>
+            <field name="state">code</field>
+            <field name="code">model._cron_petty_low_balance()</field>
+            <field name="interval_number">1</field>
+            <field name="interval_type">days</field>
+            <field name="active">True</field>
+        </record>
+    </data>
+</odoo>

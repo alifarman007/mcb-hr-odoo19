@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="fleet_vehicle_form_mcb" model="ir.ui.view">
+        <field name="name">fleet.vehicle.form.mcb</field>
+        <field name="model">fleet.vehicle</field>
+        <field name="inherit_id" ref="fleet.fleet_vehicle_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//sheet" position="inside">
+                <group string="MCB Register (VEH-002)">
+                    <group>
+                        <field name="mcb_project_id"/>
+                        <field name="mcb_vehicle_kind"/>
+                    </group>
+                    <group>
+                        <field name="mcb_insurance_expiry"/>
+                        <field name="mcb_fitness_expiry"/>
+                    </group>
+                </group>
+            </xpath>
+        </field>
+    </record>
+</odoo>

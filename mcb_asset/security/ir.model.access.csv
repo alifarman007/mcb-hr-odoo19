@@ -1,0 +1,10 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_mcb_asset_transfer_user,asset transfer user,model_mcb_asset_transfer,account.group_account_user,1,1,1,0
+access_mcb_asset_transfer_mgr,asset transfer mgr,model_mcb_asset_transfer,account.group_account_manager,1,1,1,1
+access_mcb_asset_transfer_audit,asset transfer audit,model_mcb_asset_transfer,mcb_account.group_mcb_audit,1,0,0,0
+access_mcb_asset_inv_user,asset inventory user,model_mcb_asset_inventory,account.group_account_user,1,1,1,0
+access_mcb_asset_inv_mgr,asset inventory mgr,model_mcb_asset_inventory,account.group_account_manager,1,1,1,1
+access_mcb_asset_inv_audit,asset inventory audit,model_mcb_asset_inventory,mcb_account.group_mcb_audit,1,0,0,0
+access_mcb_asset_inv_line_user,asset inv line user,model_mcb_asset_inventory_line,account.group_account_user,1,1,1,1
+access_mcb_asset_inv_line_audit,asset inv line audit,model_mcb_asset_inventory_line,mcb_account.group_mcb_audit,1,0,0,0
+access_mcb_asset_reg_wiz,asset register wiz,model_mcb_asset_register_wizard,account.group_account_user,1,1,1,1

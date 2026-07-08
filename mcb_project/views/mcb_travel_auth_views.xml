@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_mcb_travel_auth_list" model="ir.ui.view">
+        <field name="name">mcb.travel.authorization.list</field>
+        <field name="model">mcb.travel.authorization</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="employee_id"/>
+                <field name="destination"/>
+                <field name="departure_date"/>
+                <field name="return_date"/>
+                <field name="total_cost"/>
+                <field name="state" widget="badge" decoration-success="state == 'approved'"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_mcb_travel_auth_form" model="ir.ui.view">
+        <field name="name">mcb.travel.authorization.form</field>
+        <field name="model">mcb.travel.authorization</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_submit" type="object" string="Submit" class="btn-primary"
+                            invisible="state != 'draft'"/>
+                    <button name="action_finance" type="object" string="Finance Review"
+                            invisible="state != 'submitted'" groups="account.group_account_user"/>
+                    <button name="action_recommend" type="object" string="Recommend"
+                            invisible="state != 'finance'" groups="project.group_project_manager"/>
+                    <button name="action_approve" type="object" string="Approve" class="btn-primary"
+                            invisible="state != 'recommended'" groups="mcb_hr_employee.group_mcb_ce"/>
+                    <button name="action_cancel" type="object" string="Cancel"
+                            invisible="state in ('approved', 'cancelled')"/>
+                    <button name="%(action_report_mcb_travel_auth)d" type="action"
+                            string="Print (Annexure-30)"/>
+                    <field name="state" widget="statusbar"/>
+                </header>
+                <sheet>
+                    <div class="oe_title"><h1><field name="name" readonly="1"/></h1></div>
+                    <group>
+                        <group string="Travel">
+                            <field name="employee_id"/>
+                            <field name="designation"/>
+                            <field name="project_id"/>
+                            <field name="funded_by"/>
+                            <field name="destination"/>
+                            <field name="purpose"/>
+                            <field name="transport_mode"/>
+                        </group>
+                        <group string="Dates &amp; Cost">
+                            <field name="departure_date"/>
+                            <field name="return_date"/>
+                            <field name="travel_cost"/>
+                            <field name="lodging_cost"/>
+                            <field name="food_cost"/>
+                            <field name="registration_cost"/>
+                            <field name="other_cost"/>
+                            <field name="total_cost" readonly="1"/>
+                            <field name="currency_id" invisible="1"/>
+                        </group>
+                    </group>
+                    <group>
+                        <group>
+                            <field name="finance_comment"/>
+                        </group>
+                        <group>
+                            <field name="recommended_by_id" readonly="1"/>
+                            <field name="approved_by_id" readonly="1"/>
+                        </group>
+                    </group>
+                    <field name="expense_ids" readonly="1">
+                        <list>
+                            <field name="name"/>
+                            <field name="date"/>
+                            <field name="total_amount_currency"/>
+                            <field name="state"/>
+                        </list>
+                    </field>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_mcb_travel_auth" model="ir.actions.act_window">
+        <field name="name">Travel Authorizations (Annexure-30)</field>
+        <field name="res_model">mcb.travel.authorization</field>
+        <field name="view_mode">list,form</field>
+    </record>
+</odoo>

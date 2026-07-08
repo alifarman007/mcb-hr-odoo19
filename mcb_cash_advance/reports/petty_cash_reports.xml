@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="action_report_mcb_cash_count" model="ir.actions.report">
+        <field name="name">Daily Cash Balance Report (Annexure-14)</field>
+        <field name="model">mcb.cash.count</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">mcb_cash_advance.report_mcb_cash_count</field>
+        <field name="report_file">mcb_cash_advance.report_mcb_cash_count</field>
+        <field name="binding_model_id" ref="model_mcb_cash_count"/>
+        <field name="binding_type">report</field>
+    </record>
+
+    <template id="report_mcb_cash_count">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <div style="text-align:center;">
+                            <h3 style="margin:0;">Mukti Cox's Bazar</h3>
+                            <h4>Daily Cash Balance Report</h4>
+                        </div>
+                        <p>
+                            <strong>Project/Office:</strong> <t t-out="doc.project_name or ''"/> ·
+                            <strong>Funded By:</strong> <t t-out="doc.funded_by or ''"/> ·
+                            <strong>Date:</strong> <t t-out="doc.date"/>
+                        </p>
+                        <p>
+                            This is to certify that the cash in hand of
+                            <strong><t t-out="doc.journal_id.name"/></strong> amounts to BDT
+                            <strong><t t-out="'%.2f' % doc.total_counted"/></strong>
+                            (in words: <t t-out="doc.amount_in_words or ''"/>) as on
+                            <t t-out="doc.date"/>.
+                        </p>
+                        <table class="table table-sm table-bordered" style="width:50%; font-size:9pt;">
+                            <thead style="background:#eee;"><tr><th>Note</th><th class="text-end">Taka</th></tr></thead>
+                            <tbody>
+                                <t t-foreach="doc.line_ids" t-as="l">
+                                    <tr>
+                                        <td><t t-out="l.denomination"/> × <t t-out="l.quantity"/></td>
+                                        <td class="text-end"><t t-out="'%.2f' % l.subtotal"/></td>
+                                    </tr>
+                                </t>
+                            </tbody>
+                            <tfoot>
+                                <tr style="background:#eee;">
+                                    <th>Total</th>
+                                    <th class="text-end"><t t-out="'%.2f' % doc.total_counted"/></th>
+                                </tr>
+                                <tr>
+                                    <th>Book Balance</th>
+                                    <th class="text-end"><t t-out="'%.2f' % doc.book_balance"/></th>
+                                </tr>
+                                <tr>
+                                    <th>Difference</th>
+                                    <th class="text-end"><t t-out="'%.2f' % doc.difference"/></th>
+                                </tr>
+                            </tfoot>
+                        </table>
+                        <table style="width:100%; margin-top:45px; text-align:center; font-size:9pt;">
+                            <tr>
+                                <td style="border-top:1px solid #000; width:40%;">Prepared By (Signature &amp; Seal)</td>
+                                <td style="width:20%;"/>
+                                <td style="border-top:1px solid #000; width:40%;">Approved By (Signature &amp; Seal)</td>
+                            </tr>
+                        </table>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+
+    <record id="action_report_mcb_petty_book" model="ir.actions.report">
+        <field name="name">Petty Cash Book (Annexure-15)</field>
+        <field name="model">mcb.petty.book.wizard</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">mcb_cash_advance.report_mcb_petty_book</field>
+        <field name="report_file">mcb_cash_advance.report_mcb_petty_book</field>
+    </record>
+
+    <template id="report_mcb_petty_book">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-set="entries" t-value="doc._entries()"/>
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <div style="text-align:center;">
+                            <h3 style="margin:0;">Mukti Cox's Bazar</h3>
+                            <h4>Petty Cash Book</h4>
+                        </div>
+                        <p>
+                            <strong>Project/Office:</strong> <t t-out="doc.project_name or ''"/> ·
+                            <strong>Funded By:</strong> <t t-out="doc.funded_by or ''"/> ·
+                            <strong>Journal:</strong> <t t-out="doc.journal_id.name"/> ·
+                            <strong>Period:</strong> <t t-out="doc.date_from"/> — <t t-out="doc.date_to"/> ·
+                            <strong>Opening:</strong> <t t-out="'%.2f' % entries[0]"/>
+                        </p>
+                        <table class="table table-sm table-bordered" style="font-size:9pt;">
+                            <thead style="background:#eee;">
+                                <tr><th>Sl</th><th>Date</th><th>Bill/Vch #</th><th>Particulars</th>
+                                    <th>Accounts Code</th><th class="text-end">Received</th>
+                                    <th class="text-end">Payment</th><th class="text-end">Balance</th></tr>
+                            </thead>
+                            <tbody>
+                                <t t-set="i" t-value="0"/>
+                                <t t-foreach="entries[1]" t-as="r">
+                                    <t t-set="i" t-value="i + 1"/>
+                                    <tr>
+                                        <td><t t-out="i"/></td>
+                                        <td><t t-out="r['date']"/></td>
+                                        <td><t t-out="r['ref']"/></td>
+                                        <td><t t-out="r['particulars']"/></td>
+                                        <td><t t-out="r['code']"/></td>
+                                        <td class="text-end"><t t-out="'%.2f' % r['received']"/></td>
+                                        <td class="text-end"><t t-out="'%.2f' % r['paid']"/></td>
+                                        <td class="text-end"><t t-out="'%.2f' % r['balance']"/></td>
+                                    </tr>
+                                </t>
+                            </tbody>
+                        </table>
+                        <table style="width:100%; margin-top:45px; text-align:center; font-size:9pt;">
+                            <tr>
+                                <td style="border-top:1px solid #000; width:40%;">Prepared By</td>
+                                <td style="width:20%;"/>
+                                <td style="border-top:1px solid #000; width:40%;">Approved By</td>
+                            </tr>
+                        </table>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+
+    <record id="action_report_mcb_petty_statement" model="ir.actions.report">
+        <field name="name">Petty Cash Statement (Annexure-16)</field>
+        <field name="model">mcb.petty.book.wizard</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">mcb_cash_advance.report_mcb_petty_statement</field>
+        <field name="report_file">mcb_cash_advance.report_mcb_petty_statement</field>
+    </record>
+
+    <template id="report_mcb_petty_statement">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-set="heads" t-value="doc._statement_columns()"/>
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <div style="text-align:center;">
+                            <h3 style="margin:0;">Mukti Cox's Bazar</h3>
+                            <h4>Petty Cash Statement</h4>
+                        </div>
+                        <p>
+                            <strong>Project/Office:</strong> <t t-out="doc.project_name or ''"/> ·
+                            <strong>Journal:</strong> <t t-out="doc.journal_id.name"/> ·
+                            <strong>Period:</strong> <t t-out="doc.date_from"/> — <t t-out="doc.date_to"/>
+                        </p>
+                        <table class="table table-sm table-bordered" style="font-size:9pt; width:70%;">
+                            <thead style="background:#eee;">
+                                <tr><th>Accounts Head</th><th class="text-end">Expenditure Amount</th></tr>
+                            </thead>
+                            <tbody>
+                                <t t-foreach="sorted(heads.items())" t-as="kv">
+                                    <tr>
+                                        <td><t t-out="kv[0]"/></td>
+                                        <td class="text-end"><t t-out="'%.2f' % kv[1]"/></td>
+                                    </tr>
+                                </t>
+                            </tbody>
+                            <tfoot>
+                                <tr style="background:#eee;">
+                                    <th>Total Expenditure Amount</th>
+                                    <th class="text-end"><t t-out="'%.2f' % sum(heads.values())"/></th>
+                                </tr>
+                            </tfoot>
+                        </table>
+                        <table style="width:100%; margin-top:45px; text-align:center; font-size:9pt;">
+                            <tr>
+                                <td style="border-top:1px solid #000; width:22%;">Prepared By</td>
+                                <td style="width:4%;"/>
+                                <td style="border-top:1px solid #000; width:22%;">Checked By</td>
+                                <td style="width:4%;"/>
+                                <td style="border-top:1px solid #000; width:22%;">Reviewed By</td>
+                                <td style="width:4%;"/>
+                                <td style="border-top:1px solid #000; width:22%;">Approved By</td>
+                            </tr>
+                        </table>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>

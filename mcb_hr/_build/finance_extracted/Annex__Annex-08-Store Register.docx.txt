@@ -1,0 +1,13 @@
+Annexure - 8
+Mukti Cox's Bazar
+Head Office, Goldighirpar, Cox’s Bazar
+Store Register
+Name of Project	: XXXXXXXXXXXXXXXXXXX
+Supported & Funded by: XXXXXXXXXXXXX
+Project Duration	: XXXXXXXXX
+Name of Item		: XXXXXXX
+
+[TABLE 0]
+SL. No. | Date | Materials Received | Materials Received | Materials Received | Materials Issue | Materials Issue | Balance Quantity | Name & Designation of Recipient | Remarks
+SL. No. | Date | GRN/ Challan # | Quantity | Purchases Rate | SRF/ Challan # | Quantity | Balance Quantity | Name & Designation of Recipient | Remarks
+ |  |  |  |  |  |  |  |  | 

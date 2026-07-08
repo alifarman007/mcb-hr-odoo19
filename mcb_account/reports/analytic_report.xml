@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="action_report_mcb_analytic" model="ir.actions.report">
+        <field name="name">Donor / Project Financial Report</field>
+        <field name="model">mcb.analytic.report.wizard</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">mcb_account.report_mcb_analytic</field>
+        <field name="report_file">mcb_account.report_mcb_analytic</field>
+    </record>
+
+    <template id="report_mcb_analytic">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-set="data" t-value="doc._rows()"/>
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <div style="text-align:center;">
+                            <h3 style="margin:0;">Mukti Cox's Bazar</h3>
+                            <h4>Donor / Project Financial Report</h4>
+                            <p><strong>Period:</strong> <t t-out="doc.date_from"/> — <t t-out="doc.date_to"/></p>
+                        </div>
+                        <table class="table table-sm table-bordered" style="font-size:9pt;">
+                            <thead style="background:#eee;">
+                                <tr>
+                                    <th>Project / Donor (Analytic Account)</th>
+                                    <th class="text-end">Income</th>
+                                    <th class="text-end">Expenditure</th>
+                                    <th class="text-end">Balance</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <t t-foreach="sorted(data.items(), key=lambda kv: kv[0].name or '')" t-as="kv">
+                                    <tr>
+                                        <td><t t-out="kv[0].name"/></td>
+                                        <td class="text-end"><t t-out="'%.2f' % kv[1]['income']"/></td>
+                                        <td class="text-end"><t t-out="'%.2f' % kv[1]['expense']"/></td>
+                                        <td class="text-end"><t t-out="'%.2f' % (kv[1]['income'] - kv[1]['expense'])"/></td>
+                                    </tr>
+                                </t>
+                            </tbody>
+                        </table>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>

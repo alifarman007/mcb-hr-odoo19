@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_mcb_petty_book_wizard" model="ir.ui.view">
+        <field name="name">mcb.petty.book.wizard.form</field>
+        <field name="model">mcb.petty.book.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Petty Cash Book / Statement">
+                <group>
+                    <group>
+                        <field name="journal_id"/>
+                        <field name="date_from"/>
+                        <field name="date_to"/>
+                    </group>
+                    <group>
+                        <field name="project_name"/>
+                        <field name="funded_by"/>
+                    </group>
+                </group>
+                <footer>
+                    <button name="action_print_book" type="object"
+                            string="Petty Cash Book (Annex-15)" class="btn-primary"/>
+                    <button name="action_print_statement" type="object"
+                            string="Petty Cash Statement (Annex-16)"/>
+                    <button name="action_export_xlsx" type="object" string="Export XLSX"/>
+                    <button special="cancel" string="Close"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+    <record id="action_mcb_petty_book_wizard" model="ir.actions.act_window">
+        <field name="name">Petty Cash Book / Statement (Annex-15/16)</field>
+        <field name="res_model">mcb.petty.book.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+</odoo>

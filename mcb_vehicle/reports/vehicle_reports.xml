@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Logbook wizard UI -->
+    <record id="view_mcb_logbook_wizard" model="ir.ui.view">
+        <field name="name">mcb.logbook.wizard.form</field>
+        <field name="model">mcb.logbook.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Monthly Vehicle Log Book (Annexure-10)">
+                <group>
+                    <field name="vehicle_id"/>
+                    <field name="month_date"/>
+                </group>
+                <footer>
+                    <button name="action_print_pdf" type="object" string="Print PDF"
+                            class="btn-primary"/>
+                    <button name="action_export_xlsx" type="object" string="Export XLSX"/>
+                    <button special="cancel" string="Close"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+    <record id="action_mcb_logbook_wizard" model="ir.actions.act_window">
+        <field name="name">Monthly Vehicle Log Book (Annexure-10)</field>
+        <field name="res_model">mcb.logbook.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+    <!-- Annexure-10 PDF -->
+    <record id="action_report_mcb_logbook" model="ir.actions.report">
+        <field name="name">Vehicle/MC Log Book (Annexure-10)</field>
+        <field name="model">mcb.logbook.wizard</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">mcb_vehicle.report_mcb_logbook</field>
+        <field name="report_file">mcb_vehicle.report_mcb_logbook</field>
+    </record>
+
+    <template id="report_mcb_logbook">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-set="logs" t-value="doc._logs()"/>
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <div style="text-align:center;">
+                            <h3 style="margin:0;">Mukti Cox's Bazar</h3>
+                            <h4>Vehicle / MC Log Book</h4>
+                        </div>
+                        <p>
+                            <strong>Vehicle No:</strong>
+                            <t t-out="doc.vehicle_id.license_plate or doc.vehicle_id.name"/> ·
+                            <strong>Project:</strong>
+                            <t t-out="doc.vehicle_id.mcb_project_id.name or ''"/> ·
+                            <strong>Month:</strong> <t t-out="doc.month_date.strftime('%B %Y')"/>
+                        </p>
+                        <table class="table table-sm table-bordered" style="font-size:7.5pt;">
+                            <thead style="background:#eee;">
+                                <tr>
+                                    <th>Date</th><th>Name &amp; Designation</th><th>Purpose</th>
+                                    <th>From</th><th>To</th><th>Start</th><th>End</th>
+                                    <th>Total Time</th><th>Meter Start</th><th>Meter End</th>
+                                    <th>KM Run</th><th>Fuel L</th><th>Lub</th><th>Remarks</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <t t-foreach="logs" t-as="l">
+                                    <tr>
+                                        <td><t t-out="l.date.day"/></td>
+                                        <td><t t-out="l.employee_id.name or l.driver_name or ''"/></td>
+                                        <td><t t-out="l.purpose"/></td>
+                                        <td><t t-out="l.location_from or ''"/></td>
+                                        <td><t t-out="l.location_to or ''"/></td>
+                                        <td><t t-out="'%02d:%02d' % (int(l.time_start), round((l.time_start % 1) * 60))"/></td>
+                                        <td><t t-out="'%02d:%02d' % (int(l.time_end), round((l.time_end % 1) * 60))"/></td>
+                                        <td><t t-out="'%.1f' % l.total_time"/></td>
+                                        <td><t t-out="'%.0f' % l.meter_start"/></td>
+                                        <td><t t-out="'%.0f' % l.meter_end"/></td>
+                                        <td><t t-out="'%.0f' % l.km_run"/></td>
+                                        <td><t t-out="l.fuel_litre"/></td>
+                                        <td><t t-out="l.lub"/></td>
+                                        <td><t t-out="l.remarks or ''"/></td>
+                                    </tr>
+                                </t>
+                            </tbody>
+                            <tfoot>
+                                <tr style="background:#eee;">
+                                    <th colspan="10">Monthly Total (VEH-003)</th>
+                                    <th><t t-out="'%.0f' % sum(logs.mapped('km_run'))"/></th>
+                                    <th><t t-out="sum(logs.mapped('fuel_litre'))"/></th>
+                                    <th colspan="2">Fuel cost:
+                                        <t t-out="'%.0f' % sum(logs.mapped('fuel_cost'))"/></th>
+                                </tr>
+                            </tfoot>
+                        </table>
+                        <table style="width:100%; margin-top:35px; text-align:center; font-size:9pt;">
+                            <tr>
+                                <td style="border-top:1px solid #000; width:30%;">Driver</td>
+                                <td style="width:5%;"/>
+                                <td style="border-top:1px solid #000; width:30%;">Logistics</td>
+                                <td style="width:5%;"/>
+                                <td style="border-top:1px solid #000; width:30%;">Approved By</td>
+                            </tr>
+                        </table>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+
+    <!-- Annexure-09 movement register PDF (bound to list selection) -->
+    <record id="action_report_mcb_movement" model="ir.actions.report">
+        <field name="name">Daily Movement Register (Annexure-09)</field>
+        <field name="model">mcb.movement.register</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">mcb_vehicle.report_mcb_movement</field>
+        <field name="report_file">mcb_vehicle.report_mcb_movement</field>
+        <field name="binding_model_id" ref="model_mcb_movement_register"/>
+        <field name="binding_type">report</field>
+    </record>
+
+    <template id="report_mcb_movement">
+        <t t-call="web.html_container">
+            <t t-call="web.external_layout">
+                <div class="page">
+                    <div style="text-align:center;">
+                        <h3 style="margin:0;">Mukti Cox's Bazar</h3>
+                        <h4>Daily Movement Register</h4>
+                    </div>
+                    <table class="table table-sm table-bordered" style="font-size:8.5pt;">
+                        <thead style="background:#eee;">
+                            <tr>
+                                <th>Sl</th><th>Name</th><th>Designation</th><th>Destination</th>
+                                <th>Purpose</th><th>Dep. Date</th><th>Dep. Time</th>
+                                <th>Arr. Date</th><th>Arr. Time</th><th>Sign</th><th>Remarks</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <t t-set="i" t-value="0"/>
+                            <t t-foreach="docs" t-as="m">
+                                <t t-set="i" t-value="i + 1"/>
+                                <tr>
+                                    <td><t t-out="i"/></td>
+                                    <td><t t-out="m.employee_id.name"/></td>
+                                    <td><t t-out="m.designation or ''"/></td>
+                                    <td><t t-out="m.destination"/></td>
+                                    <td><t t-out="m.purpose"/></td>
+                                    <td><t t-out="m.departure_date"/></td>
+                                    <td><t t-out="'%02d:%02d' % (int(m.departure_time), round((m.departure_time % 1) * 60))"/></td>
+                                    <td><t t-out="m.arrival_date or ''"/></td>
+                                    <td><t t-out="'%02d:%02d' % (int(m.arrival_time), round((m.arrival_time % 1) * 60))"/></td>
+                                    <td style="width:60px;"/>
+                                    <td><t t-out="m.remarks or ''"/></td>
+                                </tr>
+                            </t>
+                        </tbody>
+                    </table>
+                </div>
+            </t>
+        </t>
+    </template>
+
+    <!-- Annexure-25 Travel Bill from expenses linked to movements -->
+    <record id="action_report_mcb_travel_bill" model="ir.actions.report">
+        <field name="name">Travel / Per-diem Bill (Annexure-25)</field>
+        <field name="model">hr.expense</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">mcb_vehicle.report_mcb_travel_bill</field>
+        <field name="report_file">mcb_vehicle.report_mcb_travel_bill</field>
+        <field name="binding_model_id" ref="hr_expense.model_hr_expense"/>
+        <field name="binding_type">report</field>
+    </record>
+
+    <template id="report_mcb_travel_bill">
+        <t t-call="web.html_container">
+            <t t-set="employee" t-value="docs[:1].employee_id"/>
+            <t t-call="web.external_layout">
+                <div class="page">
+                    <div style="text-align:center;">
+                        <h3 style="margin:0;">Mukti Cox's Bazar</h3>
+                        <h4>Travel / Per-diem Expenses Report</h4>
+                    </div>
+                    <p>
+                        <strong>Name:</strong> <t t-out="employee.name"/> ·
+                        <strong>Designation:</strong> <t t-out="employee.job_title or ''"/>
+                    </p>
+                    <table class="table table-sm table-bordered" style="font-size:8.5pt;">
+                        <thead style="background:#eee;">
+                            <tr>
+                                <th>Date</th><th>Ref. Movement Reg.</th><th>Travel Auth.</th>
+                                <th>Description / Purpose</th><th class="text-end">Amount BDT</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <t t-foreach="docs" t-as="e">
+                                <t t-set="movs" t-value="e.env['mcb.movement.register'].search([('expense_id', '=', e.id)])"/>
+                                <tr>
+                                    <td><t t-out="e.date"/></td>
+                                    <td><t t-out="', '.join(movs.mapped('name'))"/></td>
+                                    <td><t t-out="e.mcb_travel_auth_id.name or ''"/></td>
+                                    <td><t t-out="e.name"/></td>
+                                    <td class="text-end"><t t-out="'%.2f' % e.total_amount_currency"/></td>
+                                </tr>
+                            </t>
+                        </tbody>
+                        <tfoot>
+                            <tr style="background:#eee;">
+                                <th colspan="4">Total Amount</th>
+                                <th class="text-end">
+                                    <t t-out="'%.2f' % sum(docs.mapped('total_amount_currency'))"/>
+                                </th>
+                            </tr>
+                        </tfoot>
+                    </table>
+                    <table style="width:100%; margin-top:40px; text-align:center; font-size:9pt;">
+                        <tr>
+                            <td style="border-top:1px solid #000; width:18%;">Submitted By</td>
+                            <td style="width:2%;"/>
+                            <td style="border-top:1px solid #000; width:18%;">Financed By</td>
+                            <td style="width:2%;"/>
+                            <td style="border-top:1px solid #000; width:18%;">Checked By</td>
+                            <td style="width:2%;"/>
+                            <td style="border-top:1px solid #000; width:18%;">Reviewed By</td>
+                            <td style="width:2%;"/>
+                            <td style="border-top:1px solid #000; width:18%;">Approved By</td>
+                        </tr>
+                    </table>
+                </div>
+            </t>
+        </t>
+    </template>
+</odoo>

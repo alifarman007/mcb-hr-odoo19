@@ -1,0 +1,15 @@
+Annexure - 21
+Mukti Cox's Bazar
+Head Office, Goldighirpar, Cox’s Bazar
+Staff Payroll Sheet
+Name of Project/ Office	: XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX	Funded By	: XXXXXXXXXXXXXXXXXX
+Project Duration	: XXXXXXXXXXXXX	Financial Year	: XXXXXXXXXXXXX		Month		: XXXXXXXXXXXXXXXXXX
+Prepared By				Checked By				Reviewed By					Approved By
+
+[TABLE 0]
+Sl. No. | Name of Employee | Designation | Gross Salary | Gross Salary | Gross Salary | Gross Salary | Gross Salary | PF (Org) | Festival Bonus | Total | Deduction | Deduction | Deduction | Deduction | Net Payable | Remark
+Sl. No. | Name of Employee | Designation | Basic Salary | House Rent | Medical Allowance | Hardship Allowance | Total | PF (Org) | Festival Bonus | Total | PF (Own +Org) | Admin Decision | TDS | Total | Net Payable | Remark
+1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 = (4+5+6+7) | 9 | 10 | 11 = (8+9+10) | 12 | 13 | 14 | 15 = (12+13+14) | 16 = (11-15) | 17
+ |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 
+Total | Total | Total |  |  |  |  |  |  |  |  |  |  |  |  |  | 

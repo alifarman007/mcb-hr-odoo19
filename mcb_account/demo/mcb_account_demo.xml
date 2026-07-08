@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="0">
+        <!-- Project/Donor analytic accounts on the default plan (COA-003 examples) -->
+        <record id="analytic_fdmn_unfpa" model="account.analytic.account">
+            <field name="name">FDMN-UNFPA</field>
+            <field name="plan_id" ref="analytic.analytic_plan_projects"/>
+        </record>
+        <record id="analytic_gbvie_care" model="account.analytic.account">
+            <field name="name">GBViE-CARE</field>
+            <field name="plan_id" ref="analytic.analytic_plan_projects"/>
+        </record>
+
+        <record id="demo_challan_tds" model="mcb.tax.challan">
+            <field name="challan_type">treasury_tds</field>
+            <field name="challan_no">TR-2026-000123</field>
+            <field name="bank_name">Sonali Bank</field>
+            <field name="branch_name">Cox's Bazar</field>
+            <field name="amount">12500</field>
+            <field name="state">deposited</field>
+        </record>
+    </data>
+</odoo>

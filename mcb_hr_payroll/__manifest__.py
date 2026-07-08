@@ -26,6 +26,7 @@ overtime rule, and Bangladesh income-tax slabs via `hr.rule.parameter`.
         "data/hr_salary_rule_data.xml",
         "data/hr_payslip_input_type_data.xml",
         "reports/mcb_salary_letters.xml",
+        "reports/mcb_payroll_sheet.xml",
         "wizard/mcb_hr_salary_revision_views.xml",
         "wizard/mcb_hr_bank_transfer_views.xml",
         "views/hr_payslip_views.xml",

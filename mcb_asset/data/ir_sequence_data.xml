@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <record id="seq_mcb_asset_code" model="ir.sequence">
+            <field name="name">MCB Asset ID</field>
+            <field name="code">mcb.asset.code</field>
+            <field name="prefix">MCB-AST-</field>
+            <field name="padding">4</field>
+        </record>
+    </data>
+</odoo>

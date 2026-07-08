@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_mcb_asset_inventory_form" model="ir.ui.view">
+        <field name="name">mcb.asset.inventory.form</field>
+        <field name="model">mcb.asset.inventory</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_fill_from_register" type="object"
+                            string="Load Assets from Register" class="btn-secondary"
+                            invisible="state == 'done'"/>
+                    <button name="action_done" type="object" string="Mark Verified"
+                            class="btn-primary" invisible="state == 'done'"/>
+                    <button name="%(action_report_mcb_asset_inventory)d" type="action"
+                            string="Print (Annexure-22)"/>
+                    <field name="state" widget="statusbar"/>
+                </header>
+                <sheet>
+                    <div class="oe_title"><h1><field name="name" readonly="1"/></h1></div>
+                    <group>
+                        <group>
+                            <field name="date"/>
+                            <field name="project_name"/>
+                        </group>
+                        <group>
+                            <field name="funded_by"/>
+                            <field name="company_id" invisible="1"/>
+                        </group>
+                    </group>
+                    <field name="line_ids">
+                        <list editable="bottom">
+                            <field name="asset_id"/>
+                            <field name="cost"/>
+                            <field name="wdv"/>
+                            <field name="qty_register"/>
+                            <field name="qty_found"/>
+                            <field name="diff"/>
+                            <field name="recommendation"/>
+                            <field name="remarks"/>
+                            <field name="currency_id" column_invisible="1"/>
+                        </list>
+                    </field>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_mcb_asset_inventory_list" model="ir.ui.view">
+        <field name="name">mcb.asset.inventory.list</field>
+        <field name="model">mcb.asset.inventory</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="date"/>
+                <field name="project_name"/>
+                <field name="state" widget="badge"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="action_mcb_asset_inventory" model="ir.actions.act_window">
+        <field name="name">Asset Physical Inventory (Annexure-22)</field>
+        <field name="res_model">mcb.asset.inventory</field>
+        <field name="view_mode">list,form</field>
+    </record>
+</odoo>

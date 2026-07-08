@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_account_asset_form_mcb" model="ir.ui.view">
+        <field name="name">account.asset.form.mcb</field>
+        <field name="model">account.asset</field>
+        <field name="inherit_id" ref="account_asset.view_account_asset_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//header" position="inside">
+                <button name="action_mcb_ce_approve_disposal" type="object"
+                        string="CE Approve Disposal (AST-005)"
+                        invisible="mcb_ce_disposal_approved"
+                        groups="mcb_hr_employee.group_mcb_ce"/>
+            </xpath>
+            <xpath expr="//sheet" position="inside">
+                <group string="MCB Register (Annexure-07)">
+                    <group>
+                        <field name="mcb_asset_code" readonly="1"/>
+                        <field name="mcb_location"/>
+                        <field name="mcb_condition"/>
+                        <field name="mcb_custodian_id"/>
+                    </group>
+                    <group>
+                        <field name="mcb_project_analytic_id"/>
+                        <field name="mcb_funded_by"/>
+                        <field name="mcb_ce_disposal_approved" readonly="1"/>
+                    </group>
+                </group>
+                <group string="Transfer History (AST-006)">
+                    <field name="mcb_transfer_ids" nolabel="1">
+                        <list editable="bottom">
+                            <field name="date"/>
+                            <field name="from_project_id"/>
+                            <field name="to_project_id"/>
+                            <field name="from_location"/>
+                            <field name="to_location"/>
+                            <field name="from_custodian_id"/>
+                            <field name="to_custodian_id"/>
+                            <field name="note"/>
+                        </list>
+                    </field>
+                </group>
+            </xpath>
+        </field>
+    </record>
+</odoo>

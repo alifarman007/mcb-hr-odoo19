@@ -1,0 +1,35 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_mcb_pr_user,pr all users read,model_mcb_purchase_request,base.group_user,1,0,1,0
+access_mcb_pr_officer,pr officer,model_mcb_purchase_request,mcb_purchase.group_mcb_proc_officer,1,1,1,0
+access_mcb_pr_manager,pr manager,model_mcb_purchase_request,mcb_purchase.group_mcb_proc_manager,1,1,1,1
+access_mcb_pr_account,pr accounts,model_mcb_purchase_request,account.group_account_user,1,1,0,0
+access_mcb_pr_audit,pr audit,model_mcb_purchase_request,mcb_account.group_mcb_audit,1,0,0,0
+access_mcb_pr_line_user,pr line user,model_mcb_purchase_request_line,base.group_user,1,1,1,1
+access_mcb_pr_line_audit,pr line audit,model_mcb_purchase_request_line,mcb_account.group_mcb_audit,1,0,0,0
+access_mcb_pr_rfq_wiz,pr rfq wizard,model_mcb_pr_rfq_wizard,mcb_purchase.group_mcb_proc_officer,1,1,1,1
+access_mcb_opening_officer,opening officer,model_mcb_opening_sheet,mcb_purchase.group_mcb_proc_officer,1,1,1,0
+access_mcb_opening_manager,opening manager,model_mcb_opening_sheet,mcb_purchase.group_mcb_proc_manager,1,1,1,1
+access_mcb_opening_audit,opening audit,model_mcb_opening_sheet,mcb_account.group_mcb_audit,1,0,0,0
+access_mcb_opening_line,opening line,model_mcb_opening_sheet_line,mcb_purchase.group_mcb_proc_officer,1,1,1,1
+access_mcb_ta_officer,ta officer,model_mcb_technical_analysis,mcb_purchase.group_mcb_proc_officer,1,1,1,0
+access_mcb_ta_manager,ta manager,model_mcb_technical_analysis,mcb_purchase.group_mcb_proc_manager,1,1,1,1
+access_mcb_ta_audit,ta audit,model_mcb_technical_analysis,mcb_account.group_mcb_audit,1,0,0,0
+access_mcb_ta_line,ta line,model_mcb_technical_analysis_line,mcb_purchase.group_mcb_proc_officer,1,1,1,1
+access_mcb_cs_officer,cs officer,model_mcb_comparative_statement,mcb_purchase.group_mcb_proc_officer,1,1,1,0
+access_mcb_cs_manager,cs manager,model_mcb_comparative_statement,mcb_purchase.group_mcb_proc_manager,1,1,1,1
+access_mcb_cs_audit,cs audit,model_mcb_comparative_statement,mcb_account.group_mcb_audit,1,0,0,0
+access_mcb_cs_vendor,cs vendor line,model_mcb_cs_vendor,mcb_purchase.group_mcb_proc_officer,1,1,1,1
+access_mcb_eval_officer,eval officer,model_mcb_vendor_evaluation,mcb_purchase.group_mcb_proc_officer,1,1,1,0
+access_mcb_eval_manager,eval manager,model_mcb_vendor_evaluation,mcb_purchase.group_mcb_proc_manager,1,1,1,1
+access_mcb_eval_audit,eval audit,model_mcb_vendor_evaluation,mcb_account.group_mcb_audit,1,0,0,0
+access_mcb_eval_line,eval line,model_mcb_vendor_evaluation_line,mcb_purchase.group_mcb_proc_officer,1,1,1,1
+access_mcb_noal_officer,noal officer read,model_mcb_noal,mcb_purchase.group_mcb_proc_officer,1,0,0,0
+access_mcb_noal_manager,noal manager,model_mcb_noal,mcb_purchase.group_mcb_proc_manager,1,1,1,1
+access_mcb_noal_audit,noal audit,model_mcb_noal,mcb_account.group_mcb_audit,1,0,0,0
+access_mcb_proc_chk_officer,proc checklist officer,model_mcb_procurement_checklist,mcb_purchase.group_mcb_proc_officer,1,1,1,0
+access_mcb_proc_chk_manager,proc checklist manager,model_mcb_procurement_checklist,mcb_purchase.group_mcb_proc_manager,1,1,1,1
+access_mcb_proc_chk_audit,proc checklist audit,model_mcb_procurement_checklist,mcb_account.group_mcb_audit,1,0,0,0
+access_mcb_proc_chk_line,proc checklist line,model_mcb_procurement_checklist_line,mcb_purchase.group_mcb_proc_officer,1,1,1,1
+access_po_audit,purchase order audit read,purchase.model_purchase_order,mcb_account.group_mcb_audit,1,0,0,0
+access_po_line_audit,purchase order line audit read,purchase.model_purchase_order_line,mcb_account.group_mcb_audit,1,0,0,0
+access_mcb_pr_report_wiz,pr report wiz,model_mcb_pr_report_wizard,mcb_purchase.group_mcb_proc_officer,1,1,1,1

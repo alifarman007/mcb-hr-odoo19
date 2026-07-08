@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="menu_mcb_cash_root" name="Advances &amp; Petty Cash"
+              parent="account.menu_finance" sequence="91"/>
+
+    <menuitem id="menu_mcb_advance" name="Advance Requests (Annex-18)"
+              parent="menu_mcb_cash_root" action="action_mcb_advance" sequence="10"/>
+    <menuitem id="menu_mcb_adv_adjust" name="Advance Adjustments (Annex-19)"
+              parent="menu_mcb_cash_root" action="action_mcb_adv_adjustment" sequence="20"/>
+    <menuitem id="menu_mcb_iou" name="IOU / Cash Requisitions (Annex-13)"
+              parent="menu_mcb_cash_root" action="action_mcb_iou" sequence="30"/>
+    <menuitem id="menu_mcb_cash_count" name="Daily Cash Counts (Annex-14)"
+              parent="menu_mcb_cash_root" action="action_mcb_cash_count" sequence="40"/>
+    <menuitem id="menu_mcb_petty_topup" name="Petty Cash Top-Ups"
+              parent="menu_mcb_cash_root" action="action_mcb_petty_topup" sequence="50"/>
+    <menuitem id="menu_mcb_petty_book" name="Petty Cash Book / Statement"
+              parent="menu_mcb_cash_root" action="action_mcb_petty_book_wizard" sequence="60"/>
+</odoo>

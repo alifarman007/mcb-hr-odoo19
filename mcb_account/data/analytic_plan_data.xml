@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <!-- VOU-005 — "Class / Cost Centre" dimension as a second analytic plan -->
+        <record id="analytic_plan_cost_category" model="account.analytic.plan">
+            <field name="name">Cost Category (Class)</field>
+        </record>
+        <record id="analytic_cc_direct" model="account.analytic.account">
+            <field name="name">Direct Cost</field>
+            <field name="plan_id" ref="analytic_plan_cost_category"/>
+        </record>
+        <record id="analytic_cc_indirect" model="account.analytic.account">
+            <field name="name">Indirect / Admin Cost</field>
+            <field name="plan_id" ref="analytic_plan_cost_category"/>
+        </record>
+        <record id="analytic_cc_staff" model="account.analytic.account">
+            <field name="name">Staff Cost</field>
+            <field name="plan_id" ref="analytic_plan_cost_category"/>
+        </record>
+    </data>
+</odoo>

@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_mcb_volunteer_list" model="ir.ui.view">
+        <field name="name">mcb.volunteer.list</field>
+        <field name="model">mcb.volunteer</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="vol_type"/>
+                <field name="camp_no"/>
+                <field name="block" optional="hide"/>
+                <field name="phone"/>
+                <field name="nid_or_reg"/>
+                <field name="project_id"/>
+                <field name="joining_date" optional="hide"/>
+                <field name="payment_mode" optional="show"/>
+                <field name="status" widget="badge" decoration-success="status == 'active'"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_mcb_volunteer_search" model="ir.ui.view">
+        <field name="name">mcb.volunteer.search</field>
+        <field name="model">mcb.volunteer</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="camp_no"/>
+                <field name="nid_or_reg"/>
+                <filter name="active_vols" string="Active" domain="[('status', '=', 'active')]"/>
+                <filter name="htv" string="HTV" domain="[('vol_type', '=', 'htv')]"/>
+                <filter name="rtv" string="RTV" domain="[('vol_type', '=', 'rtv')]"/>
+                <group>
+                    <filter name="group_camp" string="Camp" context="{'group_by': 'camp_no'}"/>
+                    <filter name="group_project" string="Project" context="{'group_by': 'project_id'}"/>
+                    <filter name="group_type" string="Type" context="{'group_by': 'vol_type'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="view_mcb_volunteer_form" model="ir.ui.view">
+        <field name="name">mcb.volunteer.form</field>
+        <field name="model">mcb.volunteer</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <div class="oe_title"><h1><field name="name" placeholder="Volunteer name"/></h1></div>
+                    <group>
+                        <group>
+                            <field name="vol_type"/>
+                            <field name="camp_no"/>
+                            <field name="block"/>
+                            <field name="phone"/>
+                            <field name="nid_or_reg"/>
+                        </group>
+                        <group>
+                            <field name="project_id"/>
+                            <field name="joining_date"/>
+                            <field name="status"/>
+                            <field name="payment_mode"/>
+                            <field name="bkash_no" invisible="payment_mode != 'bkash'"/>
+                        </group>
+                    </group>
+                    <field name="attendance_ids">
+                        <list editable="bottom" limit="31">
+                            <field name="date"/>
+                            <field name="present"/>
+                        </list>
+                    </field>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_mcb_volunteer" model="ir.actions.act_window">
+        <field name="name">Volunteers Database</field>
+        <field name="res_model">mcb.volunteer</field>
+        <field name="view_mode">list,form</field>
+        <field name="context">{'search_default_active_vols': 1}</field>
+    </record>
+
+    <record id="view_mcb_vib_form" model="ir.ui.view">
+        <field name="name">mcb.volunteer.incentive.batch.form</field>
+        <field name="model">mcb.volunteer.incentive.batch</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_compute" type="object" string="Compute (days × rate)"
+                            class="btn-primary" invisible="state not in ('draft', 'computed')"/>
+                    <button name="action_approve" type="object" string="Approve" class="btn-primary"
+                            invisible="state != 'computed'" groups="project.group_project_manager"/>
+                    <button name="action_pay" type="object" string="Pay &amp; Post JE"
+                            class="btn-primary" invisible="state != 'approved'"
+                            groups="account.group_account_user"/>
+                    <button name="%(action_report_mcb_incentive_sheet)d" type="action"
+                            string="Print Incentive Sheet"/>
+                    <field name="state" widget="statusbar"/>
+                </header>
+                <sheet>
+                    <div class="oe_title"><h1><field name="name" readonly="1"/></h1></div>
+                    <group>
+                        <group>
+                            <field name="month_date"/>
+                            <field name="project_id"/>
+                            <field name="amount_total" readonly="1"/>
+                            <field name="currency_id" invisible="1"/>
+                        </group>
+                        <group>
+                            <field name="rate_htv"/>
+                            <field name="rate_rtv"/>
+                            <field name="rate_community"/>
+                            <field name="journal_id"/>
+                            <field name="expense_account_id"/>
+                            <field name="move_id" readonly="1"/>
+                        </group>
+                    </group>
+                    <field name="line_ids">
+                        <list editable="bottom">
+                            <field name="volunteer_id"/>
+                            <field name="camp_no"/>
+                            <field name="vol_type"/>
+                            <field name="days_present"/>
+                            <field name="daily_rate"/>
+                            <field name="amount"/>
+                            <field name="payment_mode"/>
+                            <field name="currency_id" column_invisible="1"/>
+                        </list>
+                    </field>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_mcb_vib_list" model="ir.ui.view">
+        <field name="name">mcb.volunteer.incentive.batch.list</field>
+        <field name="model">mcb.volunteer.incentive.batch</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="month_date"/>
+                <field name="project_id"/>
+                <field name="amount_total"/>
+                <field name="state" widget="badge" decoration-success="state == 'paid'"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="action_mcb_vib" model="ir.actions.act_window">
+        <field name="name">Incentive Batches</field>
+        <field name="res_model">mcb.volunteer.incentive.batch</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <record id="view_mcb_vol_att_list" model="ir.ui.view">
+        <field name="name">mcb.volunteer.attendance.list</field>
+        <field name="model">mcb.volunteer.attendance</field>
+        <field name="arch" type="xml">
+            <list editable="bottom">
+                <field name="volunteer_id"/>
+                <field name="vol_type"/>
+                <field name="project_id"/>
+                <field name="date"/>
+                <field name="present"/>
+            </list>
+        </field>
+    </record>
+    <record id="action_mcb_vol_att" model="ir.actions.act_window">
+        <field name="name">Volunteer Attendance</field>
+        <field name="res_model">mcb.volunteer.attendance</field>
+        <field name="view_mode">list</field>
+    </record>
+</odoo>

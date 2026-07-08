@@ -1,0 +1,16 @@
+Annexure - 24
+Mukti Cox's Bazar
+Head Office, Goldighirpar, Cox’s Bazar
+Expenses Top Sheet
+Name of Project/ Office	: XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX	Funded By	: XXXXXXXXXXXXXXXXXX
+Project Duration	: XXXXXXXXXXX	Financial Year	: XXXXXXXXXXXXX		Submitted Date	: XXXXXXXXXXXXXXXXXX
+Amount in word: ____________________________________________________________________________________________________________
+Prepared By			Financed By			Checked By			Reviewed By			Approved By
+
+[TABLE 0]
+Sl. No | Date | Name of Vendors/ Party | Purpose | Activity/ Accounts Code | Bill No. | Amount BDT | Amount BDT | Amount BDT | Amount BDT | Remarks
+Sl. No | Date | Name of Vendors/ Party | Purpose | Activity/ Accounts Code | Bill No. | Bill | VAT | Tax | Net Paid | Remarks
+ |  |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  |  | 
+Grand Total | Grand Total | Grand Total | Grand Total | Grand Total | Grand Total |  |  |  |  | 

@@ -4,7 +4,7 @@
 **Source SRS:** `/Data/odoo19_enterprise/mukticox/Mukti_MCB_Odoo_SRS_v2.docx`
 **Client feedback:** `/Data/odoo19_enterprise/mukticox/version2.docx` (yellow-highlighted modifications)
 **Templates folder:** `/Data/odoo19_enterprise/mukticox/format-hr-erp/` (33 files read; relevant ones inlined as QWeb reports)
-**Platform:** Odoo 19 Enterprise · DB `dev1` · 127.0.0.1:8069
+**Platform:** Odoo 19 Enterprise · DB `mcb_demo` · 127.0.0.1:8069
 
 ## v2.1 client-feedback changes (yellow highlights applied)
 
@@ -93,5 +93,5 @@ Last clean restart: 2026-05-29 — exit 0, no traceback, HTTP 200 on `/web/login
 ```
 cd /Data/odoo19_enterprise && ./start.sh
 # then open http://127.0.0.1:8069
-# user: admin   password: admin   DB: dev1
+# user: admin   password: admin   DB: mcb_demo
 ```

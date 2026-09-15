@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_mcb_srf_form_logistics" model="ir.ui.view">
+        <field name="name">mcb.srf.form.logistics</field>
+        <field name="model">mcb.srf</field>
+        <field name="inherit_id" ref="mcb_store.view_mcb_srf_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//header" position="inside">
+                <button name="action_recommend" type="object" string="Recommend"
+                        invisible="state not in ('requested','approved') or recommended_by_id"/>
+                <button name="action_review" type="object" string="Review"
+                        invisible="state not in ('requested','approved') or reviewed_by_id"/>
+                <button name="action_pc_approve" type="object" string="P.C. Approve"
+                        invisible="state not in ('requested','approved') or pc_approved_by_id"/>
+                <button name="action_create_challan" type="object"
+                        string="Create Challan" class="btn-primary"
+                        invisible="state not in ('approved','issued')"
+                        groups="mcb_logistics.group_mcb_storekeeper"/>
+            </xpath>
+            <xpath expr="//sheet" position="inside">
+                <group string="Materials Requisition Note (field form)">
+                    <group>
+                        <field name="within_date"/>
+                        <field name="requester_designation"/>
+                        <field name="lc_name"/>
+                        <field name="makeshift_settlement"/>
+                    </group>
+                    <group string="Signatures">
+                        <field name="recommended_by_id"/>
+                        <field name="reviewed_by_id"/>
+                        <field name="pc_approved_by_id"/>
+                        <field name="challan_count" string="Challans"/>
+                    </group>
+                </group>
+            </xpath>
+        </field>
+    </record>
+</odoo>

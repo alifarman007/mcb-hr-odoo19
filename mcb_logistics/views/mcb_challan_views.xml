@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_mcb_challan_list" model="ir.ui.view">
+        <field name="name">mcb.challan.list</field>
+        <field name="model">mcb.challan</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="date"/>
+                <field name="srf_id" optional="show"/>
+                <field name="warehouse_id"/>
+                <field name="recipient_name"/>
+                <field name="organisation_name" optional="show"/>
+                <field name="total_quantity" sum="Total Qty"/>
+                <field name="state" widget="badge"
+                       decoration-success="state == 'delivered'"
+                       decoration-info="state in ('approved','issued')"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_mcb_challan_form" model="ir.ui.view">
+        <field name="name">mcb.challan.form</field>
+        <field name="model">mcb.challan</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_approve" type="object" string="Approve"
+                            class="btn-primary" invisible="state != 'draft'"
+                            groups="mcb_logistics.group_mcb_logistics_officer"/>
+                    <button name="action_issue" type="object" string="Issue Goods"
+                            class="btn-primary" invisible="state != 'approved'"
+                            groups="mcb_logistics.group_mcb_storekeeper"/>
+                    <button name="action_deliver" type="object" string="Mark Delivered"
+                            class="btn-primary" invisible="state != 'issued'"/>
+                    <button name="action_cancel" type="object" string="Cancel"
+                            invisible="state in ('issued', 'delivered', 'cancelled')"/>
+                    <field name="state" widget="statusbar"
+                           statusbar_visible="draft,approved,issued,delivered"/>
+                </header>
+                <sheet>
+                    <div class="oe_title"><h1><field name="name" readonly="1"/></h1></div>
+                    <group>
+                        <group string="Issue From">
+                            <field name="warehouse_id"/>
+                            <field name="source_location_id"/>
+                            <field name="srf_id"/>
+                            <field name="date"/>
+                            <field name="pad_serial"/>
+                        </group>
+                        <group string="Issue To">
+                            <field name="recipient_name"/>
+                            <field name="recipient_designation"/>
+                            <field name="organisation_name"/>
+                            <field name="dest_location_id"/>
+                            <field name="purpose"/>
+                        </group>
+                    </group>
+                    <group>
+                        <group string="Charged To">
+                            <field name="project_id"/>
+                            <field name="analytic_account_id"/>
+                        </group>
+                        <group string="Carrier (Waybill)">
+                            <field name="vehicle_id"/>
+                            <field name="vehicle_no"/>
+                            <field name="driver_name"/>
+                            <field name="driver_phone"/>
+                            <field name="transporter"/>
+                            <field name="total_packages"/>
+                            <field name="total_weight"/>
+                            <field name="destination"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Materials">
+                            <field name="line_ids">
+                                <list editable="bottom">
+                                    <field name="sequence" widget="handle"/>
+                                    <field name="product_id"/>
+                                    <field name="uom_id"/>
+                                    <field name="qty_issued" sum="Total"/>
+                                    <field name="bin_card_id" readonly="1" optional="show"/>
+                                    <field name="remarks"/>
+                                </list>
+                            </field>
+                        </page>
+                        <page string="Signatures">
+                            <group>
+                                <group string="Delivered / Approved">
+                                    <field name="delivered_by_id"/>
+                                    <field name="approved_by_id"/>
+                                </group>
+                                <group string="Received By">
+                                    <field name="received_by_name"/>
+                                    <field name="received_date"/>
+                                </group>
+                            </group>
+                            <field name="remarks" placeholder="Remarks..."/>
+                        </page>
+                    </notebook>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_mcb_challan" model="ir.actions.act_window">
+        <field name="name">Materials Supply Notes / Challans</field>
+        <field name="res_model">mcb.challan</field>
+        <field name="view_mode">list,form</field>
+    </record>
+</odoo>

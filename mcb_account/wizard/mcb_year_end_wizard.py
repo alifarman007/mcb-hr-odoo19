@@ -28,7 +28,14 @@ class McbYearEndWizard(models.TransientModel):
         fund_acc = self.env["account.account"].search(
             [("code", "=", "300190"), ("company_ids", "in", company.id)], limit=1)
         if not fund_acc:
-            raise UserError(_("Fund Balance account 300190 not found — reinstall mcb_account."))
+            # Self-heal: the post-init hook only creates this on install and only for
+            # companies that already had a chart. Create it on demand so the close works
+            # for any company (mirrors mcb_account.__init__._ensure_core_accounts).
+            fund_acc = self.env["account.account"].sudo().with_company(company).create({
+                "code": "300190",
+                "name": "Fund Balance (NGO)",
+                "account_type": "equity",
+            })
         lines = self.env["account.move.line"].search([
             ("company_id", "=", company.id),
             ("parent_state", "=", "posted"),

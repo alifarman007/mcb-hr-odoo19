@@ -39,10 +39,13 @@ class McbBankReconWizard(models.TransientModel):
     def _gather(self):
         self.ensure_one()
         journal = self.journal_id
+        # Odoo 19: the outstanding (in-transit) payment accounts moved off res.company
+        # onto the journal's payment-method lines. These helpers return them; empty
+        # entries are dropped so an unconfigured journal simply yields no outstanding items.
         outstanding_accounts = (
-            journal.company_id.account_journal_payment_debit_account_id
-            | journal.company_id.account_journal_payment_credit_account_id
-        )
+            journal._get_journal_inbound_outstanding_payment_accounts()
+            | journal._get_journal_outbound_outstanding_payment_accounts()
+        ).filtered(lambda a: a)
         lines = self.env["account.move.line"].search([
             ("journal_id", "=", journal.id),
             ("account_id", "in", outstanding_accounts.ids),

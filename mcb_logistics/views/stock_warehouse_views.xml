@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_stock_warehouse_form_mcb" model="ir.ui.view">
+        <field name="name">stock.warehouse.form.mcb</field>
+        <field name="model">stock.warehouse</field>
+        <field name="inherit_id" ref="stock.view_warehouse"/>
+        <field name="arch" type="xml">
+            <xpath expr="//sheet" position="inside">
+                <group string="MCB Warehouse Information (SOP)">
+                    <group>
+                        <field name="mcb_is_mcb_store"/>
+                        <field name="mcb_office_type"/>
+                        <field name="mcb_project_id"/>
+                        <field name="mcb_donor"/>
+                        <field name="mcb_address"/>
+                    </group>
+                    <group>
+                        <field name="mcb_storekeeper_id"/>
+                        <field name="mcb_focal_point_id"/>
+                        <field name="mcb_storage_capacity"/>
+                    </group>
+                </group>
+                <group string="Layout &amp; Storage Plan">
+                    <field name="mcb_layout_plan" nolabel="1"
+                           placeholder="By Purchase Order — where items are stored and where arriving items can go..."/>
+                </group>
+            </xpath>
+        </field>
+    </record>
+</odoo>

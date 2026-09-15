@@ -27,7 +27,7 @@ From the Odoo project root (`/Data/odoo19_enterprise`):
 ./start.sh -u mcb_hr_payroll  # upgrade one sub-module
 ```
 
-DB `dev1` · Odoo 19 Enterprise · BDT currency · Bangladesh localisation.
+DB `mcb_demo` · Odoo 19 Enterprise · BDT currency · Bangladesh localisation.
 
 ## Deliverables
 

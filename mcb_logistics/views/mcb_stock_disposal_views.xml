@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_mcb_disposal_list" model="ir.ui.view">
+        <field name="name">mcb.stock.disposal.list</field>
+        <field name="model">mcb.stock.disposal</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="date"/>
+                <field name="warehouse_id"/>
+                <field name="reason"/>
+                <field name="total_value" sum="Value"/>
+                <field name="state" widget="badge"
+                       decoration-success="state == 'disposed'"
+                       decoration-info="state in ('requested','approved')"
+                       decoration-danger="state == 'rejected'"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_mcb_disposal_form" model="ir.ui.view">
+        <field name="name">mcb.stock.disposal.form</field>
+        <field name="model">mcb.stock.disposal</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_request" type="object" string="Request Approval"
+                            class="btn-primary" invisible="state != 'draft'"/>
+                    <button name="action_approve" type="object" string="Approve"
+                            class="btn-primary" invisible="state != 'requested'"
+                            groups="mcb_logistics.group_mcb_logistics_manager"/>
+                    <button name="action_reject" type="object" string="Reject"
+                            invisible="state != 'requested'"
+                            groups="mcb_logistics.group_mcb_logistics_manager"/>
+                    <button name="action_dispose" type="object" string="Dispose"
+                            class="btn-primary" invisible="state != 'approved'"
+                            groups="mcb_logistics.group_mcb_storekeeper"/>
+                    <field name="state" widget="statusbar"
+                           statusbar_visible="draft,requested,approved,disposed"/>
+                </header>
+                <sheet>
+                    <div class="oe_title"><h1><field name="name" readonly="1"/></h1></div>
+                    <group>
+                        <group>
+                            <field name="date"/>
+                            <field name="warehouse_id"/>
+                            <field name="project_id"/>
+                            <field name="reason"/>
+                            <field name="disposal_method"/>
+                            <field name="verification_id"/>
+                        </group>
+                        <group string="Approval">
+                            <field name="requested_by_id"/>
+                            <field name="approved_by_id"/>
+                            <field name="approval_date"/>
+                            <field name="total_value"/>
+                            <field name="currency_id" invisible="1"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Items">
+                            <field name="line_ids">
+                                <list editable="bottom">
+                                    <field name="product_id"/>
+                                    <field name="location_id"/>
+                                    <field name="lot_id" optional="hide"/>
+                                    <field name="bin_card_id" optional="show"/>
+                                    <field name="uom_id"/>
+                                    <field name="quantity"/>
+                                    <field name="expiry_date" optional="show"/>
+                                    <field name="unit_value"/>
+                                    <field name="value" readonly="1" sum="Total"/>
+                                    <field name="remarks"/>
+                                    <field name="currency_id" column_invisible="1"/>
+                                </list>
+                            </field>
+                        </page>
+                    </notebook>
+                    <field name="remarks" placeholder="Remarks..."/>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_mcb_stock_disposal" model="ir.actions.act_window">
+        <field name="name">Stock Disposal Requests</field>
+        <field name="res_model">mcb.stock.disposal</field>
+        <field name="view_mode">list,form</field>
+    </record>
+</odoo>

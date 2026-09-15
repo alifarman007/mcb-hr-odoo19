@@ -56,7 +56,7 @@ Native Enterprise apps carrying requirements (no custom code needed): `account_a
 - **ATT-006** (Should) — attendance data + pivots available; bespoke absenteeism dashboard not built.
 - **VEH-005** (Should) — both registers exist; automatic cross-reference between vehicle log and movement register is manual.
 
-## Where to click (dev1 · https://mcb-odoo.tail4092a2.ts.net · admin/admin)
+## Where to click (mcb_demo · https://crevice-flop-copious.ngrok-free.dev · admin/admin)
 
 - **Accounting → MCB Registers** — challans, payment checklists, bank recon, cheque register, top sheet, VAT/TDS summary, donor report, year-end closing, asset register/inventory
 - **Accounting → Advances & Petty Cash** — advances, adjustments, IOU, cash counts, top-ups, petty book

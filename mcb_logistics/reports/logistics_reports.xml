@@ -1,0 +1,439 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- ===================================================== GSRN ========== -->
+    <record id="action_report_mcb_gsrn" model="ir.actions.report">
+        <field name="name">Goods &amp; Service Received Note</field>
+        <field name="model">mcb.gsrn</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">mcb_logistics.report_mcb_gsrn</field>
+        <field name="report_file">mcb_logistics.report_mcb_gsrn</field>
+        <field name="binding_model_id" ref="model_mcb_gsrn"/>
+        <field name="binding_type">report</field>
+    </record>
+
+    <template id="report_mcb_gsrn">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <h3 class="text-center" style="letter-spacing:1px;">
+                            GOODS AND SERVICE RECEIVED NOTE (GSRN)
+                        </h3>
+                        <div class="row mb-2">
+                            <div class="col-6">
+                                <strong>GSRN #:</strong> <span t-field="doc.name"/>
+                                <span t-if="doc.pad_serial"> · Pad # MC-<span t-field="doc.pad_serial"/></span>
+                            </div>
+                            <div class="col-6 text-end">
+                                <span class="border px-2">ACCOUNTS</span>
+                                <span class="border px-2">STORE</span>
+                                <span class="border px-2">PURCHASER</span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6">
+                                <table class="table table-sm table-bordered">
+                                    <tr><th colspan="2" class="text-center">SUPPLIER</th></tr>
+                                    <tr><td>Name of Vendor</td>
+                                        <td><span t-field="doc.partner_id"/>
+                                            <span t-if="doc.donor" t-field="doc.donor"/></td></tr>
+                                    <tr><td>Challan #</td>
+                                        <td><span t-field="doc.supplier_challan_no"/></td></tr>
+                                    <tr><td>Date</td>
+                                        <td><span t-field="doc.supplier_challan_date"/></td></tr>
+                                </table>
+                            </div>
+                            <div class="col-6">
+                                <table class="table table-sm table-bordered">
+                                    <tr><th colspan="2" class="text-center">Mukti Cox's Bazar</th></tr>
+                                    <tr><td>Name of Office</td>
+                                        <td><span t-field="doc.warehouse_id"/></td></tr>
+                                    <tr><td>PO/PR/WR #</td>
+                                        <td><span t-if="doc.purchase_order_id" t-field="doc.purchase_order_id.name"/>
+                                            <span t-if="not doc.purchase_order_id" t-field="doc.reference_no"/></td></tr>
+                                    <tr><td>Date</td><td><span t-field="doc.date"/></td></tr>
+                                </table>
+                            </div>
+                        </div>
+                        <p class="mt-2">Received the following quantity of goods. Service in
+                            good condition as per requirements of PO./PR./WR.:</p>
+                        <table class="table table-sm table-bordered">
+                            <thead>
+                                <tr>
+                                    <th style="width:6%;">Sl.</th>
+                                    <th>Description</th>
+                                    <th class="text-end">Quantity Ordered</th>
+                                    <th class="text-end">Quantity Received</th>
+                                    <th class="text-end">Unit Cost (Taka)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr t-foreach="doc.line_ids" t-as="l">
+                                    <td><span t-esc="l_index + 1"/></td>
+                                    <td><span t-field="l.description"/></td>
+                                    <td class="text-end"><span t-field="l.qty_ordered"/></td>
+                                    <td class="text-end"><span t-field="l.qty_received"/></td>
+                                    <td class="text-end"><span t-field="l.unit_cost"/></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <p><strong>Remarks:</strong> <span t-field="doc.remarks"/></p>
+                        <div class="row mt-4">
+                            <div class="col-6">
+                                <p class="mb-0"><em>Optional (Incase Vendor Comes at delivery
+                                    Office/Side Delivery By):</em></p>
+                                <p class="mb-0">Name: <span t-field="doc.delivered_by_name"/></p>
+                                <p class="mb-0">Signature: ____________________</p>
+                                <p>Date: <span t-field="doc.delivered_by_date"/></p>
+                            </div>
+                            <div class="col-6">
+                                <p class="mb-0">Recipient's Name: <span t-field="doc.recipient_id"/></p>
+                                <p class="mb-0">Signature: ____________________</p>
+                                <p class="mb-0">Designation: <span t-field="doc.recipient_designation"/></p>
+                                <p>Date: <span t-field="doc.date"/></p>
+                            </div>
+                        </div>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+
+    <!-- ================================================= CHALLAN =========== -->
+    <record id="action_report_mcb_challan" model="ir.actions.report">
+        <field name="name">Materials Supply Note / Challan</field>
+        <field name="model">mcb.challan</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">mcb_logistics.report_mcb_challan</field>
+        <field name="report_file">mcb_logistics.report_mcb_challan</field>
+        <field name="binding_model_id" ref="model_mcb_challan"/>
+        <field name="binding_type">report</field>
+    </record>
+
+    <template id="report_mcb_challan">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <h4 class="text-center bg-light py-1">Materials Supply Note / Challan</h4>
+                        <div class="row">
+                            <div class="col-6">
+                                <p class="mb-0">Challan No: <strong t-field="doc.name"/>
+                                    <span t-if="doc.pad_serial"> (pad <span t-field="doc.pad_serial"/>)</span></p>
+                                <p class="mb-0">Name of Recipient: <span t-field="doc.recipient_name"/></p>
+                                <p class="mb-0">Purpose: <span t-field="doc.purpose"/></p>
+                            </div>
+                            <div class="col-6">
+                                <p class="mb-0">Date: <span t-field="doc.date"/></p>
+                                <p class="mb-0">Designation: <span t-field="doc.recipient_designation"/></p>
+                                <p class="mb-0">Organization/Camp/LC Name:
+                                    <span t-field="doc.organisation_name"/></p>
+                            </div>
+                        </div>
+                        <table class="table table-sm table-bordered mt-2">
+                            <thead>
+                                <tr>
+                                    <th style="width:6%;">Sl</th>
+                                    <th>Name of Materials</th>
+                                    <th>Unit</th>
+                                    <th class="text-end">Issued Quantity</th>
+                                    <th>Stock Register Folio</th>
+                                    <th>Remarks</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr t-foreach="doc.line_ids" t-as="l">
+                                    <td><span t-esc="l_index + 1"/></td>
+                                    <td><span t-field="l.product_id"/></td>
+                                    <td><span t-field="l.uom_id"/></td>
+                                    <td class="text-end"><span t-field="l.qty_issued"/></td>
+                                    <td><span t-field="l.bin_card_id.name"/></td>
+                                    <td><span t-field="l.remarks"/></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="3" class="text-center"><strong>TOTAL</strong></td>
+                                    <td class="text-end"><strong t-field="doc.total_quantity"/></td>
+                                    <td colspan="2"/>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div t-if="doc.vehicle_no or doc.driver_name" class="mt-2">
+                            <strong>Carrier:</strong>
+                            Vehicle <span t-field="doc.vehicle_no"/> ·
+                            Driver <span t-field="doc.driver_name"/> ·
+                            Packages <span t-field="doc.total_packages"/> ·
+                            Weight <span t-field="doc.total_weight"/> kg ·
+                            Destination <span t-field="doc.destination"/>
+                        </div>
+                        <div class="row mt-5">
+                            <div class="col-4">______________________<br/>Delivered By</div>
+                            <div class="col-4 text-center">______________________<br/>Received By</div>
+                            <div class="col-4 text-end">______________________<br/>Approved By</div>
+                        </div>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+
+    <!-- ================================================ BIN CARD =========== -->
+    <record id="action_report_mcb_bin_card" model="ir.actions.report">
+        <field name="name">Bin / Stack Card</field>
+        <field name="model">mcb.bin.card</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">mcb_logistics.report_mcb_bin_card</field>
+        <field name="report_file">mcb_logistics.report_mcb_bin_card</field>
+        <field name="binding_model_id" ref="model_mcb_bin_card"/>
+        <field name="binding_type">report</field>
+    </record>
+
+    <template id="report_mcb_bin_card">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <h4 class="text-center">BIN CARD / STACK CARD</h4>
+                        <table class="table table-sm table-bordered">
+                            <tr>
+                                <td>Warehouse Name: <strong t-field="doc.warehouse_id"/></td>
+                                <td>Page Number: <span t-field="doc.page_no"/></td>
+                            </tr>
+                            <tr>
+                                <td>PO Number:
+                                    <strong t-if="doc.purchase_order_id" t-field="doc.purchase_order_id.name"/>
+                                    <strong t-if="not doc.purchase_order_id" t-field="doc.po_reference"/></td>
+                                <td>Unit of Measurement: <span t-field="doc.uom_id"/></td>
+                            </tr>
+                            <tr>
+                                <td>Item Name: <strong t-field="doc.product_id"/></td>
+                                <td>Expiry Date: <span t-field="doc.expiry_date"/></td>
+                            </tr>
+                        </table>
+                        <table class="table table-sm table-bordered">
+                            <thead>
+                                <tr>
+                                    <th style="width:6%;">Sl No</th>
+                                    <th>Date</th>
+                                    <th>Name (Requester / Vendor)<br/>Challan No / Waybill / GRN No</th>
+                                    <th class="text-end">Receive (IN)</th>
+                                    <th class="text-end">Dispatch (OUT)</th>
+                                    <th class="text-end">Closing Balance</th>
+                                    <th>Signature of record Keeper</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td/><td/><td><em>Opening balance</em></td>
+                                    <td/><td/>
+                                    <td class="text-end"><span t-field="doc.opening_balance"/></td>
+                                    <td/>
+                                </tr>
+                                <tr t-foreach="doc.line_ids" t-as="l">
+                                    <td><span t-esc="l_index + 1"/></td>
+                                    <td><span t-field="l.date"/></td>
+                                    <td><span t-field="l.party_name"/><br/>
+                                        <small t-field="l.doc_reference"/></td>
+                                    <td class="text-end"><span t-field="l.qty_in"/></td>
+                                    <td class="text-end"><span t-field="l.qty_out"/></td>
+                                    <td class="text-end"><span t-field="l.running_balance"/></td>
+                                    <td><span t-field="l.recorded_by_id"/></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <p class="text-end"><strong>Closing Balance:
+                            <span t-field="doc.balance"/> <span t-field="doc.uom_id"/></strong></p>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+
+    <!-- ======================================== VERIFICATION SHEET ========= -->
+    <record id="action_report_mcb_verification" model="ir.actions.report">
+        <field name="name">Physical Verification Report</field>
+        <field name="model">mcb.stock.verification</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">mcb_logistics.report_mcb_verification</field>
+        <field name="report_file">mcb_logistics.report_mcb_verification</field>
+        <field name="binding_model_id" ref="model_mcb_stock_verification"/>
+        <field name="binding_type">report</field>
+    </record>
+
+    <template id="report_mcb_verification">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <h4 class="text-center">Physical Inventory Verification Report</h4>
+                        <div class="row">
+                            <div class="col-6">
+                                <p class="mb-0">Reference: <strong t-field="doc.name"/></p>
+                                <p class="mb-0">Warehouse: <span t-field="doc.warehouse_id"/></p>
+                                <p class="mb-0">Project / Office: <span t-field="doc.project_id"/></p>
+                            </div>
+                            <div class="col-6">
+                                <p class="mb-0">Type: <span t-field="doc.verification_type"/></p>
+                                <p class="mb-0">Period: <span t-field="doc.period_label"/></p>
+                                <p class="mb-0">Count Date: <span t-field="doc.date"/></p>
+                            </div>
+                        </div>
+                        <table class="table table-sm table-bordered mt-2">
+                            <thead>
+                                <tr>
+                                    <th>Sl.</th><th>Item</th><th>Location</th><th>Batch</th>
+                                    <th class="text-end">As per System</th>
+                                    <th class="text-end">Physically Found</th>
+                                    <th class="text-end">Short / Excess</th>
+                                    <th>Reason</th><th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr t-foreach="doc.line_ids" t-as="l">
+                                    <td><span t-esc="l_index + 1"/></td>
+                                    <td><span t-field="l.product_id"/></td>
+                                    <td><span t-field="l.location_id"/></td>
+                                    <td><span t-field="l.lot_id"/></td>
+                                    <td class="text-end"><span t-field="l.qty_system"/></td>
+                                    <td class="text-end"><span t-field="l.qty_physical"/></td>
+                                    <td class="text-end"><span t-field="l.difference"/></td>
+                                    <td><span t-field="l.reason"/></td>
+                                    <td><span t-field="l.action_taken"/></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <p><strong>Explanation of discrepancies:</strong>
+                            <span t-field="doc.explanation"/></p>
+                        <div class="row mt-5">
+                            <div class="col-4">______________________<br/>Store Keeper<br/>
+                                <small t-field="doc.storekeeper_id"/></div>
+                            <div class="col-4 text-center">______________________<br/>
+                                Warehouse Focal Point<br/><small t-field="doc.focal_point_id"/></div>
+                            <div class="col-4 text-end">______________________<br/>
+                                Coordinator, Finance &amp; Accounts<br/>
+                                <small t-field="doc.finance_coordinator_id"/></div>
+                        </div>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+
+    <!-- ============================================ DISPOSAL LIST ========== -->
+    <record id="action_report_mcb_disposal" model="ir.actions.report">
+        <field name="name">Approved Disposal List</field>
+        <field name="model">mcb.stock.disposal</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">mcb_logistics.report_mcb_disposal</field>
+        <field name="report_file">mcb_logistics.report_mcb_disposal</field>
+        <field name="binding_model_id" ref="model_mcb_stock_disposal"/>
+        <field name="binding_type">report</field>
+    </record>
+
+    <template id="report_mcb_disposal">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <h4 class="text-center">Approved Disposal List</h4>
+                        <div class="row">
+                            <div class="col-6">
+                                <p class="mb-0">Reference: <strong t-field="doc.name"/></p>
+                                <p class="mb-0">Warehouse: <span t-field="doc.warehouse_id"/></p>
+                                <p class="mb-0">Reason: <span t-field="doc.reason"/></p>
+                            </div>
+                            <div class="col-6">
+                                <p class="mb-0">Date: <span t-field="doc.date"/></p>
+                                <p class="mb-0">Approved By: <span t-field="doc.approved_by_id"/></p>
+                                <p class="mb-0">Method: <span t-field="doc.disposal_method"/></p>
+                            </div>
+                        </div>
+                        <table class="table table-sm table-bordered mt-2">
+                            <thead>
+                                <tr><th>Sl.</th><th>Item</th><th>Batch</th><th>Expiry</th>
+                                    <th class="text-end">Quantity</th>
+                                    <th class="text-end">Value</th><th>Remarks</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr t-foreach="doc.line_ids" t-as="l">
+                                    <td><span t-esc="l_index + 1"/></td>
+                                    <td><span t-field="l.product_id"/></td>
+                                    <td><span t-field="l.lot_id"/></td>
+                                    <td><span t-field="l.expiry_date"/></td>
+                                    <td class="text-end"><span t-field="l.quantity"/></td>
+                                    <td class="text-end"><span t-field="l.value"/></td>
+                                    <td><span t-field="l.remarks"/></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <p class="text-end"><strong>Total value:
+                            <span t-field="doc.total_value"/></strong></p>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+
+    <!-- ====================================== MONTHLY STOCK REPORT ========= -->
+    <record id="action_report_mcb_monthly_stock" model="ir.actions.report">
+        <field name="name">Monthly Stock Report</field>
+        <field name="model">mcb.monthly.stock.wizard</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">mcb_logistics.report_mcb_monthly_stock</field>
+        <field name="report_file">mcb_logistics.report_mcb_monthly_stock</field>
+        <field name="print_report_name">'MCB Monthly Stock Report'</field>
+    </record>
+
+    <template id="report_mcb_monthly_stock">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <h4 class="text-center">Monthly Stock Report</h4>
+                        <p class="text-center">
+                            <span t-field="doc.warehouse_id"/> ·
+                            <span t-esc="doc.month_date.strftime('%B %Y')"/>
+                            <span t-if="doc.project_id"> · <span t-field="doc.project_id"/></span>
+                            <span t-if="doc.donor"> · Funded by <span t-field="doc.donor"/></span>
+                        </p>
+                        <table class="table table-sm table-bordered" style="font-size:9px;">
+                            <thead>
+                                <tr>
+                                    <th>Sl</th><th>Waybill / PO No</th><th>Receipt Date</th>
+                                    <th>Material Code</th><th>Material Description</th>
+                                    <th>UoM</th><th class="text-end">Opening</th>
+                                    <th class="text-end">Received</th><th class="text-end">Issued</th>
+                                    <th class="text-end">Loss/Damage</th>
+                                    <th class="text-end">Balance</th><th class="text-end">Unit Price</th>
+                                    <th class="text-end">Total Price</th><th>Location</th>
+                                    <th>Batch</th><th>Expiry</th><th>Remarks</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <t t-set="rows" t-value="doc._report_rows()"/>
+                                <tr t-foreach="rows" t-as="r">
+                                    <td><span t-esc="r_index + 1"/></td>
+                                    <td><span t-esc="r['po']"/></td>
+                                    <td><span t-esc="r['receipt_date']"/></td>
+                                    <td><span t-esc="r['code']"/></td>
+                                    <td><span t-esc="r['name']"/></td>
+                                    <td><span t-esc="r['uom']"/></td>
+                                    <td class="text-end"><span t-esc="r['opening']"/></td>
+                                    <td class="text-end"><span t-esc="r['received']"/></td>
+                                    <td class="text-end"><span t-esc="r['issued']"/></td>
+                                    <td class="text-end"><span t-esc="r['loss']"/></td>
+                                    <td class="text-end"><span t-esc="r['balance']"/></td>
+                                    <td class="text-end"><span t-esc="r['price']"/></td>
+                                    <td class="text-end"><span t-esc="r['total']"/></td>
+                                    <td><span t-esc="r['location']"/></td>
+                                    <td><span t-esc="r['lot']"/></td>
+                                    <td><span t-esc="r['expiry']"/></td>
+                                    <td><span t-esc="r['remarks']"/></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>

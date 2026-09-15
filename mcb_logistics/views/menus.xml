@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="menu_mcb_logistics_root" name="MCB Logistics"
+              parent="stock.menu_stock_root" sequence="25"/>
+
+    <menuitem id="menu_mcb_logistics_receive" name="Receiving"
+              parent="menu_mcb_logistics_root" sequence="10"/>
+    <menuitem id="menu_mcb_gsrn" name="Goods &amp; Service Received Notes"
+              parent="menu_mcb_logistics_receive" action="action_mcb_gsrn" sequence="10"/>
+
+    <menuitem id="menu_mcb_logistics_issue" name="Issuing"
+              parent="menu_mcb_logistics_root" sequence="20"/>
+    <menuitem id="menu_mcb_challan" name="Materials Supply Notes / Challans"
+              parent="menu_mcb_logistics_issue" action="action_mcb_challan" sequence="10"/>
+
+    <menuitem id="menu_mcb_logistics_records" name="Store Records"
+              parent="menu_mcb_logistics_root" sequence="30"/>
+    <menuitem id="menu_mcb_bin_card" name="Bin / Stack Cards"
+              parent="menu_mcb_logistics_records" action="action_mcb_bin_card" sequence="10"/>
+    <menuitem id="menu_mcb_monthly_stock" name="Monthly Stock Report"
+              parent="menu_mcb_logistics_records"
+              action="action_mcb_monthly_stock_wizard" sequence="20"/>
+
+    <menuitem id="menu_mcb_logistics_control" name="Verification &amp; Disposal"
+              parent="menu_mcb_logistics_root" sequence="40"/>
+    <menuitem id="menu_mcb_stock_verification" name="Physical Stock Verification"
+              parent="menu_mcb_logistics_control"
+              action="action_mcb_stock_verification" sequence="10"/>
+    <menuitem id="menu_mcb_stock_disposal" name="Stock Disposal Requests"
+              parent="menu_mcb_logistics_control"
+              action="action_mcb_stock_disposal" sequence="20"/>
+</odoo>

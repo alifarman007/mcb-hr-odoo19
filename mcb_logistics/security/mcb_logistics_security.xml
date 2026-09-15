@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="0">
+        <!-- SOP DOAP roles. The SOP names a Store Keeper at each warehouse, a Logistic
+             Officer responsible for the challan, and an Inventory Focal Point at head
+             office who keeps the books. -->
+        <record id="group_mcb_storekeeper" model="res.groups">
+            <field name="name">MCB Store Keeper</field>
+            <field name="privilege_id" ref="mcb_hr_employee.privilege_mcb_hr_role"/>
+            <field name="comment">Receives goods (GSRN), issues against an approved
+                requisition, keeps the bin/stack cards and counts the store.</field>
+            <field name="implied_ids" eval="[(4, ref('stock.group_stock_user'))]"/>
+        </record>
+        <record id="group_mcb_logistics_officer" model="res.groups">
+            <field name="name">MCB Logistics Officer</field>
+            <field name="privilege_id" ref="mcb_hr_employee.privilege_mcb_hr_role"/>
+            <field name="comment">All store keeper rights, plus approving the challan
+                and running the physical verification.</field>
+            <field name="implied_ids" eval="[(4, ref('group_mcb_storekeeper'))]"/>
+        </record>
+        <record id="group_mcb_logistics_manager" model="res.groups">
+            <field name="name">MCB Logistics Manager</field>
+            <field name="privilege_id" ref="mcb_hr_employee.privilege_mcb_hr_role"/>
+            <field name="comment">Head office: approves disposal requests and receives
+                the verification reports.</field>
+            <field name="implied_ids" eval="[(4, ref('group_mcb_logistics_officer')),
+                                             (4, ref('stock.group_stock_manager'))]"/>
+        </record>
+    </data>
+</odoo>

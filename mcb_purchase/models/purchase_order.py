@@ -19,7 +19,8 @@ class PurchaseOrder(models.Model):
                                 index=True)
     mcb_evaluation_id = fields.Many2one("mcb.vendor.evaluation", string="Evaluation")
     mcb_noal_id = fields.Many2one("mcb.noal", string="NOAL", copy=False)
-    mcb_noal_required = fields.Boolean(compute="_compute_noal_required", store=True)
+    mcb_noal_required = fields.Boolean(string="NOAL Required",
+                                      compute="_compute_noal_required", store=True)
 
     # PO-008 — 4-level authorization with real users/dates
     mcb_checked_by_id = fields.Many2one("res.users", readonly=True, copy=False,

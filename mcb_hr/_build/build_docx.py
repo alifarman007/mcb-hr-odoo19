@@ -976,9 +976,9 @@ def build():
         "together — a database without its filestore loses attachments."
     )
     make_table(doc, ["What", "Command"], [
-        ("DB dump", "pg_dump -h localhost -U alif -Fc -f dev1.dump dev1"),
-        ("DB restore", "pg_restore -h localhost -U alif -d dev1 -c dev1.dump"),
-        ("Filestore", "tar -czf filestore.tgz /Data/odoo19_enterprise/filestore/dev1"),
+        ("DB dump", "pg_dump -h localhost -U alif -Fc -f mcb_demo.dump mcb_demo"),
+        ("DB restore", "pg_restore -h localhost -U alif -d mcb_demo -c mcb_demo.dump"),
+        ("Filestore", "tar -czf filestore.tgz /Data/odoo19_enterprise/filestore/filestore/mcb_demo"),
     ])
     doc.add_paragraph(
         "Note: iDempiere shares the same PostgreSQL instance — never stop/"

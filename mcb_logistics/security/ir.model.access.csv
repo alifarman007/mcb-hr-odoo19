@@ -1,0 +1,27 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_mcb_gsrn_user,gsrn user,model_mcb_gsrn,base.group_user,1,0,0,0
+access_mcb_gsrn_keeper,gsrn storekeeper,model_mcb_gsrn,group_mcb_storekeeper,1,1,1,0
+access_mcb_gsrn_mgr,gsrn manager,model_mcb_gsrn,group_mcb_logistics_manager,1,1,1,1
+access_mcb_gsrn_audit,gsrn audit,model_mcb_gsrn,mcb_account.group_mcb_audit,1,0,0,0
+access_mcb_gsrn_line,gsrn line,model_mcb_gsrn_line,base.group_user,1,1,1,1
+access_mcb_challan_user,challan user,model_mcb_challan,base.group_user,1,0,0,0
+access_mcb_challan_keeper,challan storekeeper,model_mcb_challan,group_mcb_storekeeper,1,1,1,0
+access_mcb_challan_mgr,challan manager,model_mcb_challan,group_mcb_logistics_manager,1,1,1,1
+access_mcb_challan_audit,challan audit,model_mcb_challan,mcb_account.group_mcb_audit,1,0,0,0
+access_mcb_challan_line,challan line,model_mcb_challan_line,base.group_user,1,1,1,1
+access_mcb_bin_card_user,bin card user,model_mcb_bin_card,base.group_user,1,0,0,0
+access_mcb_bin_card_keeper,bin card storekeeper,model_mcb_bin_card,group_mcb_storekeeper,1,1,1,0
+access_mcb_bin_card_mgr,bin card manager,model_mcb_bin_card,group_mcb_logistics_manager,1,1,1,1
+access_mcb_bin_card_audit,bin card audit,model_mcb_bin_card,mcb_account.group_mcb_audit,1,0,0,0
+access_mcb_bin_card_line,bin card line,model_mcb_bin_card_line,base.group_user,1,1,1,1
+access_mcb_verif_user,verification user,model_mcb_stock_verification,base.group_user,1,0,0,0
+access_mcb_verif_keeper,verification storekeeper,model_mcb_stock_verification,group_mcb_storekeeper,1,1,1,0
+access_mcb_verif_mgr,verification manager,model_mcb_stock_verification,group_mcb_logistics_manager,1,1,1,1
+access_mcb_verif_audit,verification audit,model_mcb_stock_verification,mcb_account.group_mcb_audit,1,0,0,0
+access_mcb_verif_line,verification line,model_mcb_stock_verification_line,base.group_user,1,1,1,1
+access_mcb_disposal_user,disposal user,model_mcb_stock_disposal,base.group_user,1,0,0,0
+access_mcb_disposal_keeper,disposal storekeeper,model_mcb_stock_disposal,group_mcb_storekeeper,1,1,1,0
+access_mcb_disposal_mgr,disposal manager,model_mcb_stock_disposal,group_mcb_logistics_manager,1,1,1,1
+access_mcb_disposal_audit,disposal audit,model_mcb_stock_disposal,mcb_account.group_mcb_audit,1,0,0,0
+access_mcb_disposal_line,disposal line,model_mcb_stock_disposal_line,base.group_user,1,1,1,1
+access_mcb_monthly_stock_wiz,monthly stock wizard,model_mcb_monthly_stock_wizard,group_mcb_storekeeper,1,1,1,1

@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_mcb_verification_list" model="ir.ui.view">
+        <field name="name">mcb.stock.verification.list</field>
+        <field name="model">mcb.stock.verification</field>
+        <field name="arch" type="xml">
+            <list decoration-warning="has_discrepancy">
+                <field name="name"/>
+                <field name="date"/>
+                <field name="verification_type"/>
+                <field name="warehouse_id"/>
+                <field name="period_label" optional="show"/>
+                <field name="discrepancy_count"/>
+                <field name="state" widget="badge"
+                       decoration-success="state == 'submitted'"
+                       decoration-info="state in ('counting','reconciled')"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_mcb_verification_form" model="ir.ui.view">
+        <field name="name">mcb.stock.verification.form</field>
+        <field name="model">mcb.stock.verification</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_load_stock" type="object"
+                            string="Load Count Sheet" class="btn-primary"
+                            invisible="state not in ('draft','counting')"/>
+                    <button name="action_reconcile" type="object" string="Reconcile"
+                            class="btn-primary" invisible="state != 'counting'"/>
+                    <button name="action_submit" type="object"
+                            string="Submit to Management" class="btn-primary"
+                            invisible="state != 'reconciled'"
+                            groups="mcb_logistics.group_mcb_logistics_officer"/>
+                    <button name="action_cancel" type="object" string="Cancel"
+                            invisible="state in ('submitted','cancelled')"/>
+                    <button name="action_draft" type="object" string="Reset to Draft"
+                            invisible="state != 'cancelled'"/>
+                    <field name="state" widget="statusbar"
+                           statusbar_visible="draft,counting,reconciled,submitted"/>
+                </header>
+                <sheet>
+                    <div class="oe_title"><h1><field name="name" readonly="1"/></h1></div>
+                    <group>
+                        <group string="Count">
+                            <field name="verification_type"/>
+                            <field name="date"/>
+                            <field name="warehouse_id"/>
+                            <field name="project_id"/>
+                            <field name="period_label"/>
+                        </group>
+                        <group string="Committee (SOP)">
+                            <field name="storekeeper_id"/>
+                            <field name="focal_point_id"/>
+                            <field name="finance_coordinator_id"/>
+                            <field name="committee_ids" widget="many2many_tags"/>
+                        </group>
+                    </group>
+                    <group string="Handover" invisible="verification_type != 'handover'">
+                        <group>
+                            <field name="outgoing_keeper_id"/>
+                        </group>
+                        <group>
+                            <field name="incoming_keeper_id"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Count Sheet">
+                            <field name="line_ids">
+                                <list editable="bottom"
+                                      decoration-danger="difference != 0">
+                                    <field name="product_id" readonly="1"/>
+                                    <field name="location_id" readonly="1"/>
+                                    <field name="lot_id" optional="hide" readonly="1"/>
+                                    <field name="bin_card_id" optional="show" readonly="1"/>
+                                    <field name="uom_id" readonly="1"/>
+                                    <field name="qty_system" readonly="1" sum="System"/>
+                                    <field name="qty_physical" sum="Counted"/>
+                                    <field name="difference" readonly="1" sum="Difference"/>
+                                    <field name="reason"/>
+                                    <field name="action_taken"/>
+                                </list>
+                            </field>
+                        </page>
+                        <page string="Explanation">
+                            <group>
+                                <field name="discrepancy_count" readonly="1"/>
+                                <field name="has_discrepancy" readonly="1"/>
+                            </group>
+                            <field name="explanation"
+                                   placeholder="Investigate and explain every discrepancy..."/>
+                        </page>
+                    </notebook>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_mcb_stock_verification" model="ir.actions.act_window">
+        <field name="name">Physical Stock Verification</field>
+        <field name="res_model">mcb.stock.verification</field>
+        <field name="view_mode">list,form</field>
+    </record>
+</odoo>

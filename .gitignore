@@ -20,3 +20,13 @@ Thumbs.db
 
 # Keep the placeholder out now that real modules exist
 .gitkeep
+
+# Generated tutorial/guide build output — every file here is regenerable by
+# re-running the flow_* capture scripts and make_*/build_* renderers in _build/.
+# Hundreds of MB of frames and video segments; keep them out of history.
+**/_build/flows/
+**/_build/_flowvid/
+**/_build/_anim/
+**/_build/screenshots/video/
+mcb_erp/_build/screenshots/
+*.mp4
